@@ -1346,10 +1346,10 @@ def main():
 
     # Also auto-rebuild standalone NADZORNA_PLOSCA_SBITOP.html if source files exist
     try:
-        idx_html_p = os.path.join(REPO_ROOT, "index.html")
-        css_p = os.path.join(REPO_ROOT, "styles.css")
-        app_p = os.path.join(REPO_ROOT, "app.js")
-        bundle_p = os.path.join(REPO_ROOT, "NADZORNA_PLOSCA_SBITOP.html")
+        idx_html_p = os.path.join(BASE_DIR, "index.html")
+        css_p = os.path.join(BASE_DIR, "styles.css")
+        app_p = os.path.join(BASE_DIR, "app.js")
+        bundle_p = os.path.join(BASE_DIR, "NADZORNA_PLOSCA_SBITOP.html")
         if all(os.path.exists(p) for p in (idx_html_p, css_p, app_p)):
             with open(idx_html_p, "r", encoding="utf-8") as f:
                 html_txt = f.read()
