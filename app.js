@@ -1635,6 +1635,152 @@
   }
 
   // =========================================================================
+  // MODULE 1B: SUMMARY OF LATEST PUBLISHED RESULTS (H1 & 9M / Q3 2026)
+  // =========================================================================
+  function renderLatestPublishedResults() {
+    const tbody = document.getElementById("latestResultsSummaryBody");
+    const cardsGrid = document.getElementById("latestResultsCardsGrid");
+    if (!tbody || !cardsGrid) return;
+
+    // 1. Summary Table
+    tbody.innerHTML = DATA.companies
+      .map((c) => {
+        const lr = c.latestResults;
+        if (!lr) return "";
+        const h1 = lr.h1_2026;
+        const q3 = lr.q3_9m_2026;
+        const isSel = c.ticker === selectedTicker ? "highlight-row" : "";
+        const h1Badge = h1.revYoYPct >= 0 ? "badge-emerald" : "badge-amber";
+        const q3Badge = q3.niYoYPct >= 0 ? "badge-emerald" : "badge-amber";
+
+        return `
+          <tr class="${isSel}" data-ticker="${c.ticker}" style="cursor:pointer;">
+            <td class="label-cell"><strong class="mono text-blue">${c.ticker}</strong> · ${c.shortName}</td>
+            <td>${fmtNum(h1.revenueM, 1)} M€</td>
+            <td><span class="badge ${h1Badge}">${fmtSignedPct(h1.revYoYPct, 1)}</span></td>
+            <td><strong>${fmtNum(h1.netIncomeM, 1)} M€</strong> <span class="text-muted">(${fmtSignedPct(h1.niYoYPct, 1)})</span></td>
+            <td>${fmtNum(q3.revenueM, 1)} M€</td>
+            <td><strong>${fmtNum(q3.netIncomeM, 1)} M€</strong></td>
+            <td><span class="badge ${q3Badge}">${fmtSignedPct(q3.niYoYPct, 1)}</span></td>
+            <td><a href="${lr.reportUrl}" target="_blank" rel="noopener" class="text-blue" style="text-decoration:none;font-weight:700;" onclick="event.stopPropagation();">PDF ↗</a></td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    tbody.querySelectorAll("tr").forEach((tr) => {
+      tr.addEventListener("click", () => selectCompany(tr.getAttribute("data-ticker")));
+    });
+
+    // 2. YoY Growth Chart (9M Revenue YoY % vs 9M Net Income YoY %)
+    renderChart("latestResultsYoY", "chartLatestResultsYoY", {
+      type: "bar",
+      data: {
+        labels: DATA.companies.map((c) => c.ticker),
+        datasets: [
+          {
+            label: "Rast prihodkov 9M 2026 (% YoY)",
+            data: DATA.companies.map((c) => (c.latestResults ? c.latestResults.q3_9m_2026.revYoYPct : 0)),
+            backgroundColor: "rgba(56, 189, 248, 0.82)",
+            borderRadius: 4
+          },
+          {
+            label: "Rast čistega dobička 9M 2026 (% YoY)",
+            data: DATA.companies.map((c) => (c.latestResults ? c.latestResults.q3_9m_2026.niYoYPct : 0)),
+            backgroundColor: DATA.companies.map((c) =>
+              c.latestResults && c.latestResults.q3_9m_2026.niYoYPct >= 0 ? "#10b981" : "#f59e0b"
+            ),
+            borderRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: { legend: { labels: { color: "#cbd5e1", font: { size: 11 } } } },
+        scales: {
+          x: { ticks: { color: "#cbd5e1", font: { weight: "700" } }, grid: { display: false } },
+          y: {
+            ticks: { color: "#94a3b8", callback: (v) => v + " %" },
+            grid: { color: "rgba(148,163,184,0.08)" }
+          }
+        }
+      }
+    });
+
+    // 3. 9 Detailed Executive Summary Cards
+    cardsGrid.innerHTML = DATA.companies
+      .map((c) => {
+        const lr = c.latestResults;
+        if (!lr) return "";
+        const h1 = lr.h1_2026;
+        const q3 = lr.q3_9m_2026;
+        const isAct = c.ticker === selectedTicker ? "active" : "";
+        const sentBadge = lr.sentiment === "emerald" ? "badge-emerald" : "badge-amber";
+
+        return `
+          <div class="result-card ${isAct}" data-ticker="${c.ticker}">
+            <div>
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
+                <div>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="mono" style="font-size:16px;font-weight:800;color:var(--accent-blue);">${c.ticker}</span>
+                    <span style="font-size:14.5px;font-weight:700;color:var(--text-primary);">${c.shortName}</span>
+                  </div>
+                  <div style="font-size:11px;color:var(--text-muted);">${lr.reportTitle} · Objava: ${lr.publishedDate}</div>
+                </div>
+                <span class="badge ${sentBadge}">${lr.sentimentLabel}</span>
+              </div>
+
+              <div class="result-metrics-strip" style="margin:10px 0;">
+                <div class="result-metric-box">
+                  <span class="result-metric-lbl">Prihodki H1 2026</span>
+                  <span class="result-metric-val">${fmtNum(h1.revenueM, 1)} M€ <span class="${h1.revYoYPct >= 0 ? "text-emerald" : "text-amber"}" style="font-size:11.5px;">(${fmtSignedPct(h1.revYoYPct, 1)})</span></span>
+                </div>
+                <div class="result-metric-box">
+                  <span class="result-metric-lbl">Čisti dobiček H1 2026</span>
+                  <span class="result-metric-val">${fmtNum(h1.netIncomeM, 1)} M€ <span class="${h1.niYoYPct >= 0 ? "text-emerald" : "text-amber"}" style="font-size:11.5px;">(${fmtSignedPct(h1.niYoYPct, 1)})</span></span>
+                </div>
+                <div class="result-metric-box">
+                  <span class="result-metric-lbl">Prihodki ${q3.period}</span>
+                  <span class="result-metric-val">${fmtNum(q3.revenueM, 1)} M€ <span class="${q3.revYoYPct >= 0 ? "text-emerald" : "text-amber"}" style="font-size:11.5px;">(${fmtSignedPct(q3.revYoYPct, 1)})</span></span>
+                </div>
+                <div class="result-metric-box">
+                  <span class="result-metric-lbl">Čisti dob. ${q3.period}</span>
+                  <span class="result-metric-val">${fmtNum(q3.netIncomeM, 1)} M€ <span class="${q3.niYoYPct >= 0 ? "text-emerald" : "text-amber"}" style="font-size:11.5px;">(${fmtSignedPct(q3.niYoYPct, 1)})</span></span>
+                </div>
+              </div>
+
+              <div style="font-size:11.5px;font-weight:700;color:var(--accent-blue);margin-bottom:6px;display:flex;justify-content:space-between;">
+                <span>KLJUČNI POUDARKI OBJAVLJENEGA POROČILA</span>
+                <span class="mono text-emerald">${q3.keyMetricLabel}: ${q3.keyMetricValue}</span>
+              </div>
+              <ul class="result-bullets">
+                ${lr.bullets.map((b) => `<li>${b}</li>`).join("")}
+              </ul>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px;">
+              <div class="result-guidance-box">
+                <strong style="color:var(--accent-blue);">Napoved vodstva (Guidance):</strong> ${lr.guidance}
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;font-size:11.5px;padding-top:4px;border-top:1px solid var(--border-subtle);">
+                <span class="text-muted">Tečaj: <strong class="mono text-primary">${fmtNum(c.current.price, 2)} €</strong> · P/E: <strong class="mono text-primary">${fmtNum(c.current.pe, 1)}x</strong></span>
+                <a href="${lr.reportUrl}" target="_blank" rel="noopener" class="text-blue" style="text-decoration:none;font-weight:700;" onclick="event.stopPropagation();">Odpri uradno poročilo (PDF) ↗</a>
+              </div>
+            </div>
+          </div>
+        `;
+      })
+      .join("");
+
+    cardsGrid.querySelectorAll(".result-card").forEach((card) => {
+      card.addEventListener("click", () => selectCompany(card.getAttribute("data-ticker")));
+    });
+  }
+
+  // =========================================================================
   // COMPANY SELECTION & VIEW ROUTING
   // =========================================================================
   function selectCompany(ticker) {
@@ -1644,6 +1790,7 @@
 
     renderHeaderAndSelectors();
     renderModule1Index();
+    renderLatestPublishedResults();
     renderModule2Financials(comp);
     loadSimulatorDefaultsForCompany(comp, "base");
     renderModule4Peers(comp);
@@ -1656,7 +1803,7 @@
       btn.classList.toggle("active", btn.getAttribute("data-view") === viewId);
     });
 
-    const sectionIds = ["sec-index", "sec-financials", "sec-simulator", "sec-peers", "sec-historical-val"];
+    const sectionIds = ["sec-index", "sec-latest-results", "sec-financials", "sec-simulator", "sec-peers", "sec-historical-val"];
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;

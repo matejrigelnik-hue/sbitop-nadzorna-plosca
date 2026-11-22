@@ -28,10 +28,11 @@
       <nav class="nav-tabs" id="navTabs">
         <button class="nav-tab active" data-view="all">Celovit pogled (Vsi moduli)</button>
         <button class="nav-tab" data-view="sec-index">1. Pregled SBI TOP</button>
-        <button class="nav-tab" data-view="sec-financials">2. 10-letne finance</button>
-        <button class="nav-tab" data-view="sec-simulator">3. Simulator poštene vrednosti</button>
-        <button class="nav-tab" data-view="sec-peers">4. Tuja primerljiva podjetja</button>
-        <button class="nav-tab" data-view="sec-historical-val">5. Zgodovinski večkratniki</button>
+        <button class="nav-tab" data-view="sec-latest-results">2. Zadnji rezultati (2026)</button>
+        <button class="nav-tab" data-view="sec-financials">3. 10-letne finance</button>
+        <button class="nav-tab" data-view="sec-simulator">4. Simulator poštene vrednosti</button>
+        <button class="nav-tab" data-view="sec-peers">5. Tuja primerljiva podjetja</button>
+        <button class="nav-tab" data-view="sec-historical-val">6. Zgodovinski večkratniki</button>
       </nav>
 
       <div class="header-controls">
@@ -44,7 +45,7 @@
     </div>
   </header>
 
-  <!-- Quick 10-Company Pill Selector Bar -->
+  <!-- Quick 9-Company Pill Selector Bar -->
   <div class="company-pill-bar" id="companyPillBar"></div>
 
   <!-- Main Workspace -->
@@ -130,6 +131,64 @@
           </table>
         </div>
       </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- MODULE 1B: SUMMARY OF LATEST PUBLISHED RESULTS (H1 & 9M/Q3 2026)  -->
+    <!-- ================================================================= -->
+    <section class="module-section" id="sec-latest-results">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-kicker">PREGLED TEKOČEGA POSLOVANJA · ZADNJI OBJAVLJENI REZULTATI (H1 & 9M / Q3 2026)</span>
+          <h2 class="section-title">Povzetek zadnjih objavljenih rezultatov poslovanja in napovedi vodstev</h2>
+          <p class="section-desc">Strukturiran pregled zadnjih objavljenih medletnih poročil (H1 2026 in 1–9 2026 / Q3 2026), medletnih stopenj rasti (YoY %), operativnih poudarkov in celoletnih načrtov za vseh 9 analiziranih družb.</p>
+        </div>
+        <div class="badge badge-emerald">Obdobje poročanja: H1 & 9M 2026 (SEOnet)</div>
+      </div>
+
+      <!-- Summary Table & YoY Growth Chart -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Primerjava medletne rasti prihodkov in čistega dobička v letu 2026 (% YoY)</div>
+              <div class="card-subtitle">Dinamika rasti po zadnjih objavljenih poročilih (9M / H1 2026 vs. 2025)</div>
+            </div>
+          </div>
+          <div class="chart-box-sm">
+            <canvas id="chartLatestResultsYoY"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Presečni pregled zadnjih objavljenih rezultatov (H1 2026 & 9M 2026)</div>
+              <div class="card-subtitle">Kliknite na vrstico za izbiro družbe ali odprite uradni PDF dokument poročila</div>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="latestResultsSummaryTable">
+              <thead>
+                <tr>
+                  <th>Podjetje</th>
+                  <th>Prihodki H1 26</th>
+                  <th>H1 YoY</th>
+                  <th>Čisti dob. H1 26</th>
+                  <th>Prihodki 9M 26</th>
+                  <th>Čisti dob. 9M 26</th>
+                  <th>9M YoY</th>
+                  <th>Poročilo</th>
+                </tr>
+              </thead>
+              <tbody id="latestResultsSummaryBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 Detailed Executive Summary Cards for Each Company -->
+      <div class="results-cards-grid" id="latestResultsCardsGrid"></div>
     </section>
 
     <!-- ================================================================= -->

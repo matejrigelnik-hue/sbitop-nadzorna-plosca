@@ -144,6 +144,40 @@
         "yoyNetIncomePct": 9.4,
         "highlights": "Rekordna prodaja v regiji Vzhodna Evropa in Srednja Evropa; EBITDA marža 29,1 %; potrditev celoletnega načrta 2026 (>2,16 mrd € prihodkov in >420 mio € čistega dobička)."
       },
+      "latestResults": {
+        "reportTitle": "Polletno poročilo H1 2026 & Poročilo 1–9 2026 (9M 2026)",
+        "publishedDate": "November 2026",
+        "sentiment": "emerald",
+        "sentimentLabel": "Rekordni rezultati · Nad načrti",
+        "h1_2026": {
+          "revenueM": 1119.35,
+          "revenue2025M": 1048.54,
+          "revYoYPct": 6.8,
+          "ebitdaM": 357.45,
+          "ebitda2025M": 303.25,
+          "ebitdaYoYPct": 17.9,
+          "netIncomeM": 260.17,
+          "netIncome2025M": 246.68,
+          "niYoYPct": 5.5
+        },
+        "q3_9m_2026": {
+          "period": "9M 2026 (1–9 2026)",
+          "revenueM": 1658.4,
+          "revYoYPct": 8.1,
+          "ebitdaM": 482.0,
+          "netIncomeM": 338.5,
+          "niYoYPct": 9.4,
+          "keyMetricLabel": "EBITDA marža",
+          "keyMetricValue": "29,1 % (H1: 31,9 %)"
+        },
+        "bullets": [
+          "Količinska in vrednostna rast prodaje v vseh 6 prodajnih regijah; najmočnejša rast v regijah Vzhodna Evropa (+10 %) in Srednja Evropa (+8 %).",
+          "V prvem polletju 2026 se je EBITDA povečal za +17,9 % na 357,5 mio € (31,9 % EBITDA marža), čisti dobiček v 9M 2026 pa je dosegel 338,5 mio € (+9,4 % YoY).",
+          "Registriranih 14 novih zdravil na recept (kardiovaskularni segment, zdravila za osrednje živčevje in onkologijo); izplačana rekordna dividenda 9,10 € na delnico (+10,3 % YoY)."
+        ],
+        "guidance": "Vodstvo potrjuje celoletni načrt za leto 2026: prodaja nad 2,16 mrd € in čisti dobiček nad 420 mio € ob ohranjanju >50 % dividendnega izplačila.",
+        "reportUrl": "https://www.krka.si/_assets/Nerevidirano-porocilo-o-poslovanju-skupine-in-druzbe-Krka-za-prvo-polletje-2026.pdf"
+      },
       "thesis": {
         "summary": "Vodilni vertikalno integrirani proizvajalec generičnih zdravil v Srednji in Vzhodni Evropi z izjemno bilanco brez dolga (348 mio € denarja), 27,4 % EBITDA maržo in 25-letno neprekinjeno rastjo dividend.",
         "moat": "Vertikalna integracija od sinteze aktivnih učinkovin (API) do končnih oblik zdravil, močna mreža >4.000 strokovnih sodelavcev na 70+ trgih in visoka zvestoba zdravnikov pri zdravljenju kroničnih kardiovaskularnih bolezni.",
@@ -2271,10 +2305,44 @@
         "period": "1–9 2026 (Q3 2026)",
         "revenueM": 998.5,
         "ebitdaM": 495.0,
-        "netIncomeM": 427.5,
-        "yoyRevenuePct": 5.8,
-        "yoyNetIncomePct": 4.2,
-        "highlights": "Odlična dobičkonosnost (normalizirani ROE >20 %), uspešna integracija SLS Leasinga, močna rast kreditiranja na trgih JV Evrope in izplačilo 13,84 € dividende na delnico v dveh tranšah."
+        "netIncomeM": 412.0,
+        "yoyRevenuePct": 5.9,
+        "yoyNetIncomePct": 1.5,
+        "highlights": "Konsolidirani čisti dobiček v 1–9 2026 znaša 412,0 mio € (ROTE 15,8 %, NIM 3,26 %, CIR 44,9 %), banke v JV Evropi prispevajo 55 % dobička skupine; objavljen prevzem >55 % deleža v Deželni banki Slovenije (DBS)."
+      },
+      "latestResults": {
+        "reportTitle": "Polletno poročilo H1 2026 & Rezultati Q3 / 9M 2026",
+        "publishedDate": "November 2026",
+        "sentiment": "emerald",
+        "sentimentLabel": "Močna rast kreditov & Prevzem DBS",
+        "h1_2026": {
+          "revenueM": 666.77,
+          "revenue2025M": 629.52,
+          "revYoYPct": 5.9,
+          "ebitdaM": null,
+          "ebitda2025M": null,
+          "ebitdaYoYPct": null,
+          "netIncomeM": 259.9,
+          "netIncome2025M": 282.48,
+          "niYoYPct": -8.0
+        },
+        "q3_9m_2026": {
+          "period": "9M 2026 (1–9 2026)",
+          "revenueM": 998.5,
+          "revYoYPct": 5.9,
+          "ebitdaM": 495.0,
+          "netIncomeM": 412.0,
+          "niYoYPct": 1.5,
+          "keyMetricLabel": "ROTE / NIM / CIR",
+          "keyMetricValue": "15,8 % ROTE · 3,26 % NIM · 44,9 % CIR"
+        },
+        "bullets": [
+          "V prvih 9 mesecih 2026 je NLB Skupina ustvarila 412,0 mio € čistega dobička ob rasti bilančne vsote na 32,33 mrd € in kapitala na 3.882 mio € (S&P zvišal obete na BBB+ pozitivni).",
+          "Banke v JV Evropi (Beograd 109,5 mio €, Skopje 40,1 mio €, Priština 32,1 mio €, Banja Luka 25,5 mio €, Podgorica 17,6 mio €, Sarajevo 13,7 mio €) prispevajo že 55 % rezultata skupine ob dvomestni rasti kreditov.",
+          "Strateška širitev: pridobitev večinskega deleža (>55 %) v Deželni banki Slovenije (1,6 mrd € sredstev, 2,8 % tržni delež) ter uspešna izdaja 400 mio € Tier 2 obveznic (+190 bps kapitalskega blažilnika)."
+        ],
+        "guidance": "Potrjena celoletna napoved rednih prihodkov >1,3 mrd €, stroškovno razmerje CIR ~45 % in izplačilo 55 % čistega dobička za dividende (13,84 €/delnico v dveh tranšah).",
+        "reportUrl": "https://www.nlbgroup.com/content/dam/nlb/nlb-group/documents/investor-relations/financial-reports/2026/h1/NLB-Group-Interim-Report-January%E2%80%93June-2026.pdf"
       },
       "thesis": {
         "summary": "Sistemski bančni šampion v regiji Jugovzhodne Evrope (SEE) z vodilnimi tržnimi deleži v Sloveniji, Severni Makedoniji, Črni gori, BiH, Srbiji in na Kosovu. Kljub rasti tečaja se še vedno trguje pri zgolj ~8,4x P/E in ~1,25x P/B ob >6,5 % dividendni donosnosti.",
@@ -4331,6 +4399,40 @@
         "yoyRevenuePct": 18.2,
         "yoyNetIncomePct": -21.7,
         "highlights": "Rast prodaje trgovskega blaga in energetskih rešitev, medtem ko stroga regulacija marž pogonskih goriv v Sloveniji kratkoročno znižuje čisti izid; neto dolg ostaja na vzdržni ravni 1,3x EBITDA."
+      },
+      "latestResults": {
+        "reportTitle": "Polletno poročilo H1 2026 & Rezultati 1–9 2026",
+        "publishedDate": "Avgust / November 2026",
+        "sentiment": "amber",
+        "sentimentLabel": "Rast prihodkov · Pritisk regulacije marž",
+        "h1_2026": {
+          "revenueM": 3345.43,
+          "revenue2025M": 2987.01,
+          "revYoYPct": 12.0,
+          "ebitdaM": 130.12,
+          "ebitda2025M": 145.2,
+          "ebitdaYoYPct": -10.4,
+          "netIncomeM": 57.35,
+          "netIncome2025M": 75.19,
+          "niYoYPct": -23.7
+        },
+        "q3_9m_2026": {
+          "period": "9M 2026 (1–9 2026)",
+          "revenueM": 5312.0,
+          "revYoYPct": 18.2,
+          "ebitdaM": 234.8,
+          "netIncomeM": 106.4,
+          "niYoYPct": -21.7,
+          "keyMetricLabel": "Neto dolg / EBITDA",
+          "keyMetricValue": "1,3x (595 prodajnih mest)"
+        },
+        "bullets": [
+          "V H1 2026 so prihodki zrasli za +12,0 % na 3,35 mrd € (v 9M 2026 na 5,31 mrd € oz. +18,2 % YoY) ob večji količinski prodaji goriv in trgovskega blaga ter gastro ponudbe Fresh.",
+          "EBITDA v H1 2026 je znašal 130,1 mio € (-10,4 % YoY), čisti dobiček pa 57,4 mio € (v 9M 2026 106,4 mio €), predvsem zaradi zaostrene državne regulacije marž naftnih derivatov v Sloveniji.",
+          "Uspešno nadaljevanje projektov zelene energetske tranzicije (sončne elektrarne, e-polnilnice in energetska prenova stavb) ter ohranjanje močnega denarnega toka za izplačilo dividende 2,50 €/delnico."
+        ],
+        "guidance": "Fokus vodstva na stroškovni optimizaciji, rasti visokomaržnega trgovskega blaga in energetskih storitev ter prizadevanjih za sprostitev reguliranih marž goriv.",
+        "reportUrl": "https://www.petrol.eu/binaries/content/assets/skupina-petrol-slo/objave/2026/08/porocilo-o-poslovanju-skupine-petrol-in-druzbe-petrol-d.d.,-ljubljana-januar-junij-2026.pdf"
       },
       "thesis": {
         "summary": "Vodilna energetska in maloprodajna skupina v Sloveniji in na Hrvaškem (595 bencinskih servisov) v prehodu v integriranega ponudnika obnovljivih virov energije, e-mobilnosti in energetskih rešitev.",
@@ -6619,20 +6721,54 @@
       },
       "interim2026": {
         "period": "1–9 2026 (9M 2026)",
-        "revenueM": 1345.0,
+        "revenueM": 1735.1,
         "ebitdaM": 146.3,
-        "netIncomeM": 118.4,
-        "yoyRevenuePct": 9.2,
-        "yoyNetIncomePct": 11.5,
-        "highlights": "Obseg poslovanja 2,14 mrd € (+8 %), kombinirani količnik ugodnih 91,8 %, ROE 14,9 %. Ambiciozen načrt za leto 2027 predvideva EBT v višini 200–220 mio € in do roku 2030 podvojitev dobička na 250–300 mio €."
+        "netIncomeM": 119.1,
+        "yoyRevenuePct": 2.1,
+        "yoyNetIncomePct": 0.4,
+        "highlights": "V 9M 2026 je EBT dosegel 146,3 mio € (+2 % YoY), čisti dobiček 119,1 mio €, kombinirani količnik 94,6 %, ROE 14,9 % in sredstva v upravljanju (AUM) 6,92 mrd € (+10 %). Prevzem 49 % deleža v hrvaški Arsano Medical Group."
+      },
+      "latestResults": {
+        "reportTitle": "Rezultati 9M 2026, Obeti 2026 in Načrt 2027",
+        "publishedDate": "November 2026",
+        "sentiment": "emerald",
+        "sentimentLabel": "Potrjen načrt · Prevzem Arsano Medical",
+        "h1_2026": {
+          "revenueM": 1128.71,
+          "revenue2025M": 699.08,
+          "revYoYPct": 61.5,
+          "ebitdaM": 108.5,
+          "ebitda2025M": 109.6,
+          "ebitdaYoYPct": -1.0,
+          "netIncomeM": 85.65,
+          "netIncome2025M": 91.44,
+          "niYoYPct": -6.3
+        },
+        "q3_9m_2026": {
+          "period": "9M 2026 (1–9 2026)",
+          "revenueM": 1735.1,
+          "revYoYPct": 2.1,
+          "ebitdaM": 146.3,
+          "netIncomeM": 119.1,
+          "niYoYPct": 0.4,
+          "keyMetricLabel": "Kombinirani količnik / ROE",
+          "keyMetricValue": "94,6 % CoR · 14,9 % ROE"
+        },
+        "bullets": [
+          "V 9M 2026 je dobiček pred obdavčitvijo (EBT) zrasel za +2 % YoY na 146,3 mio € (čisti dobiček 119,1 mio €), pri čemer so obrestni prihodki iz finančnih naložb poskočili za +17 % na 47,4 mio €.",
+          "Kombinirani količnik premoženjskih zavarovanj znaša trdnih 94,6 % kljub višjim škodam naravnih ujm (CAT delež 3,8 %); sredstva v upravljanju (AUM) so se povečala za +10 % na 6.921,7 mio €.",
+          "Podpisana pogodba o nakupu 49 % deleža v vodilni hrvaški zasebni zdravstveni skupini Arsano Medical Group; potrjeni bonitetni oceni A+ (S&P) in A (AM Best) ter izplačana dividenda 3,00 €/delnico."
+        ],
+        "guidance": "Potrjena celoletna napoved za leto 2026 ter ambiciozen načrt za leto 2027 (EBT 200–220 mio €) in strategija do 2030 (EBT 250–300 mio €, Solvency II 200–250 %).",
+        "reportUrl": "https://seonet.ljse.si/file.aspx?AttachmentID=56249"
       },
       "thesis": {
-        "summary": "Vodilna zavarovalno-finančna skupina v regiji Adria (~40 % tržni delež v Sloveniji) z močnim segmentom upravljanja premoženja (Triglav Skladi) in izboljšanim kombiniranim količnikom (~92–93 %).",
+        "summary": "Vodilna zavarovalno-finančna skupina v regiji Adria (~40 % tržni delež v Sloveniji) z močnim segmentom upravljanja premoženja (Triglav Skladi) in izboljšanim kombiniranim količnikom (~92–94 %).",
         "moat": "Najmočnejša zavarovalniška blagovna znamka in zastopniška mreža v regiji Adria, ekonomija obsega pri škodnem upravljanju in navzkrižna prodaja premoženjskih, življenjskih, zdravstvenih zavarovanj ter vzajemnih skladov.",
         "catalysts": [
           "Strategija 2030: rast EBT na 250–300 mio € in izplačilo ~400 mio € dividend v obdobju 2025–2030",
           "Višji donosi obvezniškega naložbenega portfelja",
-          "Cenovna prilagoditev premij in dopolnilnih zdravstvenih/premoženjskih produktov"
+          "Cenovna prilagoditev premij in širitev zasebnih zdravstvenih storitev (Arsano Medical Group)"
         ],
         "risks": [
           "Naravne ujme in ekstremni vremenski dogodki (poplave, toča) v regiji",
@@ -8796,6 +8932,40 @@
         "yoyNetIncomePct": 12.1,
         "highlights": "Rekorden pretovor kontejnerjev (>1,15 mio TEU letni tempo) in avtomobilov; pospešena gradnja podaljška Pomola I in skorajšnje odprtje 2. tira Divača–Koper."
       },
+      "latestResults": {
+        "reportTitle": "Polletno poročilo H1 2026 & Rezultati 1–9 2026",
+        "publishedDate": "Avgust / November 2026",
+        "sentiment": "emerald",
+        "sentimentLabel": "Rekorden pretovor kontejnerjev (+10 %)",
+        "h1_2026": {
+          "revenueM": 206.12,
+          "revenue2025M": 187.74,
+          "revYoYPct": 9.8,
+          "ebitdaM": 73.31,
+          "ebitda2025M": 68.22,
+          "ebitdaYoYPct": 7.5,
+          "netIncomeM": 48.08,
+          "netIncome2025M": 43.48,
+          "niYoYPct": 10.6
+        },
+        "q3_9m_2026": {
+          "period": "9M 2026 (1–9 2026)",
+          "revenueM": 302.5,
+          "revYoYPct": 9.8,
+          "ebitdaM": 104.2,
+          "netIncomeM": 66.8,
+          "niYoYPct": 12.1,
+          "keyMetricLabel": "EBITDA marža",
+          "keyMetricValue": "35,6 % (H1 2026)"
+        },
+        "bullets": [
+          "V H1 2026 so čisti prihodki od prodaje zrasli za +9,8 % na 206,1 mio €, EBITDA za +7,5 % na 73,3 mio € (35,6 % marža), čisti dobiček pa za +10,6 % na 48,1 mio €.",
+          "Trend rasti se je nadaljeval tudi v Q3 (9M 2026 prihodki 302,5 mio €, čisti dobiček 66,8 mio € oz. +12,1 % YoY) ob rekordnem pretovoru na kontejnerskem in avtomobilskem terminalu.",
+          "Intenzivno izvajanje 785 mio € investicijskega cikla (severni podaljšek Pomola I, nova skladišča in priprava na priključitev 2. železniškega tira Divača–Koper)."
+        ],
+        "guidance": "Preseganje prvotnega letnega načrta prihodkov (>395 mio €) in čistega dobička (>85 mio €) za celotno leto 2026.",
+        "reportUrl": "https://www.luka-kp.si/wp-content/uploads/2026/08/BORZA-1-6-2026-ZA-OBJAVO.pdf"
+      },
       "thesis": {
         "summary": "Geografski monopol kot najsevernejše večnamensko pristanišče v Sredozemlju za oskrbovanje Avstrije, Madžarske, Slovaške, Češke in južne Nemčije. Poleg osnovne dejavnosti ima v bilanci 1,32 % delež v Krki (~108 mio €) in neto denarno pozicijo.",
         "moat": "Naravni geografski jarek (5–7 dni krajša plovba iz Azije prek Sueza kot do severnoevropskih pristanišč Rotterdam/Hamburg) ter dolgoročna koncesijska pogodba do leta 2043. Vodilni terminal za avtomobile in kontejnerje v Jadranu.",
@@ -10922,6 +11092,40 @@
         "yoyRevenuePct": 8.4,
         "yoyNetIncomePct": 11.2,
         "highlights": "Obseg poslovanja presegel 920 mio € v 9M 2026; kombinirani količnik odličnih 87,4 %; ROE 15,9 %; pričakovani celoletni čisti dobiček >115 mio €."
+      },
+      "latestResults": {
+        "reportTitle": "Polletno poročilo H1 2026 & Rezultati 1–9 2026",
+        "publishedDate": "Avgust / November 2026",
+        "sentiment": "emerald",
+        "sentimentLabel": "Vrhunski kombinirani količnik 87,4 %",
+        "h1_2026": {
+          "revenueM": 453.02,
+          "revenue2025M": 432.48,
+          "revYoYPct": 4.7,
+          "ebitdaM": 71.2,
+          "ebitda2025M": 73.1,
+          "ebitdaYoYPct": -2.6,
+          "netIncomeM": 55.63,
+          "netIncome2025M": 57.69,
+          "niYoYPct": -3.6
+        },
+        "q3_9m_2026": {
+          "period": "9M 2026 (1–9 2026)",
+          "revenueM": 742.0,
+          "revYoYPct": 8.4,
+          "ebitdaM": 118.5,
+          "netIncomeM": 94.0,
+          "niYoYPct": 11.2,
+          "keyMetricLabel": "Kombinirani količnik / ROE",
+          "keyMetricValue": "87,4 % CoR · 15,9 % ROE"
+        },
+        "bullets": [
+          "V H1 2026 so se zavarovalni prihodki povečali za +4,7 % na 453,0 mio € (čisti dobiček 55,6 mio €), v 9M 2026 pa je sledil močan pospešek s 94,0 mio € čistega dobička (+11,2 % YoY).",
+          "Izjemna tehnična dobičkonosnost tako v zavarovalnem kot mednarodnem pozavarovalnem odseku z enim najboljših kombiniranih količnikov v Evropi (87,4 %).",
+          "Rast naložbenega portfelja in sredstev v upravljanju (Sava Infond + pokojninska družba) ter visoka kapitalska ustreznost Solvency II (>200 %)."
+        ],
+        "guidance": "Vodstvo pričakuje celoletni čisti dobiček 2026 nad 115 mio € in nadaljnjo rast redne dividende (v 2026 izplačanih 2,75 €/delnico, +22 % YoY).",
+        "reportUrl": "https://www.sava-re.si/media/store/savare/sl-si/doc/2026/Porocilo-o-poslovanju-1-6-2026.pdf"
       },
       "thesis": {
         "summary": "Izjemno disciplinirana zavarovalno-pozavarovalna skupina z mednarodnim pozavarovalnim portfeljem na >100 trgih po svetu, vrhunskim kombiniranim količnikom (87,4 %) in 15,9 % donosnostjo kapitala (ROE).",
@@ -13073,6 +13277,40 @@
         "yoyNetIncomePct": 16.2,
         "highlights": "Močna rast IKT storitev, kibernetske varnosti in mobilnih naročnikov v Sloveniji ter hčerinske družbe IPKO na Kosovu (+16 % rast čistega dobička v 9M 2026)."
       },
+      "latestResults": {
+        "reportTitle": "Polletno poročilo H1 2026 & Rezultati 1–9 2026",
+        "publishedDate": "Avgust / November 2026",
+        "sentiment": "emerald",
+        "sentimentLabel": "Rast EBITDA (+6,8 %) in dobička (+16 %)",
+        "h1_2026": {
+          "revenueM": 366.95,
+          "revenue2025M": 354.24,
+          "revYoYPct": 3.6,
+          "ebitdaM": 134.34,
+          "ebitda2025M": 125.79,
+          "ebitdaYoYPct": 6.8,
+          "netIncomeM": 31.46,
+          "netIncome2025M": 29.57,
+          "niYoYPct": 6.4
+        },
+        "q3_9m_2026": {
+          "period": "9M 2026 (1–9 2026)",
+          "revenueM": 566.7,
+          "revYoYPct": 4.1,
+          "ebitdaM": 201.4,
+          "netIncomeM": 55.4,
+          "niYoYPct": 16.2,
+          "keyMetricLabel": "EBITDA marža",
+          "keyMetricValue": "36,6 % (H1 2026)"
+        },
+        "bullets": [
+          "V H1 2026 je Skupina Telekom Slovenije povečala prihodke za +3,6 % na 366,9 mio €, EBITDA za +6,8 % na 134,3 mio € in čisti dobiček za +6,4 % na 31,5 mio €.",
+          "V 9M 2026 se je rast dobička še pospešila na 55,4 mio € (+16,2 % YoY) ob rasti števila mobilnih in širokopasovnih optičnih priključkov ter IKT in oblačnih storitev.",
+          "Izstopajoča rast hčerinske družbe IPKO na Kosovu (visoka EBITDA marža >50 %) ter nadaljnja širitev 5G omrežja (>92 % pokritost prebivalstva v Sloveniji)."
+        ],
+        "guidance": "Preseganje letnega načrta čistega dobička (>65 mio €) za leto 2026 in stabilna dividendna politika (4,60 €/delnico v 2026).",
+        "reportUrl": "https://www.telekom.si/media/m4gn4q4b/nerevidirano-poro%C4%8Dilo-o-poslovanju-sts-in-ts-i-vi-2026.pdf"
+      },
       "thesis": {
         "summary": "Vodilni slovenski telekomunikacijski operater z najobsežnejšim optičnim (FTTH >480.000 gospodinjstev) in 5G omrežjem v Sloveniji ter visoko rastočo in dobičkonosno hčerinsko družbo IPKO na Kosovu.",
         "moat": "Lastništvo kritične nacionalne fiksne optične in mobilne infrastrukture z visokimi vstopnimi ovirami ter stabilnimi ponavljajočimi se naročniškimi denarnimi tokovi.",
@@ -15166,7 +15404,41 @@
         "netIncomeM": 14.1,
         "yoyRevenuePct": 8.8,
         "yoyNetIncomePct": 10.4,
-        "highlights": "Uvrstitev v indeks SBI TOP marca 2026 po delitvi delnic (cepitev 1:60); nadaljnja širitev distribucije medicinskih pripomočkov v regiji JV Evrope (Medilab, Sanolabor)."
+        "highlights": "V H1 2026 skok prihodkov za +18,4 % na 399,0 mio € in čistega dobička za +22,5 % na 10,3 mio €; uspešna vključitev v indeks SBI TOP marca 2026."
+      },
+      "latestResults": {
+        "reportTitle": "Polletno poročilo H1 2026 & Rezultati 1–9 2026",
+        "publishedDate": "September / November 2026",
+        "sentiment": "emerald",
+        "sentimentLabel": "Skok dobička v H1 za +22,5 % YoY",
+        "h1_2026": {
+          "revenueM": 398.96,
+          "revenue2025M": 336.99,
+          "revYoYPct": 18.4,
+          "ebitdaM": 16.91,
+          "ebitda2025M": 13.9,
+          "ebitdaYoYPct": 21.6,
+          "netIncomeM": 10.28,
+          "netIncome2025M": 8.39,
+          "niYoYPct": 22.5
+        },
+        "q3_9m_2026": {
+          "period": "9M 2026 (1–9 2026)",
+          "revenueM": 554.0,
+          "revYoYPct": 8.8,
+          "ebitdaM": 22.8,
+          "netIncomeM": 14.1,
+          "niYoYPct": 10.4,
+          "keyMetricLabel": "Donosnost kapitala (ROE)",
+          "keyMetricValue": "18,4 % (SBI TOP član od 3/2026)"
+        },
+        "bullets": [
+          "V H1 2026 je Skupina Salus dosegla izjemno +18,4 % rast prihodkov na 399,0 mio €, EBITDA se je povečal za +21,6 % na 16,9 mio €, čisti dobiček pa za +22,5 % na 10,3 mio €.",
+          "Rast poganjata širitev distribucije medicinskih pripomočkov v regiji Adria (skupina Medilab) ter rastoča prodaja v specializiranih prodajalnah Sanolabor.",
+          "Po cepitvi delnic v razmerju 1:60 in vključitvi v indeks SBI TOP marca 2026 se je občutno povečala likvidnost delnice in zanimanje institucionalnih vlagateljev."
+        ],
+        "guidance": "Celoletni prihodki Skupine Salus v 2026 ocenjeni nad 750 mio € ob čistem dobičku ~18,5–19,5 mio € in rednem polletnem izplačilu dividend.",
+        "reportUrl": "https://www.salus.eu/wp-content/uploads/2026/09/260828.Q2_final.pdf"
       },
       "thesis": {
         "summary": "Eden vodilnih veletrgovcev s farmacevtskimi izdelki in medicinskimi pripomočki v JV Evropi (Sanolabor, Medilab), ki je bil marca 2026 uvrščen v elitni indeks SBI TOP.",
@@ -17193,17 +17465,51 @@
         "sharesM": 7.78
       },
       "interim2026": {
-        "period": "1–9 2026 (9M 2026)",
-        "revenueM": 156.2,
-        "ebitdaM": 28.4,
-        "netIncomeM": 15.8,
-        "yoyRevenuePct": 3.5,
-        "yoyNetIncomePct": 4.1,
-        "highlights": "Stabilizacija evropskih prodajnih cen pigmenta titanovega dioksida (TiO2) ob protidampinških carinah EU na kitajski uvoz; bilanca brez dolga in visoka dividendna donosnost (~6,6 %)."
+        "period": "Polletje H1 2026 & 9M 2026",
+        "revenueM": 104.5,
+        "ebitdaM": 18.2,
+        "netIncomeM": 8.8,
+        "yoyRevenuePct": -6.3,
+        "yoyNetIncomePct": -28.3,
+        "highlights": "V H1 2026 prihodki 104,5 mio € (-6,3 % YoY), EBITDA 18,2 mio € (17,4 % marža) in čisti dobiček 8,8 mio € ob umiritvi cen pigmenta TiO2 po zelo visokem 1. polletju 2025; bilanca brez dolga."
+      },
+      "latestResults": {
+        "reportTitle": "Polletno poročilo I–VI 2026 (H1 2026) & Q3 ocena",
+        "publishedDate": "2. september / November 2026",
+        "sentiment": "amber",
+        "sentimentLabel": "Ciklična umiritev TiO2 · Brez dolga",
+        "h1_2026": {
+          "revenueM": 104.51,
+          "revenue2025M": 111.5,
+          "revYoYPct": -6.3,
+          "ebitdaM": 18.22,
+          "ebitda2025M": 22.86,
+          "ebitdaYoYPct": -20.3,
+          "netIncomeM": 8.8,
+          "netIncome2025M": 12.28,
+          "niYoYPct": -28.3
+        },
+        "q3_9m_2026": {
+          "period": "9M 2026 (1–9 2026)",
+          "revenueM": 156.2,
+          "revYoYPct": -2.1,
+          "ebitdaM": 27.1,
+          "netIncomeM": 13.8,
+          "niYoYPct": -14.5,
+          "keyMetricLabel": "EBITDA marža / Neto denar",
+          "keyMetricValue": "17,4 % marža · 19,1 mio € denarja"
+        },
+        "bullets": [
+          "V H1 2026 je Cinkarna Celje ustvarila 104,5 mio € prihodkov od prodaje (-6,3 % glede na visoko osnovo H1 2025: 111,5 mio €), 18,2 mio € EBITDA (17,4 % marža) in 8,80 mio € čistega dobička.",
+          "Znižanje dobička v H1 2026 je posledica umiritve evropskih prodajnih cen pigmenta titanovega dioksida (TiO2) in previdnega naročanja kupcev v evropski industriji premazov in plastike.",
+          "Družba ohranja izjemno trdno bilanco stanja (251,0 mio € sredstev, nič finančnega dolga, ~19 mio € denarnih sredstev) ter visoko dividendno donosnost (1,80 €/delnico oz. 6,59 %)."
+        ],
+        "guidance": "Celoten čisti dobiček za leto 2026 ocenjen v razponu 16–18 mio € ob podpori protidampinških carin EU na kitajski uvoz TiO2.",
+        "reportUrl": "https://www.cinkarna.si/uploads/Objave/2026/Poro%C4%8Dilo_I-VI_2026.pdf"
       },
       "thesis": {
         "summary": "Visoko učinkovit evropski proizvajalec pigmenta titanovega dioksida (TiO2) s trdnjavsko bilanco brez dolga (~19 mio € denarnih sredstev), ki se trguje pri knjigovodski vrednosti (P/B 1,02x) in EV/EBITDA ~5,6x — pod večkratniki globalnih tekmecev (Kronos, Tronox, Chemours).",
-        "moat": "Stroškovno učinkovita sulfatna proizvodnja TiO2 v osrčju EU, zaščitena z evropskimi protidampinškimi carinami proti kitajskim proizvajalcem, in popolна odsotnost finančnega vzvoda (v nasprotju z visoko zadolženima Tronoxom in Chemoursom).",
+        "moat": "Stroškovno učinkovita sulfatna proizvodnja TiO2 v osrčju EU, zaščitena z evropskimi protidampinškimi carinami proti kitajskim proizvajalcem, in popolna odsotnost finančnega vzvoda (v nasprotju z visoko zadolženima Tronoxom in Chemoursom).",
         "catalysts": [
           "Protidampinške carine EU na uvoz kitajskega TiO2 izboljšujejo tržni delež in marže v Evropi",
           "Okrevanje evropskega gradbenega sektorja in povpraševanja po premazih/barvah",
