@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SBI TOP Institucionalni Analitični & Vrednotenjski Terminal (LJSE 2016–2026)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Live Market Ticker Strip -->
+  <div class="ticker-tape" id="tickerTape"></div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-block">
+        <div class="brand-logo">SBI</div>
+        <div>
+          <div class="brand-title">SBI TOP Institucionalni Vrednotenjski Terminal</div>
+          <div class="brand-subtitle">Ljubljanska borza (LJSE) · 10-letni finančni podatki (2016–2026) · DCF Simulator · Mednarodne & Zgodovinske primerjave</div>
+        </div>
+      </div>
+
+      <nav class="nav-tabs" id="navTabs">
+        <button class="nav-tab active" data-view="all">Celovit pogled (Vsi moduli)</button>
+        <button class="nav-tab" data-view="sec-index">1. Pregled SBI TOP</button>
+        <button class="nav-tab" data-view="sec-financials">2. 10-letne finance</button>
+        <button class="nav-tab" data-view="sec-simulator">3. Simulator poštene vrednosti</button>
+        <button class="nav-tab" data-view="sec-peers">4. Tuja primerljiva podjetja</button>
+        <button class="nav-tab" data-view="sec-historical-val">5. Zgodovinski večkratniki</button>
+      </nav>
+
+      <div class="header-controls">
+        <div class="company-select-wrapper">
+          <span class="company-select-label">Izbrana družba:</span>
+          <select class="company-select" id="companySelect"></select>
+        </div>
+        <button class="btn-action" id="btnExportCsv" title="Izvozi 10-letne finančne podatke in vrednotenje v CSV">Izvozi CSV</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick 10-Company Pill Selector Bar -->
+  <div class="company-pill-bar" id="companyPillBar"></div>
+
+  <!-- Main Workspace -->
+  <main class="main-container">
+
+    <!-- ================================================================= -->
+    <!-- MODULE 1: SBI TOP INDEX OVERVIEW & MASTER SCREENER MATRIX         -->
+    <!-- ================================================================= -->
+    <section class="module-section" id="sec-index">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-kicker">MODUL 01 · TRŽNI PREGLED LJUBLJANSKE BORZE</span>
+          <h2 class="section-title">Pregled indeksa SBI TOP in glavna vrednotenjska matrika</h2>
+          <p class="section-desc">Agregirani kazalniki elitnega slovenskega borznega indeksa SBI TOP, primerjava 10-letnega donosa z nemškim indeksom DAX in presečna tabela vseh 10 članic.</p>
+        </div>
+        <div class="badge badge-blue" id="marketTimestampBadge">Tečaji LJSE: 20. 11. 2026</div>
+      </div>
+
+      <!-- Index KPI Cards -->
+      <div class="kpi-grid" id="indexKpiGrid"></div>
+
+      <!-- Index Charts Row -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">10-letna rast indeksa SBI TOP, SBI TOP TR (z dividendami) in DAX (2016 = 100)</div>
+              <div class="card-subtitle">Indeksirana uspešnost v zadnjih 10 letih (2016–2026) · Vir: LJSE & Deutsche Börse</div>
+            </div>
+            <span class="badge badge-emerald">SBI TOP TR 10L CAGR: +17,46 %</span>
+          </div>
+          <div class="chart-box">
+            <canvas id="chartIndexPerformance"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Sestava indeksa SBI TOP (Uteži %) in primerjava P/E večkratnikov</div>
+              <div class="card-subtitle">Trenutni P/E vs. 10-letno zgodovinsko povprečje vs. Mediana tujih primerljivih podjetij</div>
+            </div>
+            <span class="badge badge-blue">Tehtani P/E indeksa: 14,52x</span>
+          </div>
+          <div class="chart-box">
+            <canvas id="chartIndexMultiples"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Master SBI TOP Valuation Screener Table -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Glavna vrednotenjska matrika podjetij v SBI TOP (Kliknite na vrstico za podrobno analizo družbe)</div>
+            <div class="card-subtitle">Presečni pregled tržne kapitalizacije, kazalnikov vrednotenja, poštene vrednosti (DCF), odstopanja od tujih vrstnikov in 10-letnega zgodovinskega povprečja</div>
+          </div>
+          <span class="badge badge-neutral">Valuta: EUR (€) · Vir: Revidirana letna poročila SEOnet & LJSE</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table" id="masterScreenerTable">
+            <thead>
+              <tr>
+                <th>Podjetje (Simbol)</th>
+                <th>Sektor</th>
+                <th>Utež SBI TOP</th>
+                <th>Tečaj (€)</th>
+                <th>Tržna kap. (mio €)</th>
+                <th>Poštena vr. DCF (€)</th>
+                <th>Potencial / MoS</th>
+                <th>P/E (TTM)</th>
+                <th>10L Povp. P/E</th>
+                <th>Tuji Peer P/E</th>
+                <th>Diskont vs. Tuji</th>
+                <th>P/B</th>
+                <th>EV/EBITDA</th>
+                <th>Div. donos</th>
+                <th>ROE</th>
+                <th>Z-Score (P/E)</th>
+              </tr>
+            </thead>
+            <tbody id="masterScreenerBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- MODULE 2: 10-YEAR HISTORICAL FINANCIAL DATA (2016–2025 + 2026)    -->
+    <!-- ================================================================= -->
+    <section class="module-section" id="sec-financials">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-kicker">MODUL 02 · FUNDAMENTALNA ANALIZA & 10-LETNA ZGODOVINA POSLOVANJA</span>
+          <h2 class="section-title" id="finSectionTitle">10-letni zgodovinski finančni podatki (2016–2025 + 2026 TTM)</h2>
+          <p class="section-desc">Popolni revidirani izkazi poslovnega izida, bilance stanja, denarnih tokov, marž in kazalnikov na delnico za zadnjih 10 let.</p>
+        </div>
+        <div id="finReportLinkWrap"></div>
+      </div>
+
+      <!-- Company Deep-Dive Hero Banner -->
+      <div class="company-hero" id="companyHeroBanner"></div>
+
+      <!-- Company KPI Cards -->
+      <div class="kpi-grid" id="companyKpiGrid"></div>
+
+      <!-- 10-Year Historical Charts (3-Column Grid) -->
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Prihodki, EBITDA in Čisti dobiček (2016–2025)</div>
+              <div class="card-subtitle">V milijonih EUR (mio €)</div>
+            </div>
+          </div>
+          <div class="chart-box-sm">
+            <canvas id="chartRevProfit10Y"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Donosnost kapitala (ROE, ROIC) in Marže (%)</div>
+              <div class="card-subtitle">10-letna dinamika dobičkonosnosti (%)</div>
+            </div>
+          </div>
+          <div class="chart-box-sm">
+            <canvas id="chartMarginsRoe10Y"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Dobiček (EPS), Dividenda (DPS) in Tečaj delnice (€)</div>
+              <div class="card-subtitle">Rast vrednosti in izplačil na delnico (2016–2026)</div>
+            </div>
+          </div>
+          <div class="chart-box-sm">
+            <canvas id="chartEpsDpsPrice10Y"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full 10-Year Financial Statements Table -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title" id="finTableTitle">Popolna 10-letna finančna tabela (2016–2025 + 2026 TTM) in 10-letni CAGR</div>
+            <div class="card-subtitle">Izkaz poslovnega izida, bilanca stanja, denarni tokovi, kazalniki na delnico in letni večkratniki vrednotenja</div>
+          </div>
+          <span class="badge badge-emerald" id="finProformaBadge">Uradni revidirani MSRP podatki (SEOnet)</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table" id="historicalFinancialsTable">
+            <thead id="historicalFinancialsHead"></thead>
+            <tbody id="historicalFinancialsBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Breakdowns, Thesis & Top 10 Shareholders -->
+      <div class="grid-3" id="companyBreakdownsGrid"></div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- MODULE 3: INTERACTIVE FAIR VALUE & PROJECTION SIMULATOR (DCF)     -->
+    <!-- ================================================================= -->
+    <section class="module-section" id="sec-simulator">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-kicker">MODUL 03 · INTERAKTIVNI DCF / OWNER EARNINGS / FFO SIMULATOR</span>
+          <h2 class="section-title" id="simSectionTitle">Simulator prihodnjih projekcij in izračun poštene vrednosti delnice</h2>
+          <p class="section-desc">Prilagodite stopnje rasti v 1. in 2. fazi, diskontno stopnjo (WACC), terminalno rast, izhodni večkratnik ter varnostno rezervo (Margin of Safety) za takojšen preračun notranje vrednosti.</p>
+        </div>
+        <div class="badge badge-emerald" id="simModelTypeBadge">2-stopenjski DCF model</div>
+      </div>
+
+      <div class="grid-sidebar">
+        <!-- Left Sidebar: Interactive Sliders & Inputs -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Parametri projekcije in vrednotenja</div>
+              <div class="card-subtitle">Premaknite drsnike ali vpišite poljubno vrednost</div>
+            </div>
+          </div>
+
+          <div class="preset-btn-row" style="margin-bottom: 14px;">
+            <button class="preset-btn" id="btnPresetBear">Pesimistični</button>
+            <button class="preset-btn active" id="btnPresetBase">Osnovni (Base)</button>
+            <button class="preset-btn" id="btnPresetBull">Optimistični</button>
+          </div>
+
+          <div class="sim-control-group">
+            <!-- Base Cash Flow -->
+            <div class="sim-field">
+              <div class="sim-field-header">
+                <label class="sim-label" id="lblSimBaseCf" for="numBaseCf">Izhodiščni letni denarni tok (mio €)</label>
+                <input type="number" step="0.5" class="sim-num-input" id="numBaseCf" />
+              </div>
+              <input type="range" class="sim-slider" id="rngBaseCf" min="1" max="1000" step="0.5" />
+              <div class="sim-hint">
+                <span id="hintBaseCfType">FCF / Owner Earnings</span>
+                <span id="hintBaseCfPerShare" class="mono"></span>
+              </div>
+            </div>
+
+            <!-- Growth Stage 1 (Years 1-5) -->
+            <div class="sim-field">
+              <div class="sim-field-header">
+                <label class="sim-label" for="numGrowth1">Letna stopnja rasti · 1. faza (Leta 1–5, %)</label>
+                <input type="number" step="0.2" class="sim-num-input" id="numGrowth1" />
+              </div>
+              <input type="range" class="sim-slider" id="rngGrowth1" min="-5" max="25" step="0.2" />
+              <div class="sim-hint"><span>Konservativno: 2 %</span><span>Visoka rast: 15 %+</span></div>
+            </div>
+
+            <!-- Growth Stage 2 (Years 6-10) -->
+            <div class="sim-field">
+              <div class="sim-field-header">
+                <label class="sim-label" for="numGrowth2">Letna stopnja rasti · 2. faza (Leta 6–10, %)</label>
+                <input type="number" step="0.2" class="sim-num-input" id="numGrowth2" />
+              </div>
+              <input type="range" class="sim-slider" id="rngGrowth2" min="-5" max="20" step="0.2" />
+              <div class="sim-hint"><span>Zrela rast: 2–5 %</span><span>Pospešena: 8 %+</span></div>
+            </div>
+
+            <!-- Discount Rate (WACC / r) -->
+            <div class="sim-field">
+              <div class="sim-field-header">
+                <label class="sim-label" for="numWacc">Diskontna stopnja (WACC / Strošek kapitala, %)</label>
+                <input type="number" step="0.1" class="sim-num-input" id="numWacc" />
+              </div>
+              <input type="range" class="sim-slider" id="rngWacc" min="5.0" max="16.0" step="0.1" />
+              <div class="sim-hint"><span>Nizko tveganje: 7,5 %</span><span>Visoko tveganje: 13 %+</span></div>
+            </div>
+
+            <!-- Terminal Growth Rate (g) -->
+            <div class="sim-field">
+              <div class="sim-field-header">
+                <label class="sim-label" for="numTermG">Dolgoročna terminalna rast (g, %)</label>
+                <input type="number" step="0.1" class="sim-num-input" id="numTermG" />
+              </div>
+              <input type="range" class="sim-slider" id="rngTermG" min="0.0" max="5.0" step="0.1" />
+              <div class="sim-hint"><span>0,0 %</span><span>Dolgoročna rast BDP: 2,0–3,0 %</span></div>
+            </div>
+
+            <!-- Exit Multiple & Terminal Method -->
+            <div class="sim-field">
+              <div class="sim-field-header">
+                <label class="sim-label" for="numExitMult">Izhodni večkratnik (Leto 10 P/FCF ali EV/FCF)</label>
+                <input type="number" step="0.5" class="sim-num-input" id="numExitMult" />
+              </div>
+              <input type="range" class="sim-slider" id="rngExitMult" min="5" max="25" step="0.5" />
+              <div class="sim-field-header" style="margin-top: 6px;">
+                <span class="sim-label">Metoda terminalne vrednosti:</span>
+                <select class="company-select" id="selTerminalMethod" style="background: var(--bg-card); border: 1px solid var(--border-focus); padding: 3px 6px; border-radius: 4px; font-size: 12px;">
+                  <option value="gordon">Gordonov model neskončne rasti (g)</option>
+                  <option value="multiple">Izhodni večkratnik (Exit Multiple)</option>
+                  <option value="blended">Tehtano povprečje obeh (50% Gordon / 50% Večkratnik)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Margin of Safety -->
+            <div class="sim-field">
+              <div class="sim-field-header">
+                <label class="sim-label" for="numMos">Zahtevana varnostna rezerva (Margin of Safety, %)</label>
+                <input type="number" step="1" class="sim-num-input" id="numMos" />
+              </div>
+              <input type="range" class="sim-slider" id="rngMos" min="0" max="50" step="1" />
+              <div class="sim-hint"><span>0 % (Brez rezerve)</span><span>Buffett standard: 20–30 %</span></div>
+            </div>
+
+            <!-- Net Debt Adjustment -->
+            <div class="sim-field">
+              <div class="sim-field-header">
+                <label class="sim-label" for="numNetDebt">Čisti dolg / (-Neto denar) v mio €</label>
+                <input type="number" step="1" class="sim-num-input" id="numNetDebt" />
+              </div>
+              <div class="sim-hint">
+                <span>Negativno = Neto denarna pozicija</span>
+                <span id="hintSharesCount" class="mono"></span>
+              </div>
+            </div>
+
+            <button class="btn-action" id="btnResetSim" style="width: 100%; padding: 9px;">Ponastavi na uradne izhodiščne podatke družbe</button>
+          </div>
+        </div>
+
+        <!-- Right Main Area: Outputs, Projections Chart/Table & Sensitivity Matrix -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <!-- 4 Primary Valuation Result Boxes -->
+          <div class="val-result-grid" id="simResultCards"></div>
+
+          <!-- 3 Scenarios Comparison & 10-Year Projection Chart -->
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Projekcija prostih denarnih tokov in sedanje vrednosti (Leta 1–10)</div>
+                  <div class="card-subtitle">Projicirani denarni tok vs. Diskontirana sedanja vrednost (PV v mio €)</div>
+                </div>
+              </div>
+              <div class="chart-box-sm">
+                <canvas id="chartDcfProjection"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Primerjava 3 scenarijev vrednotenja (Pesimistični / Osnovni / Optimistični)</div>
+                  <div class="card-subtitle">Razpon poštene vrednosti delnice glede na tržni tečaj</div>
+                </div>
+              </div>
+              <div id="simScenariosTableWrap"></div>
+            </div>
+          </div>
+
+          <!-- 10-Year Year-by-Year Cash Flow Projection Table -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">10-letna tabela projiciranih prihodkov in denarnih tokov (2026E–2035E)</div>
+                <div class="card-subtitle">Letni denarni tok, diskontni faktor, sedanja vrednost (PV) in razčlenitev vrednosti podjetja (Enterprise Value → Equity Value)</div>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table" id="simProjectionTable"></table>
+            </div>
+          </div>
+
+          <!-- 2D Sensitivity Matrix: WACC vs. Terminal Growth g -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">2D Matrika občutljivosti poštene vrednosti delnice (€): Diskontna stopnja (WACC) vs. Terminalna rast (g)</div>
+                <div class="card-subtitle">Zelena polja označujejo kombinacije parametrov, kjer je poštena vrednost višja od trenutnega borznega tečaja</div>
+              </div>
+              <span class="badge badge-blue" id="sensCurrentPriceBadge">Trenutni tečaj: -- €</span>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table" id="simSensitivityTable"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- MODULE 4: INTERNATIONAL PEER COMPARISON (EXCLUDING EQUINOX)       -->
+    <!-- ================================================================= -->
+    <section class="module-section" id="sec-peers">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-kicker">MODUL 04 · MEDNARODNA PRIMERJALNA ANALIZA (PEER GROUP VALUATION)</span>
+          <h2 class="section-title" id="peerSectionTitle">Primerjava kazalnikov vrednotenj s primerljivimi podjetji iz tujine</h2>
+          <p class="section-desc">Relativno vrednotenje slovenskih borznih družb v SBI TOP (z izjemo Equinoxa) glede na 5 tujih kotirajočih tekmecev iz iste panoge.</p>
+        </div>
+        <div id="peerStatusBadgeWrap"></div>
+      </div>
+
+      <!-- Dynamic Content for Selected Company Peers (or Equinox Exclusion Note + FFO/NAV Panel) -->
+      <div id="peerModuleContent"></div>
+
+      <!-- Cross-Index Peer Discount Summary Matrix (All 9 SBI TOP Companies vs Foreign Peers) -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Presečna primerjava vseh 9 podjetij v SBI TOP (brez Equinoxa) glede na mediano tujih primerljivih družb</div>
+            <div class="card-subtitle">Negativen odstotek (-) pomeni, da se slovensko podjetje trguje z diskontom (ceneje) glede na tuje vrstnike; pozitiven (+) pomeni premijo</div>
+          </div>
+          <span class="badge badge-amber">Equinox (EQNX) izvzet iz tuje peer primerjave</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table" id="crossPeerSummaryTable">
+            <thead>
+              <tr>
+                <th>Podjetje (SBI TOP)</th>
+                <th>Tečaj (€)</th>
+                <th>P/E družbe</th>
+                <th>Mediana tujih P/E</th>
+                <th>Odstopanje P/E (%)</th>
+                <th>P/B družbe</th>
+                <th>Mediana tujih P/B</th>
+                <th>Odstopanje P/B (%)</th>
+                <th>EV/EBITDA družbe</th>
+                <th>Mediana tujih EV/EBITDA</th>
+                <th>Odstopanje EV/EBITDA (%)</th>
+                <th>Div. donos vs. Tuji</th>
+                <th>ROE vs. Tuji</th>
+                <th>Implicirana cena ob Peer P/E (€)</th>
+              </tr>
+            </thead>
+            <tbody id="crossPeerSummaryBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- MODULE 5: HISTORICAL SELF-VALUATION COMPARISON (10-YEAR HISTORY)  -->
+    <!-- ================================================================= -->
+    <section class="module-section" id="sec-historical-val">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-kicker">MODUL 05 · ZGODOVINSKA SAMO-PRIMERJAVA KAZALNIKOV VREDNOTENJ (2016–2026)</span>
+          <h2 class="section-title" id="histValSectionTitle">Primerjava trenutnih kazalnikov vrednotenj z 10-letno zgodovino podjetja samega</h2>
+          <p class="section-desc">Analiza trenutnih večkratnikov (P/E, P/B, EV/EBITDA, P/S, P/FCF, Dividendna donosnost) glede na lastno 10-letno povprečje, mediano, min–max razpon, percentil in Z-vrednost (σ).</p>
+        </div>
+        <div id="histValBadgeWrap"></div>
+      </div>
+
+      <!-- Selected Company Historical Multiples Self-Comparison Table -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title" id="histSelfTableTitle">Trenutni kazalniki vrednotenja vs. Lastna 10-letna zgodovina družbe (2016–2025)</div>
+            <div class="card-subtitle">Statistična porazdelitev večkratnikov podjetja v zadnjem desetletju in pozicija trenutnega vrednotenja (Nov 2026)</div>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table" id="histSelfComparisonTable">
+            <thead>
+              <tr>
+                <th>Kazalnik vrednotenja</th>
+                <th>Trenutno (2026)</th>
+                <th>10L Povprečje</th>
+                <th>10L Mediana</th>
+                <th>Odstopanje od 10L Povp.</th>
+                <th>Odstopanje od 10L Mediane</th>
+                <th>10L Minimum (Leto)</th>
+                <th>10L Maksimum (Leto)</th>
+                <th>Pozicija v 10L razponu (Min → Max)</th>
+                <th>Percentil (10L)</th>
+                <th>Z-Score (σ)</th>
+                <th>Zgodovinska ocena</th>
+              </tr>
+            </thead>
+            <tbody id="histSelfComparisonBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2 Interactive 10-Year Historical Multiples Charts -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">10-letno gibanje večkratnika P/E in EV/EBITDA (2016–2026) z zgodovinskim povprečjem</div>
+              <div class="card-subtitle">Primerjava letnih večkratnikov z 10-letnim povprečjem družbe</div>
+            </div>
+          </div>
+          <div class="chart-box">
+            <canvas id="chartHistPeEv10Y"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">10-letno gibanje večkratnika P/B in Dividendne donosnosti (%) (2016–2026)</div>
+              <div class="card-subtitle">Knjigovodski večkratnik (leva os) in dividendna donosnost v % (desna os)</div>
+            </div>
+          </div>
+          <div class="chart-box">
+            <canvas id="chartHistPbDiv10Y"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cross-Index 10-Year Historical Valuation Matrix (All 10 Companies) -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Presečna matrika vseh 10 podjetij v SBI TOP: Trenutno vrednotenje vs. Lastna 10-letna zgodovina (2016–2025)</div>
+            <div class="card-subtitle">Pregled, katera podjetja v SBI TOP se trgujejo nad ali pod svojim 10-letnim zgodovinskim povprečjem in mediano</div>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table" id="crossHistSummaryTable">
+            <thead>
+              <tr>
+                <th>Podjetje (Simbol)</th>
+                <th>Trenutni P/E</th>
+                <th>10L Povp. P/E</th>
+                <th>10L Med. P/E</th>
+                <th>Premija / Diskont P/E</th>
+                <th>Z-Score P/E</th>
+                <th>Trenutni P/B</th>
+                <th>10L Povp. P/B</th>
+                <th>Premija / Diskont P/B</th>
+                <th>Trenutni EV/EBITDA</th>
+                <th>10L Povp. EV/EBITDA</th>
+                <th>Trenutni Div. donos</th>
+                <th>10L Povp. Div. donos</th>
+              </tr>
+            </thead>
+            <tbody id="crossHistSummaryBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>
+      <strong>SBI TOP Institucionalni Analitični & Vrednotenjski Terminal</strong> · Viri podatkov: Ljubljanska borza (LJSE), SEOnet revidirana letna poročila (2016–2025) in medletna poročila 2026, Yahoo Finance za tuje primerljive družbe.
+    </div>
+    <div>
+      Opozorilo: Nadzorna plošča je namenjena izključno informativni in analitični uporabi ter ne predstavlja investicijskega priporočila.
+    </div>
+  </footer>
+
+  <script src="data/sbitop_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
