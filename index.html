@@ -37,7 +37,7 @@
         <button class="nav-tab" data-view="sec-latest-results">2. Zadnji rezultati (9M 26)</button>
         <button class="nav-tab" data-view="sec-financials">3. 10L Finance & TTM</button>
         <button class="nav-tab" data-view="sec-simulator">4. Simulator IV & Obratni DCF</button>
-        <button class="nav-tab" data-view="sec-peers">5. Tuji vrstniki (54)</button>
+        <button class="nav-tab" data-view="sec-peers">5. Tuji vrstniki (68)</button>
         <button class="nav-tab" data-view="sec-historical-val">6. Zgodovinski večkratniki</button>
         <button class="nav-tab" data-view="sec-portfolio">7. Moj Portfelj & Dividende</button>
       </nav>
@@ -47,9 +47,9 @@
           <label class="company-select-label" for="companySelect">Družba:</label>
           <select class="company-select" id="companySelect" aria-label="Izberi analizirano družbo iz indeksa SBI TOP"></select>
         </div>
-        <button class="btn-action" id="btnShareUrl" aria-label="Kopiraj neposredno povezavo do trenutnega pogleda" title="Kopiraj URL povezavo na trenutno izbrano družbo in modul">Deli pogled (URL)</button>
+        <button class="btn-action" id="btnShareUrl" aria-label="Kopiraj neposredno povezavo do trenutnega pogleda" title="Kopiraj URL povezavo na trenutno izbrano družbo, modul in parametre simulatorja">Deli pogled (URL)</button>
         <button class="btn-action" id="btnPrintTearSheet" aria-label="Natisni enostranski PDF Tear Sheet za izbrano družbo" title="Natisni ali shrani enostranski PDF povzetek (Tear Sheet) za izbrano družbo">PDF Tear Sheet</button>
-        <button class="btn-action" id="btnExportCsv" aria-label="Izvozi 10-letne finančne podatke v CSV" title="Izvozi 10-letne finančne podatke in TTM vrednotenje v CSV">Izvozi CSV</button>
+        <button class="btn-action" id="btnExportCsv" aria-label="Izvozi 10-letne finančne podatke v CSV" title="Izvozi 10-letne finančne podatke, TTM vrednotenje in metodološke vire v CSV">Izvozi CSV</button>
       </div>
     </div>
   </header>
@@ -72,7 +72,7 @@
           <button class="sidebar-nav-item" data-jump="sec-latest-results"><span>02 · Zadnji rezultati 26</span></button>
           <button class="sidebar-nav-item" data-jump="sec-financials"><span>03 · 10L Finance & TTM</span></button>
           <button class="sidebar-nav-item" data-jump="sec-simulator"><span>04 · Simulator IV & Rev. DCF</span></button>
-          <button class="sidebar-nav-item" data-jump="sec-peers"><span>05 · Tuji vrstniki (N=6)</span></button>
+          <button class="sidebar-nav-item" data-jump="sec-peers"><span>05 · Tuji vrstniki (N=6–8)</span></button>
           <button class="sidebar-nav-item" data-jump="sec-historical-val"><span>06 · Zgodovinski večkratniki</span></button>
           <button class="sidebar-nav-item" data-jump="sec-portfolio"><span>07 · Portfelj & Dividende</span></button>
         </div>
@@ -84,10 +84,11 @@
       </div>
 
       <div style="border-top:1px solid var(--border-subtle);padding-top:10px;font-size:11px;color:var(--text-muted);display:flex;flex-direction:column;gap:4px;">
-        <div><strong class="text-primary">Podatki na dan:</strong> <span class="mono">20. 11. 2026</span></div>
+        <div><strong class="text-primary">Podatki na dan:</strong> <span class="mono" id="sidebarAsOfDate">20. 11. 2026</span></div>
+        <div><strong class="text-primary">Zadnja preverba:</strong> <span class="mono" id="sidebarLastChecked">22. 11. 2026</span></div>
         <div><strong class="text-primary">TTM baza:</strong> <span class="mono">FY25 + 9M26 − 9M25</span></div>
         <div><strong class="text-primary">Delnice:</strong> <span class="mono">Brez lastnih (MSRP 33)</span></div>
-        <div><strong class="text-primary">Osveževanje:</strong> <span class="text-emerald">GitHub Actions (Dnevno)</span></div>
+        <div><strong class="text-primary">Viri:</strong> <span>LJSE, SEOnet / Delničar.si</span></div>
       </div>
     </aside>
 
@@ -104,10 +105,10 @@
           <div class="section-title-group">
             <span class="section-kicker">MODUL 01 · TRŽNI PREGLED LJUBLJANSKE BORZE (PODATKI NA DAN: 20. 11. 2026)</span>
             <h2 class="section-title">Pregled indeksa SBI TOP in glavna vrednotenjska matrika (Pravi TTM)</h2>
-            <p class="section-desc">Agregirani kazalniki indeksa SBI TOP (harmonični/agregatni P/E = Skupna tržna kap. / Skupni TTM čisti dobiček), rebasirane uteži (100,00 %) in presečna matrika 9 članic.</p>
+            <p class="section-desc">Agregirani kazalniki indeksa SBI TOP (agregatni P/E = Skupna tržna kap. / Skupni TTM čisti dobiček, harmonični P/E), rebasirane uteži (100,00 %) in presečna matrika 9 članic.</p>
           </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span class="badge badge-blue" id="marketTimestampBadge">Podatki na dan: 20. 11. 2026</span>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <span class="badge badge-blue" id="marketTimestampBadge">Podatki na dan: 20. 11. 2026 · Zadnja preverba: 22. 11. 2026</span>
             <button class="btn-action btn-collapse" data-target="sec-index" aria-label="Zloži ali razširi modul 1">Zloži / Razširi</button>
           </div>
         </div>
@@ -121,10 +122,10 @@
             <div class="card">
               <div class="card-header">
                 <div>
-                  <div class="card-title">10-letna rast indeksa SBI TOP, SBI TOP TR (z dividendami) in DAX (2016 = 100)</div>
-                  <div class="card-subtitle">Indeksirana uspešnost v zadnjih 10 letih (2016–2026) · Vir: LJSE & Deutsche Börse na dan 20. 11. 2026</div>
+                  <div class="card-title">10-letna rast indeksa SBI TOP, SBI TOP TR (cena + reinvestirane dividende) in DAX (2016 = 100)</div>
+                  <div class="card-subtitle">Vir: LJSE uradna tečajnica za SBI TOP, izračun celotnega donosa (TR) iz tečaja + dividend članic, Yahoo Finance (^GDAXI, DAX 2025 = 24.490,41)</div>
                 </div>
-                <span class="badge badge-emerald">SBI TOP TR 10L CAGR: +17,46 %</span>
+                <span class="badge badge-emerald" id="chartIndexTrCagrBadge">SBI TOP TR 10L CAGR: +17,46 % (Izračun iz cene + div.)</span>
               </div>
               <div class="chart-box">
                 <canvas id="chartIndexPerformance"></canvas>
@@ -150,9 +151,9 @@
             <div class="card-header">
               <div>
                 <div class="card-title">Glavna vrednotenjska matrika družb v SBI TOP (Kliknite na vrstico za podrobno analizo družbe)</div>
-                <div class="card-subtitle">Normaliziran DCF za nefinančne družbe in Model presežnega donosa (Residual Income: ROE proti ke) za banko in zavarovalnici · MoS = (IV − Tečaj) / IV</div>
+                <div class="card-subtitle">Normaliziran DCF (5-letna mediana FCF 2021–2025) za nefinančne družbe in Residual Income (ROE proti ke z bledenjem) za banko in zavarovalnici · MoS = (IV − Tečaj) / IV</div>
               </div>
-              <span class="badge badge-neutral">Podatki na dan: 20. 11. 2026 · Delnice brez lastnih (MSRP 33)</span>
+              <span class="badge badge-neutral">Podatki na dan: 20. 11. 2026 · Vzorec Z-Score ≤10 letnih točk</span>
             </div>
             <div class="table-wrapper">
               <table class="data-table" id="masterScreenerTable">
@@ -174,7 +175,7 @@
                     <th>EV/EBITDA (TTM)</th>
                     <th>Div. donos</th>
                     <th>ROE (TTM)</th>
-                    <th>Z-Score P/E (N=10)</th>
+                    <th>Z-Score P/E (Vzorec N≤10)</th>
                   </tr>
                 </thead>
                 <tbody id="masterScreenerBody"></tbody>
@@ -316,9 +317,9 @@
             <div class="card-header">
               <div>
                 <div class="card-title" id="finTableTitle">Popolna 10-letna finančna tabela (2016–2025 + Pravi 2026 TTM) in 10-letni CAGR</div>
-                <div class="card-subtitle">Stolpec 2026 TTM = FY 2025 + 9M 2026 − 9M 2025 · Brez preloma števila delnic med letom 2025 in TTM</div>
+                <div class="card-subtitle">Stolpec 2026 TTM = FY 2025 + 9M 2026 − 9M 2025 · Oznaka <abbr class="est-tag" title="Analitična ocena na podlagi predhodnega obdobja ali deleža dolgoročnih obveznosti">ocena</abbr> označuje postavke, kjer polni četrtletni ali bilancni razčlenitvi nista objavljeni</div>
               </div>
-              <span class="badge badge-emerald" id="finProformaBadge">Uradni revidirani MSRP podatki (SEOnet) na dan 20. 11. 2026</span>
+              <span class="badge badge-emerald" id="finProformaBadge">Vir: Revidirana letna poročila (SEOnet / zbirka Delničar.si) + tečajnica LJSE (20. 11. 2026)</span>
             </div>
             <div class="table-wrapper">
               <table class="data-table" id="historicalFinancialsTable">
@@ -341,7 +342,7 @@
           <div class="section-title-group">
             <span class="section-kicker">MODUL 04 · SIMULATOR POŠTENE VREDNOSTI (NORMALIZIRAN FCF / RESIDUAL INCOME) & OBRATNI DCF</span>
             <h2 class="section-title" id="simSectionTitle">Simulator prihodnjih projekcij, poštena vrednost (IV) in obratni DCF</h2>
-            <p class="section-desc">Privzeto uporablja normaliziran 5-letni FCF (z odbitkom za operativni denarni blažilnik) za nefinančne družbe ter model presežnega donosa (Residual Income: ROE proti ke) za NLB, Triglav in Savo Re.</p>
+            <p class="section-desc">Privzeto uporablja Normaliziran FCF = 5-letna mediana FCF (2021–2025) z enotnim odbitkom za operativni denarni blažilnik (min(Bruto denar, 2,0 % TTM prihodkov)) za nefinančne družbe ter model presežnega donosa (Residual Income z bledenjem ROE proti ke) za NLB, Triglav in Savo Re.</p>
           </div>
           <div style="display:flex;align-items:center;gap:8px;">
             <span class="badge badge-emerald" id="simModelTypeBadge">2-stopenjski DCF model</span>
@@ -350,13 +351,16 @@
         </div>
 
         <div class="module-body">
+          <!-- Special Luka Koper (LKPG) 785 M€ CAPEX & Krka Stake Warning Banner -->
+          <div id="lkpgCapexAlertWrap" style="display:none;"></div>
+
           <div class="grid-sidebar">
             <!-- Left Sidebar: Interactive Sliders & Inputs -->
             <div class="card">
               <div class="card-header">
                 <div>
                   <div class="card-title">Parametri projekcije in izbira metodologije</div>
-                  <div class="card-subtitle">Preklopite izhodišče FCF ali model presežnega donosa (ROE vs. ke)</div>
+                  <div class="card-subtitle">Normaliziran FCF = 5-letna mediana FCF (2021–2025) · Projekcija sidrana na 20. 11. 2026 (Leto 1 NTM – Leto 10)</div>
                 </div>
               </div>
 
@@ -366,13 +370,13 @@
                   <label class="sim-label" for="selSimBasis" style="color:var(--accent-blue);font-weight:700;">Izhodišče / Metodologija vrednotenja:</label>
                 </div>
                 <select class="company-select" id="selSimBasis" aria-label="Izberi izhodišče denarnega toka ali model presežnega donosa" style="background: var(--bg-card); border: 1px solid var(--border-focus); padding: 6px 8px; border-radius: 4px; font-size: 12px; width: 100%; margin-top: 4px;">
-                  <option value="norm">Normaliziran FCF (5L ciklično povprečje — Privzeto)</option>
+                  <option value="norm">Normaliziran FCF = 5-letna mediana FCF (2021–2025) — Privzeto</option>
                   <option value="avg5y">5-letno aritmetično povprečje FCF (2021–2025)</option>
-                  <option value="avg3y">3-letno povprečje FCF (2023–2025)</option>
-                  <option value="fy25">Zadnje leto FY 2025 FCF (Vrh / Tekoči FCF)</option>
+                  <option value="avg3y">3-letno aritmetično povprečje FCF (2023–2025)</option>
+                  <option value="fy25">Dejanski FY 2025 FCF (Zadnje revidirano leto)</option>
                   <option value="residual">Model presežnega donosa (Residual Income: ROE vs. ke)</option>
                 </select>
-                <div class="sim-hint" id="hintBasisComparison" style="margin-top:4px;"></div>
+                <div class="sim-hint" id="hintBasisComparison" style="margin-top:4px;flex-wrap:wrap;gap:4px;"></div>
               </div>
 
               <div class="preset-btn-row" style="margin-bottom: 12px;">
@@ -385,12 +389,12 @@
                 <!-- Base Cash Flow / Residual Income Input -->
                 <div class="sim-field" id="fieldBaseCfWrap">
                   <div class="sim-field-header">
-                    <label class="sim-label" id="lblSimBaseCf" for="numBaseCf">Izhodiščni normalizirani FCF (mio €)</label>
-                    <input type="number" step="0.5" class="sim-num-input" id="numBaseCf" aria-label="Izhodiščni letni denarni tok v milijonih EUR" />
+                    <label class="sim-label" id="lblSimBaseCf" for="numBaseCf">Izhodiščni FCF (mio €)</label>
+                    <input type="number" step="0.1" class="sim-num-input" id="numBaseCf" aria-label="Izhodiščni letni denarni tok v milijonih EUR" />
                   </div>
-                  <input type="range" class="sim-slider" id="rngBaseCf" min="1" max="1000" step="0.5" aria-label="Drsnik za izhodiščni denarni tok" />
+                  <input type="range" class="sim-slider" id="rngBaseCf" min="-50" max="1000" step="0.5" aria-label="Drsnik za izhodiščni denarni tok" />
                   <div class="sim-hint">
-                    <span id="hintBaseCfType">Normalizirani FCF</span>
+                    <span id="hintBaseCfType">Normalizirani FCF (5L mediana)</span>
                     <span id="hintBaseCfPerShare" class="mono"></span>
                   </div>
                 </div>
@@ -399,32 +403,33 @@
                 <div class="sim-field" id="fieldNormRoeWrap" style="display:none; border-color: rgba(16, 185, 129, 0.4);">
                   <div class="sim-field-header">
                     <label class="sim-label" for="numNormRoe" style="color:#34d399;">Vzdržna donosnost kapitala — Normalizirani ROE (%)</label>
-                    <input type="number" step="0.2" class="sim-num-input" id="numNormRoe" aria-label="Vzdržni normalizirani ROE v odstotkih" />
+                    <input type="number" step="0.1" class="sim-num-input" id="numNormRoe" aria-label="Vzdržni normalizirani ROE v odstotkih" />
                   </div>
-                  <input type="range" class="sim-slider" id="rngNormRoe" min="6.0" max="24.0" step="0.2" aria-label="Drsnik za normalizirani ROE" />
+                  <input type="range" class="sim-slider" id="rngNormRoe" min="5.0" max="25.0" step="0.1" aria-label="Drsnik za normalizirani ROE" />
                   <div class="sim-hint">
                     <span id="hintBookValueM">Knjigovodski kapital: -- M€</span>
                     <span id="hintJustifiedPb" class="mono text-emerald">Upravičeni P/B: --x</span>
                   </div>
+                  <div class="sim-hint" id="hintResidualPayoutInfo" style="margin-top:2px;color:var(--accent-blue);"></div>
                 </div>
 
                 <!-- Growth Stage 1 (Years 1-5) -->
                 <div class="sim-field">
                   <div class="sim-field-header">
                     <label class="sim-label" id="lblGrowth1" for="numGrowth1">Letna stopnja rasti · 1. faza (Leta 1–5, %)</label>
-                    <input type="number" step="0.2" class="sim-num-input" id="numGrowth1" aria-label="Stopnja rasti v prvi fazi" />
+                    <input type="number" step="0.1" class="sim-num-input" id="numGrowth1" aria-label="Stopnja rasti v prvi fazi" />
                   </div>
-                  <input type="range" class="sim-slider" id="rngGrowth1" min="-5" max="25" step="0.2" aria-label="Drsnik za rast v prvi fazi" />
+                  <input type="range" class="sim-slider" id="rngGrowth1" min="-5.0" max="25.0" step="0.1" aria-label="Drsnik za rast v prvi fazi" />
                   <div class="sim-hint"><span>Konservativno: 2 %</span><span>Visoka rast: 12 %+</span></div>
                 </div>
 
                 <!-- Growth Stage 2 (Years 6-10) -->
                 <div class="sim-field">
                   <div class="sim-field-header">
-                    <label class="sim-label" for="numGrowth2">Letna stopnja rasti · 2. faza (Leta 6–10, %)</label>
-                    <input type="number" step="0.2" class="sim-num-input" id="numGrowth2" aria-label="Stopnja rasti v drugi fazi" />
+                    <label class="sim-label" id="lblGrowth2" for="numGrowth2">Letna stopnja rasti · 2. faza (Leta 6–10, %)</label>
+                    <input type="number" step="0.1" class="sim-num-input" id="numGrowth2" aria-label="Stopnja rasti v drugi fazi" />
                   </div>
-                  <input type="range" class="sim-slider" id="rngGrowth2" min="-5" max="20" step="0.2" aria-label="Drsnik za rast v drugi fazi" />
+                  <input type="range" class="sim-slider" id="rngGrowth2" min="-5.0" max="20.0" step="0.1" aria-label="Drsnik za rast v drugi fazi" />
                   <div class="sim-hint"><span>Zrela rast: 2–5 %</span><span>Pospešena: 8 %+</span></div>
                 </div>
 
@@ -435,7 +440,7 @@
                     <input type="number" step="0.1" class="sim-num-input" id="numWacc" aria-label="Diskontna stopnja WACC ali strošek lastniškega kapitala" />
                   </div>
                   <input type="range" class="sim-slider" id="rngWacc" min="5.0" max="16.0" step="0.1" aria-label="Drsnik za diskontno stopnjo" />
-                  <div class="sim-hint"><span>Nizko tveganje: 7,5 %</span><span>Visoko tveganje: 13 %+</span></div>
+                  <div class="sim-hint" id="hintCapmNote"><span>Nizko tveganje: 7,5 %</span><span>Visoko tveganje: 13 %+</span></div>
                 </div>
 
                 <!-- Terminal Growth Rate (g) -->
@@ -452,9 +457,9 @@
                 <div class="sim-field" id="fieldExitMultWrap">
                   <div class="sim-field-header">
                     <label class="sim-label" for="numExitMult">Izhodni večkratnik (Leto 10 EV/FCF)</label>
-                    <input type="number" step="0.5" class="sim-num-input" id="numExitMult" aria-label="Izhodni večkratnik" />
+                    <input type="number" step="0.1" class="sim-num-input" id="numExitMult" aria-label="Izhodni večkratnik" />
                   </div>
-                  <input type="range" class="sim-slider" id="rngExitMult" min="5" max="25" step="0.5" aria-label="Drsnik za izhodni večkratnik" />
+                  <input type="range" class="sim-slider" id="rngExitMult" min="5.0" max="25.0" step="0.1" aria-label="Drsnik za izhodni večkratnik" />
                   <div class="sim-field-header" style="margin-top: 6px;">
                     <span class="sim-label">Metoda terminalne vrednosti:</span>
                     <select class="company-select" id="selTerminalMethod" aria-label="Metoda izračuna terminalne vrednosti" style="background: var(--bg-card); border: 1px solid var(--border-focus); padding: 3px 6px; border-radius: 4px; font-size: 12px;">
@@ -463,6 +468,7 @@
                       <option value="blended">Tehtano povprečje obeh (50% Gordon / 50% Večkratnik)</option>
                     </select>
                   </div>
+                  <div class="sim-hint" id="hintImpliedExitMult" style="margin-top:4px;color:var(--accent-blue);"></div>
                 </div>
 
                 <!-- Margin of Safety -->
@@ -472,16 +478,25 @@
                     <input type="number" step="1" class="sim-num-input" id="numMos" aria-label="Zahtevana varnostna rezerva v odstotkih" />
                   </div>
                   <input type="range" class="sim-slider" id="rngMos" min="0" max="50" step="1" aria-label="Drsnik za zahtevano varnostno rezervo" />
-                  <div class="sim-hint"><span>Formula: MoS = 1 − Tečaj/IV</span><span>Buffett standard: 20–30 %</span></div>
+                  <div class="sim-hint"><span>Formula: MoS = 1 − Tečaj/IV (0 % = brez odbitka)</span><span>Buffett: 20–30 %</span></div>
                 </div>
 
                 <!-- Net Debt Adjustment with Operating Cash Buffer Haircut -->
                 <div class="sim-field">
                   <div class="sim-field-header">
                     <label class="sim-label" for="numNetDebt">Prilagojeni čisti dolg / (-Presežni denar) v mio €</label>
-                    <input type="number" step="1" class="sim-num-input" id="numNetDebt" aria-label="Čisti dolg z upoštevanim odbitkom za operativni denar" />
+                    <input type="number" step="0.5" class="sim-num-input" id="numNetDebt" aria-label="Čisti dolg z upoštevanim odbitkom za operativni denar" />
                   </div>
-                  <div class="sim-hint" id="hintCashHaircutInfo"></div>
+                  <div class="sim-hint" id="hintCashHaircutInfo" style="flex-wrap:wrap;gap:4px;"></div>
+                </div>
+
+                <!-- Special LKPG Expansion CAPEX & Krka Stake Row (visible only for LKPG) -->
+                <div class="sim-field" id="fieldLkpgSpecialWrap" style="display:none; border-color: rgba(245, 158, 11, 0.5);">
+                  <div class="sim-field-header">
+                    <label class="sim-label" for="numLkpgCapexDeduction" style="color:#fbbf24;">Odštej PV razvojnega CAPEX cikla (785 M€, mio €)</label>
+                    <input type="number" step="5" min="0" max="785" class="sim-num-input" id="numLkpgCapexDeduction" value="0" aria-label="Odštej sedanjo vrednost razvojnega CAPEX-a v mio EUR" />
+                  </div>
+                  <div class="sim-hint" id="hintLkpgKrkaStake" style="color:#34d399;flex-wrap:wrap;gap:4px;"></div>
                 </div>
 
                 <button class="btn-action" id="btnResetSim" style="width: 100%; padding: 9px; justify-content: center;">Ponastavi na privzete normalizirane parametre</button>
@@ -500,8 +515,8 @@
                 <div class="card">
                   <div class="card-header">
                     <div>
-                      <div class="card-title">Zgodovina poštene vrednosti (IV) skozi čas vs. Borzni tečaj (2022–2026)</div>
-                      <div class="card-subtitle">Razvoj notranje vrednosti delnice po objavah letnih in četrtletnih poročil</div>
+                      <div class="card-title">Ilustrativni IV po takratnih fundamentih (ni zgodovinsko arhivirana ocena)</div>
+                      <div class="card-subtitle">Retrospektivni preračun IV po takratnih fundamentih vs. borzni tečaj (2022–2026) · Sprotni arhiv teče v data/iv_history.json</div>
                     </div>
                   </div>
                   <div class="chart-box-sm">
@@ -515,8 +530,8 @@
                 <div class="card">
                   <div class="card-header">
                     <div>
-                      <div class="card-title" id="simChartProjTitle">Projekcija denarnih tokov / presežnega donosa in sedanje vrednosti (Leta 1–10)</div>
-                      <div class="card-subtitle">Projicirani tok vs. Diskontirana sedanja vrednost (PV v mio €)</div>
+                      <div class="card-title" id="simChartProjTitle">Projekcija denarnih tokov / presežnega donosa in sedanje vrednosti (Leto 1 NTM – Leto 10)</div>
+                      <div class="card-subtitle">Sidrano na datum 20. 11. 2026: Leto 1 (NTM) do Leto 10 vs. Diskontirana sedanja vrednost (PV v mio €)</div>
                     </div>
                   </div>
                   <div class="chart-box-sm">
@@ -527,7 +542,7 @@
                 <div class="card">
                   <div class="card-header">
                     <div>
-                      <div class="card-title">Primerjava 3 scenarijev in izhodišč (5L Povprečje vs. Vrh FY25)</div>
+                      <div class="card-title">Primerjava scenarijev in izhodišč (5L Mediana vs. 5L Povprečje vs. Dejanski FY25)</div>
                       <div class="card-subtitle">Enotna definicija: Implicirani MoS = (IV − Tečaj) / IV · Potencial = (IV − Tečaj) / Tečaj</div>
                     </div>
                   </div>
@@ -539,8 +554,8 @@
               <div class="card">
                 <div class="card-header">
                   <div>
-                    <div class="card-title">10-letna tabela projiciranih tokov in sedanje vrednosti (2026E–2035E)</div>
-                    <div class="card-subtitle">Letni tok, diskontni faktor, sedanja vrednost (PV) in prehod do poštene vrednosti delnice</div>
+                    <div class="card-title">10-letna tabela projiciranih tokov in sedanje vrednosti (Leto 1 NTM – Leto 10, sidrano na 20. 11. 2026)</div>
+                    <div class="card-subtitle">Letni tok, diskontni faktor, sedanja vrednost (PV) in prehod EV → Lastniški kapital → Poštena vrednost delnice</div>
                   </div>
                 </div>
                 <div class="table-wrapper">
@@ -548,12 +563,12 @@
                 </div>
               </div>
 
-              <!-- 2D Sensitivity Matrix: WACC vs. Terminal Growth g -->
+              <!-- 2D Sensitivity Matrix -->
               <div class="card">
                 <div class="card-header">
                   <div>
-                    <div class="card-title">2D Matrika občutljivosti poštene vrednosti delnice (€): Diskontna stopnja (WACC / ke) vs. Terminalna rast (g)</div>
-                    <div class="card-subtitle">V oklepaju je navedena implicirana varnostna rezerva MoS = (IV − Tečaj) / IV</div>
+                    <div class="card-title" id="sensMatrixTitle">2D Matrika občutljivosti poštene vrednosti delnice (€): Diskontna stopnja (WACC / ke) vs. Terminalna rast (g) / ROE</div>
+                    <div class="card-subtitle" id="sensMatrixSubtitle">V oklepaju je navedena implicirana varnostna rezerva MoS = (IV − Tečaj) / IV</div>
                   </div>
                   <span class="badge badge-blue" id="sensCurrentPriceBadge">Trenutni tečaj: -- €</span>
                 </div>
@@ -567,14 +582,14 @@
       </section>
 
       <!-- ================================================================= -->
-      <!-- MODULE 5: INTERNATIONAL PEER COMPARISON (54 COMPANIES, N=6/COMP)  -->
+      <!-- MODULE 5: INTERNATIONAL PEER COMPARISON (68 COMPANIES, N=6-8)     -->
       <!-- ================================================================= -->
       <section class="module-section" id="sec-peers">
         <div class="section-header">
           <div class="section-title-group">
-            <span class="section-kicker">MODUL 05 · MEDNARODNA PRIMERJALNA ANALIZA (N=6 TUJIH VRSTNIKOV NA DRUŽBO · PODATKI NA DAN: 20. 11. 2026)</span>
-            <h2 class="section-title" id="peerSectionTitle">Primerjava kazalnikov vrednotenj s 6 primerljivimi podjetji iz tujine</h2>
-            <p class="section-desc">Vsaka družba v SBI TOP je primerjana s 6 mednarodnimi borznimi tekmeci iz iste panoge z navedenim virom in datumom zajema (Yahoo Finance / Reuters borzni konsenz na dan 20. 11. 2026).</p>
+            <span class="section-kicker">MODUL 05 · MEDNARODNA PRIMERJALNA ANALIZA (68 TUJIH VRSTNIKOV, N=6–8 NA DRUŽBO · ZAJETO: 22. 11. 2026)</span>
+            <h2 class="section-title" id="peerSectionTitle">Primerjava kazalnikov vrednotenj s primerljivimi podjetji iz tujine</h2>
+            <p class="section-desc">Vsaka družba v SBI TOP je primerjana s 6–8 mednarodnimi borznimi tekmeci iz iste panoge. Vir: Yahoo Finance (yfinance API) — statični zajem dne 22. 11. 2026 (se ne osvežuje samodejno v brskalniku).</p>
           </div>
           <div style="display:flex;align-items:center;gap:8px;">
             <div id="peerStatusBadgeWrap"></div>
@@ -590,10 +605,10 @@
           <div class="card">
             <div class="card-header">
               <div>
-                <div class="card-title">Presečna primerjava vseh 9 družb v SBI TOP glede na mediano 6 tujih primerljivih podjetij</div>
-                <div class="card-subtitle">Negativen odstotek (−) pomeni diskont (slovensko podjetje je cenejše od tujih vrstnikov); pozitiven (+) pomeni premijo · Vir: Yahoo Finance (20. 11. 2026)</div>
+                <div class="card-title">Presečna primerjava vseh 9 družb v SBI TOP glede na mediano tujih primerljivih podjetij (N=6–8)</div>
+                <div class="card-subtitle">Negativen odstotek (−) pomeni diskont (slovensko podjetje je cenejše od tujih vrstnikov); pozitiven (+) pomeni premijo · Statični zajem Yahoo Finance dne 22. 11. 2026</div>
               </div>
-              <span class="badge badge-blue">54 mednarodnih primerljivih družb (6 na podjetje)</span>
+              <span class="badge badge-blue">68 mednarodnih primerljivih družb (6–8 na podjetje)</span>
             </div>
             <div class="table-wrapper">
               <table class="data-table" id="crossPeerSummaryTable">
@@ -602,7 +617,7 @@
                     <th>Podjetje (SBI TOP)</th>
                     <th>Tečaj (€)</th>
                     <th>TTM P/E družbe</th>
-                    <th>Mediana tujih P/E (N=6)</th>
+                    <th>Mediana tujih P/E (N=6–8)</th>
                     <th>Premija (+) / Diskont (−) P/E</th>
                     <th>TTM P/B družbe</th>
                     <th>Mediana tujih P/B</th>
@@ -628,9 +643,9 @@
       <section class="module-section" id="sec-historical-val">
         <div class="section-header">
           <div class="section-title-group">
-            <span class="section-kicker">MODUL 06 · ZGODOVINSKA SAMO-PRIMERJAVA KAZALNIKOV VREDNOTENJ (2016–2026 TTM · VZOREC N=10 LET)</span>
+            <span class="section-kicker">MODUL 06 · ZGODOVINSKA SAMO-PRIMERJAVA KAZALNIKOV VREDNOTENJ (2016–2026 TTM · VZOREC ≤10 LETNIH TOČK)</span>
             <h2 class="section-title" id="histValSectionTitle">Primerjava trenutnih TTM kazalnikov vrednotenj z 10-letno zgodovino podjetja samega</h2>
-            <p class="section-desc">Analiza pravih TTM večkratnikov glede na lastno 10-letno povprečje, mediano, min–max razpon, empirični percentil in Z-vrednost (σ) z oznako velikosti vzorca (N=10 letnih opazovanj) in osvetljenim pasom Povprečje ± 1σ.</p>
+            <p class="section-desc">Analiza pravih TTM večkratnikov glede na lastno 10-letno povprečje, mediano, min–max razpon, empirični percentil in Z-vrednost (σ) z izpisom dejanske velikosti vzorca N (8–10 letnih točk) ter izločenih ekstremov (0 &lt; P/E &lt; 38).</p>
           </div>
           <div style="display:flex;align-items:center;gap:8px;">
             <div id="histValBadgeWrap"></div>
@@ -643,10 +658,10 @@
           <div class="card">
             <div class="card-header">
               <div>
-                <div class="card-title" id="histSelfTableTitle">Trenutni TTM kazalniki vrednotenja vs. Lastna 10-letna zgodovina družbe (2016–2025, Vzorec N=10)</div>
-                <div class="card-subtitle">Opomba: Z-Score temelji na N=10 letnih zaključnih opazovanjih (2016–2025); zaradi strukturnih sprememb obrestnih mer in dobičkonosnosti upoštevajte tudi 10L Mediano in Empirični percentil</div>
+                <div class="card-title" id="histSelfTableTitle">Trenutni TTM kazalniki vrednotenja vs. Lastna 10-letna zgodovina družbe (2016–2025, vzorec ≤10 letnih točk)</div>
+                <div class="card-subtitle" id="histExcludedOutliersNote">Opozorilo: vzorec ≤10 letnih točk. Leta z negativnim dobičkom ali ekstremnim P/E (&ge;38x) so izločena iz povprečja P/E.</div>
               </div>
-              <span class="badge badge-neutral">Majhen letni vzorec (N=10) · Dodan empirični percentil in ±1σ pas</span>
+              <span class="badge badge-amber" id="histSampleWarningBadge">Opozorilo: vzorec ≤10 letnih točk</span>
             </div>
             <div class="table-wrapper">
               <table class="data-table" id="histSelfComparisonTable">
@@ -663,8 +678,8 @@
                     <th>10L Maksimum (Leto)</th>
                     <th>Pozicija v 10L razponu</th>
                     <th>Empirični percentil</th>
-                    <th>Z-Score (N=10)</th>
-                    <th>Zgodovinska ocena</th>
+                    <th>Z-Score (Dejanski N)</th>
+                    <th>Izločena leta / Opomba</th>
                   </tr>
                 </thead>
                 <tbody id="histSelfComparisonBody"></tbody>
@@ -678,7 +693,7 @@
               <div class="card-header">
                 <div>
                   <div class="card-title">10-letno gibanje P/E z osvetljenim pasom Povprečje ± 1σ in Nakupno cono (−1σ)</div>
-                  <div class="card-subtitle">Zelena črta označuje zgodovinsko nakupno cono (10L Povprečje − 1σ), rdeča pa +1σ</div>
+                  <div class="card-subtitle">Leta z negativnim EPS ali ekstremnim P/E (&ge;38x) so prikazana kot prekinitev ("ni podatka"), da ne popačijo merila</div>
                 </div>
               </div>
               <div class="chart-box">
@@ -703,8 +718,8 @@
           <div class="card">
             <div class="card-header">
               <div>
-                <div class="card-title">Presečna matrika vseh 9 družb v SBI TOP: Pravi TTM večkratniki vs. Lastna 10-letna zgodovina (N=10)</div>
-                <div class="card-subtitle">Primerjava trenutnega TTM vrednotenja z 10-letnim zgodovinskim povprečjem, mediano, percentilom in Z-vrednostjo</div>
+                <div class="card-title">Presečna matrika vseh 9 družb v SBI TOP: Pravi TTM večkratniki vs. Lastna 10-letna zgodovina (vzorec ≤10 letnih točk)</div>
+                <div class="card-subtitle">Pri vsaki družbi je izpisan dejanski N veljavnih letnih opazovanj (npr. NLBR N=8, ZVTG N=8, TLSG N=8, PETG N=9) in izločena leta</div>
               </div>
             </div>
             <div class="table-wrapper">
@@ -716,7 +731,8 @@
                     <th>10L Povp. P/E</th>
                     <th>10L Med. P/E</th>
                     <th>Premija / Diskont P/E</th>
-                    <th>Percentil / Z-Score (N=10)</th>
+                    <th>Percentil / Z-Score (Dejanski N)</th>
+                    <th>Izločena leta P/E</th>
                     <th>TTM P/B</th>
                     <th>10L Povp. P/B</th>
                     <th>Premija / Diskont P/B</th>
@@ -739,11 +755,20 @@
       <section class="module-section" id="sec-portfolio">
         <div class="section-header">
           <div class="section-title-group">
-            <span class="section-kicker">MODUL 07 · SIMULATOR LASTNEGA PORTFELJA, DIVIDENDNI KOLEDAR & 5-LETNI HORIZONT DONOSA</span>
-            <h2 class="section-title">Moj SBI TOP portfelj: Tehtani MoS, koncentracija glede na indeks in 5-letna projekcija dividend</h2>
-            <p class="section-desc">Vnesite število delnic v svojem portfelju za izračun tehtane varnostne rezerve (MoS), letnega priliva dividend, 5-letnega kumulativnega donosa (Yield on Cost) in odstopanja od uteži indeksa SBI TOP.</p>
+            <span class="section-kicker">MODUL 07 · SIMULATOR LASTNEGA PORTFELJA, DIVIDENDNI KOLEDAR & 5-LETNI HORIZONT PRIHODNJIH DIVIDEND</span>
+            <h2 class="section-title">Moj SBI TOP portfelj: Tehtani MoS, koncentracija glede na indeks in 5-letna projekcija prihodnjih dividend</h2>
+            <p class="section-desc">5-letni horizont kumulativnih dividend šteje izključno prihodnje še neizplačane dividende po 20. 11. 2026 (dividende z ex-datumi junij–avgust 2026 so že izplačane; v letu 2026 ostaja le še 2. tranša NLB 6,92 € z ex-datumom 14. 12. 2026).</p>
           </div>
-          <div style="display:flex;align-items:center;gap:8px;">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <div class="company-select-wrapper" style="padding:3px 8px;">
+              <label class="company-select-label" for="selDivTaxRate">Davek na div.:</label>
+              <select class="company-select" id="selDivTaxRate" aria-label="Izberi davčno stopnjo na dividende">
+                <option value="0">0 % (Bruto)</option>
+                <option value="15">15 % (Znižana / WHT)</option>
+                <option value="25" selected>25 % (SI dohodnina — Neto)</option>
+                <option value="27.5">27,5 % (Zgodovinska SI stopnja)</option>
+              </select>
+            </div>
             <button class="btn-action" id="btnLoadIndexPortfolio">Naloži indeksni portfelj (100.000 €)</button>
             <button class="btn-action" id="btnLoadEqualPortfolio">Enakomerno (9 × 10.000 €)</button>
             <button class="btn-action btn-collapse" data-target="sec-portfolio" aria-label="Zloži ali razširi modul 7">Zloži / Razširi</button>
@@ -759,8 +784,8 @@
             <div class="card">
               <div class="card-header">
                 <div>
-                  <div class="card-title">Sestava lastnega portfelja in dividendni koledar 2026</div>
-                  <div class="card-subtitle">Spremenite število delnic v stolpcu »Moje delnice (#)« za takojšen preračun portfelja</div>
+                  <div class="card-title">Sestava lastnega portfelja in prihodnji dividendni koledar (od 20. 11. 2026 naprej)</div>
+                  <div class="card-subtitle">Vnos delnic ohrani fokus v polju in se samodejno shrani v brskalnik (localStorage) ter URL</div>
                 </div>
               </div>
               <div class="table-wrapper">
@@ -774,9 +799,9 @@
                       <th>Utež portf. vs. SBI TOP</th>
                       <th>Poštena vr. IV (€)</th>
                       <th>MoS (1−P/IV)</th>
-                      <th>Dividenda 2026 (Ex-Div)</th>
-                      <th>Letna div. (€)</th>
-                      <th>5L Kumul. div. (€)</th>
+                      <th>Status div. 2026 &amp; Naslednja div.</th>
+                      <th>Letna div. NTM (Neto/Bruto)</th>
+                      <th>5L Prihodnje div. (Obd. 1–5)</th>
                     </tr>
                   </thead>
                   <tbody id="portfolioBuilderBody"></tbody>
@@ -789,8 +814,8 @@
               <div class="card">
                 <div class="card-header">
                   <div>
-                    <div class="card-title">5-letna projekcija dividendnega toka portfelja (2026E–2030E) in Yield on Cost (%)</div>
-                    <div class="card-subtitle">Pričakovana rast letnih dividend portfelja ob ocenjeni 5-letni stopnji rasti dividend</div>
+                    <div class="card-title">5-letna projekcija prihodnjega dividendnega toka portfelja (Leto 1 NTM – Leto 5) in Yield on Cost (%)</div>
+                    <div class="card-subtitle">Upošteva le še neizplačane dividende po 20. 11. 2026 (vključno z 2. tranšo NLB dec. 2026) in izbrano davčno stopnjo</div>
                   </div>
                 </div>
                 <div class="chart-box-sm">
@@ -819,10 +844,10 @@
 
   <footer class="footer">
     <div>
-      <strong>SBI TOP Institucionalni Analitični & Vrednotenjski Terminal</strong> · Podatki na dan: <strong>20. 11. 2026</strong> · Viri: Ljubljanska borza (LJSE), SEOnet revidirana letna poročila (2016–2025) in medletna poročila 9M 2026 (Pravi TTM = FY25 + 9M26 − 9M25), Yahoo Finance (54 tujih vrstnikov na dan 20. 11. 2026). Samodejno osveževanje prek GitHub Actions.
+      <strong>SBI TOP Institucionalni Analitični &amp; Vrednotenjski Terminal</strong> · Podatki na dan: <strong>20. 11. 2026</strong> · Zadnja preverba: <strong id="footerLastChecked">22. 11. 2026</strong> · Viri: Ljubljanska borza (LJSE uradna tečajnica), revidirana letna poročila izdajateljev 2016–2025 (SEOnet / zbirka Delničar.si) in medletna poročila 9M 2026 (Pravi TTM = FY25 + 9M26 − 9M25), Yahoo Finance (yfinance API statični zajem 68 tujih vrstnikov in ^GDAXI dne 22. 11. 2026).
     </div>
     <div>
-      Opozorilo: Rezultati so informativni in analitični ter ne predstavljajo naložbenega svetovanja ali priporočila.
+      Opozorilo: Rezultati so informativni in analitični ter ne predstavljajo naložbenega svetovanja ali priporočila. Manjkajoči podatki so označeni kot »ni podatka«, analitične ocene pa z oznako »ocena«.
     </div>
   </footer>
 

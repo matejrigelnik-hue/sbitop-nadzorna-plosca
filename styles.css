@@ -617,8 +617,60 @@ body {
     grid-template-columns: 1fr;
   }
   .company-pill-bar {
-    grid-template-columns: repeat(5, minmax(120px, 1fr));
+    grid-template-columns: repeat(3, minmax(110px, 1fr));
   }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 8px 12px;
+  }
+  .header-controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .company-select-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .company-select {
+    max-width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .company-pill-bar {
+    grid-template-columns: repeat(3, minmax(95px, 1fr));
+    gap: 6px;
+  }
+}
+
+.est-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 9.8px;
+  font-weight: 700;
+  text-transform: lowercase;
+  padding: 1px 5px;
+  margin-left: 4px;
+  border-radius: 3px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.38);
+  text-decoration: none;
+  cursor: help;
+  vertical-align: middle;
+}
+
+.capex-warning-banner {
+  background: rgba(245, 158, 11, 0.09);
+  border: 1px solid rgba(245, 158, 11, 0.38);
+  border-left: 4px solid #f59e0b;
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  font-size: 12px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.5;
 }
 
 /* Semantic Badges */

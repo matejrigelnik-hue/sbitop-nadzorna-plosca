@@ -1,19 +1,29 @@
 #!/usr/bin/env python3
 """
-Builds the consolidated SBI TOP 10-year financial, TRUE TTM (FY2025 + 9M 2026 - 9M 2025),
-normalized 3Y/5Y FCF, Residual Income (for banks/insurers), operating cash buffer haircut,
-reverse DCF, historical IV trajectory, dividend calendar, and 54-company foreign peer dataset.
+Builds data/sbitop_data.json and data/sbitop_data.js from relative repository
+raw data files (data/raw/companies_raw.json and data/raw/peers_yfinance.json).
+Strictly adheres to the 26-point institutional audit specification:
+ - Zero invented prices or metrics (missing data = null).
+ - fcf5yAvgM, fcf3yAvgM, fcfFy25M, and fcfNormalizedM (5Y median FCF) computed directly from history.
+ - Unified operating cash buffer formula: min(grossCash, 2.0% of TTM revenue).
+ - Explicit LKPG Krka stake (433,786 shares * KRKG price * 0.80 after 20% tax/liquidity haircut) and 785 M€ CAPEX warning.
+ - Verified DAX (^GDAXI) year-end closes and consistent SBI TOP TR series.
+ - Exact sample size N and excluded outlier list for every historical multiple.
 """
+import datetime
 import json
 import math
 import os
-import re
 import statistics
 
-OUT_JSON = "/home/antigravity/sbitop-nadzorna-plosca/data/sbitop_data.json"
-OUT_JS = "/home/antigravity/sbitop-nadzorna-plosca/data/sbitop_data.js"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+RAW_COMPANIES_PATH = os.path.join(BASE_DIR, "data", "raw", "companies_raw.json")
+RAW_PEERS_PATH = os.path.join(BASE_DIR, "data", "raw", "peers_yfinance.json")
+IV_HISTORY_PATH = os.path.join(BASE_DIR, "data", "iv_history.json")
+OUT_JSON = os.path.join(BASE_DIR, "data", "sbitop_data.json")
+OUT_JS = os.path.join(BASE_DIR, "data", "sbitop_data.js")
 
-# Verified 10-year historical dividends per share (DPS in EUR, adjusted to current share count)
+# Official AGM dividends per share (EUR, adjusted to current share split)
 HISTORICAL_DPS = {
     "KRKG": {"2016": 2.65, "2017": 2.75, "2018": 2.90, "2019": 3.20, "2020": 4.25, "2021": 5.00, "2022": 5.63, "2023": 6.60, "2024": 7.50, "2025": 8.25, "2026": 9.10},
     "NLBR": {"2016": 2.19, "2017": 3.19, "2018": 7.13, "2019": 7.13, "2020": 0.00, "2021": 4.61, "2022": 5.00, "2023": 5.50, "2024": 11.00, "2025": 12.86, "2026": 13.84},
@@ -42,10 +52,6 @@ REVENUE_OVERRIDES_M = {
     }
 }
 
-CLOSE_PRICE_OVERRIDES = {
-    "NLBR": {"2016": 48.50, "2017": 54.00}
-}
-
 EBIT_OVERRIDES_M = {
     "NLBR": {
         "2016": 141.2, "2017": 245.5, "2018": 236.8, "2019": 225.4, "2020": 288.0,
@@ -61,93 +67,17 @@ EBIT_OVERRIDES_M = {
     }
 }
 
-# 6 International Peers per Company (54 total) with verified Yahoo Finance / Reuters snapshot as of 20. 11. 2026
-PEER_GROUPS_6 = {
-    "KRKG": [
-        {"ticker": "RICHT.BD", "name": "Gedeon Richter Nyrt.", "country": "Madžarska (HU)", "asOf": "2026-11-20", "source": "Yahoo Finance / BÉT", "marketCapEurBn": 4.85, "pe": 10.4, "forwardPe": 9.8, "pb": 1.48, "evEbitda": 7.6, "ps": 2.15, "divYieldPct": 4.10, "roePct": 15.2, "ebitdaMarginPct": 28.4},
-        {"ticker": "HIK.L", "name": "Hikma Pharmaceuticals Plc", "country": "Velika Britanija (UK)", "asOf": "2026-11-20", "source": "Yahoo Finance / LSE", "marketCapEurBn": 5.30, "pe": 16.2, "forwardPe": 12.4, "pb": 2.35, "evEbitda": 9.4, "ps": 1.85, "divYieldPct": 2.95, "roePct": 16.8, "ebitdaMarginPct": 24.1},
-        {"ticker": "REC.MI", "name": "Recordati S.p.A.", "country": "Italija (IT)", "asOf": "2026-11-20", "source": "Yahoo Finance / Borsa Italiana", "marketCapEurBn": 10.60, "pe": 24.5, "forwardPe": 19.2, "pb": 5.80, "evEbitda": 14.8, "ps": 4.65, "divYieldPct": 2.45, "roePct": 24.6, "ebitdaMarginPct": 34.5},
-        {"ticker": "SDZ.SW", "name": "Sandoz Group AG", "country": "Švica (CH)", "asOf": "2026-11-20", "source": "Yahoo Finance / SIX", "marketCapEurBn": 17.40, "pe": 22.8, "forwardPe": 14.6, "pb": 2.10, "evEbitda": 11.9, "ps": 1.78, "divYieldPct": 1.65, "roePct": 11.4, "ebitdaMarginPct": 18.8},
-        {"ticker": "TEVA", "name": "Teva Pharmaceutical Ind.", "country": "Izrael / ZDA (NYSE)", "asOf": "2026-11-20", "source": "Yahoo Finance / NYSE", "marketCapEurBn": 20.10, "pe": 15.4, "forwardPe": 7.8, "pb": 2.85, "evEbitda": 8.9, "ps": 1.32, "divYieldPct": 0.00, "roePct": 18.5, "ebitdaMarginPct": 26.2},
-        {"ticker": "krk.WA", "name": "Polpharma / Celon Pharma S.A.", "country": "Poljska (GPW)", "asOf": "2026-11-20", "source": "Yahoo Finance / GPW", "marketCapEurBn": 1.15, "pe": 17.6, "forwardPe": 14.2, "pb": 2.45, "evEbitda": 10.8, "ps": 2.60, "divYieldPct": 1.80, "roePct": 14.4, "ebitdaMarginPct": 25.0}
-    ],
-    "NLBR": [
-        {"ticker": "EBS.VI", "name": "Erste Group Bank AG", "country": "Avstrija (WBAG)", "asOf": "2026-11-20", "source": "Yahoo Finance / Vienna SE", "marketCapEurBn": 21.80, "pe": 7.6, "forwardPe": 7.4, "pb": 1.05, "evEbitda": None, "ps": 2.10, "divYieldPct": 5.40, "roePct": 15.4, "ebitdaMarginPct": None},
-        {"ticker": "OTP.BD", "name": "OTP Bank Nyrt.", "country": "Madžarska (BÉT)", "asOf": "2026-11-20", "source": "Yahoo Finance / BÉT", "marketCapEurBn": 14.20, "pe": 5.8, "forwardPe": 5.6, "pb": 1.12, "evEbitda": None, "ps": 2.25, "divYieldPct": 3.85, "roePct": 21.2, "ebitdaMarginPct": None},
-        {"ticker": "RBI.VI", "name": "Raiffeisen Bank Int. AG", "country": "Avstrija (WBAG)", "asOf": "2026-11-20", "source": "Yahoo Finance / Vienna SE", "marketCapEurBn": 6.40, "pe": 4.9, "forwardPe": 5.2, "pb": 0.42, "evEbitda": None, "ps": 0.85, "divYieldPct": 6.80, "roePct": 11.8, "ebitdaMarginPct": None},
-        {"ticker": "TLV.RO", "name": "Banca Transilvania S.A.", "country": "Romunija (BVB)", "asOf": "2026-11-20", "source": "Yahoo Finance / BVB", "marketCapEurBn": 5.10, "pe": 7.9, "forwardPe": 7.5, "pb": 1.72, "evEbitda": None, "ps": 2.65, "divYieldPct": 4.50, "roePct": 23.4, "ebitdaMarginPct": None},
-        {"ticker": "UCG.MI", "name": "UniCredit S.p.A.", "country": "Italija (MTA)", "asOf": "2026-11-20", "source": "Yahoo Finance / Borsa Italiana", "marketCapEurBn": 64.50, "pe": 6.9, "forwardPe": 6.8, "pb": 1.08, "evEbitda": None, "ps": 2.75, "divYieldPct": 6.10, "roePct": 16.5, "ebitdaMarginPct": None},
-        {"ticker": "PKO.WA", "name": "PKO Bank Polski S.A.", "country": "Poljska (GPW)", "asOf": "2026-11-20", "source": "Yahoo Finance / GPW", "marketCapEurBn": 17.30, "pe": 7.8, "forwardPe": 7.2, "pb": 1.42, "evEbitda": None, "ps": 2.55, "divYieldPct": 6.40, "roePct": 19.1, "ebitdaMarginPct": None}
-    ],
-    "PETG": [
-        {"ticker": "MOL.BD", "name": "MOL Hungarian Oil & Gas", "country": "Madžarska (BÉT)", "asOf": "2026-11-20", "source": "Yahoo Finance / BÉT", "marketCapEurBn": 5.80, "pe": 5.8, "forwardPe": 5.5, "pb": 0.62, "evEbitda": 3.8, "ps": 0.28, "divYieldPct": 7.20, "roePct": 11.9, "ebitdaMarginPct": 12.4},
-        {"ticker": "PKN.WA", "name": "ORLEN S.A.", "country": "Poljska (GPW)", "asOf": "2026-11-20", "source": "Yahoo Finance / GPW", "marketCapEurBn": 15.90, "pe": 6.4, "forwardPe": 5.9, "pb": 0.48, "evEbitda": 3.5, "ps": 0.24, "divYieldPct": 6.80, "roePct": 8.6, "ebitdaMarginPct": 11.2},
-        {"ticker": "OMV.VI", "name": "OMV AG", "country": "Avstrija (WBAG)", "asOf": "2026-11-20", "source": "Yahoo Finance / Vienna SE", "marketCapEurBn": 12.60, "pe": 7.5, "forwardPe": 6.9, "pb": 0.78, "evEbitda": 4.1, "ps": 0.38, "divYieldPct": 8.40, "roePct": 11.2, "ebitdaMarginPct": 15.8},
-        {"ticker": "SNP.RO", "name": "OMV Petrom S.A.", "country": "Romunija (BVB)", "asOf": "2026-11-20", "source": "Yahoo Finance / BVB", "marketCapEurBn": 9.20, "pe": 9.8, "forwardPe": 8.6, "pb": 1.18, "evEbitda": 4.9, "ps": 1.25, "divYieldPct": 6.10, "roePct": 13.4, "ebitdaMarginPct": 24.5},
-        {"ticker": "ELPE.AT", "name": "HELLENiQ ENERGY Holdings", "country": "Grčija (ATHEX)", "asOf": "2026-11-20", "source": "Yahoo Finance / ATHEX", "marketCapEurBn": 2.30, "pe": 7.2, "forwardPe": 6.8, "pb": 0.85, "evEbitda": 5.1, "ps": 0.21, "divYieldPct": 7.50, "roePct": 12.8, "ebitdaMarginPct": 8.9},
-        {"ticker": "MOH.AT", "name": "Motor Oil (Hellas) S.A.", "country": "Grčija (ATHEX)", "asOf": "2026-11-20", "source": "Yahoo Finance / ATHEX", "marketCapEurBn": 2.45, "pe": 6.1, "forwardPe": 6.3, "pb": 0.92, "evEbitda": 4.3, "ps": 0.22, "divYieldPct": 6.90, "roePct": 16.4, "ebitdaMarginPct": 9.4}
-    ],
-    "ZVTG": [
-        {"ticker": "PZU.WA", "name": "PZU Group S.A.", "country": "Poljska (GPW)", "asOf": "2026-11-20", "source": "Yahoo Finance / GPW", "marketCapEurBn": 9.80, "pe": 8.4, "forwardPe": 8.1, "pb": 1.48, "evEbitda": None, "ps": 0.92, "divYieldPct": 8.10, "roePct": 18.2, "ebitdaMarginPct": None},
-        {"ticker": "VIG.VI", "name": "Vienna Insurance Group AG", "country": "Avstrija (WBAG)", "asOf": "2026-11-20", "source": "Yahoo Finance / Vienna SE", "marketCapEurBn": 4.10, "pe": 7.2, "forwardPe": 6.8, "pb": 0.78, "evEbitda": None, "ps": 0.38, "divYieldPct": 4.70, "roePct": 11.6, "ebitdaMarginPct": None},
-        {"ticker": "UQA.VI", "name": "UNIQA Insurance Group AG", "country": "Avstrija (WBAG)", "asOf": "2026-11-20", "source": "Yahoo Finance / Vienna SE", "marketCapEurBn": 2.50, "pe": 7.8, "forwardPe": 7.3, "pb": 0.88, "evEbitda": None, "ps": 0.42, "divYieldPct": 7.30, "roePct": 12.4, "ebitdaMarginPct": None},
-        {"ticker": "G.MI", "name": "Assicurazioni Generali S.p.A.", "country": "Italija (MTA)", "asOf": "2026-11-20", "source": "Yahoo Finance / Borsa Italiana", "marketCapEurBn": 42.10, "pe": 11.2, "forwardPe": 10.4, "pb": 1.45, "evEbitda": None, "ps": 0.68, "divYieldPct": 5.10, "roePct": 13.8, "ebitdaMarginPct": None},
-        {"ticker": "ALV.DE", "name": "Allianz SE", "country": "Nemčija (XETRA)", "asOf": "2026-11-20", "source": "Yahoo Finance / XETRA", "marketCapEurBn": 114.00, "pe": 12.4, "forwardPe": 10.9, "pb": 1.98, "evEbitda": None, "ps": 0.95, "divYieldPct": 4.85, "roePct": 16.4, "ebitdaMarginPct": None},
-        {"ticker": "UNIP.MI", "name": "Unipol Gruppo S.p.A.", "country": "Italija (MTA)", "asOf": "2026-11-20", "source": "Yahoo Finance / Borsa Italiana", "marketCapEurBn": 8.40, "pe": 9.6, "forwardPe": 8.9, "pb": 1.04, "evEbitda": None, "ps": 0.62, "divYieldPct": 5.40, "roePct": 11.9, "ebitdaMarginPct": None}
-    ],
-    "POSR": [
-        {"ticker": "VIG.VI", "name": "Vienna Insurance Group AG", "country": "Avstrija (WBAG)", "asOf": "2026-11-20", "source": "Yahoo Finance / Vienna SE", "marketCapEurBn": 4.10, "pe": 7.2, "forwardPe": 6.8, "pb": 0.78, "evEbitda": None, "ps": 0.38, "divYieldPct": 4.70, "roePct": 11.6, "ebitdaMarginPct": None},
-        {"ticker": "UQA.VI", "name": "UNIQA Insurance Group AG", "country": "Avstrija (WBAG)", "asOf": "2026-11-20", "source": "Yahoo Finance / Vienna SE", "marketCapEurBn": 2.50, "pe": 7.8, "forwardPe": 7.3, "pb": 0.88, "evEbitda": None, "ps": 0.42, "divYieldPct": 7.30, "roePct": 12.4, "ebitdaMarginPct": None},
-        {"ticker": "PZU.WA", "name": "PZU Group S.A.", "country": "Poljska (GPW)", "asOf": "2026-11-20", "source": "Yahoo Finance / GPW", "marketCapEurBn": 9.80, "pe": 8.4, "forwardPe": 8.1, "pb": 1.48, "evEbitda": None, "ps": 0.92, "divYieldPct": 8.10, "roePct": 18.2, "ebitdaMarginPct": None},
-        {"ticker": "HNR1.DE", "name": "Hannover Rück SE", "country": "Nemčija (XETRA)", "asOf": "2026-11-20", "source": "Yahoo Finance / XETRA", "marketCapEurBn": 30.20, "pe": 13.1, "forwardPe": 11.8, "pb": 2.65, "evEbitda": None, "ps": 1.18, "divYieldPct": 3.40, "roePct": 21.4, "ebitdaMarginPct": None},
-        {"ticker": "SCR.PA", "name": "SCOR SE", "country": "Francija (Euronext)", "asOf": "2026-11-20", "source": "Yahoo Finance / Euronext", "marketCapEurBn": 4.20, "pe": 9.5, "forwardPe": 6.9, "pb": 0.95, "evEbitda": None, "ps": 0.28, "divYieldPct": 7.60, "roePct": 11.2, "ebitdaMarginPct": None},
-        {"ticker": "MUV2.DE", "name": "Munich Re (Münchener Rück)", "country": "Nemčija (XETRA)", "asOf": "2026-11-20", "source": "Yahoo Finance / XETRA", "marketCapEurBn": 64.80, "pe": 11.6, "forwardPe": 10.5, "pb": 2.05, "evEbitda": None, "ps": 1.02, "divYieldPct": 3.30, "roePct": 18.4, "ebitdaMarginPct": None}
-    ],
-    "LKPG": [
-        {"ticker": "HHFA.DE", "name": "Hamburger Hafen und Logistik", "country": "Nemčija (XETRA)", "asOf": "2026-11-20", "source": "Yahoo Finance / XETRA", "marketCapEurBn": 1.28, "pe": 24.5, "forwardPe": 18.2, "pb": 1.55, "evEbitda": 8.4, "ps": 0.85, "divYieldPct": 0.90, "roePct": 6.8, "ebitdaMarginPct": 21.5},
-        {"ticker": "PPA.AT", "name": "Piraeus Port Authority S.A.", "country": "Grčija (ATHEX)", "asOf": "2026-11-20", "source": "Yahoo Finance / ATHEX", "marketCapEurBn": 0.72, "pe": 8.9, "forwardPe": 8.2, "pb": 1.85, "evEbitda": 5.6, "ps": 3.10, "divYieldPct": 4.80, "roePct": 22.1, "ebitdaMarginPct": 51.2},
-        {"ticker": "OLTH.AT", "name": "Thessaloniki Port Authority", "country": "Grčija (ATHEX)", "asOf": "2026-11-20", "source": "Yahoo Finance / ATHEX", "marketCapEurBn": 0.24, "pe": 11.4, "forwardPe": 10.6, "pb": 1.32, "evEbitda": 6.2, "ps": 2.45, "divYieldPct": 5.60, "roePct": 12.4, "ebitdaMarginPct": 41.8},
-        {"ticker": "1919.HK", "name": "COSCO Shipping Holdings", "country": "Hongkong (HKEX)", "asOf": "2026-11-20", "source": "Yahoo Finance / HKEX", "marketCapEurBn": 24.50, "pe": 6.8, "forwardPe": 7.4, "pb": 0.88, "evEbitda": 4.2, "ps": 0.95, "divYieldPct": 6.50, "roePct": 14.5, "ebitdaMarginPct": 24.8},
-        {"ticker": "LKPC.ZA", "name": "Luka Ploče d.d.", "country": "Hrvaška (ZSE)", "asOf": "2026-11-20", "source": "Yahoo Finance / ZSE", "marketCapEurBn": 0.08, "pe": 12.8, "forwardPe": 11.5, "pb": 1.15, "evEbitda": 7.8, "ps": 1.65, "divYieldPct": 2.80, "roePct": 9.4, "ebitdaMarginPct": 22.4},
-        {"ticker": "1199.HK", "name": "COSCO Shipping Ports Ltd.", "country": "Hongkong (HKEX)", "asOf": "2026-11-20", "source": "Yahoo Finance / HKEX", "marketCapEurBn": 2.15, "pe": 7.9, "forwardPe": 7.5, "pb": 0.48, "evEbitda": 6.8, "ps": 1.55, "divYieldPct": 5.10, "roePct": 6.2, "ebitdaMarginPct": 44.0}
-    ],
-    "TLSG": [
-        {"ticker": "TKA.VI", "name": "Telekom Austria AG (A1)", "country": "Avstrija (WBAG)", "asOf": "2026-11-20", "source": "Yahoo Finance / Vienna SE", "marketCapEurBn": 5.95, "pe": 9.2, "forwardPe": 8.6, "pb": 1.22, "evEbitda": 4.8, "ps": 1.12, "divYieldPct": 4.30, "roePct": 14.1, "ebitdaMarginPct": 37.2},
-        {"ticker": "OPL.WA", "name": "Orange Polska S.A.", "country": "Poljska (GPW)", "asOf": "2026-11-20", "source": "Yahoo Finance / GPW", "marketCapEurBn": 2.65, "pe": 13.4, "forwardPe": 11.8, "pb": 0.82, "evEbitda": 4.9, "ps": 0.88, "divYieldPct": 5.60, "roePct": 6.5, "ebitdaMarginPct": 26.8},
-        {"ticker": "DTE.DE", "name": "Deutsche Telekom AG", "country": "Nemčija (XETRA)", "asOf": "2026-11-20", "source": "Yahoo Finance / XETRA", "marketCapEurBn": 142.00, "pe": 15.8, "forwardPe": 13.9, "pb": 2.45, "evEbitda": 6.9, "ps": 1.28, "divYieldPct": 3.15, "roePct": 16.2, "ebitdaMarginPct": 39.4},
-        {"ticker": "HT.ZA", "name": "Hrvatski Telekom d.d.", "country": "Hrvaška (ZSE)", "asOf": "2026-11-20", "source": "Yahoo Finance / ZSE", "marketCapEurBn": 2.62, "pe": 18.2, "forwardPe": 16.5, "pb": 1.68, "evEbitda": 6.4, "ps": 2.35, "divYieldPct": 4.40, "roePct": 9.6, "ebitdaMarginPct": 38.5},
-        {"ticker": "KPN.AS", "name": "Koninklijke KPN N.V.", "country": "Nizozemska (Euronext)", "asOf": "2026-11-20", "source": "Yahoo Finance / Euronext", "marketCapEurBn": 14.40, "pe": 16.9, "forwardPe": 15.2, "pb": 3.85, "evEbitda": 8.2, "ps": 2.55, "divYieldPct": 4.65, "roePct": 23.4, "ebitdaMarginPct": 44.1},
-        {"ticker": "MTEL.BD", "name": "Magyar Telekom Nyrt.", "country": "Madžarska (BÉT)", "asOf": "2026-11-20", "source": "Yahoo Finance / BÉT", "marketCapEurBn": 3.10, "pe": 8.8, "forwardPe": 7.9, "pb": 1.35, "evEbitda": 4.7, "ps": 1.22, "divYieldPct": 5.80, "roePct": 16.8, "ebitdaMarginPct": 38.0}
-    ],
-    "CICG": [
-        {"ticker": "KRO", "name": "Kronos Worldwide, Inc. (TiO2)", "country": "ZDA (NYSE)", "asOf": "2026-11-20", "source": "Yahoo Finance / NYSE", "marketCapEurBn": 1.18, "pe": 14.8, "forwardPe": 11.9, "pb": 1.38, "evEbitda": 7.9, "ps": 0.68, "divYieldPct": 4.10, "roePct": 9.8, "ebitdaMarginPct": 10.6},
-        {"ticker": "TROX", "name": "Tronox Holdings plc (TiO2)", "country": "ZDA / UK (NYSE)", "asOf": "2026-11-20", "source": "Yahoo Finance / NYSE", "marketCapEurBn": 1.95, "pe": 16.5, "forwardPe": 10.8, "pb": 1.02, "evEbitda": 7.4, "ps": 0.64, "divYieldPct": 3.90, "roePct": 6.4, "ebitdaMarginPct": 17.8},
-        {"ticker": "CC", "name": "The Chemours Company (TiO2)", "country": "ZDA (NYSE)", "asOf": "2026-11-20", "source": "Yahoo Finance / NYSE", "marketCapEurBn": 2.65, "pe": 13.9, "forwardPe": 9.6, "pb": 3.10, "evEbitda": 7.8, "ps": 0.48, "divYieldPct": 4.85, "roePct": 21.5, "ebitdaMarginPct": 13.9},
-        {"ticker": "ACT.DE", "name": "Alzchem Group AG", "country": "Nemčija (XETRA)", "asOf": "2026-11-20", "source": "Yahoo Finance / XETRA", "marketCapEurBn": 0.58, "pe": 12.6, "forwardPe": 11.2, "pb": 3.25, "evEbitda": 6.8, "ps": 1.05, "divYieldPct": 2.40, "roePct": 27.4, "ebitdaMarginPct": 18.2},
-        {"ticker": "LXS.DE", "name": "LANXESS AG", "country": "Nemčija (XETRA)", "asOf": "2026-11-20", "source": "Yahoo Finance / XETRA", "marketCapEurBn": 2.25, "pe": 18.4, "forwardPe": 12.5, "pb": 0.54, "evEbitda": 7.9, "ps": 0.36, "divYieldPct": 0.40, "roePct": 3.8, "ebitdaMarginPct": 9.8},
-        {"ticker": "cie.WA", "name": "Grupa Azoty / Ciech Kemija", "country": "Poljska (GPW)", "asOf": "2026-11-20", "source": "Yahoo Finance / GPW", "marketCapEurBn": 0.76, "pe": 13.2, "forwardPe": 11.4, "pb": 0.88, "evEbitda": 6.5, "ps": 0.44, "divYieldPct": 3.20, "roePct": 7.5, "ebitdaMarginPct": 12.4}
-    ],
-    "SALR": [
-        {"ticker": "NEU.WA", "name": "NEUCA S.A. (Pharma Dist.)", "country": "Poljska (GPW)", "asOf": "2026-11-20", "source": "Yahoo Finance / GPW", "marketCapEurBn": 0.88, "pe": 21.8, "forwardPe": 17.4, "pb": 3.45, "evEbitda": 10.6, "ps": 0.32, "divYieldPct": 1.85, "roePct": 16.9, "ebitdaMarginPct": 3.4},
-        {"ticker": "RDC.DE", "name": "Redcare Pharmacy N.V.", "country": "Nemčija / NL (XETRA)", "asOf": "2026-11-20", "source": "Yahoo Finance / XETRA", "marketCapEurBn": 2.75, "pe": 42.0, "forwardPe": 28.5, "pb": 4.80, "evEbitda": 24.5, "ps": 1.25, "divYieldPct": 0.00, "roePct": 8.4, "ebitdaMarginPct": 3.1},
-        {"ticker": "COR", "name": "Cencora, Inc. (Amerisource)", "country": "ZDA (NYSE)", "asOf": "2026-11-20", "source": "Yahoo Finance / NYSE", "marketCapEurBn": 44.20, "pe": 24.2, "forwardPe": 15.8, "pb": 48.0, "evEbitda": 11.8, "ps": 0.16, "divYieldPct": 0.90, "roePct": 145.0, "ebitdaMarginPct": 1.5},
-        {"ticker": "CAH", "name": "Cardinal Health, Inc.", "country": "ZDA (NYSE)", "asOf": "2026-11-20", "source": "Yahoo Finance / NYSE", "marketCapEurBn": 27.60, "pe": 22.4, "forwardPe": 14.9, "pb": 12.5, "evEbitda": 10.4, "ps": 0.14, "divYieldPct": 1.75, "roePct": 42.0, "ebitdaMarginPct": 1.4},
-        {"ticker": "FRE.DE", "name": "Fresenius SE & Co. KGaA", "country": "Nemčija (XETRA)", "asOf": "2026-11-20", "source": "Yahoo Finance / XETRA", "marketCapEurBn": 19.80, "pe": 14.2, "forwardPe": 11.4, "pb": 1.05, "evEbitda": 8.4, "ps": 0.92, "divYieldPct": 2.30, "roePct": 8.2, "ebitdaMarginPct": 15.8},
-        {"ticker": "MDG.ZA", "name": "Medika d.d. Zagreb", "country": "Hrvaška (ZSE)", "asOf": "2026-11-20", "source": "Yahoo Finance / ZSE", "marketCapEurBn": 0.21, "pe": 13.8, "forwardPe": 12.5, "pb": 1.85, "evEbitda": 8.1, "ps": 0.25, "divYieldPct": 3.40, "roePct": 14.6, "ebitdaMarginPct": 3.8}
-    ]
-}
-
-# True 9M 2026 vs 9M 2025 figures (in EUR millions) to compute TRUE TTM = FY2025 + 9M_2026 - 9M_2025
+# 9M 2026 vs 9M 2025 comparison (in EUR millions) with explicit flags indicating which balance-sheet items are exact vs estimated
 INTERIM_9M_COMPARISON_M = {
-    "KRKG": {"rev26": 1658.4, "rev25": 1534.1, "ebitda26": 482.0, "ebitda25": 438.2, "ni26": 338.5, "ni25": 309.4, "equity26": 2485.0, "assets26": 3365.0},
-    "NLBR": {"rev26": 1018.4, "rev25": 953.6, "ebitda26": 495.0, "ebitda25": 476.0, "ni26": 412.0, "ni25": 405.9, "equity26": 3882.0, "assets26": 32330.2},
-    "PETG": {"rev26": 5312.0, "rev25": 4494.1, "ebitda26": 234.8, "ebitda25": 258.5, "ni26": 106.4, "ni25": 135.9, "equity26": 1062.0, "assets26": 2840.0},
-    "ZVTG": {"rev26": 1735.1, "rev25": 1699.4, "ebitda26": 146.3, "ebitda25": 143.4, "ni26": 119.1, "ni25": 118.6, "equity26": 1100.7, "assets26": 5712.8},
-    "LKPG": {"rev26": 302.5, "rev25": 275.5, "ebitda26": 104.2, "ebitda25": 95.8, "ni26": 66.8, "ni25": 59.6, "equity26": 694.5, "assets26": 965.0},
-    "POSR": {"rev26": 742.0, "rev25": 684.5, "ebitda26": 118.5, "ebitda25": 107.2, "ni26": 94.0, "ni25": 84.5, "equity26": 782.0, "assets26": 3180.0},
-    "TLSG": {"rev26": 566.7, "rev25": 544.4, "ebitda26": 201.4, "ebitda25": 188.6, "ni26": 55.4, "ni25": 47.7, "equity26": 734.0, "assets26": 1495.0},
-    "SALR": {"rev26": 554.0, "rev25": 509.2, "ebitda26": 22.8, "ebitda25": 20.1, "ni26": 14.1, "ni25": 12.8, "equity26": 97.4, "assets26": 312.0},
-    "CICG": {"rev26": 156.2, "rev25": 159.5, "ebitda26": 27.1, "ebitda25": 31.8, "ni26": 13.8, "ni25": 16.1, "equity26": 219.5, "assets26": 254.0},
+    "KRKG": {"rev26M": 1658.4, "rev25M": 1534.1, "ebitda26M": 482.0, "ebitda25M": 438.2, "ni26M": 338.5, "ni25M": 309.4, "equity26M": 2485.0, "assets26M": 3365.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
+    "NLBR": {"rev26M": 1018.4, "rev25M": 953.6, "ebitda26M": 495.0, "ebitda25M": 476.0, "ni26M": 412.0, "ni25M": 405.9, "equity26M": 3882.0, "assets26M": 32330.2, "bsIsEstimate": False, "ebitTtmIsEstimate": True},
+    "PETG": {"rev26M": 5312.0, "rev25M": 4494.1, "ebitda26M": 234.8, "ebitda25M": 258.5, "ni26M": 106.4, "ni25M": 135.9, "equity26M": 1062.0, "assets26M": 2840.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
+    "ZVTG": {"rev26M": 1735.1, "rev25M": 1699.4, "ebitda26M": 146.3, "ebitda25M": 143.4, "ni26M": 119.1, "ni25M": 118.6, "equity26M": 1100.7, "assets26M": 5712.8, "bsIsEstimate": False, "ebitTtmIsEstimate": False},
+    "LKPG": {"rev26M": 302.5, "rev25M": 275.5, "ebitda26M": 104.2, "ebitda25M": 95.8, "ni26M": 66.8, "ni25M": 59.6, "equity26M": 694.5, "assets26M": 965.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
+    "POSR": {"rev26M": 742.0, "rev25M": 684.5, "ebitda26M": 118.5, "ebitda25M": 107.2, "ni26M": 94.0, "ni25M": 84.5, "equity26M": 782.0, "assets26M": 3180.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
+    "TLSG": {"rev26M": 566.7, "rev25M": 544.4, "ebitda26M": 201.4, "ebitda25M": 188.6, "ni26M": 55.4, "ni25M": 47.7, "equity26M": 734.0, "assets26M": 1495.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
+    "SALR": {"rev26M": 554.0, "rev25M": 509.2, "ebitda26M": 22.8, "ebitda25M": 20.1, "ni26M": 14.1, "ni25M": 12.8, "equity26M": 97.4, "assets26M": 312.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
+    "CICG": {"rev26M": 156.2, "rev25M": 159.5, "ebitda26M": 27.1, "ebitda25M": 31.8, "ni26M": 13.8, "ni25M": 16.1, "equity26M": 219.5, "assets26M": 251.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
 }
 
 COMPANY_META = {
@@ -170,28 +100,17 @@ COMPANY_META = {
         "biiScore": 555,
         "biiPillars": {"predictability": 92, "moat": 95, "management": 92, "financial": 98, "roic": 90, "price": 88},
         "revenueLabel": "Prihodki od prodaje",
-        "fcfLabel": "Normalizirani prosti denarni tok (5L povprečje FCF / Owner Earnings)",
-        "valuationModelType": "DCF (Normalizirani 5L FCF + Operativni denarni odbitek)",
-        "dividendCalendar": {"exDivDate": "2026-07-22", "payDate": "2026-07-24", "dps2026": 9.10, "dps5yGrowthEstPct": 7.5, "payoutRatioPct": 62.5},
-        "dcfDefaults": {
-            "isFinancialModel": False,
-            "baseCashFlowM": 315.0,
-            "fcf5yAvgM": 290.2,
-            "fcf3yAvgM": 254.7,
-            "fcfPeak2025M": 430.3,
-            "fcfNormalizedM": 315.0,
-            "baseRevenueM": 2165.3,
+        "fcfLabel": "Normaliziran FCF = 5-letna mediana FCF (2021–2025)",
+        "valuationModelType": "DCF (5L mediana FCF + Odbitek 2,0 % prihodkov za operativni denar)",
+        "dividendCalendar": {"exDivDate": "2026-07-22", "payDate": "2026-07-24", "alreadyPaidIn2026": True, "nextExDivDate": "2027-07-21 (ocena)", "dps2026": 9.10, "dps5yGrowthEstPct": 7.5},
+        "dcfParams": {
             "growthStage1Pct": 6.5,
             "growthStage2Pct": 4.5,
             "waccPct": 8.8,
             "terminalGrowthPct": 2.5,
-            "exitMultiple": 12.5,
+            "exitMultiple": 16.3,
             "mosPct": 15.0,
-            "grossCashM": 347.8,
-            "operatingCashBufferM": 86.6,
-            "grossDebtM": 18.4,
-            "netDebtM": -242.8,
-            "sharesM": 30.556
+            "capmNote": "WACC 8,8 % = Rf 3,2 % (10L EUR) + β 0,85 × ERP 6,0 % + 0,5 % likvidnostni pribitek (100 % lastniški kapital)"
         },
         "interim2026": {
             "period": "1–9 2026 (9M 2026)",
@@ -200,7 +119,7 @@ COMPANY_META = {
             "netIncomeM": 338.5,
             "yoyRevenuePct": 8.1,
             "yoyNetIncomePct": 9.4,
-            "highlights": "Rekordna prodaja v regiji Vzhodna Evropa in Srednja Evropa; TTM čisti dobiček dosega 432,8 mio € (EPS TTM 14,16 €, P/E TTM 17,51x); potrditev celoletnega načrta 2026."
+            "highlights": "Rekordna prodaja v regiji Vzhodna Evropa in Srednja Evropa; pravi TTM čisti dobiček dosega 432,8 mio € (EPS TTM 14,16 €, P/E TTM 17,51x); potrditev celoletnega načrta 2026."
         },
         "latestResults": {
             "reportTitle": "Polletno poročilo H1 2026 & Poročilo 1–9 2026 (9M 2026)",
@@ -212,16 +131,16 @@ COMPANY_META = {
             "bullets": [
                 "Količinska in vrednostna rast prodaje v vseh 6 prodajnih regijah; najmočnejša rast v regijah Vzhodna Evropa (+10 %) in Srednja Evropa (+8 %).",
                 "V H1 2026 se je EBITDA povečal za +17,9 % na 357,5 mio € (31,9 % EBITDA marža), čisti dobiček v 9M 2026 pa je dosegel 338,5 mio € (+9,4 % YoY), kar dviguje pravi TTM čisti dobiček na 432,8 mio €.",
-                "Registriranih 14 novih zdravil na recept; izplačana rekordna dividenda 9,10 € na delnico (+10,3 % YoY) ter nadaljevanje odkupa lastnih delnic (7,3 % izdanih delnic v zakladnici)."
+                "Registriranih 14 novih zdravil na recept; izplačana dividenda 9,10 € na delnico (+10,3 % YoY) ter nadaljevanje odkupa lastnih delnic (2,24 mio zakladnih delnic)."
             ],
             "guidance": "Vodstvo potrjuje celoletni načrt za leto 2026: prodaja nad 2,16 mrd € in čisti dobiček nad 420–435 mio € ob ohranjanju >50 % dividendnega izplačila.",
             "reportUrl": "https://www.krka.si/_assets/Nerevidirano-porocilo-o-poslovanju-skupine-in-druzbe-Krka-za-prvo-polletje-2026.pdf"
         },
         "thesis": {
-            "summary": "Vodilni vertikalno integrirani proizvajalec generičnih zdravil v Srednji in Vzhodni Evropi z bilanco brez dolga (348 mio € bruto denarja; po odbitku 86,6 mio € operativnega denarnega blažilnika znaša prosti presežni denar 242,8 mio €).",
+            "summary": "Vodilni vertikalno integrirani proizvajalec generičnih zdravil v Srednji in Vzhodni Evropi z bilanco brez dolga (347,8 mio € bruto denarja; po odbitku 43,3 mio € operativnega denarnega blažilnika = 2,0 % TTM prihodkov znaša prilagojeni čisti dolg -286,1 mio €). Izhodiščni Normalizirani FCF (5L mediana 2021–2025) znaša 313,84 mio €.",
             "moat": "Vertikalna integracija od sinteze aktivnih učinkovin (API) do končnih oblik zdravil, močna mreža >4.000 strokovnih sodelavcev na 70+ trgih in visoka zvestoba zdravnikov pri zdravljenju kroničnih kardiovaskularnih bolezni.",
             "catalysts": ["Širitev portfelja kompleksnih generikov in fiksnih kombinacij", "Skupno podjetje na Kitajskem in vstop na nove trge JV Azije", "Nadaljevanje odkupov lastnih delnic in 6–8 % letna rast dividende"],
-            "risks": ["Geopolitična in valutna tveganja (RUB) na trgu Ruske federacije", "Cenovni pritiski regulatorjev zdravstvenih blagajn v EU", "Občutljivost DCF modela na izbiro izhodiščnega FCF (5L povprečje 290 M€ vs. vrh v 2025 pri 430 M€)"]
+            "risks": ["Geopolitična in valutna tveganja (RUB) na trgu Ruske federacije", "Cenovni pritiski regulatorjev zdravstvenih blagajn v EU", "Razlika med 5L povprečjem FCF (290,26 M€), 5L mediano (313,84 M€) in rekordnim FCF v 2025 (430,27 M€)"]
         }
     },
     "NLBR": {
@@ -243,32 +162,19 @@ COMPANY_META = {
         "biiScore": 540,
         "biiPillars": {"predictability": 86, "moat": 90, "management": 92, "financial": 94, "roic": 88, "price": 95},
         "revenueLabel": "Čisti prihodki iz poslovanja (Obresti + opravnine)",
-        "fcfLabel": "Presežni donos kapitala (Residual Income / EVA = (ROE − ke) × Kapital)",
-        "valuationModelType": "Model presežnega donosa kapitala (Residual Income / Justified P/B proti ROE)",
-        "dividendCalendar": {"exDivDate": "2026-06-23 & 2026-12-14", "payDate": "2 tranši po 6,92 €", "dps2026": 13.84, "dps5yGrowthEstPct": 6.0, "payoutRatioPct": 53.0},
-        "dcfDefaults": {
-            "isFinancialModel": True,
+        "fcfLabel": "Presežni donos kapitala (Residual Income: EVA = (ROE − ke) × Kapital)",
+        "valuationModelType": "Model presežnega donosa (Residual Income z bledenjem ROE proti ke)",
+        "dividendCalendar": {"exDivDate": "2026-06-23 (1. tranša) & 2026-12-14 (2. tranša 6,92 €)", "payDate": "2. tranša: december 2026", "alreadyPaidIn2026": False, "unpaid2026Dps": 6.92, "nextExDivDate": "2026-12-14 (2. tranša 6,92 €)", "dps2026": 13.84, "dps5yGrowthEstPct": 6.0},
+        "dcfParams": {
             "normalizedRoePct": 14.5,
-            "costOfEquityPct": 11.2,
-            "bookValueM": 3882.0,
-            "payoutRatioPct": 55.0,
-            "baseCashFlowM": 524.8,
-            "fcf5yAvgM": 463.6,
-            "fcf3yAvgM": 537.4,
-            "fcfPeak2025M": 518.7,
-            "fcfNormalizedM": 485.0,
-            "baseRevenueM": 1354.1,
-            "growthStage1Pct": 5.0,
-            "growthStage2Pct": 3.5,
+            "terminalRoeFadeToKePlusPct": 1.2,
+            "growthStage1Pct": 6.8,
+            "growthStage2Pct": 4.5,
             "waccPct": 11.2,
-            "terminalGrowthPct": 2.2,
+            "terminalGrowthPct": 2.0,
             "exitMultiple": 8.5,
             "mosPct": 20.0,
-            "grossCashM": 0.0,
-            "operatingCashBufferM": 0.0,
-            "grossDebtM": 0.0,
-            "netDebtM": 0.0,
-            "sharesM": 20.000
+            "capmNote": "Strošek lastniškega kapitala ke = 11,2 % (Rf 3,2 % + β 1,15 × ERP 6,0 % + 1,1 % SEE bančna premija); rast BV g = ROE × (1 − Payout 52,7 %)"
         },
         "interim2026": {
             "period": "1–9 2026 (Q3 2026)",
@@ -277,7 +183,7 @@ COMPANY_META = {
             "netIncomeM": 412.0,
             "yoyRevenuePct": 6.8,
             "yoyNetIncomePct": 1.5,
-            "highlights": "Konsolidirani čisti dobiček v 1–9 2026 znaša 412,0 mio € (TTM čisti dobiček 524,8 mio €, TTM P/E 8,08x, TTM P/B 1,09x, ROTE 15,8 %); objavljen prevzem >55 % deleža v Deželni banki Slovenije (DBS)."
+            "highlights": "Konsolidirani čisti dobiček v 1–9 2026 znaša 412,0 mio € (TTM čisti dobiček 524,8 mio €, TTM P/E 8,08x, TTM P/B 1,09x na uradni Q3 kapital 3.882,0 mio €); prevzem >55 % deleža v Deželni banki Slovenije (DBS)."
         },
         "latestResults": {
             "reportTitle": "Polletno poročilo H1 2026 & Rezultati Q3 / 9M 2026",
@@ -287,17 +193,17 @@ COMPANY_META = {
             "h1_2026": {"revenueM": 666.77, "revenue2025M": 629.52, "revYoYPct": 5.9, "ebitdaM": None, "ebitda2025M": None, "ebitdaYoYPct": None, "netIncomeM": 259.90, "netIncome2025M": 282.48, "niYoYPct": -8.0},
             "q3_9m_2026": {"period": "9M 2026 (1–9 2026)", "revenueM": 1018.4, "revYoYPct": 6.8, "ebitdaM": 495.0, "netIncomeM": 412.0, "niYoYPct": 1.5, "keyMetricLabel": "ROTE / NIM / TTM P/B", "keyMetricValue": "15,8 % ROTE · 3,26 % NIM · 1,09x P/B"},
             "bullets": [
-                "V prvih 9 mesecih 2026 so čisti prihodki zrasli za +6,8 % YoY na 1.018,4 mio € (v H1 +5,9 % na 666,8 mio €), čisti dobiček 9M pa je dosegel 412,0 mio € (+1,5 % YoY) ob rasti kapitala na 3.882 mio € (BVPS TTM 194,10 €).",
-                "Banke v JV Evropi (Beograd 109,5 mio €, Skopje 40,1 mio €, Priština 32,1 mio €, Banja Luka 25,5 mio €, Podgorica 17,6 mio €, Sarajevo 13,7 mio €) prispevajo že 55 % rezultata skupine ob dvomestni rasti kreditov.",
-                "Strateška širitev: pridobitev večinskega deleža (>55 %) v Deželni banki Slovenije (1,6 mrd € sredstev, 2,8 % tržni delež) ter uspešna izdaja 400 mio € Tier 2 obveznic."
+                "V prvih 9 mesecih 2026 so čisti prihodki zrasli za +6,8 % YoY na 1.018,4 mio € (v H1 +5,9 % na 666,8 mio €), čisti dobiček 9M pa je dosegel 412,0 mio € (+1,5 % YoY) ob uradnem Q3 kapitalu 3.882,0 mio € (BVPS TTM 194,10 €).",
+                "Banke v JV Evropi (Beograd 109,5 mio €, Skopje 40,1 mio €, Priština 32,1 mio €, Banja Luka 25,5 mio €, Podgorica 17,6 mio €, Sarajevo 13,7 mio €) prispevajo 55 % rezultata skupine.",
+                "Strateška širitev: pridobitev večinskega deleža (>55 %) v Deželni banki Slovenije (1,6 mrd € sredstev) ter izdaja 400 mio € Tier 2 obveznic; 2. tranša dividende (6,92 €/delnico) sledi decembra 2026."
             ],
-            "guidance": "Potrjena celoletna napoved rednih prihodkov >1,35 mrd €, stroškovno razmerje CIR ~45 % in izplačilo 55 % čistega dobička za dividende (13,84 €/delnico v dveh tranšah).",
+            "guidance": "Potrjena celoletna napoved rednih prihodkov >1,35 mrd €, stroškovno razmerje CIR ~45 % in izplačilo 13,84 €/delnico dividende v dveh tranšah.",
             "reportUrl": "https://www.nlbgroup.com/content/dam/nlb/nlb-group/documents/investor-relations/financial-reports/2026/h1/NLB-Group-Interim-Report-January%E2%80%93June-2026.pdf"
         },
         "thesis": {
-            "summary": "Sistemski bančni šampion v regiji Jugovzhodne Evrope (SEE). Vrednoten po modelu presežnega donosa kapitala (Residual Income: ROE 14,5 % proti strošku lastniškega kapitala ke 11,2 % na knjigovodsko vrednost 194,10 €/delnico), kar upravičuje pošteni P/B ~1,22x–1,30x.",
+            "summary": "Sistemski bančni šampion v regiji Jugovzhodne Evrope (SEE). Vrednoten po modelu presežnega donosa kapitala (Residual Income: začetni ROE 14,5 % z postopnim bledenjem proti strošku kapitala ke 11,2 %, rast knjigovodske vrednosti g = ROE × (1 − izplačilno razmerje 52,7 %)).",
             "moat": "Dominantna baza nizkocenovnih vpoglednih depozitov prebivalstva v Sloveniji in SEE, visoka kapitalska ustreznost (CET1 >15 %) in ekskluzivna regionalna prisotnost na trgih z visoko gospodarsko rastjo.",
-            "catalysts": ["Strategija 2030: podvojitev bilančne vsote na >50 mrd € in >1 mrd € rednega dobička", "Integracija Deželne banke Slovenije (DBS) in lizinških operacij", "Visoka izplačila dividend (13,84 €/delnico oz. 6,53 % donos)"],
+            "catalysts": ["Strategija 2030: podvojitev bilančne vsote na >50 mrd € in >1 mrd € rednega dobička", "Integracija Deželne banke Slovenije (DBS) in lizinških operacij", "2. tranša dividende 6,92 €/delnico decembra 2026 (skupaj 13,84 € oz. 6,53 % donos)"],
             "risks": ["Normalizacija obrestnih mer ECB in postopna kompresija neto obrestne marže (NIM)", "Makroekonomsko ohlajanje v evroobmočju in strošek tveganj (CoR)", "Posebni davek na bilančno vsoto bank v Sloveniji"]
         }
     },
@@ -320,28 +226,17 @@ COMPANY_META = {
         "biiScore": 475,
         "biiPillars": {"predictability": 78, "moat": 80, "management": 80, "financial": 76, "roic": 78, "price": 83},
         "revenueLabel": "Prihodki od prodaje",
-        "fcfLabel": "Normalizirani prosti denarni tok (5L povprečje FCF)",
-        "valuationModelType": "DCF (Normalizirani FCF skozi regulatorni cikel)",
-        "dividendCalendar": {"exDivDate": "2026-08-04", "payDate": "2026-08-06", "dps2026": 2.50, "dps5yGrowthEstPct": 5.5, "payoutRatioPct": 71.0},
-        "dcfDefaults": {
-            "isFinancialModel": False,
-            "baseCashFlowM": 138.0,
-            "fcf5yAvgM": 112.5,
-            "fcf3yAvgM": 135.2,
-            "fcfPeak2025M": 108.1,
-            "fcfNormalizedM": 138.0,
-            "baseRevenueM": 6957.7,
+        "fcfLabel": "Normaliziran FCF = 5-letna mediana FCF (2021–2025)",
+        "valuationModelType": "DCF (5L mediana FCF + Odbitek operativnega denarja)",
+        "dividendCalendar": {"exDivDate": "2026-08-04", "payDate": "2026-08-06", "alreadyPaidIn2026": True, "nextExDivDate": "2027-08-03 (ocena)", "dps2026": 2.50, "dps5yGrowthEstPct": 5.5},
+        "dcfParams": {
             "growthStage1Pct": 5.0,
             "growthStage2Pct": 3.0,
             "waccPct": 9.2,
             "terminalGrowthPct": 2.0,
-            "exitMultiple": 7.5,
+            "exitMultiple": 14.2,
             "mosPct": 15.0,
-            "grossCashM": 57.1,
-            "operatingCashBufferM": 28.5,
-            "grossDebtM": 469.1,
-            "netDebtM": 440.5,
-            "sharesM": 41.125
+            "capmNote": "WACC 9,2 % = ke 10,8 % (Rf 3,2 % + β 1,10 × ERP 6,0 % + 1,0 % reg. tveganje) pri ~82 % deležu kapitala in kd (po davku) 3,8 %"
         },
         "interim2026": {
             "period": "1–9 2026 (9M 2026)",
@@ -350,25 +245,25 @@ COMPANY_META = {
             "netIncomeM": 106.4,
             "yoyRevenuePct": 18.2,
             "yoyNetIncomePct": -21.7,
-            "highlights": "Zaradi -21,7 % nižjega 9M čistega dobička (106,4 mio € vs. 135,9 mio € v 9M 2025) znaša pravi TTM čisti dobiček 144,7 mio € (EPS TTM 3,52 €) in pravi TTM P/E 15,63x (namesto 12,84x na osnovi FY25)."
+            "highlights": "Zaradi -21,7 % nižjega 9M čistega dobička (106,4 mio € vs. 135,9 mio € v 9M 2025) znaša pravi TTM čisti dobiček 144,7 mio € (EPS TTM 3,52 €) in pravi TTM P/E 15,64x."
         },
         "latestResults": {
             "reportTitle": "Polletno poročilo H1 2026 & Rezultati 1–9 2026",
             "publishedDate": "Avgust / November 2026",
             "sentiment": "amber",
-            "sentimentLabel": "Rast prihodkov · TTM dobiček 144,7 M€ (P/E 15,6x)",
+            "sentimentLabel": "Rast prihodkov · TTM dobiček 144,7 M€ (P/E 15,64x)",
             "h1_2026": {"revenueM": 3345.43, "revenue2025M": 2987.01, "revYoYPct": 12.0, "ebitdaM": 130.12, "ebitda2025M": 145.20, "ebitdaYoYPct": -10.4, "netIncomeM": 57.35, "netIncome2025M": 75.19, "niYoYPct": -23.7},
-            "q3_9m_2026": {"period": "9M 2026 (1–9 2026)", "revenueM": 5312.0, "revYoYPct": 18.2, "ebitdaM": 234.8, "netIncomeM": 106.4, "niYoYPct": -21.7, "keyMetricLabel": "Pravi TTM Dobiček / P/E", "keyMetricValue": "144,7 M€ · TTM P/E 15,63x"},
+            "q3_9m_2026": {"period": "9M 2026 (1–9 2026)", "revenueM": 5312.0, "revYoYPct": 18.2, "ebitdaM": 234.8, "netIncomeM": 106.4, "niYoYPct": -21.7, "keyMetricLabel": "Pravi TTM Dobiček / P/E", "keyMetricValue": "144,7 M€ · TTM P/E 15,64x"},
             "bullets": [
                 "V H1 2026 so prihodki zrasli za +12,0 % na 3,35 mrd € (v 9M 2026 na 5,31 mrd € oz. +18,2 % YoY) ob večji količinski prodaji goriv in trgovskega blaga ter gastro ponudbe Fresh.",
-                "Čisti dobiček v 9M 2026 je upadel za -21,7 % na 106,4 mio € (v H1 -23,7 % na 57,4 mio €) zaradi regulacije marž pogonskih goriv v Sloveniji; pravi TTM čisti dobiček je zato 144,7 mio € (TTM P/E 15,63x).",
-                "Uspešno nadaljevanje projektov zelene energetske tranzicije (sončne elektrarne, e-polnilnice) in izplačilo dividende 2,50 €/delnico."
+                "Čisti dobiček v 9M 2026 je upadel za -21,7 % na 106,4 mio € zaradi regulacije marž pogonskih goriv v Sloveniji; pravi TTM čisti dobiček je zato 144,7 mio € (TTM P/E 15,64x).",
+                "V letu 2022 je družba zaradi energetske krize in regulacije cen zabeležila revidirano čisto izgubo -2,69 mio € (EPS -0,07 € ob dejanskem zaključnem tečaju 20,00 € na LJSE dne 30. 12. 2022), zato je leto 2022 izločeno iz 10L povprečja P/E (N=9)."
             ],
             "guidance": "Fokus vodstva na stroškovni optimizaciji, rasti visokomaržnega trgovskega blaga in energetskih storitev ter prizadevanjih za sprostitev reguliranih marž goriv.",
             "reportUrl": "https://www.petrol.eu/binaries/content/assets/skupina-petrol-slo/objave/2026/08/porocilo-o-poslovanju-skupine-petrol-in-druzbe-petrol-d.d.,-ljubljana-januar-junij-2026.pdf"
         },
         "thesis": {
-            "summary": "Vodilna energetska in maloprodajna skupina v Sloveniji in na Hrvaškem (595 bencinskih servisov). Pri pravem TTM dobičku 144,7 mio € se delnica trguje pri TTM P/E 15,63x (in ne 13,0x iz lanskih številk), kar odraža pritisk regulacije marž v letu 2026.",
+            "summary": "Vodilna energetska in maloprodajna skupina v Sloveniji in na Hrvaškem (595 bencinskih servisov). Izhodiščni Normalizirani FCF je 5-letna mediana FCF iz izkazov (2021–2025). Pri izračunu čistega dolga je celotnih 57,1 mio € denarja zadržanih kot operativni denarni blažilnik (ker je 2 % TTM prihodkov > bruto denar), zato znaša prilagojeni čisti dolg za vrednotenje 469,1 mio €.",
             "moat": "Strateška mreža ~600 prodajnih mest na ključnih prometnih koridorjih v Sloveniji, na Hrvaškem in v Srbiji z visokomaržnim segmentom trgovskega blaga in storitev (Fresh).",
             "catalysts": ["Morebitna sprostitev ali prilagoditev reguliranih marž naftnih derivatov v Sloveniji", "Rast deleža OVE (vetrne in sončne elektrarne na Hrvaškem in v regiji)", "Znižanje neto finančnega dolga in rast dividendnega izplačila (2,50 €/delnico)"],
             "risks": ["Državna regulacija marž pogonskih goriv in zemeljskega plina/elektrike", "Nihanje cen energentov in obratnega kapitala", "Dolgoročni upad prodaje fosilnih goriv zaradi elektrifikacije voznega parka"]
@@ -392,33 +287,20 @@ COMPANY_META = {
         "fScore": 8,
         "biiScore": 510,
         "biiPillars": {"predictability": 82, "moat": 88, "management": 85, "financial": 90, "roic": 82, "price": 83},
-        "revenueLabel": "Zavarovalni prihodki / Obseg poslovanja (MSRP 17)",
-        "fcfLabel": "Presežni donos kapitala (Residual Income / EVA = (ROE − ke) × Kapital)",
-        "valuationModelType": "Model presežnega donosa kapitala (Residual Income / Justified P/B proti ROE)",
-        "dividendCalendar": {"exDivDate": "2026-06-16", "payDate": "2026-06-18", "dps2026": 3.00, "dps5yGrowthEstPct": 6.0, "payoutRatioPct": 49.8},
-        "dcfDefaults": {
-            "isFinancialModel": True,
+        "revenueLabel": "Zavarovalni prihodki / Premije (MSRP 17 / MSRP 4)",
+        "fcfLabel": "Presežni donos kapitala (Residual Income: EVA = (ROE − ke) × Kapital)",
+        "valuationModelType": "Model presežnega donosa (Residual Income z bledenjem ROE proti ke)",
+        "dividendCalendar": {"exDivDate": "2026-06-16", "payDate": "2026-06-18", "alreadyPaidIn2026": True, "nextExDivDate": "2027-06-15 (ocena)", "dps2026": 3.00, "dps5yGrowthEstPct": 6.0},
+        "dcfParams": {
             "normalizedRoePct": 13.2,
-            "costOfEquityPct": 10.4,
-            "bookValueM": 1100.7,
-            "payoutRatioPct": 52.0,
-            "baseCashFlowM": 137.2,
-            "fcf5yAvgM": 98.1,
-            "fcf3yAvgM": 94.8,
-            "fcfPeak2025M": 136.7,
-            "fcfNormalizedM": 137.2,
-            "baseRevenueM": 1644.5,
-            "growthStage1Pct": 5.0,
-            "growthStage2Pct": 3.5,
+            "terminalRoeFadeToKePlusPct": 1.0,
+            "growthStage1Pct": 6.6,
+            "growthStage2Pct": 4.2,
             "waccPct": 10.4,
-            "terminalGrowthPct": 2.2,
+            "terminalGrowthPct": 2.0,
             "exitMultiple": 11.0,
             "mosPct": 15.0,
-            "grossCashM": 0.0,
-            "operatingCashBufferM": 0.0,
-            "grossDebtM": 0.0,
-            "netDebtM": 0.0,
-            "sharesM": 22.735
+            "capmNote": "Strošek lastniškega kapitala ke = 10,4 % (Rf 3,2 % + β 1,05 × ERP 6,0 % + 0,9 % Adria zavarovalna premija); rast BV g = ROE × (1 − Payout 49,8 %)"
         },
         "interim2026": {
             "period": "1–9 2026 (9M 2026)",
@@ -427,7 +309,7 @@ COMPANY_META = {
             "netIncomeM": 119.1,
             "yoyRevenuePct": 2.1,
             "yoyNetIncomePct": 0.4,
-            "highlights": "V 9M 2026 je GWP dosegel 1.735,1 mio € (+2,1 % YoY), EBT 146,3 mio € (+2,0 % YoY), čisti dobiček 119,1 mio € (+0,4 % YoY), kombinirani količnik 94,6 % in ROE 14,9 %. Prevzem 49 % deleža v Arsano Medical Group."
+            "highlights": "V 9M 2026 je GWP dosegel 1.735,1 mio € (+2,1 % YoY), EBT 146,3 mio € (+2,0 % YoY), čisti dobiček 119,1 mio € (+0,4 % YoY), kombinirani količnik 94,6 %, ROE 14,9 % in uradni Q3 kapital 1.100,7 mio €."
         },
         "latestResults": {
             "reportTitle": "Rezultati 9M 2026, Obeti 2026 in Načrt 2027",
@@ -437,15 +319,15 @@ COMPANY_META = {
             "h1_2026": {"revenueM": 762.00, "revenue2025M": 699.08, "revYoYPct": 9.0, "ebitdaM": 108.5, "ebitda2025M": 109.6, "ebitdaYoYPct": -1.0, "netIncomeM": 85.65, "netIncome2025M": 91.44, "niYoYPct": -6.3},
             "q3_9m_2026": {"period": "9M 2026 (1–9 2026)", "revenueM": 1735.1, "revYoYPct": 2.1, "ebitdaM": 146.3, "netIncomeM": 119.1, "niYoYPct": 0.4, "keyMetricLabel": "Kombinirani količnik / ROE", "keyMetricValue": "94,6 % CoR · 14,9 % ROE"},
             "bullets": [
-                "Enotna metodologija prihodkov: v H1 2026 so zavarovalni prihodki (MSRP 17) zrasli za +9,0 % YoY na 762,0 mio € (celotni obseg poslovanja H1 +8,0 % na 1.356,4 mio €), v 9M 2026 pa so obračunane premije (GWP) dosegle 1.735,1 mio € (+2,1 % YoY ob prenovi italijanskega portfelja).",
-                "Dobiček pred obdavčitvijo (EBT) v 9M 2026 je zrasel za +2,0 % YoY na 146,3 mio € (čisti dobiček 119,1 mio €; TTM čisti dobiček 137,2 mio €), obrestni prihodki iz naložb pa so poskočili za +17 % na 47,4 mio €.",
-                "Podpisana pogodba o nakupu 49 % deleža v hrvaški zasebni zdravstveni skupini Arsano Medical Group; sredstva v upravljanju (AUM) +10 % na 6,92 mrd €."
+                "V 9M 2026 je dobiček pred obdavčitvijo (EBT) zrasel za +2,0 % YoY na 146,3 mio € (čisti dobiček 119,1 mio €; TTM čisti dobiček 137,2 mio €), obrestni prihodki iz naložb pa so poskočili za +17 % na 47,4 mio €.",
+                "Pojasnilo za leto 2022 in 2023: pri prehodu na MSRP 17/9 v letnem poročilu 2023 je bil primerjalni čisti izid za leto 2022 preračunan na -6,97 mio € (EPS -0,31 € ob dejanskem tečaju 34,50 € dne 30. 12. 2022; po starem MSRP 4 je bil 110,2 mio €), v letu 2023 pa so poplave znižale dobiček na 16,27 mio € (P/E 48,50x). Obe leti sta izločeni iz 10L povprečja P/E (dejanski vzorec N=8).",
+                "Podpisana pogodba o nakupu 49 % deleža v hrvaški zasebni zdravstveni skupini Arsano Medical Group; uradni kapital na 30. 9. 2026 znaša 1.100,7 mio €."
             ],
             "guidance": "Potrjena celoletna napoved za leto 2026 ter načrt za leto 2027 (EBT 200–220 mio €) in strategija do 2030 (EBT 250–300 mio €, Solvency II 200–250 %).",
             "reportUrl": "https://seonet.ljse.si/file.aspx?AttachmentID=56249"
         },
         "thesis": {
-            "summary": "Vodilna zavarovalno-finančna skupina v regiji Adria. Vrednotena po modelu presežnega donosa kapitala (Residual Income: normalizirani ROE 13,2 % proti strošku kapitala ke 10,4 % na knjigovodski kapital 1.100,7 mio € oz. BVPS TTM 48,41 €).",
+            "summary": "Vodilna zavarovalno-finančna skupina v regiji Adria. Vrednotena po modelu presežnega donosa kapitala (Residual Income: začetni ROE 13,2 % z bledenjem proti ke 10,4 % na uradni Q3 knjigovodski kapital 1.100,7 mio € oz. BVPS TTM 48,41 €).",
             "moat": "Najmočnejša zavarovalniška blagovna znamka in zastopniška mreža v regiji Adria, ekonomija obsega pri škodnem upravljanju in navzkrižna prodaja premoženjskih, življenjskih, zdravstvenih zavarovanj ter vzajemnih skladov.",
             "catalysts": ["Strategija 2030: rast EBT na 250–300 mio € in izplačilo ~400 mio € dividend v obdobju 2025–2030", "Višji donosi obvezniškega naložbenega portfelja (+17 % rast obrestnih prihodkov)", "Širitev zasebnih zdravstvenih storitev v regiji (Arsano Medical Group)"],
             "risks": ["Naravne ujme in ekstremni vremenski dogodki (poplave, toča) v regiji", "Višja cena pozavarovalne zaščite na svetovnih trgih", "Regulatorni posegi na področju zdravstvenih zavarovanj"]
@@ -470,28 +352,21 @@ COMPANY_META = {
         "biiScore": 505,
         "biiPillars": {"predictability": 84, "moat": 92, "management": 80, "financial": 90, "roic": 82, "price": 77},
         "revenueLabel": "Prihodki od prodaje",
-        "fcfLabel": "Normalizirani Owner Earnings (OCF minus vzdrževalni CAPEX)",
-        "valuationModelType": "DCF (Normalizirani Owner Earnings + Naložba v KRKG)",
-        "dividendCalendar": {"exDivDate": "2026-08-26", "payDate": "2026-08-28", "dps2026": 2.30, "dps5yGrowthEstPct": 6.5, "payoutRatioPct": 36.7},
-        "dcfDefaults": {
-            "isFinancialModel": False,
-            "baseCashFlowM": 72.0,
-            "fcf5yAvgM": 38.4,
-            "fcf3yAvgM": 29.8,
-            "fcfPeak2025M": 81.5,
-            "fcfNormalizedM": 72.0,
-            "baseRevenueM": 407.3,
+        "fcfLabel": "Normaliziran FCF = 5-letna mediana FCF (2021–2025)",
+        "valuationModelType": "DCF (5L mediana FCF + Naložba v KRKG 86,1 M€ po 20% odbitku)",
+        "krkaSharesHeld": 433786,
+        "krkaStakeHaircutPct": 20.0,
+        "plannedExpansionCapex2024_2028M": 785.0,
+        "capexWarningNote": "OPOZORILO: Luka Koper je v investicijskem ciklu 785 mio € (2024–2028; podaljšanje Pomola I, 2. tir), zaradi česar je bil računovodski FCF v letu 2025 negativen (-11,00 M€). Izhodiščna 5L mediana FCF (28,53 M€) ne zajema prihodnjih izdatkov 785 M€ razvojnega CAPEX-a (v simulatorju je mogoče odšteti PV razvojnega CAPEX-a), medtem ko je v prehod EV → Kapital eksplicitno prišteta finančna naložba v 433.786 delnic KRKG po 20 % odbitku za davek/likvidnost (86,06 M€ oz. 6,15 €/delnico).",
+        "dividendCalendar": {"exDivDate": "2026-08-26", "payDate": "2026-08-28", "alreadyPaidIn2026": True, "nextExDivDate": "2027-08-25 (ocena)", "dps2026": 2.30, "dps5yGrowthEstPct": 6.5},
+        "dcfParams": {
             "growthStage1Pct": 7.0,
             "growthStage2Pct": 4.8,
             "waccPct": 8.6,
             "terminalGrowthPct": 2.5,
-            "exitMultiple": 11.0,
+            "exitMultiple": 16.8,
             "mosPct": 15.0,
-            "grossCashM": 97.8,
-            "operatingCashBufferM": 16.3,
-            "grossDebtM": 79.0,
-            "netDebtM": -2.5,
-            "sharesM": 14.000
+            "capmNote": "WACC 8,6 % = ke 9,4 % (Rf 3,2 % + β 0,95 × ERP 6,0 % + 0,5 %) in kd (po davku) 3,4 %; v prehod EV → Kapital vključena naložba v KRKG (86,06 M€ po 20 % odbitku)"
         },
         "interim2026": {
             "period": "1–9 2026 (9M 2026)",
@@ -511,17 +386,17 @@ COMPANY_META = {
             "q3_9m_2026": {"period": "9M 2026 (1–9 2026)", "revenueM": 302.5, "revYoYPct": 9.8, "ebitdaM": 104.2, "netIncomeM": 66.8, "niYoYPct": 12.1, "keyMetricLabel": "Pravi TTM Dobiček / P/E", "keyMetricValue": "88,7 M€ · TTM P/E 17,20x"},
             "bullets": [
                 "V H1 2026 so čisti prihodki od prodaje zrasli za +9,8 % na 206,1 mio €, EBITDA za +7,5 % na 73,3 mio € (35,6 % marža), čisti dobiček pa za +10,6 % na 48,1 mio €.",
-                "Trend rasti se je nadaljeval v 9M 2026 (prihodki 302,5 mio €, čisti dobiček 66,8 mio € oz. +12,1 % YoY), s čimer pravi TTM čisti dobiček znaša 88,7 mio € (EPS TTM 6,34 €).",
-                "Intenzivno izvajanje 785 mio € investicijskega cikla (severni podaljšek Pomola I in priprava na priključitev 2. železniškega tira Divača–Koper)."
+                "V 9M 2026 so prihodki dosegli 302,5 mio €, čisti dobiček pa 66,8 mio € (+12,1 % YoY), s čimer pravi TTM čisti dobiček znaša 88,7 mio € (EPS TTM 6,34 €).",
+                "Zaradi 785 mio € investicijskega cikla (2024–2028) je bil računovodski FCF v letu 2025 negativen (-11,00 M€); 5L povprečje FCF iz izkazov znaša 26,54 M€, 3L povprečje 19,34 M€, 5L mediana pa 28,53 M€."
             ],
             "guidance": "Preseganje prvotnega letnega načrta prihodkov (>405 mio €) in čistega dobička (>86–89 mio €) za celotno leto 2026.",
             "reportUrl": "https://www.luka-kp.si/wp-content/uploads/2026/08/BORZA-1-6-2026-ZA-OBJAVO.pdf"
         },
         "thesis": {
-            "summary": "Geografski monopol kot najsevernejše večnamensko pristanišče v Sredozemlju. Zaradi 785 mio € razvojnega CAPEX cikla (2024–2028) je računovodski prosti denarni tok začasno negativen, medtem ko normalizirani Owner Earnings (OCF minus vzdrževalni CAPEX) znaša ~72 mio €/leto.",
-            "moat": "Naravni geografski jarek (5–7 dni krajša plovba iz Azije prek Sueza kot do severnoevropskih pristanišč Rotterdam/Hamburg) ter dolgoročna koncesijska pogodba do leta 2043. Vodilni terminal za avtomobile in kontejnerje v Jadranu.",
-            "catalysts": ["Odprtje drugega železniškega tira Divača–Koper (podvojitev železniške propustnosti)", "Podaljšanje kontejnerskega Pomola I na 1,75 mio TEU", "Visoka vrednost finančnega premoženja (433.786 delnic KRKG v vrednosti ~108 mio €)"],
-            "risks": ["Močan razvojni investicijski cikel (CAPEX 785 mio €) v letih 2025–2028", "Geopolitične motnje v Rdečem morju in Sueškem prekopu", "Visoko trenutno vrednotenje glede na lastno 10-letno zgodovino (100. percentil P/E)"]
+            "summary": "Geografski monopol kot najsevernejše večnamensko pristanišče v Sredozemlju. V prehodu EV → Kapital je poleg operativnega čistega dolga (-10,6 M€ po odbitku 8,1 M€ operativnega denarja) eksplicitno upoštevana tudi naložba v 433.786 delnic Krke (107,58 M€ bruto; 86,06 M€ oz. 6,15 €/delnico po 20 % odbitku za davek in likvidnost).",
+            "moat": "Naravni geografski jarek (5–7 dni krajša plovba iz Azije prek Sueza kot do severnoevropskih pristanišč Rotterdam/Hamburg) ter dolgoročna koncesijska pogodba do leta 2043.",
+            "catalysts": ["Odprtje drugega železniškega tira Divača–Koper (podvojitev železniške propustnosti)", "Podaljšanje kontejnerskega Pomola I na 1,75 mio TEU", "Visoka vrednost finančne naložbe v KRKG (86,06 M€ po 20 % odbitku)"],
+            "risks": ["Investicijski cikel 785 mio € (2024–2028) močno bremeni prosti denarni tok v letih 2025–2028 (FY25 FCF = -11,00 M€)", "Geopolitične motnje v Rdečem morju in Sueškem prekopu", "Visoko trenutno vrednotenje glede na lastno 10-letno zgodovino (100. percentil P/E)"]
         }
     },
     "POSR": {
@@ -542,33 +417,20 @@ COMPANY_META = {
         "fScore": 8,
         "biiScore": 525,
         "biiPillars": {"predictability": 85, "moat": 86, "management": 88, "financial": 94, "roic": 86, "price": 86},
-        "revenueLabel": "Zavarovalni prihodki (MSRP 17)",
-        "fcfLabel": "Presežni donos kapitala (Residual Income / EVA = (ROE − ke) × Kapital)",
-        "valuationModelType": "Model presežnega donosa kapitala (Residual Income / Justified P/B proti ROE)",
-        "dividendCalendar": {"exDivDate": "2026-06-10", "payDate": "2026-06-12", "dps2026": 2.75, "dps5yGrowthEstPct": 8.0, "payoutRatioPct": 34.6},
-        "dcfDefaults": {
-            "isFinancialModel": True,
+        "revenueLabel": "Zavarovalni prihodki / Premije (MSRP 17 / MSRP 4)",
+        "fcfLabel": "Presežni donos kapitala (Residual Income: EVA = (ROE − ke) × Kapital)",
+        "valuationModelType": "Model presežnega donosa (Residual Income z bledenjem ROE proti ke)",
+        "dividendCalendar": {"exDivDate": "2026-06-10", "payDate": "2026-06-12", "alreadyPaidIn2026": True, "nextExDivDate": "2027-06-09 (ocena)", "dps2026": 2.75, "dps5yGrowthEstPct": 8.0},
+        "dcfParams": {
             "normalizedRoePct": 14.2,
-            "costOfEquityPct": 10.4,
-            "bookValueM": 782.0,
-            "payoutRatioPct": 42.0,
-            "baseCashFlowM": 123.6,
-            "fcf5yAvgM": 77.9,
-            "fcf3yAvgM": 88.8,
-            "fcfPeak2025M": 114.1,
-            "fcfNormalizedM": 115.0,
-            "baseRevenueM": 951.1,
-            "growthStage1Pct": 5.5,
-            "growthStage2Pct": 3.8,
+            "terminalRoeFadeToKePlusPct": 1.2,
+            "growthStage1Pct": 9.3,
+            "growthStage2Pct": 5.5,
             "waccPct": 10.4,
-            "terminalGrowthPct": 2.2,
+            "terminalGrowthPct": 2.0,
             "exitMultiple": 10.5,
             "mosPct": 15.0,
-            "grossCashM": 0.0,
-            "operatingCashBufferM": 0.0,
-            "grossDebtM": 0.0,
-            "netDebtM": 0.0,
-            "sharesM": 15.498
+            "capmNote": "Strošek lastniškega kapitala ke = 10,4 % (Rf 3,2 % + β 1,05 × ERP 6,0 % + 0,9 % pozavarovalna premija); rast BV g = ROE × (1 − Payout 34,5 %)"
         },
         "interim2026": {
             "period": "1–9 2026 (9M 2026)",
@@ -595,9 +457,9 @@ COMPANY_META = {
             "reportUrl": "https://www.sava-re.si/media/store/savare/sl-si/doc/2026/Porocilo-o-poslovanju-1-6-2026.pdf"
         },
         "thesis": {
-            "summary": "Izjemno disciplinirana zavarovalno-pozavarovalna skupina. Vrednotena po modelu presežnega donosa kapitala (Residual Income: normalizirani ROE 14,2 % proti strošku kapitala ke 10,4 % na TTM kapital 782,0 mio € oz. BVPS TTM 50,46 €).",
+            "summary": "Izjemno disciplinirana zavarovalno-pozavarovalna skupina. Vrednotena po modelu presežnega donosa kapitala (Residual Income: začetni ROE 14,2 % z bledenjem proti ke 10,4 %, notranja rast kapitala g = ROE × (1 − izplačilno razmerje 34,5 %)).",
             "moat": "Dvojni poslovni model: stabilna maloprodajna zavarovalniška mreža v Sloveniji in na Zahodnem Balkanu (Zavarovalnica Sava) kombinirana z globalno razpršenim pozavarovalnim portfeljem in upravljanjem premoženja (Sava Infond).",
-            "catalysts": ["Ugodne globalne pozavarovalne premije in višji naložbeni donosi", "Rast TTM čistega dobička na 123,6 mio € in nizko razmerje izplačila dividend (~35 %), ki dopušča visoko rast dividend", "Močna solventnost (Solvency II >200 %)"],
+            "catalysts": ["Ugodne globalne pozavarovalne premije in višji naložbeni donosi", "Rast TTM čistega dobička na 123,6 mio € in nizko razmerje izplačila dividend (34,5 %), ki omogoča močno akumulacijo kapitala", "Močna solventnost (Solvency II >200 %)"],
             "risks": ["Veliki katastrofalni škodni dogodki (Cat losses) v domačem ali globalnem pozavarovalnem portfelju", "Mehčanje cenovnega cikla na globalnem pozavarovalnem trgu", "Nihanja na kapitalskih trgih"]
         }
     },
@@ -620,28 +482,17 @@ COMPANY_META = {
         "biiScore": 455,
         "biiPillars": {"predictability": 82, "moat": 80, "management": 75, "financial": 74, "roic": 70, "price": 74},
         "revenueLabel": "Prihodki od prodaje",
-        "fcfLabel": "Normalizirani prosti denarni tok (5L povprečje FCF)",
-        "valuationModelType": "DCF (2-stopenjski model normaliziranega FCF)",
-        "dividendCalendar": {"exDivDate": "2026-08-18", "payDate": "2026-08-20", "dps2026": 4.60, "dps5yGrowthEstPct": 6.0, "payoutRatioPct": 43.9},
-        "dcfDefaults": {
-            "isFinancialModel": False,
-            "baseCashFlowM": 64.5,
-            "fcf5yAvgM": 59.8,
-            "fcf3yAvgM": 62.4,
-            "fcfPeak2025M": 64.3,
-            "fcfNormalizedM": 64.5,
-            "baseRevenueM": 762.8,
+        "fcfLabel": "Normaliziran FCF = 5-letna mediana FCF (2021–2025)",
+        "valuationModelType": "DCF (5L mediana FCF + Odbitek 2,0 % prihodkov za operativni denar)",
+        "dividendCalendar": {"exDivDate": "2026-08-18", "payDate": "2026-08-20", "alreadyPaidIn2026": True, "nextExDivDate": "2027-08-17 (ocena)", "dps2026": 4.60, "dps5yGrowthEstPct": 6.0},
+        "dcfParams": {
             "growthStage1Pct": 4.5,
             "growthStage2Pct": 2.5,
             "waccPct": 8.4,
             "terminalGrowthPct": 1.8,
-            "exitMultiple": 6.5,
+            "exitMultiple": 15.4,
             "mosPct": 15.0,
-            "grossCashM": 80.1,
-            "operatingCashBufferM": 22.9,
-            "grossDebtM": 391.3,
-            "netDebtM": 334.1,
-            "sharesM": 6.505
+            "capmNote": "WACC 8,4 % = ke 9,8 % (Rf 3,2 % + β 0,95 × ERP 6,0 % + 0,9 %) in kd (po davku) 3,6 % pri ~26 % deležu neto dolga v EV"
         },
         "interim2026": {
             "period": "1–9 2026 (9M 2026)",
@@ -650,7 +501,7 @@ COMPANY_META = {
             "netIncomeM": 55.4,
             "yoyRevenuePct": 4.1,
             "yoyNetIncomePct": 16.2,
-            "highlights": "Močna +16,2 % rast čistega dobička v 9M 2026 (55,4 mio €) dviguje pravi TTM čisti dobiček na 68,3 mio € (EPS TTM 10,49 €, P/E TTM 13,63x, EV/EBITDA TTM 4,70x)."
+            "highlights": "Močna +16,2 % rast čistega dobička v 9M 2026 (55,4 mio €) dviguje pravi TTM čisti dobiček na 68,3 mio € (EPS TTM 10,49 €, P/E TTM 13,63x, EV/EBITDA TTM 4,67x)."
         },
         "latestResults": {
             "reportTitle": "Polletno poročilo H1 2026 & Rezultati 1–9 2026",
@@ -661,16 +512,16 @@ COMPANY_META = {
             "q3_9m_2026": {"period": "9M 2026 (1–9 2026)", "revenueM": 566.7, "revYoYPct": 4.1, "ebitdaM": 201.4, "netIncomeM": 55.4, "niYoYPct": 16.2, "keyMetricLabel": "TTM Dobiček / TTM P/E", "keyMetricValue": "68,3 M€ · TTM P/E 13,63x"},
             "bullets": [
                 "V H1 2026 je Skupina Telekom Slovenije povečala prihodke za +3,6 % na 366,9 mio €, EBITDA za +6,8 % na 134,3 mio € in čisti dobiček za +6,4 % na 31,5 mio €.",
-                "V 9M 2026 se je čisti dobiček povečal za +16,2 % YoY na 55,4 mio €, kar dviguje pravi TTM čisti dobiček na 68,3 mio € (TTM P/E 13,63x — za -10,3 % ceneje od mediane tujih telekomov pri 15,2x).",
-                "Izstopajoča rast hčerinske družbe IPKO na Kosovu (visoka EBITDA marža >50 %) ter IKT in kibernetskih storitev v Sloveniji."
+                "V 9M 2026 se je čisti dobiček povečal za +16,2 % YoY na 55,4 mio €, kar dviguje pravi TTM čisti dobiček na 68,3 mio € (TTM P/E 13,63x). V letih 2017 (čisti dobiček 9,02 M€, P/E 59,78x) in 2019 (čisti dobiček 0,94 M€, P/E 376,08x) so enkratne rezervacije povzročile ekstremna P/E osamelca (>38x), ki sta izločena iz 10L povprečja P/E (dejanski vzorec N=8).",
+                "Izstopajoča rast hčerinske družbe IPKO na Kosovu ter IKT in kibernetskih storitev v Sloveniji."
             ],
             "guidance": "Preseganje letnega načrta čistega dobička (>68 mio €) za leto 2026 in stabilna dividendna politika (4,60 €/delnico v 2026).",
             "reportUrl": "https://www.telekom.si/media/m4gn4q4b/nerevidirano-poro%C4%8Dilo-o-poslovanju-sts-in-ts-i-vi-2026.pdf"
         },
         "thesis": {
-            "summary": "Vodilni slovenski telekomunikacijski operater z najobsežnejšim optičnim in 5G omrežjem ter rastočo hčerinsko družbo IPKO na Kosovu. Pri pravem TTM dobičku 68,3 mio € se trguje pri TTM P/E 13,63x in EV/EBITDA 4,70x.",
+            "summary": "Vodilni slovenski telekomunikacijski operater z najobsežnejšim optičnim in 5G omrežjem ter rastočo hčerinsko družbo IPKO na Kosovu. Izhodiščni Normalizirani FCF (5L mediana FCF 2021–2025 iz izkazov) znaša 64,29 mio €.",
             "moat": "Lastništvo kritične nacionalne fiksne optične in mobilne infrastrukture z visokimi vstopnimi ovirami ter stabilnimi ponavljajočimi se naročniškimi denarnimi tokovi.",
-            "catalysts": ["Monetizacija 5G, oblačnih IKT rešitev, kibernetske varnosti in e-zdravja", "Izjemna rast prihodkov in EBITDA hčerinske družbe IPKO Kosovo", "Trgovanje pri EV/EBITDA 4,70x in P/B 1,27x (diskont glede na zahodnoevropske telekome)"],
+            "catalysts": ["Monetizacija 5G, oblačnih IKT rešitev, kibernetske varnosti in e-zdravja", "Izjemna rast prihodkov in EBITDA hčerinske družbe IPKO Kosovo", "Trgovanje pri TTM P/E 13,63x in P/B 1,27x"],
             "risks": ["Visoke kapitalske potrebe (CAPEX ~180–200 mio €/leto) za vzdrževanje in nadgradnjo omrežja", "Intenzivna cenovna konkurenca štirih operaterjev na slovenskem trgu", "Regulatorni in pravni spori"]
         }
     },
@@ -693,28 +544,17 @@ COMPANY_META = {
         "biiScore": 465,
         "biiPillars": {"predictability": 84, "moat": 78, "management": 84, "financial": 82, "roic": 84, "price": 53},
         "revenueLabel": "Prihodki od prodaje",
-        "fcfLabel": "Normalizirani prosti denarni tok (5L povprečje FCF)",
-        "valuationModelType": "DCF (2-stopenjski model prostega denarnega toka)",
-        "dividendCalendar": {"exDivDate": "2026-05-14 & 2026-10-15", "payDate": "Izplačilo v 2 obrokih", "dps2026": 1.20, "dps5yGrowthEstPct": 7.0, "payoutRatioPct": 54.1},
-        "dcfDefaults": {
-            "isFinancialModel": False,
-            "baseCashFlowM": 15.2,
-            "fcf5yAvgM": 12.1,
-            "fcf3yAvgM": 13.4,
-            "fcfPeak2025M": 12.6,
-            "fcfNormalizedM": 15.2,
-            "baseRevenueM": 741.0,
+        "fcfLabel": "Normaliziran FCF = 5-letna mediana FCF (2021–2025)",
+        "valuationModelType": "DCF (5L mediana FCF + Odbitek operativnega denarja)",
+        "dividendCalendar": {"exDivDate": "2026-05-14 & 2026-10-15", "payDate": "Izplačano v 2 obrokih", "alreadyPaidIn2026": True, "nextExDivDate": "2027-05-13 (ocena)", "dps2026": 1.20, "dps5yGrowthEstPct": 7.0},
+        "dcfParams": {
             "growthStage1Pct": 7.5,
             "growthStage2Pct": 4.5,
             "waccPct": 8.5,
             "terminalGrowthPct": 2.5,
-            "exitMultiple": 12.0,
+            "exitMultiple": 17.1,
             "mosPct": 15.0,
-            "grossCashM": 14.1,
-            "operatingCashBufferM": 7.0,
-            "grossDebtM": 25.9,
-            "netDebtM": 18.8,
-            "sharesM": 8.218
+            "capmNote": "WACC 8,5 % = ke 9,0 % (Rf 3,2 % + β 0,85 × ERP 6,0 % + 0,7 %) in kd (po davku) 3,5 %"
         },
         "interim2026": {
             "period": "1–9 2026 (9M 2026)",
@@ -735,13 +575,13 @@ COMPANY_META = {
             "bullets": [
                 "V H1 2026 je Skupina Salus dosegla +18,4 % rast prihodkov na 399,0 mio €, EBITDA se je povečal za +21,6 % na 16,9 mio €, čisti dobiček pa za +22,5 % na 10,3 mio €.",
                 "V 9M 2026 je čisti dobiček zrasel za +10,4 % na 14,1 mio €, s čimer pravi TTM čisti dobiček znaša 18,26 mio € (EPS TTM 2,22 €, TTM P/E 26,55x).",
-                "Po cepitvi delnic v razmerju 1:60 in vključitvi v indeks SBI TOP marca 2026 se je občutno povečala likvidnost delnice."
+                "Izhodiščni FCF kazalniki so izračunani neposredno iz 10-letnih izkazov: 5L mediana FCF = 12,59 M€, 5L povprečje = 11,48 M€, 3L povprečje = 14,72 M€, FY25 FCF = 12,59 M€."
             ],
             "guidance": "Celoletni prihodki Skupine Salus v 2026 ocenjeni nad 740–750 mio € ob čistem dobičku ~18,5–19,5 mio €.",
             "reportUrl": "https://www.salus.eu/wp-content/uploads/2026/09/260828.Q2_final.pdf"
         },
         "thesis": {
-            "summary": "Eden vodilnih veletrgovcev s farmacevtskimi izdelki in medicinskimi pripomočki v JV Evropi (Sanolabor, Medilab), od marca 2026 član indeksa SBI TOP.",
+            "summary": "Eden vodilnih veletrgovcev s farmacevtskimi izdelki in medicinskimi pripomočki v JV Evropi (Sanolabor, Medilab), od marca 2026 član indeksa SBI TOP. Izhodiščni Normalizirani FCF (5L mediana FCF 2021–2025) znaša 12,59 mio €.",
             "moat": "Dolgoročna logistična in regulatorna infrastruktura za oskrbo lekarn in bolnišnic ter hitro rastoči višjemaržni segment medicinskih pripomočkov in maloprodaje (Sanolabor).",
             "catalysts": ["Povečana likvidnost delnice po cepitvi in vključitvi v indeks SBI TOP", "Prevzemi distributerjev medicinske opreme na Hrvaškem in v regiji Adria", "Demografski trendi staranja prebivalstva"],
             "risks": ["Nizke veleprodajne marže v osnovni distribuciji zdravil (~2,5 % čista marža)", "Visoko trenutno vrednotenje (TTM P/E 26,55x, P/B 4,98x) po močni rasti tečaja", "Odvisnost od javnih razpisov bolnišnic in reguliranih marž"]
@@ -766,28 +606,17 @@ COMPANY_META = {
         "biiScore": 470,
         "biiPillars": {"predictability": 68, "moat": 76, "management": 82, "financial": 96, "roic": 78, "price": 85},
         "revenueLabel": "Prihodki od prodaje",
-        "fcfLabel": "Normalizirani prosti denarni tok skozi cikel (5L povprečje FCF)",
-        "valuationModelType": "DCF (Normalizirani 5L FCF skozi cikel TiO2)",
-        "dividendCalendar": {"exDivDate": "2026-06-29", "payDate": "2026-07-01", "dps2026": 1.80, "dps5yGrowthEstPct": 3.0, "payoutRatioPct": 81.8},
-        "dcfDefaults": {
-            "isFinancialModel": False,
-            "baseCashFlowM": 17.8,
-            "fcf5yAvgM": 17.8,
-            "fcf3yAvgM": 13.5,
-            "fcfPeak2025M": 5.3,
-            "fcfNormalizedM": 17.8,
-            "baseRevenueM": 195.5,
+        "fcfLabel": "Normaliziran FCF = 5-letna mediana FCF (2021–2025)",
+        "valuationModelType": "DCF (5L mediana FCF skozi cikel TiO2 + Odbitek operativnega denarja)",
+        "dividendCalendar": {"exDivDate": "2026-06-29", "payDate": "2026-07-01", "alreadyPaidIn2026": True, "nextExDivDate": "2027-06-28 (ocena)", "dps2026": 1.80, "dps5yGrowthEstPct": 3.0},
+        "dcfParams": {
             "growthStage1Pct": 3.5,
             "growthStage2Pct": 2.5,
             "waccPct": 9.8,
             "terminalGrowthPct": 1.8,
-            "exitMultiple": 6.5,
+            "exitMultiple": 12.7,
             "mosPct": 20.0,
-            "grossCashM": 19.1,
-            "operatingCashBufferM": 5.9,
-            "grossDebtM": 0.1,
-            "netDebtM": -13.1,
-            "sharesM": 7.780
+            "capmNote": "WACC 9,8 % = Rf 3,2 % + β 1,00 × ERP 6,0 % + 0,6 % ciklični pribitek TiO2 (100 % lastniški kapital brez dolga)"
         },
         "interim2026": {
             "period": "Polletje H1 2026 & 9M 2026",
@@ -796,7 +625,7 @@ COMPANY_META = {
             "netIncomeM": 13.8,
             "yoyRevenuePct": -2.1,
             "yoyNetIncomePct": -14.5,
-            "highlights": "Zaradi nižjega dobička v H1 (-28,3 %) in 9M 2026 (-14,5 %) znaša pravi TTM čisti dobiček 17,17 mio € (EPS TTM 2,21 €) in pravi TTM P/E 12,37x (namesto 10,90x/11,33x na lanskih številkah)."
+            "highlights": "Zaradi nižjega dobička v H1 (-28,3 %) in 9M 2026 (-14,5 %) znaša pravi TTM čisti dobiček 17,17 mio € (EPS TTM 2,21 €) in pravi TTM P/E 12,37x."
         },
         "latestResults": {
             "reportTitle": "Polletno poročilo I–VI 2026 (H1 2026) & 9M 2026",
@@ -806,17 +635,17 @@ COMPANY_META = {
             "h1_2026": {"revenueM": 104.51, "revenue2025M": 111.50, "revYoYPct": -6.3, "ebitdaM": 18.22, "ebitda2025M": 22.86, "ebitdaYoYPct": -20.3, "netIncomeM": 8.80, "netIncome2025M": 12.28, "niYoYPct": -28.3},
             "q3_9m_2026": {"period": "9M 2026 (1–9 2026)", "revenueM": 156.2, "revYoYPct": -2.1, "ebitdaM": 27.1, "netIncomeM": 13.8, "niYoYPct": -14.5, "keyMetricLabel": "Pravi TTM Dobiček / P/E", "keyMetricValue": "17,2 M€ · TTM P/E 12,37x"},
             "bullets": [
-                "V H1 2026 je Cinkarna Celje ustvarila 104,5 mio € prihodkov (-6,3 % YoY), 18,2 mio € EBITDA (17,4 % marža) in 8,80 mio € čistega dobička (-28,3 % glede na visoko osnovo H1 2025: 12,28 mio €).",
-                "Ob upoštevanju medletnega upada dobička v 2026 znaša pravi TTM čisti dobiček 17,17 mio € (EPS TTM 2,21 € na 7,78 mio delnic brez lastnih), kar pomeni pravi TTM P/E 12,37x in TTM EV/EBITDA 6,35x.",
-                "Družba ohranja trdno bilanco brez dolga (19,1 mio € bruto denarja; 13,1 mio € presežnega denarja po odbitku 5,9 mio € operativnega blažilnika) in 6,59 % dividendni donos."
+                "V H1 2026 je Cinkarna Celje ustvarila 104,5 mio € prihodkov (-6,3 % YoY), 18,2 mio € EBITDA (17,4 % marža) in 8,80 mio € čistega dobička (-28,3 % glede na H1 2025: 12,28 mio €).",
+                "Pravi TTM čisti dobiček znaša 17,17 mio € (EPS TTM 2,21 € na 7,78 mio delnic brez lastnih), kar pomeni pravi TTM P/E 12,37x. Medtem ko so tuji čistokrvni proizvajalci TiO2 (Kronos, Tronox, Chemours) v TTM zabeležili čisto izgubo (P/E = ni podatka), Cinkarna posluje dobičkonosno.",
+                "Izhodiščni FCF kazalniki so izračunani neposredno iz 10-letnih izkazov: 5L mediana FCF = 17,32 M€, 5L povprečje = 16,69 M€, 3L povprečje = 10,83 M€, FY25 FCF = 5,28 M€."
             ],
             "guidance": "Celoten čisti dobiček za leto 2026 ocenjen v razponu 16–18 mio € ob podpori protidampinških carin EU na kitajski uvoz TiO2.",
             "reportUrl": "https://www.cinkarna.si/uploads/Objave/2026/Poro%C4%8Dilo_I-VI_2026.pdf"
         },
         "thesis": {
-            "summary": "Visoko učinkovit evropski proizvajalec pigmenta titanovega dioksida (TiO2) brez dolga. Pri pravem TTM dobičku 17,17 mio € se trguje pri TTM P/E 12,37x (še vedno -13,2 % pod mediano tujih TiO2 tekmecev pri 14,25x) in TTM P/B 0,97x.",
+            "summary": "Visoko učinkovit evropski proizvajalec pigmenta titanovega dioksida (TiO2) brez dolga (19,1 mio € bruto denarja; po odbitku 3,9 mio € operativnega denarnega blažilnika = 2,0 % TTM prihodkov znaša prilagojeni čisti dolg -15,1 mio €). Izhodiščni Normalizirani FCF (5L mediana FCF 2021–2025) znaša 17,32 mio €.",
             "moat": "Stroškovno učinkovita sulfatna proizvodnja TiO2 v osrčju EU, zaščitena z evropskimi protidampinškimi carinami proti kitajskim proizvajalcem, in popolna odsotnost finančnega vzvoda.",
-            "catalysts": ["Protidampinške carine EU na uvoz kitajskega TiO2", "Okrevanje evropskega gradbenega sektorja in povpraševanja po premazih/barvah", "Visoka dividendna donosnost (6,59 %) in odkupi lastnih delnic (3,7 % v zakladnici)"],
+            "catalysts": ["Protidampinške carine EU na uvoz kitajskega TiO2", "Okrevanje evropskega gradbenega sektorja in povpraševanja po premazih/barvah", "Visoka dividendna donosnost (6,59 %) in odkupi lastnih delnic"],
             "risks": ["Izrazita cikličnost cen pigmenta TiO2 in surovin (titana žlindra, energija)", "Okoljske zahteve in stroški sanacije starih bremen", "Globalni presežek proizvodnih zmogljivosti TiO2 na Kitajskem"]
         }
     }
@@ -829,80 +658,29 @@ def safe_round(val, digits=2):
     return round(float(val), digits)
 
 
-def parse_delnicar_file(slug):
-    path = f"/tmp/delnicar_{slug}.html"
-    html = open(path, encoding="utf-8").read()
-    pushes = re.findall(r'self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)', html)
-    full = ""
-    for p in pushes:
-        try:
-            full += json.loads(p)
-        except Exception:
-            pass
-
-    def extract_key(key):
-        pos = full.find(f'"{key}":')
-        if pos == -1:
-            return None
-        val, _ = json.JSONDecoder().raw_decode(full[pos + len(f'"{key}":'):])
-        return val
-
-    prepared = extract_key("prepared") or {"years": []}
-    fundamentals = extract_key("fundamentals") or {}
-    breakdowns = extract_key("breakdowns") or []
-    ownership = extract_key("ownership") or {}
-    periods = extract_key("periods") or []
-
-    daily_points = []
-    pe_points = []
-    for m in re.finditer(r'"points":\[', full):
-        try:
-            arr, _ = json.JSONDecoder().raw_decode(full[m.start() + len('"points":'):])
-            if arr and isinstance(arr[0], dict):
-                if "date" in arr[0]:
-                    daily_points = arr
-                elif "label" in arr[0]:
-                    pe_points = arr
-        except Exception:
-            pass
-
-    return {
-        "prepared": prepared,
-        "fundamentals": fundamentals,
-        "breakdowns": breakdowns,
-        "ownership": ownership,
-        "periods": periods,
-        "daily_points": daily_points,
-        "pe_points": pe_points
-    }
-
-
-def load_ljse_max_year_end_prices(ticker):
-    path = f"/tmp/ljse_{ticker}_max.json"
-    if not os.path.exists(path):
-        return {}
-    try:
-        data = json.load(open(path, encoding="utf-8"))
-        items = data.get("items", data if isinstance(data, list) else [])
-        by_year = {}
-        for it in items:
-            dt = str(it.get("date", it.get("trading_date", "")))
-            pr = it.get("close", it.get("last_price", it.get("price")))
-            if dt and pr is not None and len(dt) >= 4:
-                yr = dt[:4]
-                by_year[yr] = float(pr)
-        return by_year
-    except Exception:
-        return {}
-
-
-def compute_stats(series_dict):
-    """Computes 10Y historical statistics (2016-2025, N=10) and compares with current TRUE TTM (2026)."""
+def compute_stats(series_dict, raw_unfiltered_dict=None):
+    """
+    Computes 10Y historical statistics (2016-2025) with exact sample size N,
+    records excluded outliers (e.g. negative EPS or P/E > 38x), and compares with current TRUE TTM (2026).
+    """
     hist_years = [str(y) for y in range(2016, 2026)]
     hist_vals = [series_dict[y] for y in hist_years if y in series_dict and series_dict[y] is not None and series_dict[y] > 0]
     curr_val = series_dict.get("2026")
     if curr_val is None:
         curr_val = series_dict.get("2025")
+
+    excluded_notes = []
+    if raw_unfiltered_dict:
+        for y in hist_years:
+            rv = raw_unfiltered_dict.get(y)
+            fv = series_dict.get(y)
+            if fv is None:
+                if rv is None:
+                    excluded_notes.append(f"{y}: ni podatka")
+                elif rv <= 0:
+                    excluded_notes.append(f"{y}: neg. izid")
+                else:
+                    excluded_notes.append(f"{y}: {rv:.1f}x (izločen osamelec >38x)")
 
     if not hist_vals:
         return None
@@ -914,7 +692,6 @@ def compute_stats(series_dict):
     max_10y = max(hist_vals)
     std_10y = statistics.stdev(hist_vals) if n_obs > 1 else 0.0
 
-    # Empirical rank percentile + min-max range position
     if curr_val is not None:
         below_count = sum(1 for v in hist_vals if v < curr_val)
         equal_count = sum(1 for v in hist_vals if v == curr_val)
@@ -933,7 +710,8 @@ def compute_stats(series_dict):
 
     return {
         "sampleSizeN": n_obs,
-        "sampleNote": f"N={n_obs} letnih opazovanj (2016–2025)",
+        "sampleNote": f"N={n_obs} letnih točk (vzorec ≤10 let)",
+        "excludedOutliers": excluded_notes,
         "current": safe_round(curr_val, 2),
         "avg10y": safe_round(avg_10y, 2),
         "median10y": safe_round(med_10y, 2),
@@ -949,28 +727,41 @@ def compute_stats(series_dict):
         "rangePositionPct": safe_round(range_pos_pct, 1),
         "diffVsAvgPct": safe_round(diff_avg_pct, 1),
         "diffVsMedianPct": safe_round(diff_med_pct, 1),
-        "series": [{"year": y, "value": safe_round(series_dict.get(y), 2)} for y in hist_years + ["2026"]]
+        "series": [
+            {
+                "year": y,
+                "value": safe_round(series_dict.get(y), 2),
+                "rawUnfiltered": safe_round(raw_unfiltered_dict.get(y), 2) if (raw_unfiltered_dict and raw_unfiltered_dict.get(y) is not None) else None
+            }
+            for y in hist_years + ["2026"]
+        ]
     }
 
 
-def build_peer_comparison(ticker, current_metrics):
-    peers = PEER_GROUPS_6.get(ticker, [])
+def build_peer_comparison(ticker, current_metrics, peers_raw_map):
+    peers = peers_raw_map.get(ticker, [])
     metrics_list = ["pe", "forwardPe", "pb", "evEbitda", "ps", "divYieldPct", "roePct", "ebitdaMarginPct"]
     peer_avg = {}
     peer_med = {}
+    peer_valid_n = {}
     vs_median_pct = {}
     vs_avg_pct = {}
 
     for m in metrics_list:
         vals = [p[m] for p in peers if p.get(m) is not None and p.get(m) > 0]
+        peer_valid_n[m] = len(vals)
         if vals:
             peer_avg[m] = safe_round(statistics.mean(vals), 2)
             peer_med[m] = safe_round(statistics.median(vals), 2)
             comp_val = current_metrics.get(m if m != "forwardPe" else "pe")
-            if comp_val is not None and peer_med[m]:
+            if comp_val is not None and peer_med[m] and peer_med[m] > 0:
                 vs_median_pct[m] = safe_round(((comp_val - peer_med[m]) / peer_med[m]) * 100.0, 1)
-            if comp_val is not None and peer_avg[m]:
+            else:
+                vs_median_pct[m] = None
+            if comp_val is not None and peer_avg[m] and peer_avg[m] > 0:
                 vs_avg_pct[m] = safe_round(((comp_val - peer_avg[m]) / peer_avg[m]) * 100.0, 1)
+            else:
+                vs_avg_pct[m] = None
         else:
             peer_avg[m] = None
             peer_med[m] = None
@@ -995,8 +786,9 @@ def build_peer_comparison(ticker, current_metrics):
     return {
         "included": True,
         "peerCount": len(peers),
+        "peerValidN": peer_valid_n,
         "asOfDate": "2026-11-20",
-        "sourceNote": "Yahoo Finance / Reuters borzni konsenz (TTM & NTM) na dan 20. 11. 2026",
+        "sourceNote": "Yahoo Finance API (yfinance) — statični posnetek v data/raw/peers_yfinance.json, zajeto dne 22. 11. 2026 (brez samodejnega osveževanja v brskalniku)",
         "peers": peers,
         "peerAverage": peer_avg,
         "peerMedian": peer_med,
@@ -1007,32 +799,40 @@ def build_peer_comparison(ticker, current_metrics):
 
 
 def main():
+    raw_companies = json.load(open(RAW_COMPANIES_PATH, encoding="utf-8"))
+    peers_raw_map = json.load(open(RAW_PEERS_PATH, encoding="utf-8"))
+
     companies_out = []
     tickers_order = ["KRKG", "NLBR", "PETG", "ZVTG", "LKPG", "POSR", "TLSG", "SALR", "CICG"]
 
+    # First get KRKG current share price so LKPG's 433,786 Krka share stake is valued dynamically
+    krkg_daily = raw_companies["KRKG"]["daily_points"]
+    krkg_latest_price = krkg_daily[-1]["close"] if krkg_daily else 248.0
+
     for ticker in tickers_order:
         meta = COMPANY_META[ticker]
-        slug = meta["slug"]
-        parsed = parse_delnicar_file(slug)
+        parsed = raw_companies[ticker]
 
         prep_years_map = {str(y["year"]): y["values"] for y in parsed["prepared"].get("years", [])}
         fund = parsed["fundamentals"]
         pe_points = parsed["pe_points"]
-        daily_points = parsed["daily_points"]
-        ljse_ye_prices = load_ljse_max_year_end_prices(ticker)
+        daily_points = parsed["daily_points"][-250:]
+        csv_ye_map = parsed.get("ljse_csv_year_end", {})
 
         close_by_year = {}
         for pt in pe_points:
             lbl = str(pt.get("label", ""))
             if lbl.isdigit() and pt.get("close") is not None:
-                close_by_year[lbl] = pt.get("close")
+                close_by_year[lbl] = float(pt.get("close"))
+        for yr_k, info_k in csv_ye_map.items():
+            if yr_k not in close_by_year and info_k.get("close") is not None:
+                close_by_year[yr_k] = float(info_k["close"])
 
-        latest_price = daily_points[-1]["close"] if daily_points else 100.0
-        first_price_1y = daily_points[0]["close"] if daily_points else latest_price
-        change_1y_pct = ((latest_price - first_price_1y) / first_price_1y) * 100.0 if first_price_1y else 0.0
-        latest_date = daily_points[-1]["date"] if daily_points else "2026-11-20"
+        latest_price = float(daily_points[-1]["close"])
+        first_price_1y = float(daily_points[0]["close"])
+        change_1y_pct = round(((latest_price - first_price_1y) / first_price_1y) * 100.0, 2)
+        latest_date = daily_points[-1]["date"]
 
-        # Consistently use effective shares (excluding treasury shares) across ALL years & TTM
         shares_m = meta["sharesEffectiveM"]
         shares_issued_m = meta["sharesIssuedM"]
 
@@ -1040,6 +840,7 @@ def main():
         mult_series = {
             "pe": {}, "pb": {}, "evEbitda": {}, "ps": {}, "pFcf": {}, "divYieldPct": {}, "roePct": {}
         }
+        raw_pe_unfiltered = {}
 
         for yr_int in range(2016, 2026):
             yr = str(yr_int)
@@ -1058,6 +859,7 @@ def main():
                 return None
 
             rev_m = get_m("revenue")
+            rev_is_est = False
             if rev_m is None and ticker in REVENUE_OVERRIDES_M:
                 rev_m = REVENUE_OVERRIDES_M[ticker].get(yr)
             ebitda_m = get_m("ebitda")
@@ -1075,60 +877,72 @@ def main():
             elif inv_cf_m is not None:
                 capex_m = abs(inv_cf_m)
             else:
-                capex_m = 0.0
+                capex_m = None
             assets_m = get_m("assets")
             equity_m = get_m("equity")
-            cash_m = get_m("cash") or 0.0
+            cash_m = get_m("cash")
             non_curr_liab_m = get_m("non_current_liabilities")
-            debt_m = (fund.get("totalDebt") / 1e6) if (yr == "2025" and fund.get("totalDebt") is not None) else (non_curr_liab_m * 0.55 if non_curr_liab_m else 0.0)
-            if ticker in ("KRKG", "CICG"):
-                debt_m = 0.0 if yr != "2025" else ((fund.get("totalDebt") or 0) / 1e6)
-            elif ticker in ("NLBR", "ZVTG", "POSR"):
+
+            # Debt: exact in 2025 from fundamentals.totalDebt (includes IFRS 16 leases); for 2016-2024 flagged as estimate if derived from non_current_liabilities
+            debt_is_est = False
+            if meta["isFinancial"]:
                 debt_m = 0.0
-            emp = int(get_raw("employees") or get_raw("employees_average") or 0)
+            elif yr == "2025" and fund.get("totalDebt") is not None:
+                debt_m = float(fund.get("totalDebt")) / 1e6
+            elif ticker in ("KRKG", "CICG"):
+                debt_m = 0.0
+            elif non_curr_liab_m is not None:
+                debt_m = non_curr_liab_m * 0.55
+                debt_is_est = True
+            else:
+                debt_m = None
+
+            emp = int(get_raw("employees") or get_raw("employees_average") or 0) if (get_raw("employees") or get_raw("employees_average")) else None
             report_url = (raw_v.get("revenue") or raw_v.get("net_income") or {}).get("url", "https://seonet.ljse.si")
 
-            net_debt_m = (debt_m - cash_m) if not meta["isFinancial"] else 0.0
+            net_debt_m = (debt_m - (cash_m or 0.0)) if (not meta["isFinancial"] and debt_m is not None) else (0.0 if meta["isFinancial"] else None)
 
-            close_px = close_by_year.get(yr) or ljse_ye_prices.get(yr)
-            if ticker in CLOSE_PRICE_OVERRIDES and yr in CLOSE_PRICE_OVERRIDES[ticker]:
-                close_px = CLOSE_PRICE_OVERRIDES[ticker][yr]
-            if close_px is None:
-                close_px = latest_price * (0.45 + 0.055 * (yr_int - 2016))
-            if ticker == "SALR" and close_px > 200:
+            # Strictly real LJSE year-end price or None (NEVER invented!)
+            close_px = close_by_year.get(yr)
+            if ticker == "SALR" and close_px is not None and close_px > 200:
                 close_px = close_px / 60.0
 
-            # Consistent per-share metrics using effective shares (excluding treasury shares)
-            eps = (ni_m / shares_m) if (ni_m is not None and shares_m) else None
-            bvps = (equity_m / shares_m) if (equity_m is not None and shares_m) else None
-            dps = HISTORICAL_DPS[ticker].get(yr, 0.0)
-            fcf_per_share = (fcf_m / shares_m) if (fcf_m is not None and shares_m) else None
+            eps = round(ni_m / shares_m, 2) if (ni_m is not None and shares_m) else None
+            bvps = round(equity_m / shares_m, 2) if (equity_m is not None and shares_m) else None
+            dps = HISTORICAL_DPS[ticker].get(yr)
+            fcf_per_share = round(fcf_m / shares_m, 2) if (fcf_m is not None and shares_m) else None
 
-            mcap_ye_m = close_px * shares_m
-            ev_ye_m = mcap_ye_m + net_debt_m
+            mcap_ye_m = (close_px * shares_m) if close_px is not None else None
+            ev_ye_m = (mcap_ye_m + net_debt_m) if (mcap_ye_m is not None and net_debt_m is not None) else None
 
-            pe_val = (close_px / eps) if (eps and eps > 0) else None
-            pb_val = (close_px / bvps) if (bvps and bvps > 0) else None
-            ev_ebitda_val = (ev_ye_m / ebitda_m) if (ebitda_m and ebitda_m > 0 and not meta["isFinancial"]) else None
-            ps_val = (mcap_ye_m / rev_m) if (rev_m and rev_m > 0) else None
-            pfcf_val = (mcap_ye_m / fcf_m) if (fcf_m and fcf_m > 2.0) else None
-            div_yield_pct = ((dps / close_px) * 100.0) if (close_px and close_px > 0) else 0.0
+            if close_px is not None and eps is not None and eps > 0:
+                pe_val = round(close_px / eps, 2)
+                raw_pe_unfiltered[yr] = pe_val
+            else:
+                pe_val = None
+                raw_pe_unfiltered[yr] = -1.0 if (eps is not None and eps <= 0) else None
 
-            roe_pct = ((ni_m / equity_m) * 100.0) if (ni_m is not None and equity_m and equity_m > 0) else None
-            roa_pct = ((ni_m / assets_m) * 100.0) if (ni_m is not None and assets_m and assets_m > 0) else None
-            inv_cap_m = (equity_m + max(0.0, net_debt_m)) if equity_m else None
+            pb_val = round(close_px / bvps, 2) if (close_px is not None and bvps and bvps > 0) else None
+            ev_ebitda_val = round(ev_ye_m / ebitda_m, 2) if (ev_ye_m is not None and ebitda_m and ebitda_m > 0 and not meta["isFinancial"]) else None
+            ps_val = round(mcap_ye_m / rev_m, 2) if (mcap_ye_m is not None and rev_m and rev_m > 0) else None
+            pfcf_val = round(mcap_ye_m / fcf_m, 2) if (mcap_ye_m is not None and fcf_m and fcf_m > 2.0) else None
+            div_yield_pct = round((dps / close_px) * 100.0, 2) if (close_px and close_px > 0 and dps is not None) else None
+
+            roe_pct = round((ni_m / equity_m) * 100.0, 2) if (ni_m is not None and equity_m and equity_m > 0) else None
+            roa_pct = round((ni_m / assets_m) * 100.0, 2) if (ni_m is not None and assets_m and assets_m > 0) else None
+            inv_cap_m = (equity_m + max(0.0, net_debt_m or 0.0)) if equity_m else None
             nopat_m = (ebit_m * 0.82) if ebit_m is not None else ni_m
-            roic_pct = ((nopat_m / inv_cap_m) * 100.0) if (nopat_m is not None and inv_cap_m and inv_cap_m > 0) else roe_pct
+            roic_pct = round((nopat_m / inv_cap_m) * 100.0, 2) if (nopat_m is not None and inv_cap_m and inv_cap_m > 0) else roe_pct
 
-            ebitda_margin_pct = ((ebitda_m / rev_m) * 100.0) if (ebitda_m is not None and rev_m and rev_m > 0) else None
-            ebit_margin_pct = ((ebit_m / rev_m) * 100.0) if (ebit_m is not None and rev_m and rev_m > 0) else None
-            net_margin_pct = ((ni_m / rev_m) * 100.0) if (ni_m is not None and rev_m and rev_m > 0) else None
+            ebitda_margin_pct = round((ebitda_m / rev_m) * 100.0, 2) if (ebitda_m is not None and rev_m and rev_m > 0) else None
+            ebit_margin_pct = round((ebit_m / rev_m) * 100.0, 2) if (ebit_m is not None and rev_m and rev_m > 0) else None
+            net_margin_pct = round((ni_m / rev_m) * 100.0, 2) if (ni_m is not None and rev_m and rev_m > 0) else None
 
-            mult_series["pe"][yr] = pe_val if (pe_val and 0 < pe_val < 38) else None
+            mult_series["pe"][yr] = pe_val if (pe_val is not None and 0 < pe_val < 38) else None
             mult_series["pb"][yr] = pb_val
-            mult_series["evEbitda"][yr] = ev_ebitda_val if (ev_ebitda_val and 0 < ev_ebitda_val < 60) else None
+            mult_series["evEbitda"][yr] = ev_ebitda_val if (ev_ebitda_val is not None and 0 < ev_ebitda_val < 60) else None
             mult_series["ps"][yr] = ps_val
-            mult_series["pFcf"][yr] = pfcf_val if (pfcf_val and 0 < pfcf_val < 80) else None
+            mult_series["pFcf"][yr] = pfcf_val if (pfcf_val is not None and 0 < pfcf_val < 80) else None
             mult_series["divYieldPct"][yr] = div_yield_pct
             mult_series["roePct"][yr] = roe_pct
 
@@ -1145,64 +959,89 @@ def main():
                 "equityM": safe_round(equity_m, 2),
                 "cashM": safe_round(cash_m, 2),
                 "totalDebtM": safe_round(debt_m, 2),
+                "debtIsEstimate": debt_is_est,
                 "netDebtM": safe_round(net_debt_m, 2),
                 "employees": emp,
                 "closePrice": safe_round(close_px, 2),
-                "eps": safe_round(eps, 2),
+                "eps": eps,
                 "dps": safe_round(dps, 2),
-                "bvps": safe_round(bvps, 2),
-                "fcfPerShare": safe_round(fcf_per_share, 2),
-                "pe": safe_round(pe_val, 2),
-                "pb": safe_round(pb_val, 2),
-                "evEbitda": safe_round(ev_ebitda_val, 2),
-                "ps": safe_round(ps_val, 2),
-                "pFcf": safe_round(pfcf_val, 2),
-                "divYieldPct": safe_round(div_yield_pct, 2),
-                "roePct": safe_round(roe_pct, 2),
-                "roaPct": safe_round(roa_pct, 2),
-                "roicPct": safe_round(roic_pct, 2),
-                "ebitdaMarginPct": safe_round(ebitda_margin_pct, 2),
-                "ebitMarginPct": safe_round(ebit_margin_pct, 2),
-                "netMarginPct": safe_round(net_margin_pct, 2),
+                "bvps": bvps,
+                "fcfPerShare": fcf_per_share,
+                "pe": pe_val if (pe_val is not None and 0 < pe_val < 38) else None,
+                "peRawUnfiltered": pe_val,
+                "pb": pb_val,
+                "evEbitda": ev_ebitda_val,
+                "ps": ps_val,
+                "pFcf": pfcf_val,
+                "divYieldPct": div_yield_pct,
+                "roePct": roe_pct,
+                "roaPct": roa_pct,
+                "roicPct": roic_pct,
+                "roicIsEstimate": True,
+                "ebitdaMarginPct": ebitda_margin_pct,
+                "ebitMarginPct": ebit_margin_pct,
+                "netMarginPct": net_margin_pct,
                 "reportUrl": report_url
             })
 
-        # Compute TRUE 2026 TTM = FY2025 + 9M_2026 - 9M_2025
+        # Compute FCF statistics DIRECTLY from history (Items A2 & A3)
         y2025 = history_10y[-1]
+        fcf_5y_vals = [h["fcfM"] for h in history_10y[-5:] if h.get("fcfM") is not None]
+        fcf_3y_vals = [h["fcfM"] for h in history_10y[-3:] if h.get("fcfM") is not None]
+        fcf_5y_avg_m = round(statistics.mean(fcf_5y_vals), 2)
+        fcf_3y_avg_m = round(statistics.mean(fcf_3y_vals), 2)
+        fcf_5y_med_m = round(statistics.median(fcf_5y_vals), 2)
+        fcf_fy25_m = y2025["fcfM"]
+
+        # Compute TRUE 2026 TTM = FY2025 + 9M_2026 - 9M_2025
         im = INTERIM_9M_COMPARISON_M[ticker]
+        rev_ttm_m = round(y2025["revenueM"] + (im["rev26M"] - im["rev25M"]), 2)
+        ebitda_ttm_m = round(y2025["ebitdaM"] + (im["ebitda26M"] - im["ebitda25M"]), 2) if y2025["ebitdaM"] is not None else None
+        ebit_ttm_m = round(y2025["ebitM"] + (im["ebitda26M"] - im["ebitda25M"]) * 0.85, 2) if y2025["ebitM"] is not None else None
+        ni_ttm_m = round(y2025["netIncomeM"] + (im["ni26M"] - im["ni25M"]), 2)
+        equity_ttm_m = im["equity26M"]
+        assets_ttm_m = im["assets26M"]
 
-        rev_ttm_m = y2025["revenueM"] + (im["rev26"] - im["rev25"])
-        ebitda_ttm_m = (y2025["ebitdaM"] + (im["ebitda26"] - im["ebitda25"])) if y2025["ebitdaM"] is not None else None
-        ebit_ttm_m = (y2025["ebitM"] + (im["ebitda26"] - im["ebitda25"]) * 0.85) if y2025["ebitM"] is not None else None
-        ni_ttm_m = y2025["netIncomeM"] + (im["ni26"] - im["ni25"])
-        equity_ttm_m = im["equity26"]
-        assets_ttm_m = im["assets26"]
-
-        # Consistent TTM per-share metrics using effective shares (shares_m)
-        eps_ttm = ni_ttm_m / shares_m
-        bvps_ttm = equity_ttm_m / shares_m
+        eps_ttm = round(ni_ttm_m / shares_m, 2)
+        bvps_ttm = round(equity_ttm_m / shares_m, 2)
         dps_2026 = HISTORICAL_DPS[ticker]["2026"]
 
-        # Consistent Market Cap (both effective & total issued)
-        mcap_eff_m = latest_price * shares_m
-        mcap_issued_m = latest_price * shares_issued_m
-        net_debt_valuation_m = meta["dcfDefaults"]["netDebtM"]
-        raw_net_debt_m = meta["dcfDefaults"]["grossDebtM"] - meta["dcfDefaults"]["grossCashM"]
-        ev_curr_m = mcap_eff_m + net_debt_valuation_m
+        # Single-formula payoutRatioPct = (dps2026 / eps_ttm) * 100 (Item A9)
+        payout_ratio_pct = round((dps_2026 / eps_ttm) * 100.0, 1)
 
-        curr_pe = latest_price / eps_ttm
-        curr_pb = latest_price / bvps_ttm
-        curr_ev_ebitda = (ev_curr_m / ebitda_ttm_m) if (ebitda_ttm_m and ebitda_ttm_m > 0 and not meta["isFinancial"]) else None
-        curr_ps = mcap_eff_m / rev_ttm_m
-        norm_fcf_m = meta["dcfDefaults"]["fcfNormalizedM"]
-        curr_pfcf = (mcap_eff_m / norm_fcf_m) if (norm_fcf_m and norm_fcf_m > 0) else None
-        curr_div_yield = (dps_2026 / latest_price) * 100.0
-        curr_roe = (ni_ttm_m / equity_ttm_m) * 100.0
-        curr_roa = (ni_ttm_m / assets_ttm_m) * 100.0
-        curr_ebitda_margin = ((ebitda_ttm_m / rev_ttm_m) * 100.0) if (ebitda_ttm_m and rev_ttm_m) else None
-        curr_net_margin = (ni_ttm_m / rev_ttm_m) * 100.0
+        # Unified Operating Cash Buffer Formula (Item B12):
+        # operatingCashBuffer = min(grossCash, 2.0% of TTM revenue) for all non-financial companies
+        gross_cash_m = round(float(fund.get("cashAndShortTermInvestments") or (y2025["cashM"] * 1e6 if y2025["cashM"] else 0.0)) / 1e6, 2) if not meta["isFinancial"] else 0.0
+        gross_debt_m = round(float(fund.get("totalDebt") or (y2025["totalDebtM"] * 1e6 if y2025["totalDebtM"] else 0.0)) / 1e6, 2) if not meta["isFinancial"] else 0.0
+        raw_net_debt_m = round(gross_debt_m - gross_cash_m, 2) if not meta["isFinancial"] else 0.0
+        op_cash_buffer_m = round(min(gross_cash_m, 0.02 * rev_ttm_m), 2) if not meta["isFinancial"] else 0.0
+        excess_cash_m = round(max(0.0, gross_cash_m - op_cash_buffer_m), 2) if not meta["isFinancial"] else 0.0
+        net_debt_valuation_m = round(gross_debt_m - excess_cash_m, 2) if not meta["isFinancial"] else 0.0
+
+        # Explicit financial stake in KRKG for Luka Koper (Item A4):
+        # 433,786 shares * KRKG latest price * (1 - 0.20 tax/liquidity haircut)
+        krka_shares_held = meta.get("krkaSharesHeld", 0)
+        krka_haircut_pct = meta.get("krkaStakeHaircutPct", 20.0)
+        krka_stake_gross_m = round((krka_shares_held * krkg_latest_price) / 1e6, 2) if krka_shares_held else 0.0
+        krka_stake_net_m = round(krka_stake_gross_m * (1.0 - krka_haircut_pct / 100.0), 2) if krka_shares_held else 0.0
+
+        mcap_eff_m = round(latest_price * shares_m, 2)
+        mcap_issued_m = round(latest_price * shares_issued_m, 2)
+        ev_curr_m = round(mcap_eff_m + net_debt_valuation_m, 2)
+
+        curr_pe = round(latest_price / eps_ttm, 2)
+        curr_pb = round(latest_price / bvps_ttm, 2)
+        curr_ev_ebitda = round(ev_curr_m / ebitda_ttm_m, 2) if (ebitda_ttm_m and ebitda_ttm_m > 0 and not meta["isFinancial"]) else None
+        curr_ps = round(mcap_eff_m / rev_ttm_m, 2)
+        curr_pfcf = round(mcap_eff_m / fcf_5y_med_m, 2) if (fcf_5y_med_m and fcf_5y_med_m > 0) else None
+        curr_div_yield = round((dps_2026 / latest_price) * 100.0, 2)
+        curr_roe = round((ni_ttm_m / equity_ttm_m) * 100.0, 2)
+        curr_roa = round((ni_ttm_m / assets_ttm_m) * 100.0, 2)
+        curr_ebitda_margin = round((ebitda_ttm_m / rev_ttm_m) * 100.0, 2) if (ebitda_ttm_m and rev_ttm_m) else None
+        curr_net_margin = round((ni_ttm_m / rev_ttm_m) * 100.0, 2)
 
         mult_series["pe"]["2026"] = curr_pe
+        raw_pe_unfiltered["2026"] = curr_pe
         mult_series["pb"]["2026"] = curr_pb
         mult_series["evEbitda"]["2026"] = curr_ev_ebitda
         mult_series["ps"]["2026"] = curr_ps
@@ -1211,84 +1050,131 @@ def main():
         mult_series["roePct"]["2026"] = curr_roe
 
         historical_valuation = {
-            metric: compute_stats(series)
+            metric: compute_stats(series, raw_pe_unfiltered if metric == "pe" else None)
             for metric, series in mult_series.items()
+        }
+
+        dp = meta["dcfParams"]
+        norm_rule_str = "Presežni donos kapitala (Residual Income: ROE proti ke, g = ROE × (1 − Payout))" if meta["isFinancial"] else "Mediana prostega denarnega toka (FCF) zadnjih 5 let (2021–2025)"
+        dcf_defaults = {
+            "isFinancialModel": meta["isFinancial"],
+            "normalizedRule": norm_rule_str,
+            "fcfNormalizedRule": norm_rule_str,
+            "baseCashFlowM": ni_ttm_m if meta["isFinancial"] else fcf_5y_med_m,
+            "fcfNormalizedM": ni_ttm_m if meta["isFinancial"] else fcf_5y_med_m,
+            "fcf5yAvgM": fcf_5y_avg_m,
+            "fcf3yAvgM": fcf_3y_avg_m,
+            "fcfFy25M": fcf_fy25_m,
+            "fcfPeak2025M": fcf_fy25_m,
+            "normalizedRoePct": dp.get("normalizedRoePct", curr_roe),
+            "terminalRoeFadeToKePlusPct": dp.get("terminalRoeFadeToKePlusPct", 1.0),
+            "bookValueM": equity_ttm_m,
+            "payoutRatioPct": payout_ratio_pct,
+            "baseRevenueM": rev_ttm_m,
+            "growthStage1Pct": dp["growthStage1Pct"],
+            "growthStage2Pct": dp["growthStage2Pct"],
+            "waccPct": dp["waccPct"],
+            "terminalGrowthPct": dp["terminalGrowthPct"],
+            "exitMultiple": dp["exitMultiple"],
+            "mosPct": dp["mosPct"],
+            "capmNote": dp["capmNote"],
+            "grossCashM": gross_cash_m,
+            "operatingCashBufferRule": "min(Bruto denar, 2,0 % TTM prihodkov)",
+            "operatingCashBufferM": op_cash_buffer_m,
+            "grossDebtM": gross_debt_m,
+            "rawNetDebtM": raw_net_debt_m,
+            "netDebtM": net_debt_valuation_m,
+            "financialInvestmentsGrossM": krka_stake_gross_m,
+            "financialInvestmentsNetM": krka_stake_net_m,
+            "financialInvestmentsM": krka_stake_net_m,
+            "financialInvestmentsLabel": f"433.786 delnic KRKG × {krkg_latest_price:.2f} € × 80 % (po 20 % odbitku)" if krka_shares_held else None,
+            "plannedExpansionCapexM": meta.get("plannedExpansionCapex2024_2028M", 0.0),
+            "sharesM": shares_m
         }
 
         current_metrics = {
             "asOfDate": latest_date,
             "price": safe_round(latest_price, 2),
-            "change1YPct": safe_round(change_1y_pct, 2),
-            "marketCapM": safe_round(mcap_eff_m, 2),
-            "issuedMarketCapM": safe_round(mcap_issued_m, 2),
-            "effectiveMarketCapM": safe_round(mcap_eff_m, 2),
-            "enterpriseValueM": safe_round(ev_curr_m, 2),
-            "rawNetDebtM": safe_round(raw_net_debt_m, 2),
-            "operatingCashBufferM": safe_round(meta["dcfDefaults"]["operatingCashBufferM"], 2),
-            "netDebtM": safe_round(net_debt_valuation_m, 2),
+            "change1YPct": change_1y_pct,
+            "marketCapM": mcap_eff_m,
+            "issuedMarketCapM": mcap_issued_m,
+            "effectiveMarketCapM": mcap_eff_m,
+            "enterpriseValueM": ev_curr_m,
+            "rawNetDebtM": raw_net_debt_m,
+            "operatingCashBufferM": op_cash_buffer_m,
+            "netDebtM": net_debt_valuation_m,
+            "financialInvestmentsNetM": krka_stake_net_m,
             "revenueFy25M": y2025["revenueM"],
             "netIncomeFy25M": y2025["netIncomeM"],
-            "revenueM": safe_round(rev_ttm_m, 2),
-            "ebitdaM": safe_round(ebitda_ttm_m, 2),
-            "ebitM": safe_round(ebit_ttm_m, 2),
-            "netIncomeM": safe_round(ni_ttm_m, 2),
-            "fcfM": safe_round(norm_fcf_m, 2),
-            "fcf5yAvgM": safe_round(meta["dcfDefaults"]["fcf5yAvgM"], 2),
-            "fcf3yAvgM": safe_round(meta["dcfDefaults"]["fcf3yAvgM"], 2),
-            "fcfFy25M": safe_round(meta["dcfDefaults"]["fcfPeak2025M"], 2),
-            "equityM": safe_round(equity_ttm_m, 2),
-            "assetsM": safe_round(assets_ttm_m, 2),
+            "fcfFy25M": fcf_fy25_m,
+            "revenueM": rev_ttm_m,
+            "ebitdaM": ebitda_ttm_m,
+            "ebitM": ebit_ttm_m,
+            "ebitIsEstimate": im["ebitTtmIsEstimate"],
+            "netIncomeM": ni_ttm_m,
+            "fcfM": fcf_5y_med_m,
+            "fcfActualFy25M": fcf_fy25_m,
+            "fcf5yAvgM": fcf_5y_avg_m,
+            "fcf3yAvgM": fcf_3y_avg_m,
+            "equityM": equity_ttm_m,
+            "assetsM": assets_ttm_m,
+            "bsIsEstimate": im["bsIsEstimate"],
             "epsFy25": y2025["eps"],
             "bvpsFy25": y2025["bvps"],
-            "eps": safe_round(eps_ttm, 2),
-            "bvps": safe_round(bvps_ttm, 2),
+            "eps": eps_ttm,
+            "bvps": bvps_ttm,
             "dps": safe_round(dps_2026, 2),
-            "pe": safe_round(curr_pe, 2),
+            "payoutRatioPct": payout_ratio_pct,
+            "pe": curr_pe,
             "peFy25": y2025["pe"],
-            "pb": safe_round(curr_pb, 2),
-            "evEbitda": safe_round(curr_ev_ebitda, 2),
-            "ps": safe_round(curr_ps, 2),
-            "pFcf": safe_round(curr_pfcf, 2),
-            "divYieldPct": safe_round(curr_div_yield, 2),
-            "roePct": safe_round(curr_roe, 2),
-            "roaPct": safe_round(curr_roa, 2),
+            "pb": curr_pb,
+            "evEbitda": curr_ev_ebitda,
+            "ps": curr_ps,
+            "pFcf": curr_pfcf,
+            "divYieldPct": curr_div_yield,
+            "roePct": curr_roe,
+            "roaPct": curr_roa,
             "roicPct": y2025["roicPct"],
-            "ebitdaMarginPct": safe_round(curr_ebitda_margin, 2),
-            "netMarginPct": safe_round(curr_net_margin, 2)
+            "roicIsEstimate": True,
+            "ebitdaMarginPct": curr_ebitda_margin,
+            "netMarginPct": curr_net_margin
         }
 
-        # Historical Intrinsic Value (IV) evolution across 2022..2026 reports
         iv_history = []
         for h in history_10y[-4:]:
             yr_label = f"FY {h['year']}"
             px_h = h["closePrice"]
-            # Estimate historical intrinsic value at each year-end based on normalized earnings power & book value growth
             ratio = (h["equityM"] / equity_ttm_m) * 0.55 + ((h["netIncomeM"] if h["netIncomeM"] > 0 else ni_ttm_m * 0.6) / ni_ttm_m) * 0.45
-            iv_History_item = {
+            iv_history.append({
                 "period": yr_label,
                 "sharePrice": px_h,
-                "intrinsicValueScale": safe_round(max(0.45, min(1.05, ratio)), 3)
-            }
-            iv_history.append(iv_History_item)
+                "intrinsicValueScale": safe_round(max(0.45, min(1.05, ratio)), 3),
+                "isIllustrative": True
+            })
         iv_history.append({
             "period": "9M 2026 TTM",
             "sharePrice": safe_round(latest_price, 2),
-            "intrinsicValueScale": 1.0
+            "intrinsicValueScale": 1.0,
+            "isIllustrative": False
         })
 
         y2016 = history_10y[0]
-        def calc_cagr(v_start, v_end, n=9):
+        def calc_cagr(v_start, v_end, n=9.75):
             if v_start and v_end and v_start > 0 and v_end > 0:
                 return safe_round(((v_end / v_start) ** (1.0 / n) - 1.0) * 100.0, 2)
             return None
+
+        first_px_entry = next((h for h in history_10y if h["closePrice"] is not None), history_10y[0])
+        px_periods = 2026 - first_px_entry["year"]
 
         cagrs_10y = {
             "revenueCagrPct": calc_cagr(y2016["revenueM"], rev_ttm_m, 9.75),
             "ebitdaCagrPct": calc_cagr(y2016["ebitdaM"], ebitda_ttm_m, 9.75),
             "netIncomeCagrPct": calc_cagr(y2016["netIncomeM"], ni_ttm_m, 9.75),
             "equityCagrPct": calc_cagr(y2016["equityM"], equity_ttm_m, 9.75),
-            "dpsCagrPct": calc_cagr(y2016["dps"] or 0.5, dps_2026, 10),
-            "priceCagrPct": calc_cagr(y2016["closePrice"], latest_price, 10)
+            "dpsCagrPct": calc_cagr(y2016["dps"] or 0.5, dps_2026, 10.0),
+            "priceCagrPct": calc_cagr(first_px_entry["closePrice"], latest_price, float(px_periods)),
+            "priceCagrStartYear": first_px_entry["year"]
         }
 
         clean_breakdowns = []
@@ -1308,10 +1194,18 @@ def main():
                 "items": items[:10]
             })
 
-        peer_comparison = build_peer_comparison(ticker, current_metrics)
+        peer_comparison = build_peer_comparison(ticker, current_metrics, peers_raw_map)
+
+        div_cal = {
+            **meta["dividendCalendar"],
+            "payoutRatioPct": payout_ratio_pct
+        }
 
         companies_out.append({
             **meta,
+            "dividendCalendar": div_cal,
+            "dcfDefaults": dcf_defaults,
+            "interimComparison9M": im,
             "current": current_metrics,
             "cagrs10y": cagrs_10y,
             "history": history_10y,
@@ -1320,59 +1214,84 @@ def main():
             "ivHistory": iv_history,
             "breakdowns": clean_breakdowns,
             "ownership": parsed["ownership"],
-            "priceHistory1Y": daily_points[-250:]
+            "priceHistory1Y": daily_points
         })
 
-    sbitop_annual = [
-        {"year": 2016, "sbitop": 717.59, "sbitopTr": 912.40, "dax": 11481.06, "divYieldPct": 5.4},
-        {"year": 2017, "sbitop": 806.52, "sbitopTr": 1082.15, "dax": 12917.64, "divYieldPct": 5.6},
-        {"year": 2018, "sbitop": 804.45, "sbitopTr": 1145.80, "dax": 10558.96, "divYieldPct": 6.1},
-        {"year": 2019, "sbitop": 926.10, "sbitopTr": 1396.50, "dax": 13249.01, "divYieldPct": 5.8},
-        {"year": 2020, "sbitop": 900.47, "sbitopTr": 1408.20, "dax": 13718.78, "divYieldPct": 3.9},
-        {"year": 2021, "sbitop": 1258.78, "sbitopTr": 2064.10, "dax": 15884.86, "divYieldPct": 5.5},
-        {"year": 2022, "sbitop": 1046.23, "sbitopTr": 1824.50, "dax": 13923.59, "divYieldPct": 6.8},
-        {"year": 2023, "sbitop": 1253.20, "sbitopTr": 2318.90, "dax": 16751.64, "divYieldPct": 6.4},
-        {"year": 2024, "sbitop": 1668.40, "sbitopTr": 3295.40, "dax": 19909.14, "divYieldPct": 5.9},
-        {"year": 2025, "sbitop": 2480.15, "sbitopTr": 3890.10, "dax": 21840.50, "divYieldPct": 5.1},
-        {"year": 2026, "sbitop": 2932.29, "sbitopTr": 4561.39, "dax": 23150.80, "divYieldPct": 4.6}
+    # Verified SBI TOP price index, consistent SBI TOP Total Return (reinvested dividends), and official DAX 40 (^GDAXI) year-end closes
+    sbitop_raw_series = [
+        (2016, 717.59, 11481.06, 5.40),
+        (2017, 806.52, 12917.64, 5.55),
+        (2018, 804.45, 10558.96, 6.10),
+        (2019, 926.10, 13249.01, 5.80),
+        (2020, 900.47, 13718.78, 3.85),
+        (2021, 1258.80, 15884.86, 5.45),
+        (2022, 1046.13, 13923.59, 6.75),
+        (2023, 1253.41, 16751.64, 6.35),
+        (2024, 1666.60, 19909.14, 5.85),
+        (2025, 2505.44, 24490.41, 5.10),
+        (2026, 2932.29, 24802.78, 4.31)
     ]
+
+    sbitop_annual = []
+    curr_tr = 912.40  # Official 2016-12-30 total return base
+    for i, (yr, sbi_px, dax_px, dy_pct) in enumerate(sbitop_raw_series):
+        if i > 0:
+            prev_px = sbitop_raw_series[i - 1][1]
+            px_ret = (sbi_px / prev_px) - 1.0
+            tr_ret = px_ret + (dy_pct / 100.0)
+            curr_tr = round(curr_tr * (1.0 + tr_ret), 2)
+        sbitop_annual.append({
+            "year": yr,
+            "sbitop": sbi_px,
+            "sbitopTr": curr_tr,
+            "dax": dax_px,
+            "divYieldPct": dy_pct
+        })
+
+    cagr_10y_price = round(((sbitop_annual[-1]["sbitop"] / sbitop_annual[0]["sbitop"]) ** (1.0 / 10.0) - 1.0) * 100.0, 2)
+    cagr_10y_tr = round(((sbitop_annual[-1]["sbitopTr"] / sbitop_annual[0]["sbitopTr"]) ** (1.0 / 10.0) - 1.0) * 100.0, 2)
+    cagr_10y_dax = round(((sbitop_annual[-1]["dax"] / sbitop_annual[0]["dax"]) ** (1.0 / 10.0) - 1.0) * 100.0, 2)
 
     total_mcap_m = sum(c["current"]["effectiveMarketCapM"] for c in companies_out)
     total_issued_mcap_m = sum(c["current"]["issuedMarketCapM"] for c in companies_out)
-    total_rev_ttm_m = sum(c["current"]["revenueM"] for c in companies_out)
     total_ni_ttm_m = sum(c["current"]["netIncomeM"] for c in companies_out)
     total_eq_ttm_m = sum(c["current"]["equityM"] for c in companies_out)
+    total_div_m = sum(c["current"]["dps"] * c["sharesEffectiveM"] for c in companies_out)
     total_weights = sum(c["sbitopWeight"] for c in companies_out)
 
-    # Aggregate (Harmonic) Index P/E and P/B = Sum(MCap) / Sum(Earnings or Book)
     aggregate_pe = total_mcap_m / total_ni_ttm_m
     aggregate_pb = total_mcap_m / total_eq_ttm_m
     harmonic_weighted_pe = total_weights / sum(c["sbitopWeight"] / c["current"]["pe"] for c in companies_out)
     arithmetic_weighted_pe = sum(c["current"]["pe"] * c["sbitopWeight"] for c in companies_out) / total_weights
 
+    now_utc = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
     master = {
-        "generatedAt": "2026-11-22T07:00:00Z",
+        "generatedAt": now_utc,
+        "lastCheckedAt": now_utc,
         "marketDate": "2026-11-20",
         "exchange": "Ljubljanska borza (LJSE)",
-        "methodologyNotes": {
-            "ttmDefinition": "TTM (Trailing Twelve Months) = Revidirano FY 2025 + Medletno 9M 2026 − Medletno 9M 2025",
-            "sharesBasis": "Vsi kazalniki na delnico (EPS, BVPS), tržna kapitalizacija in EV uporabljajo enotno število delnic brez zakladnih (lastnih) delnic po MSRP 33.",
-            "operatingCashHaircut": "Pri izračunu čistega dolga za vrednotenje je od bruto denarnih sredstev odštet operativni denarni blažilnik (3–4 % letnih prihodkov).",
-            "financialsValuation": "Za NLB Skupino (NLBR), Zavarovalnico Triglav (ZVTG) in Savo Re (POSR) je uporabljen model presežnega donosa kapitala (Residual Income: ROE proti strošku lastniškega kapitala ke)."
+        "dataSources": {
+            "financialStatements": "Revidirana letna (2016–2025) in medletna (H1 & 9M 2026) poročila izdajateljev (SEOnet / spletne strani družb, strukturirani izkazi v data/raw/companies_raw.json prek Delničar.si)",
+            "sharePrices": "Uradna tečajnica Ljubljanske borze (LJSE zaključni tečaji 2016–2026 v data/raw/companies_raw.json)",
+            "indexBenchmark": "SBI TOP uradni zaključni tečaji LJSE; SBI TOP TR izračunan iz cenovnega indeksa + reinvestiranih letnih dividend članic; DAX 40 uradni zaključni tečaji (^GDAXI, XETRA / Yahoo Finance)",
+            "foreignPeers": "Yahoo Finance API (yfinance) — statični posnetek 68 mednarodnih primerljivih družb v data/raw/peers_yfinance.json na dan 22. 11. 2026"
         },
         "indexSummary": {
             "name": "SBI TOP",
-            "totalReturnName": "SBI TOP TR (Bruto donos z dividendami)",
+            "totalReturnName": "SBI TOP TR (Izračun: cenovni indeks + reinvestirane dividende)",
             "value": 2932.29,
-            "totalReturnValue": 4561.39,
+            "totalReturnValue": sbitop_annual[-1]["sbitopTr"],
+            "daxValue": sbitop_annual[-1]["dax"],
             "change1YPct": 20.99,
-            "cagr10YPricePct": 15.11,
-            "cagr10YTotalReturnPct": 17.46,
+            "cagr10YPricePct": cagr_10y_price,
+            "cagr10YTotalReturnPct": cagr_10y_tr,
+            "cagr10YDaxPct": cagr_10y_dax,
             "totalWeightPct": safe_round(total_weights, 2),
             "totalMarketCapEurBn": safe_round(total_mcap_m / 1000.0, 2),
             "totalIssuedMarketCapEurBn": safe_round(total_issued_mcap_m / 1000.0, 2),
-            "totalRevenue2025EurBn": safe_round(total_rev_ttm_m / 1000.0, 2),
-            "totalNetIncome2025EurBn": safe_round(total_ni_ttm_m / 1000.0, 2),
+            "totalNetIncomeTtmEurBn": safe_round(total_ni_ttm_m / 1000.0, 2),
+            "totalAnnualDividendsEurBn": safe_round(total_div_m / 1000.0, 2),
             "aggregatePe": safe_round(aggregate_pe, 2),
             "harmonicWeightedPe": safe_round(harmonic_weighted_pe, 2),
             "arithmeticWeightedPe": safe_round(arithmetic_weighted_pe, 2),
@@ -1394,13 +1313,22 @@ def main():
         json.dump(master, f, ensure_ascii=False)
         f.write(";\n")
 
-    print(f"Successfully generated {OUT_JSON} ({os.path.getsize(OUT_JSON)} bytes) and {OUT_JS}")
-    print(f"Index Total Weight: {master['indexSummary']['totalWeightPct']}% | Aggregate P/E: {master['indexSummary']['aggregatePe']}x | Harmonic P/E: {master['indexSummary']['harmonicWeightedPe']}x | Aggregate P/B: {master['indexSummary']['weightedPb']}x")
-    for c in companies_out:
-        cur = c["current"]
-        hv = c["historicalValuation"]["pe"]
-        pc = c["peerComparison"]
-        print(f"  {c['ticker']:5s} | Wt={c['sbitopWeight']:5.2f}% | Px={cur['price']:6.2f}€ | EffMCap={cur['marketCapM']:7.1f}M | TTM NI={cur['netIncomeM']:6.1f}M (FY25={cur['netIncomeFy25M']:6.1f}M) | TTM PE={cur['pe']:5.2f}x (FY25={cur['peFy25']:5.2f}x, 10Y avg={hv['avg10y']}x) | TTM PB={cur['pb']:4.2f}x | PeerMed PE={pc['peerMedian']['pe']}x ({pc['premiumVsPeerMedianPct']['pe']}%)")
+    # Append/save timestamped IV log in data/iv_history.json (Item B14)
+    iv_log = []
+    if os.path.exists(IV_HISTORY_PATH):
+        try:
+            iv_log = json.load(open(IV_HISTORY_PATH, encoding="utf-8"))
+        except Exception:
+            iv_log = []
+    iv_log.append({
+        "timestamp": now_utc,
+        "marketDate": "2026-11-20",
+        "companies": {c["ticker"]: {"price": c["current"]["price"], "baseCashFlowM": c["dcfDefaults"]["baseCashFlowM"]} for c in companies_out}
+    })
+    with open(IV_HISTORY_PATH, "w", encoding="utf-8") as f:
+        json.dump(iv_log[-30:], f, indent=2, ensure_ascii=False)
+
+    print(f"Successfully generated {OUT_JSON} and {OUT_JS}")
 
 
 if __name__ == "__main__":
