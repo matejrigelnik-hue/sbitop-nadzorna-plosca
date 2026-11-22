@@ -1265,17 +1265,28 @@ def main():
     arithmetic_weighted_pe = sum(c["current"]["pe"] * c["sbitopWeight"] for c in companies_out) / total_weights
 
     now_utc = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    latest_market_date_iso = max((c["current"]["asOfDate"] for c in companies_out if c["current"].get("asOfDate")), default="2026-11-20")
+    try:
+        dt_obj = datetime.date.fromisoformat(latest_market_date_iso[:10])
+        as_of_sl = f"{dt_obj.day}. {dt_obj.month}. {dt_obj.year}"
+    except Exception:
+        as_of_sl = latest_market_date_iso
+
+    now_dt = datetime.datetime.now(datetime.timezone.utc)
+    last_checked_sl = f"{now_dt.day}. {now_dt.month}. {now_dt.year}"
 
     master = {
         "generatedAt": now_utc,
-        "lastCheckedAt": now_utc,
-        "marketDate": "2026-11-20",
+        "lastCheckedAt": last_checked_sl,
+        "lastCheckedAtIso": now_utc,
+        "asOfDate": as_of_sl,
+        "marketDate": latest_market_date_iso,
         "exchange": "Ljubljanska borza (LJSE)",
         "dataSources": {
             "financialStatements": "Revidirana letna (2016–2025) in medletna (H1 & 9M 2026) poročila izdajateljev (SEOnet / spletne strani družb, strukturirani izkazi v data/raw/companies_raw.json prek Delničar.si)",
-            "sharePrices": "Uradna tečajnica Ljubljanske borze (LJSE zaključni tečaji 2016–2026 v data/raw/companies_raw.json)",
+            "sharePrices": "Uradna tečajnica Ljubljanske borze (LJSE zaključni tečaji 2016–2026 v data/raw/companies_raw.json, dnevni zajem prek scripts/fetch_daily_market_data.py)",
             "indexBenchmark": "SBI TOP uradni zaključni tečaji LJSE; SBI TOP TR izračunan iz cenovnega indeksa + reinvestiranih letnih dividend članic; DAX 40 uradni zaključni tečaji (^GDAXI, XETRA / Yahoo Finance)",
-            "foreignPeers": "Yahoo Finance API (yfinance) — statični posnetek 68 mednarodnih primerljivih družb v data/raw/peers_yfinance.json na dan 22. 11. 2026"
+            "foreignPeers": "Yahoo Finance API (yfinance) — 68 mednarodnih primerljivih družb v data/raw/peers_yfinance.json"
         },
         "indexSummary": {
             "name": "SBI TOP",
@@ -1322,7 +1333,7 @@ def main():
             iv_log = []
     iv_log.append({
         "timestamp": now_utc,
-        "marketDate": "2026-11-20",
+        "marketDate": latest_market_date_iso,
         "companies": {c["ticker"]: {"price": c["current"]["price"], "baseCashFlowM": c["dcfDefaults"]["baseCashFlowM"]} for c in companies_out}
     })
     with open(IV_HISTORY_PATH, "w", encoding="utf-8") as f:
