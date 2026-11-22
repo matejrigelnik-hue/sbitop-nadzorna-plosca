@@ -898,17 +898,6 @@ body {
   border-radius: 3px;
 }
 
-/* Equinox Exclusion Callout */
-.eqnx-callout {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.11), rgba(15, 22, 34, 0.95));
-  border: 1px solid rgba(245, 158, 11, 0.45);
-  border-radius: var(--radius-md);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
 .footer {
   max-width: 1600px;
   margin: 0 auto;

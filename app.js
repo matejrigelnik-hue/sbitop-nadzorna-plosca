@@ -922,15 +922,13 @@
       verdictBadge = "badge-rose";
     }
 
-    const eqnxNavNote = comp.current.navPerShare
-      ? `<div class="kpi-sub">Ocenjeni čisti NAV nepremičnin: <strong class="text-emerald">${fmtNum(comp.current.navPerShare, 2)} €</strong> (P/NAV ${fmtNum(comp.current.pNav, 2)}x)</div>`
-      : `<div class="kpi-sub">PV denarnih tokov (10L): <strong>${fmtNum(res.sumPvCfM, 1)} mio €</strong> · PV Term.: <strong>${fmtNum(res.pvTerminalM, 1)} mio €</strong></div>`;
+    const pvBreakdownNote = `<div class="kpi-sub">PV denarnih tokov (10L): <strong>${fmtNum(res.sumPvCfM, 1)} mio €</strong> · PV Term.: <strong>${fmtNum(res.pvTerminalM, 1)} mio €</strong></div>`;
 
     document.getElementById("simResultCards").innerHTML = `
       <div class="val-box primary">
         <div class="kpi-label"><span>Izračunana poštena vrednost (DCF)</span><span class="badge ${verdictBadge}">${verdictText}</span></div>
         <div class="kpi-value" style="color:#34d399;font-size:26px;">${fmtNum(res.fairValuePerShare, 2)} €</div>
-        ${eqnxNavNote}
+        ${pvBreakdownNote}
       </div>
       <div class="val-box">
         <div class="kpi-label"><span>Trenutni borzni tečaj (${comp.ticker})</span><span class="badge badge-neutral">LJSE</span></div>
@@ -1352,7 +1350,7 @@
       });
     }
 
-    // Cross-Index Peer Summary Matrix (All 9 companies excluding Equinox)
+    // Cross-Index Peer Summary Matrix (All 9 companies)
     const crossBody = document.getElementById("crossPeerSummaryBody");
     crossBody.innerHTML = DATA.companies
       .filter((c) => c.includedInPeerComparison)
