@@ -27,7 +27,6 @@ HISTORICAL_DPS = {
     "TLSG": {"2016": 5.00, "2017": 5.00, "2018": 14.30, "2019": 4.50, "2020": 3.50, "2021": 4.00, "2022": 4.50, "2023": 0.00, "2024": 6.20, "2025": 4.00, "2026": 4.60},
     "CICG": {"2016": 0.90, "2017": 1.83, "2018": 2.51, "2019": 2.83, "2020": 1.68, "2021": 2.00, "2022": 3.12, "2023": 2.77, "2024": 3.20, "2025": 1.80, "2026": 1.80},
     "SALR": {"2016": 0.35, "2017": 0.40, "2018": 0.48, "2019": 0.55, "2020": 0.65, "2021": 0.90, "2022": 1.10, "2023": 1.05, "2024": 1.10, "2025": 1.15, "2026": 1.20},
-    "EQNX": {"2016": 0.65, "2017": 0.72, "2018": 0.80, "2019": 0.85, "2020": 0.00, "2021": 0.00, "2022": 1.35, "2023": 1.50, "2024": 1.70, "2025": 1.83, "2026": 2.00},
 }
 
 # Verified 10-year EBITDA overrides where IFRS filing table omitted standalone EBITDA line
@@ -35,10 +34,6 @@ EBITDA_OVERRIDES_M = {
     "CICG": {
         "2016": 25.10, "2017": 47.42, "2018": 49.30, "2019": 38.01, "2020": 33.92,
         "2021": 50.84, "2022": 61.88, "2023": 24.41, "2024": 38.80, "2025": 36.12
-    },
-    "EQNX": {
-        "2016": 5.10, "2017": 5.45, "2018": 5.82, "2019": 6.15, "2020": 2.95,
-        "2021": 4.20, "2022": 5.95, "2023": 6.38, "2024": 6.91, "2025": 7.33
     }
 }
 
@@ -57,7 +52,7 @@ CLOSE_PRICE_OVERRIDES = {
     "NLBR": {"2016": 48.50, "2017": 54.00}
 }
 
-# Verified EBT / Operating Profit overrides for NLB, Triglav, Sava Re, and Equinox (in EUR millions)
+# Verified EBT / Operating Profit overrides for NLB, Triglav, and Sava Re (in EUR millions)
 EBIT_OVERRIDES_M = {
     "NLBR": {
         "2016": 141.2, "2017": 245.5, "2018": 236.8, "2019": 225.4, "2020": 288.0,
@@ -70,21 +65,7 @@ EBIT_OVERRIDES_M = {
     "POSR": {
         "2016": 40.7, "2017": 40.3, "2018": 54.6, "2019": 63.8, "2020": 68.1,
         "2021": 94.6, "2022": 59.8, "2023": 79.8, "2024": 108.6, "2025": 138.4
-    },
-    "EQNX": {
-        "2016": 2.25, "2017": 2.55, "2018": 2.85, "2019": 3.12, "2020": 0.42,
-        "2021": 1.55, "2022": 2.15, "2023": 2.48, "2024": 2.86, "2025": 3.18
     }
-}
-
-# Equinox Pro-forma 2016-2021 Real Estate Division before 2021/2022 spin-off from Union Hoteli d.d. (in EUR millions)
-EQNX_PROFORMA_2016_2021 = {
-    "2016": {"revenue": 7.45, "ebitda": 5.10, "ebit": 2.25, "netIncome": 1.62, "ocf": 4.65, "capex": 1.45, "fcf": 4.40, "assets": 54.2, "equity": 37.8, "cash": 1.8, "debt": 13.5, "close": 38.50},
-    "2017": {"revenue": 7.80, "ebitda": 5.45, "ebit": 2.55, "netIncome": 1.88, "ocf": 4.92, "capex": 1.50, "fcf": 4.72, "assets": 54.8, "equity": 38.5, "cash": 2.1, "debt": 12.9, "close": 41.00},
-    "2018": {"revenue": 8.15, "ebitda": 5.82, "ebit": 2.85, "netIncome": 2.12, "ocf": 5.25, "capex": 1.65, "fcf": 5.05, "assets": 55.6, "equity": 39.4, "cash": 2.4, "debt": 12.2, "close": 44.20},
-    "2019": {"revenue": 8.55, "ebitda": 6.15, "ebit": 3.12, "netIncome": 2.34, "ocf": 5.58, "capex": 1.75, "fcf": 5.38, "assets": 56.4, "equity": 40.2, "cash": 2.8, "debt": 11.6, "close": 47.50},
-    "2020": {"revenue": 4.85, "ebitda": 2.95, "ebit": 0.42, "netIncome": 0.18, "ocf": 2.60, "capex": 0.95, "fcf": 2.35, "assets": 53.9, "equity": 38.9, "cash": 1.9, "debt": 12.4, "close": 39.00},
-    "2021": {"revenue": 6.20, "ebitda": 4.20, "ebit": 1.55, "netIncome": 1.15, "ocf": 3.85, "capex": 1.10, "fcf": 3.65, "assets": 53.2, "equity": 38.4, "cash": 2.2, "debt": 11.8, "close": 45.80}
 }
 
 COMPANY_META = {
@@ -501,55 +482,6 @@ COMPANY_META = {
             "catalysts": ["Protidampinške carine EU na uvoz kitajskega TiO2 izboljšujejo tržni delež in marže v Evropi", "Okrevanje evropskega gradbenega sektorja in povpraševanja po premazih/barvah", "Visoka dividendna donosnost (>6,5 %) in odkupi lastnih delnic"],
             "risks": ["Izrazita cikličnost cen pigmenta TiO2 in surovin (titana žlindra, ilmenit, energija)", "Okoljske zahteve in stroški sanacije starih bremen", "Globalni presežek proizvodnih zmogljivosti TiO2 na Kitajskem"]
         }
-    },
-    "EQNX": {
-        "ticker": "EQNX",
-        "slug": "eqnx",
-        "isin": "SI0031115163",
-        "name": "Equinox Nepremičnine, d. d.",
-        "shortName": "Equinox",
-        "sector": "Komercialne & Hotelske nepremičnine (REIT-like)",
-        "sectorEn": "Real Estate (Hospitality & Commercial)",
-        "sbitopWeight": 0.72,
-        "includedInPeerComparison": False,
-        "peerExclusionNote": "Izvzeto iz primerjave s tujimi podjetji skladno z navodilom uporabnika ('z izjemo Equinoxa, primerljiva podjetja iz tujine'). Equinox je prva slovenska nepremičninska delniška družba na LJSE, katere vrednotenje temelji na denarnem toku iz najemnin (FFO / AFFO) in pošteni tržni vrednosti nepremičninskega portfelja (NAV ~139,5 mio € oziroma ~71,50 €/delnico).",
-        "sharesIssuedM": 1.793869,
-        "sharesEffectiveM": 1.793869,
-        "fScore": 7,
-        "biiScore": 480,
-        "biiPillars": {"predictability": 88, "moat": 86, "management": 85, "financial": 84, "roic": 72, "price": 80},
-        "revenueLabel": "Čisti prihodki od najemnin",
-        "fcfLabel": "Denarni tok iz poslovanja nepremičnin (FFO)",
-        "valuationModelType": "Model FFO / AFFO + Čista vrednost sredstev (NAV nepremičninskega portfelja)",
-        "dcfDefaults": {
-            "baseCashFlowM": 7.72,
-            "baseRevenueM": 9.37,
-            "growthStage1Pct": 4.5,
-            "growthStage2Pct": 3.5,
-            "waccPct": 7.8,
-            "terminalGrowthPct": 2.5,
-            "exitMultiple": 18.0,
-            "mosPct": 15.0,
-            "netDebtM": 10.4,
-            "sharesM": 1.794,
-            "navPerShare": 71.52,
-            "propertyFairValueM": 139.5
-        },
-        "interim2026": {
-            "period": "1–7 2026 (Julij 2026 YTD)",
-            "revenueM": 5.63,
-            "ebitdaM": 4.38,
-            "netIncomeM": 1.54,
-            "yoyRevenuePct": 5.2,
-            "yoyNetIncomePct": 14.0,
-            "highlights": "Rast prihodkov od najemnin (+4 %) po aktivaciji prenovljenega Uhotela in Hotela Central; ocenjena poštena vrednost nepremičnin znaša 139,5 mio € (~71,50 € čistega NAV na delnico) ob nizkem LTV <10 %."
-        },
-        "thesis": {
-            "summary": "Prva slovenska borzna nepremičninska družba z vrhunskim portfeljem hotelskih (Grand Hotel Union, Uhotel, Hotel Lev, Hotel Central) in poslovnih nepremičnin v središču Ljubljane. Knjigovodski kapital (39,5 mio €) vodi nepremičnine po nabavni vrednosti, medtem ko ocenjena poštena vrednost nepremičnin dosega ~139,5 mio € (NAV ~71,50 €/delnico).",
-            "moat": "Nenadomestljive mikrolokacije v strogem centru Ljubljane z dolgoročnimi indeksiranimi najemnimi pogodbami ter zelo nizko zadolženostjo (LTV ~8 %, obstoječi dolg 10,6–11,2 mio €).",
-            "catalysts": ["Indeksacija najemnin z inflacijo in variabilni del najemnin ob rekordnem turističnem obisku Ljubljane", "Kapitalsko-alokacijski model: uporaba FFO (7,72 mio € v 2026) in zmernega LTV vzvoda (cilj 25 %) za rast finančnega portfelja in dividend", "Zapiranje diskonta tečaja (67,50 €) glede na ocenjeni čisti NAV (~71,50 €–75,00 €/delnico)"],
-            "risks": ["Koncentracija najemnikov v hotelskem segmentu v Ljubljani", "Vzdrževalni CAPEX (~2,7 mio €/leto) za ohranjanje kakovosti hotelskih objektov", "Nižja borzna likvidnost delnice na LJSE"]
-        }
     }
 }
 
@@ -753,7 +685,7 @@ def main():
     peer_groups_raw = json.load(open("/tmp/foreign_peers_verified.json", encoding="utf-8"))
     companies_out = []
 
-    tickers_order = ["KRKG", "NLBR", "PETG", "ZVTG", "LKPG", "POSR", "TLSG", "SALR", "CICG", "EQNX"]
+    tickers_order = ["KRKG", "NLBR", "PETG", "ZVTG", "LKPG", "POSR", "TLSG", "SALR", "CICG"]
 
     for ticker in tickers_order:
         meta = COMPANY_META[ticker]
@@ -810,54 +742,37 @@ def main():
                     return float(obj["value"])
                 return None
 
-            if ticker == "EQNX" and yr in EQNX_PROFORMA_2016_2021:
-                pf = EQNX_PROFORMA_2016_2021[yr]
-                rev_m = pf["revenue"]
-                ebitda_m = pf["ebitda"]
-                ebit_m = pf["ebit"]
-                ni_m = pf["netIncome"]
-                ocf_m = pf["ocf"]
-                capex_m = pf["capex"]
-                fcf_m = pf["fcf"]
-                assets_m = pf["assets"]
-                equity_m = pf["equity"]
-                cash_m = pf["cash"]
-                debt_m = pf["debt"]
-                emp = 18
-                report_url = "https://seonet.ljse.si"
-                is_proforma = True
+            is_proforma = False
+            rev_m = get_m("revenue")
+            if rev_m is None and ticker in REVENUE_OVERRIDES_M:
+                rev_m = REVENUE_OVERRIDES_M[ticker].get(yr)
+            ebitda_m = get_m("ebitda")
+            if ebitda_m is None and ticker in EBITDA_OVERRIDES_M:
+                ebitda_m = EBITDA_OVERRIDES_M[ticker].get(yr)
+            ebit_m = get_m("operating_profit")
+            if ebit_m is None and ticker in EBIT_OVERRIDES_M:
+                ebit_m = EBIT_OVERRIDES_M[ticker].get(yr)
+            ni_m = get_m("net_income")
+            ocf_m = get_m("operating_cash_flow")
+            inv_cf_m = get_m("investing_cash_flow")
+            fcf_m = get_m("free_cash_flow")
+            if ocf_m is not None and fcf_m is not None:
+                capex_m = max(0.0, ocf_m - fcf_m)
+            elif inv_cf_m is not None:
+                capex_m = abs(inv_cf_m)
             else:
-                is_proforma = False
-                rev_m = get_m("revenue")
-                if rev_m is None and ticker in REVENUE_OVERRIDES_M:
-                    rev_m = REVENUE_OVERRIDES_M[ticker].get(yr)
-                ebitda_m = get_m("ebitda")
-                if ebitda_m is None and ticker in EBITDA_OVERRIDES_M:
-                    ebitda_m = EBITDA_OVERRIDES_M[ticker].get(yr)
-                ebit_m = get_m("operating_profit")
-                if ebit_m is None and ticker in EBIT_OVERRIDES_M:
-                    ebit_m = EBIT_OVERRIDES_M[ticker].get(yr)
-                ni_m = get_m("net_income")
-                ocf_m = get_m("operating_cash_flow")
-                inv_cf_m = get_m("investing_cash_flow")
-                fcf_m = get_m("free_cash_flow")
-                if ocf_m is not None and fcf_m is not None:
-                    capex_m = max(0.0, ocf_m - fcf_m)
-                elif inv_cf_m is not None:
-                    capex_m = abs(inv_cf_m)
-                else:
-                    capex_m = 0.0
-                assets_m = get_m("assets")
-                equity_m = get_m("equity")
-                cash_m = get_m("cash") or 0.0
-                non_curr_liab_m = get_m("non_current_liabilities")
-                debt_m = (fund.get("totalDebt") / 1e6) if (yr == "2025" and fund.get("totalDebt") is not None) else (non_curr_liab_m * 0.55 if non_curr_liab_m else 0.0)
-                if ticker in ("KRKG", "CICG"):
-                    debt_m = 0.0 if yr != "2025" else ((fund.get("totalDebt") or 0) / 1e6)
-                elif ticker in ("NLBR", "ZVTG", "POSR"):
-                    debt_m = 0.0
-                emp = int(get_raw("employees") or get_raw("employees_average") or 0)
-                report_url = (raw_v.get("revenue") or raw_v.get("net_income") or {}).get("url", "https://seonet.ljse.si")
+                capex_m = 0.0
+            assets_m = get_m("assets")
+            equity_m = get_m("equity")
+            cash_m = get_m("cash") or 0.0
+            non_curr_liab_m = get_m("non_current_liabilities")
+            debt_m = (fund.get("totalDebt") / 1e6) if (yr == "2025" and fund.get("totalDebt") is not None) else (non_curr_liab_m * 0.55 if non_curr_liab_m else 0.0)
+            if ticker in ("KRKG", "CICG"):
+                debt_m = 0.0 if yr != "2025" else ((fund.get("totalDebt") or 0) / 1e6)
+            elif ticker in ("NLBR", "ZVTG", "POSR"):
+                debt_m = 0.0
+            emp = int(get_raw("employees") or get_raw("employees_average") or 0)
+            report_url = (raw_v.get("revenue") or raw_v.get("net_income") or {}).get("url", "https://seonet.ljse.si")
 
             net_debt_m = (debt_m - cash_m) if ticker not in ("NLBR", "ZVTG", "POSR") else 0.0
 
@@ -865,8 +780,6 @@ def main():
             close_px = close_by_year.get(yr) or ljse_ye_prices.get(yr)
             if ticker in CLOSE_PRICE_OVERRIDES and yr in CLOSE_PRICE_OVERRIDES[ticker]:
                 close_px = CLOSE_PRICE_OVERRIDES[ticker][yr]
-            if ticker == "EQNX" and yr in EQNX_PROFORMA_2016_2021:
-                close_px = EQNX_PROFORMA_2016_2021[yr]["close"]
             if close_px is None:
                 close_px = latest_price * (0.45 + 0.055 * (yr_int - 2016))
 
@@ -905,8 +818,7 @@ def main():
             ebit_margin_pct = ((ebit_m / rev_m) * 100.0) if (ebit_m is not None and rev_m and rev_m > 0) else None
             net_margin_pct = ((ni_m / rev_m) * 100.0) if (ni_m is not None and rev_m and rev_m > 0) else None
 
-            pe_cap = 115 if ticker == "EQNX" else 38
-            mult_series["pe"][yr] = pe_val if (pe_val and 0 < pe_val < pe_cap) else None
+            mult_series["pe"][yr] = pe_val if (pe_val and 0 < pe_val < 38) else None
             mult_series["pb"][yr] = pb_val
             mult_series["evEbitda"][yr] = ev_ebitda_val if (ev_ebitda_val and 0 < ev_ebitda_val < 60) else None
             mult_series["ps"][yr] = ps_val

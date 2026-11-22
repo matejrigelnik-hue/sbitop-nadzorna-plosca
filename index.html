@@ -58,7 +58,7 @@
         <div class="section-title-group">
           <span class="section-kicker">MODUL 01 · TRŽNI PREGLED LJUBLJANSKE BORZE</span>
           <h2 class="section-title">Pregled indeksa SBI TOP in glavna vrednotenjska matrika</h2>
-          <p class="section-desc">Agregirani kazalniki elitnega slovenskega borznega indeksa SBI TOP, primerjava 10-letnega donosa z nemškim indeksom DAX in presečna tabela vseh 10 članic.</p>
+          <p class="section-desc">Agregirani kazalniki elitnega slovenskega borznega indeksa SBI TOP, primerjava 10-letnega donosa z nemškim indeksom DAX in presečna tabela 9 analiziranih članic.</p>
         </div>
         <div class="badge badge-blue" id="marketTimestampBadge">Tečaji LJSE: 20. 11. 2026</div>
       </div>
@@ -217,7 +217,7 @@
     <section class="module-section" id="sec-simulator">
       <div class="section-header">
         <div class="section-title-group">
-          <span class="section-kicker">MODUL 03 · INTERAKTIVNI DCF / OWNER EARNINGS / FFO SIMULATOR</span>
+          <span class="section-kicker">MODUL 03 · INTERAKTIVNI DCF / OWNER EARNINGS SIMULATOR</span>
           <h2 class="section-title" id="simSectionTitle">Simulator prihodnjih projekcij in izračun poštene vrednosti delnice</h2>
           <p class="section-desc">Prilagodite stopnje rasti v 1. in 2. fazi, diskontno stopnjo (WACC), terminalno rast, izhodni večkratnik ter varnostno rezervo (Margin of Safety) za takojšen preračun notranje vrednosti.</p>
         </div>
@@ -398,29 +398,29 @@
     </section>
 
     <!-- ================================================================= -->
-    <!-- MODULE 4: INTERNATIONAL PEER COMPARISON (EXCLUDING EQUINOX)       -->
+    <!-- MODULE 4: INTERNATIONAL PEER COMPARISON                           -->
     <!-- ================================================================= -->
     <section class="module-section" id="sec-peers">
       <div class="section-header">
         <div class="section-title-group">
           <span class="section-kicker">MODUL 04 · MEDNARODNA PRIMERJALNA ANALIZA (PEER GROUP VALUATION)</span>
           <h2 class="section-title" id="peerSectionTitle">Primerjava kazalnikov vrednotenj s primerljivimi podjetji iz tujine</h2>
-          <p class="section-desc">Relativno vrednotenje slovenskih borznih družb v SBI TOP (z izjemo Equinoxa) glede na 5 tujih kotirajočih tekmecev iz iste panoge.</p>
+          <p class="section-desc">Relativno vrednotenje slovenskih borznih družb v SBI TOP glede na 5 tujih kotirajočih tekmecev iz iste panoge.</p>
         </div>
         <div id="peerStatusBadgeWrap"></div>
       </div>
 
-      <!-- Dynamic Content for Selected Company Peers (or Equinox Exclusion Note + FFO/NAV Panel) -->
+      <!-- Dynamic Content for Selected Company Peers -->
       <div id="peerModuleContent"></div>
 
       <!-- Cross-Index Peer Discount Summary Matrix (All 9 SBI TOP Companies vs Foreign Peers) -->
       <div class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">Presečna primerjava vseh 9 podjetij v SBI TOP (brez Equinoxa) glede na mediano tujih primerljivih družb</div>
+            <div class="card-title">Presečna primerjava vseh 9 analiziranih podjetij v SBI TOP glede na mediano tujih primerljivih družb</div>
             <div class="card-subtitle">Negativen odstotek (-) pomeni, da se slovensko podjetje trguje z diskontom (ceneje) glede na tuje vrstnike; pozitiven (+) pomeni premijo</div>
           </div>
-          <span class="badge badge-amber">Equinox (EQNX) izvzet iz tuje peer primerjave</span>
+          <span class="badge badge-blue">45 mednarodnih primerljivih družb</span>
         </div>
         <div class="table-wrapper">
           <table class="data-table" id="crossPeerSummaryTable">
@@ -519,11 +519,11 @@
         </div>
       </div>
 
-      <!-- Cross-Index 10-Year Historical Valuation Matrix (All 10 Companies) -->
+      <!-- Cross-Index 10-Year Historical Valuation Matrix (All 9 Companies) -->
       <div class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">Presečna matrika vseh 10 podjetij v SBI TOP: Trenutno vrednotenje vs. Lastna 10-letna zgodovina (2016–2025)</div>
+            <div class="card-title">Presečna matrika vseh 9 analiziranih podjetij v SBI TOP: Trenutno vrednotenje vs. Lastna 10-letna zgodovina (2016–2025)</div>
             <div class="card-subtitle">Pregled, katera podjetja v SBI TOP se trgujejo nad ali pod svojim 10-letnim zgodovinskim povprečjem in mediano</div>
           </div>
         </div>

@@ -275,7 +275,7 @@ body {
   margin: 14px auto 0;
   padding: 0 24px;
   display: grid;
-  grid-template-columns: repeat(10, minmax(120px, 1fr));
+  grid-template-columns: repeat(9, minmax(120px, 1fr));
   gap: 8px;
   overflow-x: auto;
 }

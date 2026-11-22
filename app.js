@@ -3,8 +3,8 @@
  * Glavna aplikacijska logika:
  *  - Modul 1: Pregled indeksa SBI TOP & Glavna vrednotenjska matrika
  *  - Modul 2: 10-letni zgodovinski finančni podatki (2016–2025 + 2026 TTM/9M)
- *  - Modul 3: Interaktivni simulator projekcij in poštene vrednosti (DCF / Owner Earnings / DDM / FFO)
- *  - Modul 4: Primerjava s tujimi primerljivimi podjetji (vsa podjetja v SBI TOP z izjemo Equinoxa)
+ *  - Modul 3: Interaktivni simulator projekcij in poštene vrednosti (DCF / Owner Earnings / DDM)
+ *  - Modul 4: Primerjava s tujimi primerljivimi podjetji
  *  - Modul 5: Primerjava trenutnih kazalnikov vrednotenj z 10-letno zgodovino podjetij samih (2016–2026)
  */
 
@@ -59,7 +59,7 @@
     return DATA.companies.find((c) => c.ticker === ticker) || DATA.companies[0];
   }
 
-  // Core 10-Year 2-Stage DCF / Owner Earnings / FFO Engine
+  // Core 10-Year 2-Stage DCF / Owner Earnings Engine
   function computeDcfModel(params, currentPrice) {
     const baseCf = Number(params.baseCashFlowM) || 0;
     const g1 = (Number(params.growthStage1Pct) || 0) / 100;
@@ -198,7 +198,7 @@
       .map((c) => `<option value="${c.ticker}" ${c.ticker === selectedTicker ? "selected" : ""}>${c.ticker} — ${c.shortName} (${fmtNum(c.current.price, 2)} €)</option>`)
       .join("");
 
-    // 10-Company Pill Bar
+    // 9-Company Pill Bar
     const pillBarEl = document.getElementById("companyPillBar");
     pillBarEl.innerHTML = DATA.companies
       .map((c) => {
@@ -244,7 +244,7 @@
         <div class="kpi-sub">10-letni skupni donos CAGR: <strong class="text-emerald">+${fmtNum(idx.cagr10YTotalReturnPct, 2)} %/leto</strong> (vs. DAX +7,26 %)</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label"><span>Skupna tržna kapitalizacija (10 družb)</span><span class="badge badge-neutral">LJSE Prva kotacija</span></div>
+        <div class="kpi-label"><span>Skupna tržna kapitalizacija (9 družb)</span><span class="badge badge-neutral">LJSE Prva kotacija</span></div>
         <div class="kpi-value">${fmtNum(idx.totalMarketCapEurBn, 2)} <span style="font-size:13px;color:var(--text-secondary);">mrd €</span></div>
         <div class="kpi-sub">Letni prihodki: <strong>${fmtNum(idx.totalRevenue2025EurBn, 2)} mrd €</strong> · Čisti dobiček: <strong>${fmtNum(idx.totalNetIncome2025EurBn, 2)} mrd €</strong></div>
       </div>
@@ -675,9 +675,7 @@
 
     // Full 10-Year Financial Table (2016–2025 + 2026 TTM + 10Y CAGR)
     document.getElementById("finProformaBadge").textContent =
-      comp.ticker === "EQNX"
-        ? "2022–2025 Uradni revidirani izkazi Equinox · 2016–2021 Pro-forma nepremičninski portfelj Union Hoteli"
-        : "Uradni revidirani MSRP izkazi (SEOnet 2016–2025 + 2026 TTM)";
+      "Uradni revidirani MSRP izkazi (SEOnet 2016–2025 + 2026 TTM)";
 
     const thead = document.getElementById("historicalFinancialsHead");
     thead.innerHTML = `
@@ -1149,7 +1147,7 @@
   }
 
   // =========================================================================
-  // MODULE 4: INTERNATIONAL PEER COMPARISON (EXCLUDING EQUINOX)
+  // MODULE 4: INTERNATIONAL PEER COMPARISON
   // =========================================================================
   function renderModule4Peers(comp) {
     const cur = comp.current;
@@ -1160,41 +1158,7 @@
 
     const contentEl = document.getElementById("peerModuleContent");
 
-    if (!pc.included) {
-      document.getElementById("peerStatusBadgeWrap").innerHTML =
-        `<span class="badge badge-amber">Equinox (EQNX) izvzet iz primerjave s tujimi podjetji</span>`;
-
-      contentEl.innerHTML = `
-        <div class="eqnx-callout">
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
-            <div style="font-size:16px;font-weight:700;color:#fbbf24;">
-              Metodološko pojasnilo: Equinox Nepremičnine (EQNX) je izvzet iz primerjave s tujimi podjetji
-            </div>
-            <span class="badge badge-amber">Skladno z zahtevo uporabnika ("z izjemo Equinoxa")</span>
-          </div>
-          <p style="font-size:13px;color:var(--text-primary);line-height:1.6;">
-            ${pc.exclusionReason}
-          </p>
-          <div class="grid-3" style="margin-top:6px;">
-            <div class="kpi-card">
-              <div class="kpi-label"><span>Ocenjena poštena vrednost nepremičnin (2026)</span><span class="badge badge-emerald">NAV Model</span></div>
-              <div class="kpi-value">139,50 <span style="font-size:13px;color:var(--text-secondary);">mio €</span></div>
-              <div class="kpi-sub">Knjigovodski kapital (po nabavni vr.): <strong>39,49 mio €</strong></div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-label"><span>Čista vrednost sredstev na delnico (NAV)</span><span class="badge badge-blue">Tečaj: ${fmtNum(cur.price, 2)} €</span></div>
-              <div class="kpi-value">71,52 € <span style="font-size:13px;color:var(--text-secondary);">/ delnico</span></div>
-              <div class="kpi-sub">Kazalnik P/NAV: <strong class="text-emerald">0,94x (-5,6 % diskont do NAV)</strong></div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-label"><span>Denarni tok iz najemnin (FFO 2026E)</span><span class="badge badge-emerald">LTV ~8 %</span></div>
-              <div class="kpi-value">7,72 <span style="font-size:13px;color:var(--text-secondary);">mio € (4,30 €/deln.)</span></div>
-              <div class="kpi-sub">Večkratnik P/FFO (2026E): <strong>15,7x</strong> · Vzdrževalni CAPEX: <strong>2,7 mio €</strong></div>
-            </div>
-          </div>
-        </div>
-      `;
-    } else {
+    if (pc && pc.included) {
       const premPe = pc.premiumVsPeerMedianPct.pe;
       const badgeClass = premPe <= 0 ? "badge-emerald" : "badge-amber";
       const badgeText =
