@@ -1,0 +1,51 @@
+name: Samodejna osvežitev podatkov SBI TOP (LJSE & SEOnet)
+
+on:
+  schedule:
+    # Vsak delovni dan ob 17:30 CET po zaključku trgovanja na Ljubljanski borzi
+    - cron: '30 16 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-dataset:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prevzem izvorne kode
+        uses: actions/checkout@v4
+
+      - name: Nastavitev okolja Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Namestitev knjižnic za zajem podatkov
+        run: pip install yfinance openpyxl requests
+
+      - name: Posodobitev časovnega žiga in validacija JSON/JS podatkovne baze
+        run: |
+          python3 - << 'EOF'
+          import json, datetime
+          path_json = "data/sbitop_data.json"
+          path_js = "data/sbitop_data.js"
+          data = json.load(open(path_json, encoding="utf-8"))
+          data["lastCheckedAt"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+          with open(path_json, "w", encoding="utf-8") as f:
+              json.dump(data, f, indent=2, ensure_ascii=False)
+          with open(path_js, "w", encoding="utf-8") as f:
+              f.write("// Avtomatsko generirana podatkovna baza za SBI TOP Nadzorno Ploščo\n")
+              f.write("window.SBITOP_DATA = ")
+              json.dump(data, f, ensure_ascii=False)
+              f.write(";\n")
+          print("Successfully validated and updated timestamp:", data["lastCheckedAt"])
+          EOF
+
+      - name: Objava posodobljenih podatkov v repozitorij
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sbitop_data.json data/sbitop_data.js
+          git diff --staged --quiet || git commit -m "chore(data): samodejna osvežitev podatkovne baze SBI TOP"
+          git push
