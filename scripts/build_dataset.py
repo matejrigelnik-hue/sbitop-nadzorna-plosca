@@ -528,7 +528,7 @@ COMPANY_META = {
     "SALR": {
         "ticker": "SALR",
         "slug": "salr",
-        "isin": "SI0031105685",
+        "isin": "SI0031110453",
         "name": "Salus, Veletrgovina, d. d.",
         "shortName": "Salus",
         "sector": "Veleprodaja zdravil & Medicinskih pripomočkov",
@@ -825,8 +825,9 @@ def main():
             if lbl.isdigit() and pt.get("close") is not None:
                 close_by_year[lbl] = float(pt.get("close"))
         for yr_k, info_k in csv_ye_map.items():
-            if yr_k not in close_by_year and info_k.get("close") is not None:
-                close_by_year[yr_k] = float(info_k["close"])
+            val_k = info_k.get("close") if isinstance(info_k, dict) else info_k
+            if yr_k not in close_by_year and val_k is not None:
+                close_by_year[yr_k] = float(val_k)
 
         latest_price = float(daily_points[-1]["close"])
         first_price_1y = float(daily_points[0]["close"])
@@ -1217,6 +1218,10 @@ def main():
             "priceHistory1Y": daily_points
         })
 
+    live_sbi = raw_companies.get("_sbitop_index_live", {})
+    live_sbi_val = float(live_sbi.get("value", 2932.29))
+    live_sbi_chg_1y = float(live_sbi.get("change1YPct", 20.41))
+
     # Verified SBI TOP price index, consistent SBI TOP Total Return (reinvested dividends), and official DAX 40 (^GDAXI) year-end closes
     sbitop_raw_series = [
         (2016, 717.59, 11481.06, 5.40),
@@ -1229,7 +1234,7 @@ def main():
         (2023, 1253.41, 16751.64, 6.35),
         (2024, 1666.60, 19909.14, 5.85),
         (2025, 2505.44, 24490.41, 5.10),
-        (2026, 2932.29, 24802.78, 4.31)
+        (2026, live_sbi_val, 24802.78, 4.31)
     ]
 
     sbitop_annual = []
@@ -1284,17 +1289,17 @@ def main():
         "exchange": "Ljubljanska borza (LJSE)",
         "dataSources": {
             "financialStatements": "Revidirana letna (2016–2025) in medletna (H1 & 9M 2026) poročila izdajateljev (SEOnet / spletne strani družb, strukturirani izkazi v data/raw/companies_raw.json prek Delničar.si)",
-            "sharePrices": "Uradna tečajnica Ljubljanske borze (LJSE zaključni tečaji 2016–2026 v data/raw/companies_raw.json, dnevni zajem prek scripts/fetch_daily_market_data.py)",
-            "indexBenchmark": "SBI TOP uradni zaključni tečaji LJSE; SBI TOP TR izračunan iz cenovnega indeksa + reinvestiranih letnih dividend članic; DAX 40 uradni zaključni tečaji (^GDAXI, XETRA / Yahoo Finance)",
+            "sharePrices": "Uradna tečajnica Ljubljanske borze (neposredni JSON API ljse.si v data/raw/companies_raw.json, dnevni zajem prek scripts/fetch_daily_market_data.py)",
+            "indexBenchmark": "SBI TOP uradni zaključni tečaji LJSE (ljse.si); SBI TOP TR izračunan iz cenovnega indeksa + reinvestiranih letnih dividend članic; DAX 40 uradni zaključni tečaji (^GDAXI, XETRA / Yahoo Finance)",
             "foreignPeers": "Yahoo Finance API (yfinance) — 68 mednarodnih primerljivih družb v data/raw/peers_yfinance.json"
         },
         "indexSummary": {
             "name": "SBI TOP",
             "totalReturnName": "SBI TOP TR (Izračun: cenovni indeks + reinvestirane dividende)",
-            "value": 2932.29,
+            "value": live_sbi_val,
             "totalReturnValue": sbitop_annual[-1]["sbitopTr"],
             "daxValue": sbitop_annual[-1]["dax"],
-            "change1YPct": 20.99,
+            "change1YPct": live_sbi_chg_1y,
             "cagr10YPricePct": cagr_10y_price,
             "cagr10YTotalReturnPct": cagr_10y_tr,
             "cagr10YDaxPct": cagr_10y_dax,
@@ -1338,6 +1343,29 @@ def main():
     })
     with open(IV_HISTORY_PATH, "w", encoding="utf-8") as f:
         json.dump(iv_log[-30:], f, indent=2, ensure_ascii=False)
+
+    # Also auto-rebuild standalone NADZORNA_PLOSCA_SBITOP.html if source files exist
+    try:
+        idx_html_p = os.path.join(REPO_ROOT, "index.html")
+        css_p = os.path.join(REPO_ROOT, "styles.css")
+        app_p = os.path.join(REPO_ROOT, "app.js")
+        bundle_p = os.path.join(REPO_ROOT, "NADZORNA_PLOSCA_SBITOP.html")
+        if all(os.path.exists(p) for p in (idx_html_p, css_p, app_p)):
+            with open(idx_html_p, "r", encoding="utf-8") as f:
+                html_txt = f.read()
+            with open(css_p, "r", encoding="utf-8") as f:
+                css_txt = f.read()
+            with open(OUT_JS, "r", encoding="utf-8") as f:
+                data_js_txt = f.read()
+            with open(app_p, "r", encoding="utf-8") as f:
+                app_js_txt = f.read()
+            bundle_txt = html_txt.replace('<link rel="stylesheet" href="styles.css" />', f"<style>\n{css_txt}\n</style>")
+            bundle_txt = bundle_txt.replace('<script src="data/sbitop_data.js"></script>', f"<script>\n{data_js_txt}\n</script>")
+            bundle_txt = bundle_txt.replace('<script src="app.js"></script>', f"<script>\n{app_js_txt}\n</script>")
+            with open(bundle_p, "w", encoding="utf-8") as f:
+                f.write(bundle_txt)
+    except Exception as e:
+        print("Warning: could not rebuild standalone HTML bundle:", e)
 
     print(f"Successfully generated {OUT_JSON} and {OUT_JS}")
 

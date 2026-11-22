@@ -2,10 +2,14 @@ name: Samodejna dnevna osvežitev tečajev in validacija SBI TOP (LJSE & Yahoo F
 
 on:
   schedule:
-    # Zimski čas (CET = UTC+1): 16:30 UTC = 17:30 CET po zaključku trgovanja na LJSE
-    - cron: '30 16 * * 1-5'
-    # Poletni čas (CEST = UTC+2): 15:30 UTC = 17:30 CEST po zaključku trgovanja na LJSE
+    # 1. Opoldanska osvežitev med trgovanjem na LJSE (12:15 CET / 13:15 CEST)
+    - cron: '15 11 * * 1-5'
+    # 2. Osvežitev takoj po zaključni avkciji na LJSE (15:45 CET / 16:45 CEST)
+    - cron: '45 14 * * 1-5'
+    # 3. Končni obračun tečajnice — poletni čas (17:30 CEST = 15:30 UTC)
     - cron: '30 15 * * 1-5'
+    # 4. Končni obračun tečajnice — zimski čas (17:30 CET = 16:30 UTC)
+    - cron: '30 16 * * 1-5'
   workflow_dispatch:
   push:
     paths:
@@ -29,7 +33,7 @@ jobs:
       - name: Namestitev knjižnice yfinance za tuje vrstnike in DAX 40
         run: pip install yfinance
 
-      - name: Zajem dnevnih zaključnih tečajev z LJSE (9 družb) in 68 tujih vrstnikov
+      - name: Zajem dnevnih zaključnih tečajev neposredno z LJSE (ljse.si) in 68 tujih vrstnikov
         run: python3 scripts/fetch_daily_market_data.py
 
       - name: Preračun vseh kazalnikov vrednotenj (P/E, P/B, EV/EBITDA, MoS, IV) in arhiviranje IV
@@ -45,6 +49,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/raw/companies_raw.json data/raw/peers_yfinance.json data/sbitop_data.json data/sbitop_data.js data/iv_history.json
-          git diff --staged --quiet || git commit -m "chore(data): dnevna osvežitev borznih tečajev LJSE in preračun kazalnikov SBI TOP"
-          git push
+          git add data/raw/companies_raw.json data/raw/peers_yfinance.json data/sbitop_data.json data/sbitop_data.js data/iv_history.json NADZORNA_PLOSCA_SBITOP.html
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(data): samodejna osvežitev borznih tečajev LJSE in preračun kazalnikov SBI TOP"
+            git pull --rebase -X ours origin main
+            git push origin main
+          fi

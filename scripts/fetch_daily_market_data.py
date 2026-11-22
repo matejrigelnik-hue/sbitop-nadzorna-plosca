@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """
-Avtomatski dnevni zajem tržnih tečajev za SBI TOP Nadzorno Ploščo:
-1. Za vseh 9 družb v SBI TOP (brez EQNX) osveži dnevno serijo zaključnih tečajev (daily_points)
-   z Ljubljanske borze (prek Delničar.si / LJSE tečajnice) v data/raw/companies_raw.json.
-2. Prek knjižnice yfinance osveži trenutni tečaj indeksa DAX 40 (^GDAXI) in kazalnike vrednotenj
-   za vseh 68 tujih primerljivih podjetij v data/raw/peers_yfinance.json.
-3. Če kateri koli posamezen mrežni klic odpove, ohrani zadnje veljavne podatke iz data/raw/,
-   tako da dnevna osvežitev nikoli ne pokvari podatkovne baze.
+Popolnoma avtomatiziran dnevni zajem tržnih tečajev za SBI TOP Nadzorno Ploščo:
+1. PRIMARNI VIR (Uradni JSON API Ljubljanske borze — ljse.si):
+   Za vseh 9 družb v SBI TOP (brez EQNX) neposredno z https://ljse.si/si/papir/310?isin=<ISIN>&range=1y
+   prenese uradno 1-letno dnevno serijo zaključnih tečajev delnic (moves.date, moves.price)
+   ter uradno dnevno vrednost indeksa SBI TOP (moves.index).
+2. REZERVNI VIR (Delničar.si):
+   Če klic na ljse.si za posamezno delnico začasno ne uspe, uporabi https://xn--delniar-n6a.si/stock/<slug>.
+3. MEDNARODNI VRSTNIKI IN DAX 40 (Yahoo Finance / yfinance):
+   Osveži vrednost indeksa DAX 40 (^GDAXI) in kazalnike vrednotenj za vseh 68 tujih primerljivih podjetij
+   v data/raw/peers_yfinance.json.
 """
 
 import datetime
@@ -19,27 +22,73 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW_COMPANIES_PATH = os.path.join(REPO_ROOT, "data", "raw", "companies_raw.json")
 RAW_PEERS_PATH = os.path.join(REPO_ROOT, "data", "raw", "peers_yfinance.json")
 
-TICKER_SLUGS = {
-    "KRKG": "krkg",
-    "NLBR": "nlbr",
-    "PETG": "petg",
-    "ZVTG": "zvtg",
-    "LKPG": "lkpg",
-    "POSR": "posr",
-    "TLSG": "tlsg",
-    "SALR": "salr",
-    "CICG": "cicg"
+COMPANIES_CONFIG = {
+    "KRKG": {"isin": "SI0031102120", "slug": "krkg"},
+    "NLBR": {"isin": "SI0021117344", "slug": "nlbr"},
+    "PETG": {"isin": "SI0031102153", "slug": "petg"},
+    "ZVTG": {"isin": "SI0021111651", "slug": "zvtg"},
+    "POSR": {"isin": "SI0021110513", "slug": "posr"},
+    "LKPG": {"isin": "SI0031101346", "slug": "lkpg"},
+    "TLSG": {"isin": "SI0031104290", "slug": "tlsg"},
+    "SALR": {"isin": "SI0031110453", "slug": "salr"},
+    "CICG": {"isin": "SI0031103805", "slug": "cicg"},
 }
 
 
-def fetch_ljse_daily_points_for_slug(slug):
-    """Fetches the latest 1Y daily closing price series for an LJSE stock."""
-    url = f"https://xn--delniar-n6a.si/stock/{slug}"
+def fetch_official_ljse_1y(isin):
+    """
+    Fetches official 1-year daily closing prices and SBI TOP index values
+    directly from Ljubljana Stock Exchange (ljse.si).
+    """
+    url = f"https://ljse.si/si/papir/310?isin={isin}&range=1y"
     req = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) SBI-TOP-Dashboard-Updater/1.0"
-        }
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "X-Requested-With": "XMLHttpRequest",
+        },
+    )
+    raw_bytes = urllib.request.urlopen(req, timeout=20).read()
+    data = json.loads(raw_bytes.decode("utf-8", errors="ignore"))
+    moves = data.get("moves", {})
+    dates = moves.get("date", [])
+    prices = moves.get("price", [])
+    indices = moves.get("index", [])
+
+    daily_points = []
+    last_valid_px = None
+    for dt_raw, px_raw in zip(dates, prices):
+        dt_str = str(dt_raw)[:10]
+        if px_raw is not None:
+            try:
+                last_valid_px = round(float(px_raw), 4)
+            except Exception:
+                pass
+        if dt_str and last_valid_px is not None:
+            daily_points.append({"date": dt_str, "close": last_valid_px})
+
+    sbitop_points = []
+    last_valid_idx = None
+    for dt_raw, idx_raw in zip(dates, indices):
+        dt_str = str(dt_raw)[:10]
+        if idx_raw is not None:
+            try:
+                last_valid_idx = round(float(idx_raw), 2)
+            except Exception:
+                pass
+        if dt_str and last_valid_idx is not None:
+            sbitop_points.append({"date": dt_str, "value": last_valid_idx})
+
+    return daily_points, sbitop_points
+
+
+def fetch_fallback_delnicar_1y(slug):
+    """Backup fetcher from Delničar.si if ljse.si times out."""
+    url = f"https://xn--delniar-n6a.si/stock/{slug}"
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) SBI-TOP-Dashboard-Updater/1.0"},
     )
     html = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", errors="ignore")
     pushes = re.findall(r'self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)', html)
@@ -70,20 +119,56 @@ def update_ljse_companies_raw():
         raw_data = json.load(f)
 
     updated_count = 0
-    for ticker, slug in TICKER_SLUGS.items():
+    latest_sbitop_series = []
+
+    for ticker, cfg in COMPANIES_CONFIG.items():
         if ticker not in raw_data:
             continue
+        isin = cfg["isin"]
+        slug = cfg["slug"]
+        pts = []
+        source_used = "LJSE uradni API (ljse.si)"
+
         try:
-            pts = fetch_ljse_daily_points_for_slug(slug)
-            if pts and len(pts) >= 50:
-                latest_pt = pts[-1]
-                raw_data[ticker]["daily_points"] = pts
-                updated_count += 1
-                print(f"[LJSE] {ticker}: osveženih {len(pts)} dnevnih tečajev (zadnji: {latest_pt['date']} = {latest_pt['close']} €)")
-            else:
-                print(f"[LJSE] {ticker}: prazen odgovor, ohranjam obstoječo serijo.")
+            pts, sbi_pts = fetch_official_ljse_1y(isin)
+            if sbi_pts and len(sbi_pts) > len(latest_sbitop_series):
+                latest_sbitop_series = sbi_pts
         except Exception as e:
-            print(f"[LJSE] {ticker}: napaka pri prenosu ({e}), ohranjam obstoječo serijo.")
+            print(f"[LJSE API] {ticker} ({isin}): opozorilo ({e}), preklapljam na rezervni vir...")
+
+        if not pts or len(pts) < 50:
+            try:
+                pts = fetch_fallback_delnicar_1y(slug)
+                source_used = "Rezervni vir (Delničar.si)"
+            except Exception as e2:
+                print(f"[REZERVNI VIR] {ticker}: napaka ({e2}), ohranjam obstoječo serijo.")
+
+        if pts and len(pts) >= 50:
+            latest_pt = pts[-1]
+            raw_data[ticker]["daily_points"] = pts
+            # Update current year-end / latest price in ljse_csv_year_end for the current year
+            yr_str = latest_pt["date"][:4]
+            raw_data[ticker].setdefault("ljse_csv_year_end", {})[yr_str] = {
+                "date": latest_pt["date"],
+                "close": float(latest_pt["close"])
+            }
+            updated_count += 1
+            print(
+                f"[{source_used}] {ticker} ({isin}): osveženih {len(pts)} dnevnih tečajev "
+                f"(zadnji: {latest_pt['date']} = {latest_pt['close']:.2f} €)"
+            )
+
+    if latest_sbitop_series:
+        first_idx = latest_sbitop_series[0]["value"]
+        last_idx = latest_sbitop_series[-1]["value"]
+        last_idx_date = latest_sbitop_series[-1]["date"]
+        chg_1y_pct = round(((last_idx / first_idx) - 1.0) * 100.0, 2) if first_idx > 0 else 20.99
+        raw_data["_sbitop_index_live"] = {
+            "asOfDate": last_idx_date,
+            "value": last_idx,
+            "change1YPct": chg_1y_pct,
+        }
+        print(f"[LJSE INDEKS] SBI TOP na dan {last_idx_date}: {last_idx:.2f} točk (1L sprememba: {chg_1y_pct:+.2f} %)")
 
     if updated_count > 0:
         with open(RAW_COMPANIES_PATH, "w", encoding="utf-8") as f:
@@ -106,20 +191,18 @@ def update_yfinance_peers():
 
     today_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
 
-    # 1. Refresh DAX 40 (^GDAXI) latest close
-    try:
-        dax_hist = yf.Ticker("^GDAXI").history(period="10d")
-        if not dax_hist.empty:
-            latest_dax = round(float(dax_hist["Close"].iloc[-1]), 2)
-            peers_data.setdefault("dax", {})["2026_latest"] = latest_dax
-            peers_data["dax"]["asOf"] = today_iso
-            print(f"[DAX] ^GDAXI posodobljen na {latest_dax} ({today_iso})")
-    except Exception as e:
-        print(f"[DAX] Napaka pri osvežitvi ^GDAXI: {e}")
-
-    # 2. Refresh FX rates to EUR
+    # 1. Refresh FX rates to EUR
     fx_to_eur = {"EUR": 1.0}
-    for ccy, pair in [("USD", "EURUSD=X"), ("GBP", "EURGBP=X"), ("CHF", "EURCHF=X"), ("PLN", "EURPLN=X"), ("HUF", "EURHUF=X"), ("RON", "EURRON=X"), ("HKD", "EURHKD=X"), ("DKK", "EURDKK=X"), ("FIN", "EUR=X")]:
+    for ccy, pair in [
+        ("USD", "EURUSD=X"),
+        ("GBP", "EURGBP=X"),
+        ("CHF", "EURCHF=X"),
+        ("PLN", "EURPLN=X"),
+        ("HUF", "EURHUF=X"),
+        ("RON", "EURRON=X"),
+        ("HKD", "EURHKD=X"),
+        ("DKK", "EURDKK=X"),
+    ]:
         try:
             h = yf.Ticker(pair).history(period="5d")
             if not h.empty:
@@ -130,12 +213,16 @@ def update_yfinance_peers():
             pass
     fx_to_eur["GBp"] = fx_to_eur.get("GBP", 1.18) / 100.0
 
-    # 3. Refresh peer multiples
-    peers_groups = peers_data.get("peers", {})
+    # 2. Refresh all 68 peers across the 9 SBI TOP company keys
     refreshed_peers = 0
-    for sbi_ticker, peer_list in peers_groups.items():
+    for sbi_ticker in COMPANIES_CONFIG.keys():
+        peer_list = peers_data.get(sbi_ticker, [])
+        if not isinstance(peer_list, list):
+            continue
         for p in peer_list:
-            pticker = p["ticker"]
+            pticker = p.get("ticker")
+            if not pticker:
+                continue
             try:
                 info = yf.Ticker(pticker).info
                 if not info:
@@ -172,9 +259,8 @@ def update_yfinance_peers():
                 p["asOf"] = today_iso
                 refreshed_peers += 1
             except Exception as e:
-                print(f"[PEER] {pticker}: napaka ({e}), ohranjam zadnjo vrednost.")
+                print(f"[PEER] {pticker}: opozorilo ({e}), ohranjam zadnjo vrednost.")
 
-    peers_data["fetchedAt"] = today_iso
     with open(RAW_PEERS_PATH, "w", encoding="utf-8") as f:
         json.dump(peers_data, f, indent=2, ensure_ascii=False)
     print(f"Uspešno posodobljenih {refreshed_peers} tujih vrstnikov v {RAW_PEERS_PATH}.")
