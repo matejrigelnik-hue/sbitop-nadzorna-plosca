@@ -334,5 +334,47 @@
         "baseCashFlowM": 10.48
       }
     }
+  },
+  {
+    "timestamp": "2026-11-23T22:38:48Z",
+    "marketDate": "2026-11-23",
+    "companies": {
+      "KRKG": {
+        "price": 246.5,
+        "baseCashFlowM": 313.97
+      },
+      "NLBR": {
+        "price": 212.0,
+        "baseCashFlowM": 524.79
+      },
+      "PETG": {
+        "price": 54.8,
+        "baseCashFlowM": 105.43
+      },
+      "ZVTG": {
+        "price": 68.6,
+        "baseCashFlowM": 137.21
+      },
+      "LKPG": {
+        "price": 109.0,
+        "baseCashFlowM": 28.94
+      },
+      "POSR": {
+        "price": 77.4,
+        "baseCashFlowM": 123.55
+      },
+      "TLSG": {
+        "price": 141.0,
+        "baseCashFlowM": 58.57
+      },
+      "SALR": {
+        "price": 59.0,
+        "baseCashFlowM": 12.59
+      },
+      "CICG": {
+        "price": 27.0,
+        "baseCashFlowM": 10.48
+      }
+    }
   }
 ]
