@@ -38,8 +38,8 @@ def main():
         print(f"  [ERROR] {msg}")
 
     companies = data.get("companies", [])
-    if len(companies) != 9:
-        err(f"Pričakovanih 9 družb (brez Equinoxa), najdenih {len(companies)}")
+    if len(companies) != 10:
+        err(f"Pričakovanih 10 družb v SBI TOP (brez Equinoxa, vključno z VZZR), najdenih {len(companies)}")
 
     # 1. Check sum of sbitopWeight == 100.0
     w_sum = round(sum(c["sbitopWeight"] for c in companies), 2)
@@ -76,14 +76,18 @@ def main():
         if not approx_eq(cur["enterpriseValueM"], expected_ev, 0.2):
             err(f"{t}: enterpriseValueM ({cur['enterpriseValueM']}) != marketCapM ({cur['marketCapM']}) + netDebtM ({cur['netDebtM']}) = {expected_ev:.2f}")
 
-        # 3c. eps = netIncome / sharesEffective & P/E = price / eps
+        # 3c. eps = netIncome / sharesEffective & P/E = price / eps (or None if eps <= 0)
         expected_eps = cur["netIncomeM"] / shares
         if not approx_eq(cur["eps"], expected_eps, 0.03):
             err(f"{t}: TTM eps ({cur['eps']}) != netIncomeM ({cur['netIncomeM']}) / shares ({shares}) = {expected_eps:.2f}")
 
-        expected_pe = price / cur["eps"]
-        if not approx_eq(cur["pe"], expected_pe, 0.08):
-            err(f"{t}: TTM pe ({cur['pe']}) != price ({price}) / eps ({cur['eps']}) = {expected_pe:.2f}")
+        if cur["eps"] > 0:
+            expected_pe = price / cur["eps"]
+            if not approx_eq(cur["pe"], expected_pe, 0.08):
+                err(f"{t}: TTM pe ({cur['pe']}) != price ({price}) / eps ({cur['eps']}) = {expected_pe:.2f}")
+        else:
+            if cur["pe"] is not None:
+                err(f"{t}: TTM eps <= 0 ({cur['eps']}), a TTM pe ni None ({cur['pe']})")
 
         # 3d. TTM = FY25 + 9M26 - 9M25
         y25 = hist[-1]
@@ -139,8 +143,8 @@ def main():
             if not approx_eq(cur["change1YPct"], exp_chg, 0.05):
                 err(f"{t}: change1YPct ({cur['change1YPct']}) != priceHistory1Y izračun ({exp_chg})")
 
-        # 3h. Check payoutRatioPct consistency: DPS / TTM EPS * 100
-        exp_payout = round((cur["dps"] / cur["eps"]) * 100.0, 1)
+        # 3h. Check payoutRatioPct consistency: DPS / TTM EPS * 100 (or 0.0 if eps <= 0)
+        exp_payout = round((cur["dps"] / cur["eps"]) * 100.0, 1) if cur["eps"] > 0 else 0.0
         if not approx_eq(c["dividendCalendar"]["payoutRatioPct"], exp_payout, 0.2):
             err(f"{t}: dividendCalendar.payoutRatioPct ({c['dividendCalendar']['payoutRatioPct']}) != DPS/EPS ({exp_payout})")
 

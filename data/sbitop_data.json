@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-24T02:59:50Z",
+  "generatedAt": "2026-11-24T14:43:16Z",
   "lastCheckedAt": "24. 11. 2026",
-  "lastCheckedAtIso": "2026-11-24T02:59:50Z",
-  "asOfDate": "23. 11. 2026",
-  "marketDate": "2026-11-23",
+  "lastCheckedAtIso": "2026-11-24T14:43:16Z",
+  "asOfDate": "24. 11. 2026",
+  "marketDate": "2026-11-24",
   "exchange": "Ljubljanska borza (LJSE)",
   "dataSources": {
     "financialStatements": "Revidirana letna (2016–2025) in medletna (H1 & 9M 2026) poročila izdajateljev (SEOnet / spletne strani družb, strukturirani izkazi v data/raw/companies_raw.json prek Delničar.si)",
@@ -14,25 +14,25 @@
   "indexSummary": {
     "name": "SBI TOP",
     "totalReturnName": "SBI TOP TR (Izračun: cenovni indeks + reinvestirane dividende)",
-    "value": 2919.42,
-    "totalReturnValue": 5976.47,
+    "value": 2933.47,
+    "totalReturnValue": 6004.21,
     "daxValue": 24802.78,
-    "change1YPct": 20.86,
-    "cagr10YPricePct": 15.06,
-    "cagr10YTotalReturnPct": 20.68,
+    "change1YPct": 21.44,
+    "cagr10YPricePct": 15.12,
+    "cagr10YTotalReturnPct": 20.73,
     "cagr10YDaxPct": 8.01,
     "totalWeightPct": 100.0,
-    "totalMarketCapEurBn": 19.92,
-    "totalIssuedMarketCapEurBn": 20.66,
-    "totalNetIncomeTtmEurBn": 1.56,
+    "totalMarketCapEurBn": 20.14,
+    "totalIssuedMarketCapEurBn": 20.88,
+    "totalNetIncomeTtmEurBn": 1.55,
     "totalAnnualDividendsEurBn": 0.85,
-    "aggregatePe": 12.81,
-    "harmonicWeightedPe": 12.55,
-    "arithmeticWeightedPe": 13.89,
-    "weightedPe": 12.81,
-    "weightedPb": 1.8,
-    "weightedDivYieldPct": 4.32,
-    "weightedRoePct": 14.07,
+    "aggregatePe": 12.96,
+    "harmonicWeightedPe": 12.58,
+    "arithmeticWeightedPe": 13.98,
+    "weightedPe": 12.96,
+    "weightedPb": 1.81,
+    "weightedDivYieldPct": 4.29,
+    "weightedRoePct": 13.96,
     "annualHistory": [
       {
         "year": 2016,
@@ -106,8 +106,8 @@
       },
       {
         "year": 2026,
-        "sbitop": 2919.42,
-        "sbitopTr": 5976.47,
+        "sbitop": 2933.47,
+        "sbitopTr": 6004.21,
         "dax": 24802.78,
         "divYieldPct": 4.31
       }
@@ -124,7 +124,7 @@
       "sectorEn": "Pharmaceuticals",
       "isFinancial": false,
       "sbitopOfficialWeight": 29.85,
-      "sbitopWeight": 30.1,
+      "sbitopWeight": 29.95,
       "includedInPeerComparison": true,
       "sharesIssuedM": 32.793448,
       "sharesEffectiveM": 30.556137,
@@ -265,13 +265,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-23",
-        "price": 246.5,
-        "change1YPct": 20.24,
-        "marketCapM": 7532.09,
-        "issuedMarketCapM": 8083.58,
-        "effectiveMarketCapM": 7532.09,
-        "enterpriseValueM": 7245.94,
+        "asOfDate": "2026-11-24",
+        "price": 250.5,
+        "change1YPct": 22.2,
+        "marketCapM": 7654.31,
+        "issuedMarketCapM": 8214.76,
+        "effectiveMarketCapM": 7654.31,
+        "enterpriseValueM": 7368.16,
         "rawNetDebtM": -329.46,
         "operatingCashBufferM": 43.31,
         "netDebtM": -286.15,
@@ -297,13 +297,13 @@
         "bvps": 81.33,
         "dps": 9.1,
         "payoutRatioPct": 64.3,
-        "pe": 17.41,
+        "pe": 17.69,
         "peFy25": 15.37,
-        "pb": 3.03,
-        "evEbitda": 12.03,
-        "ps": 3.48,
-        "pFcf": 23.99,
-        "divYieldPct": 3.69,
+        "pb": 3.08,
+        "evEbitda": 12.23,
+        "ps": 3.53,
+        "pFcf": 24.38,
+        "divYieldPct": 3.63,
         "roePct": 17.42,
         "roaPct": 12.86,
         "roicPct": 16.05,
@@ -317,7 +317,7 @@
         "netIncomeCagrPct": 15.25,
         "equityCagrPct": 5.72,
         "dpsCagrPct": 13.13,
-        "priceCagrPct": 16.64,
+        "priceCagrPct": 16.82,
         "priceCagrStartYear": 2016
       },
       "history": [
@@ -697,7 +697,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 17.41,
+          "current": 17.69,
           "avg10y": 11.28,
           "median10y": 11.12,
           "min10y": 7.73,
@@ -707,11 +707,11 @@
           "std10y": 2.4,
           "upper1Sigma": 13.68,
           "lower1Sigma": 8.89,
-          "zScore": 2.55,
+          "zScore": 2.67,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 54.3,
-          "diffVsMedianPct": 56.6,
+          "diffVsAvgPct": 56.8,
+          "diffVsMedianPct": 59.2,
           "series": [
             {
               "year": "2016",
@@ -765,8 +765,8 @@
             },
             {
               "year": "2026",
-              "value": 17.41,
-              "rawUnfiltered": 17.41
+              "value": 17.69,
+              "rawUnfiltered": 17.69
             }
           ]
         },
@@ -774,7 +774,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 3.03,
+          "current": 3.08,
           "avg10y": 1.56,
           "median10y": 1.44,
           "min10y": 1.12,
@@ -784,11 +784,11 @@
           "std10y": 0.46,
           "upper1Sigma": 2.03,
           "lower1Sigma": 1.1,
-          "zScore": 3.16,
+          "zScore": 3.27,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 94.0,
-          "diffVsMedianPct": 110.4,
+          "diffVsAvgPct": 97.2,
+          "diffVsMedianPct": 113.9,
           "series": [
             {
               "year": "2016",
@@ -842,7 +842,7 @@
             },
             {
               "year": "2026",
-              "value": 3.03,
+              "value": 3.08,
               "rawUnfiltered": null
             }
           ]
@@ -851,7 +851,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 12.03,
+          "current": 12.23,
           "avg10y": 6.39,
           "median10y": 5.95,
           "min10y": 4.69,
@@ -861,11 +861,11 @@
           "std10y": 1.8,
           "upper1Sigma": 8.19,
           "lower1Sigma": 4.59,
-          "zScore": 3.14,
+          "zScore": 3.25,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 88.2,
-          "diffVsMedianPct": 102.2,
+          "diffVsAvgPct": 91.4,
+          "diffVsMedianPct": 105.5,
           "series": [
             {
               "year": "2016",
@@ -919,7 +919,7 @@
             },
             {
               "year": "2026",
-              "value": 12.03,
+              "value": 12.23,
               "rawUnfiltered": null
             }
           ]
@@ -928,7 +928,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 3.48,
+          "current": 3.53,
           "avg10y": 1.85,
           "median10y": 1.73,
           "min10y": 1.33,
@@ -938,11 +938,11 @@
           "std10y": 0.54,
           "upper1Sigma": 2.39,
           "lower1Sigma": 1.31,
-          "zScore": 3.02,
+          "zScore": 3.11,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 88.3,
-          "diffVsMedianPct": 101.2,
+          "diffVsAvgPct": 91.0,
+          "diffVsMedianPct": 104.0,
           "series": [
             {
               "year": "2016",
@@ -996,7 +996,7 @@
             },
             {
               "year": "2026",
-              "value": 3.48,
+              "value": 3.53,
               "rawUnfiltered": null
             }
           ]
@@ -1005,7 +1005,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 23.99,
+          "current": 24.38,
           "avg10y": 14.99,
           "median10y": 12.95,
           "min10y": 7.54,
@@ -1015,11 +1015,11 @@
           "std10y": 8.89,
           "upper1Sigma": 23.88,
           "lower1Sigma": 6.11,
-          "zScore": 1.01,
+          "zScore": 1.06,
           "percentile": 90.0,
-          "rangePositionPct": 53.7,
-          "diffVsAvgPct": 60.0,
-          "diffVsMedianPct": 85.3,
+          "rangePositionPct": 55.0,
+          "diffVsAvgPct": 62.6,
+          "diffVsMedianPct": 88.3,
           "series": [
             {
               "year": "2016",
@@ -1073,7 +1073,7 @@
             },
             {
               "year": "2026",
-              "value": 23.99,
+              "value": 24.38,
               "rawUnfiltered": null
             }
           ]
@@ -1082,7 +1082,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 3.69,
+          "current": 3.63,
           "avg10y": 4.96,
           "median10y": 4.89,
           "min10y": 4.06,
@@ -1092,11 +1092,11 @@
           "std10y": 0.7,
           "upper1Sigma": 5.67,
           "lower1Sigma": 4.26,
-          "zScore": -1.82,
+          "zScore": -1.9,
           "percentile": 0.0,
           "rangePositionPct": 0.0,
-          "diffVsAvgPct": -25.7,
-          "diffVsMedianPct": -24.6,
+          "diffVsAvgPct": -26.9,
+          "diffVsMedianPct": -25.8,
           "series": [
             {
               "year": "2016",
@@ -1150,7 +1150,7 @@
             },
             {
               "year": "2026",
-              "value": 3.69,
+              "value": 3.63,
               "rawUnfiltered": null
             }
           ]
@@ -1399,32 +1399,32 @@
           "ebitdaMarginPct": 25.64
         },
         "premiumVsPeerMedianPct": {
-          "pe": -18.6,
-          "forwardPe": 30.5,
-          "pb": -19.6,
-          "evEbitda": -14.6,
-          "ps": 11.5,
-          "divYieldPct": 66.2,
+          "pe": -17.3,
+          "forwardPe": 32.6,
+          "pb": -18.3,
+          "evEbitda": -13.2,
+          "ps": 13.1,
+          "divYieldPct": 63.5,
           "roePct": 13.1,
           "ebitdaMarginPct": 8.5
         },
         "premiumVsPeerAvgPct": {
-          "pe": -48.5,
-          "forwardPe": 24.1,
-          "pb": -29.9,
-          "evEbitda": -34.9,
-          "ps": 8.1,
-          "divYieldPct": 71.6,
+          "pe": -47.7,
+          "forwardPe": 26.1,
+          "pb": -28.7,
+          "evEbitda": -33.9,
+          "ps": 9.6,
+          "divYieldPct": 68.8,
           "roePct": -14.3,
           "ebitdaMarginPct": 9.3
         },
         "impliedPrices": {
-          "byPeerMedianPe": 302.71,
-          "byPeerMedianPb": 306.7,
-          "byPeerMedianEvEbitda": 288.71,
-          "blendedPeerFairValue": 299.37,
-          "blendedUpsidePct": 21.4,
-          "blendedMosPct": 17.7
+          "byPeerMedianPe": 302.75,
+          "byPeerMedianPb": 306.62,
+          "byPeerMedianEvEbitda": 288.6,
+          "blendedPeerFairValue": 299.32,
+          "blendedUpsidePct": 19.5,
+          "blendedMosPct": 16.3
         }
       },
       "ivHistory": [
@@ -1454,7 +1454,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 246.5,
+          "sharePrice": 250.5,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -1593,10 +1593,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-24",
-          "close": 205.0
-        },
         {
           "date": "2025-11-25",
           "close": 205.0
@@ -2592,6 +2588,10 @@
         {
           "date": "2026-11-23",
           "close": 246.5
+        },
+        {
+          "date": "2026-11-24",
+          "close": 250.5
         }
       ]
     },
@@ -2605,7 +2605,7 @@
       "sectorEn": "Banking",
       "isFinancial": true,
       "sbitopOfficialWeight": 20.42,
-      "sbitopWeight": 20.59,
+      "sbitopWeight": 20.49,
       "includedInPeerComparison": true,
       "sharesIssuedM": 20.0,
       "sharesEffectiveM": 20.0,
@@ -2749,13 +2749,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-23",
-        "price": 212.0,
-        "change1YPct": 20.8,
-        "marketCapM": 4240.0,
-        "issuedMarketCapM": 4240.0,
-        "effectiveMarketCapM": 4240.0,
-        "enterpriseValueM": 4240.0,
+        "asOfDate": "2026-11-24",
+        "price": 211.0,
+        "change1YPct": 20.57,
+        "marketCapM": 4220.0,
+        "issuedMarketCapM": 4220.0,
+        "effectiveMarketCapM": 4220.0,
+        "enterpriseValueM": 4220.0,
         "rawNetDebtM": 0.0,
         "operatingCashBufferM": 0.0,
         "netDebtM": 0.0,
@@ -2781,13 +2781,13 @@
         "bvps": 194.1,
         "dps": 13.84,
         "payoutRatioPct": 52.7,
-        "pe": 8.08,
+        "pe": 8.04,
         "peFy25": 7.04,
         "pb": 1.09,
         "evEbitda": null,
-        "ps": 3.13,
-        "pFcf": 11.73,
-        "divYieldPct": 6.53,
+        "ps": 3.12,
+        "pFcf": 11.68,
+        "divYieldPct": 6.56,
         "roePct": 13.52,
         "roaPct": 1.62,
         "roicPct": 13.06,
@@ -2801,7 +2801,7 @@
         "netIncomeCagrPct": 16.78,
         "equityCagrPct": 10.05,
         "dpsCagrPct": 20.25,
-        "priceCagrPct": 16.61,
+        "priceCagrPct": 16.54,
         "priceCagrStartYear": 2018
       },
       "history": [
@@ -3184,7 +3184,7 @@
             "2016: ni podatka",
             "2017: ni podatka"
           ],
-          "current": 8.08,
+          "current": 8.04,
           "avg10y": 4.89,
           "median10y": 5.33,
           "min10y": 2.73,
@@ -3194,11 +3194,11 @@
           "std10y": 1.66,
           "upper1Sigma": 6.55,
           "lower1Sigma": 3.23,
-          "zScore": 1.93,
+          "zScore": 1.9,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 65.3,
-          "diffVsMedianPct": 51.5,
+          "diffVsAvgPct": 64.5,
+          "diffVsMedianPct": 50.7,
           "series": [
             {
               "year": "2016",
@@ -3252,8 +3252,8 @@
             },
             {
               "year": "2026",
-              "value": 8.08,
-              "rawUnfiltered": 8.08
+              "value": 8.04,
+              "rawUnfiltered": 8.04
             }
           ]
         },
@@ -3334,12 +3334,90 @@
             }
           ]
         },
-        "evEbitda": null,
+        "evEbitda": {
+          "sampleSizeN": 0,
+          "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+          "excludedOutliers": [
+            "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
+          ],
+          "current": null,
+          "avg10y": null,
+          "median10y": null,
+          "min10y": null,
+          "minYear": "ni podatka",
+          "max10y": null,
+          "maxYear": "ni podatka",
+          "std10y": null,
+          "upper1Sigma": null,
+          "lower1Sigma": null,
+          "zScore": null,
+          "percentile": null,
+          "rangePositionPct": 50.0,
+          "diffVsAvgPct": null,
+          "diffVsMedianPct": null,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2024",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2025",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2026",
+              "value": null,
+              "rawUnfiltered": null
+            }
+          ]
+        },
         "ps": {
           "sampleSizeN": 8,
           "sampleNote": "N=8 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 3.13,
+          "current": 3.12,
           "avg10y": 2.18,
           "median10y": 2.2,
           "min10y": 1.53,
@@ -3349,11 +3427,11 @@
           "std10y": 0.48,
           "upper1Sigma": 2.66,
           "lower1Sigma": 1.7,
-          "zScore": 1.97,
+          "zScore": 1.95,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 43.3,
-          "diffVsMedianPct": 42.3,
+          "diffVsAvgPct": 42.9,
+          "diffVsMedianPct": 41.8,
           "series": [
             {
               "year": "2016",
@@ -3407,7 +3485,7 @@
             },
             {
               "year": "2026",
-              "value": 3.13,
+              "value": 3.12,
               "rawUnfiltered": null
             }
           ]
@@ -3416,7 +3494,7 @@
           "sampleSizeN": 6,
           "sampleNote": "N=6 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 11.73,
+          "current": 11.68,
           "avg10y": 2.82,
           "median10y": 1.52,
           "min10y": 0.78,
@@ -3426,11 +3504,11 @@
           "std10y": 3.59,
           "upper1Sigma": 6.41,
           "lower1Sigma": 0.0,
-          "zScore": 2.48,
+          "zScore": 2.47,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 316.2,
-          "diffVsMedianPct": 671.7,
+          "diffVsAvgPct": 314.4,
+          "diffVsMedianPct": 668.4,
           "series": [
             {
               "year": "2016",
@@ -3484,7 +3562,7 @@
             },
             {
               "year": "2026",
-              "value": 11.73,
+              "value": 11.68,
               "rawUnfiltered": null
             }
           ]
@@ -3493,7 +3571,7 @@
           "sampleSizeN": 7,
           "sampleNote": "N=7 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 6.53,
+          "current": 6.56,
           "avg10y": 8.46,
           "median10y": 8.01,
           "min10y": 6.05,
@@ -3503,11 +3581,11 @@
           "std10y": 2.25,
           "upper1Sigma": 10.71,
           "lower1Sigma": 6.21,
-          "zScore": -0.86,
+          "zScore": -0.84,
           "percentile": 29.0,
-          "rangePositionPct": 8.8,
-          "diffVsAvgPct": -22.8,
-          "diffVsMedianPct": -18.5,
+          "rangePositionPct": 9.4,
+          "diffVsAvgPct": -22.4,
+          "diffVsMedianPct": -18.1,
           "series": [
             {
               "year": "2016",
@@ -3561,7 +3639,7 @@
             },
             {
               "year": "2026",
-              "value": 6.53,
+              "value": 6.56,
               "rawUnfiltered": null
             }
           ]
@@ -3810,31 +3888,31 @@
           "ebitdaMarginPct": null
         },
         "premiumVsPeerMedianPct": {
-          "pe": -19.9,
-          "forwardPe": -23.4,
+          "pe": -20.3,
+          "forwardPe": -23.8,
           "pb": -37.0,
           "evEbitda": null,
-          "ps": -21.6,
-          "divYieldPct": 50.8,
+          "ps": -21.8,
+          "divYieldPct": 51.5,
           "roePct": -21.2,
           "ebitdaMarginPct": null
         },
         "premiumVsPeerAvgPct": {
-          "pe": -19.0,
-          "forwardPe": -24.1,
+          "pe": -19.4,
+          "forwardPe": -24.4,
           "pb": -37.4,
           "evEbitda": null,
-          "ps": -18.9,
-          "divYieldPct": 29.3,
+          "ps": -19.2,
+          "divYieldPct": 29.9,
           "roePct": -20.5,
           "ebitdaMarginPct": null
         },
         "impliedPrices": {
-          "byPeerMedianPe": 264.74,
-          "byPeerMedianPb": 336.48,
-          "blendedPeerFairValue": 300.61,
-          "blendedUpsidePct": 41.8,
-          "blendedMosPct": 29.5
+          "byPeerMedianPe": 264.8,
+          "byPeerMedianPb": 334.89,
+          "blendedPeerFairValue": 299.85,
+          "blendedUpsidePct": 42.1,
+          "blendedMosPct": 29.6
         }
       },
       "ivHistory": [
@@ -3864,7 +3942,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 212.0,
+          "sharePrice": 211.0,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -3987,10 +4065,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-24",
-          "close": 175.5
-        },
         {
           "date": "2025-11-25",
           "close": 175.0
@@ -4986,6 +5060,10 @@
         {
           "date": "2026-11-23",
           "close": 212.0
+        },
+        {
+          "date": "2026-11-24",
+          "close": 211.0
         }
       ]
     },
@@ -4999,7 +5077,7 @@
       "sectorEn": "Energy & Mobility",
       "isFinancial": false,
       "sbitopOfficialWeight": 14.18,
-      "sbitopWeight": 14.3,
+      "sbitopWeight": 14.23,
       "includedInPeerComparison": true,
       "sharesIssuedM": 41.72602,
       "sharesEffectiveM": 41.1249,
@@ -5140,13 +5218,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-23",
-        "price": 54.8,
-        "change1YPct": 17.6,
-        "marketCapM": 2253.64,
-        "issuedMarketCapM": 2286.59,
-        "effectiveMarketCapM": 2253.64,
-        "enterpriseValueM": 2722.77,
+        "asOfDate": "2026-11-24",
+        "price": 55.2,
+        "change1YPct": 18.2,
+        "marketCapM": 2270.09,
+        "issuedMarketCapM": 2303.28,
+        "effectiveMarketCapM": 2270.09,
+        "enterpriseValueM": 2739.22,
         "rawNetDebtM": 412.04,
         "operatingCashBufferM": 57.09,
         "netDebtM": 469.13,
@@ -5172,13 +5250,13 @@
         "bvps": 25.82,
         "dps": 2.5,
         "payoutRatioPct": 71.0,
-        "pe": 15.57,
+        "pe": 15.68,
         "peFy25": 12.2,
-        "pb": 2.12,
-        "evEbitda": 9.04,
-        "ps": 0.32,
-        "pFcf": 21.38,
-        "divYieldPct": 4.56,
+        "pb": 2.14,
+        "evEbitda": 9.1,
+        "ps": 0.33,
+        "pFcf": 21.53,
+        "divYieldPct": 4.53,
         "roePct": 13.62,
         "roaPct": 5.09,
         "roicPct": 12.63,
@@ -5192,7 +5270,7 @@
         "netIncomeCagrPct": 7.32,
         "equityCagrPct": 6.11,
         "dpsCagrPct": 14.78,
-        "priceCagrPct": 12.93,
+        "priceCagrPct": 13.01,
         "priceCagrStartYear": 2016
       },
       "history": [
@@ -5574,7 +5652,7 @@
           "excludedOutliers": [
             "2022: neg. izid"
           ],
-          "current": 15.57,
+          "current": 15.68,
           "avg10y": 8.67,
           "median10y": 8.87,
           "min10y": 6.95,
@@ -5584,11 +5662,11 @@
           "std10y": 1.61,
           "upper1Sigma": 10.28,
           "lower1Sigma": 7.06,
-          "zScore": 4.29,
+          "zScore": 4.36,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 79.6,
-          "diffVsMedianPct": 75.5,
+          "diffVsAvgPct": 80.9,
+          "diffVsMedianPct": 76.8,
           "series": [
             {
               "year": "2016",
@@ -5642,8 +5720,8 @@
             },
             {
               "year": "2026",
-              "value": 15.57,
-              "rawUnfiltered": 15.57
+              "value": 15.68,
+              "rawUnfiltered": 15.68
             }
           ]
         },
@@ -5651,7 +5729,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 2.12,
+          "current": 2.14,
           "avg10y": 1.13,
           "median10y": 1.03,
           "min10y": 0.81,
@@ -5661,11 +5739,11 @@
           "std10y": 0.35,
           "upper1Sigma": 1.48,
           "lower1Sigma": 0.77,
-          "zScore": 2.83,
+          "zScore": 2.88,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 88.3,
-          "diffVsMedianPct": 105.8,
+          "diffVsAvgPct": 90.1,
+          "diffVsMedianPct": 107.8,
           "series": [
             {
               "year": "2016",
@@ -5719,7 +5797,7 @@
             },
             {
               "year": "2026",
-              "value": 2.12,
+              "value": 2.14,
               "rawUnfiltered": null
             }
           ]
@@ -5728,7 +5806,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 9.04,
+          "current": 9.1,
           "avg10y": 5.92,
           "median10y": 5.26,
           "min10y": 3.82,
@@ -5738,11 +5816,11 @@
           "std10y": 2.35,
           "upper1Sigma": 8.26,
           "lower1Sigma": 3.57,
-          "zScore": 1.33,
+          "zScore": 1.36,
           "percentile": 90.0,
-          "rangePositionPct": 65.0,
-          "diffVsAvgPct": 52.8,
-          "diffVsMedianPct": 71.9,
+          "rangePositionPct": 65.8,
+          "diffVsAvgPct": 53.8,
+          "diffVsMedianPct": 73.0,
           "series": [
             {
               "year": "2016",
@@ -5796,7 +5874,7 @@
             },
             {
               "year": "2026",
-              "value": 9.04,
+              "value": 9.1,
               "rawUnfiltered": null
             }
           ]
@@ -5805,7 +5883,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 0.32,
+          "current": 0.33,
           "avg10y": 0.19,
           "median10y": 0.17,
           "min10y": 0.09,
@@ -5815,11 +5893,11 @@
           "std10y": 0.07,
           "upper1Sigma": 0.26,
           "lower1Sigma": 0.12,
-          "zScore": 1.92,
+          "zScore": 2.06,
           "percentile": 90.0,
-          "rangePositionPct": 88.5,
-          "diffVsAvgPct": 70.2,
-          "diffVsMedianPct": 82.9,
+          "rangePositionPct": 92.3,
+          "diffVsAvgPct": 75.5,
+          "diffVsMedianPct": 88.6,
           "series": [
             {
               "year": "2016",
@@ -5873,7 +5951,7 @@
             },
             {
               "year": "2026",
-              "value": 0.32,
+              "value": 0.33,
               "rawUnfiltered": null
             }
           ]
@@ -5882,7 +5960,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 21.38,
+          "current": 21.53,
           "avg10y": 14.95,
           "median10y": 12.54,
           "min10y": 6.54,
@@ -5892,11 +5970,11 @@
           "std10y": 9.16,
           "upper1Sigma": 24.11,
           "lower1Sigma": 5.79,
-          "zScore": 0.7,
+          "zScore": 0.72,
           "percentile": 90.0,
-          "rangePositionPct": 46.2,
-          "diffVsAvgPct": 43.0,
-          "diffVsMedianPct": 70.4,
+          "rangePositionPct": 46.7,
+          "diffVsAvgPct": 44.0,
+          "diffVsMedianPct": 71.6,
           "series": [
             {
               "year": "2016",
@@ -5950,7 +6028,7 @@
             },
             {
               "year": "2026",
-              "value": 21.38,
+              "value": 21.53,
               "rawUnfiltered": null
             }
           ]
@@ -5959,7 +6037,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 4.56,
+          "current": 4.53,
           "avg10y": 5.27,
           "median10y": 4.98,
           "min10y": 3.88,
@@ -5969,11 +6047,11 @@
           "std10y": 1.29,
           "upper1Sigma": 6.55,
           "lower1Sigma": 3.98,
-          "zScore": -0.55,
+          "zScore": -0.57,
           "percentile": 40.0,
-          "rangePositionPct": 18.8,
-          "diffVsAvgPct": -13.4,
-          "diffVsMedianPct": -8.4,
+          "rangePositionPct": 18.0,
+          "diffVsAvgPct": -14.0,
+          "diffVsMedianPct": -9.0,
           "series": [
             {
               "year": "2016",
@@ -6027,7 +6105,7 @@
             },
             {
               "year": "2026",
-              "value": 4.56,
+              "value": 4.53,
               "rawUnfiltered": null
             }
           ]
@@ -6276,32 +6354,32 @@
           "ebitdaMarginPct": 17.08
         },
         "premiumVsPeerMedianPct": {
-          "pe": 109.6,
-          "forwardPe": 101.7,
-          "pb": 61.8,
-          "evEbitda": 139.8,
-          "ps": -33.3,
-          "divYieldPct": 14.9,
+          "pe": 111.0,
+          "forwardPe": 103.1,
+          "pb": 63.4,
+          "evEbitda": 141.4,
+          "ps": -31.2,
+          "divYieldPct": 14.1,
           "roePct": -19.9,
           "ebitdaMarginPct": -74.6
         },
         "premiumVsPeerAvgPct": {
-          "pe": 69.6,
-          "forwardPe": 80.2,
-          "pb": 41.3,
-          "evEbitda": 112.2,
-          "ps": -52.2,
-          "divYieldPct": 7.0,
+          "pe": 70.8,
+          "forwardPe": 81.5,
+          "pb": 42.7,
+          "evEbitda": 113.6,
+          "ps": -50.7,
+          "divYieldPct": 6.3,
           "roePct": -37.1,
           "ebitdaMarginPct": -74.7
         },
         "impliedPrices": {
-          "byPeerMedianPe": 26.15,
-          "byPeerMedianPb": 33.86,
-          "byPeerMedianEvEbitda": 22.85,
-          "blendedPeerFairValue": 27.62,
-          "blendedUpsidePct": -49.6,
-          "blendedMosPct": -98.4
+          "byPeerMedianPe": 26.16,
+          "byPeerMedianPb": 33.79,
+          "byPeerMedianEvEbitda": 22.87,
+          "blendedPeerFairValue": 27.61,
+          "blendedUpsidePct": -50.0,
+          "blendedMosPct": -99.9
         }
       },
       "ivHistory": [
@@ -6331,7 +6409,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 54.8,
+          "sharePrice": 55.2,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -6632,10 +6710,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-24",
-          "close": 46.6
-        },
         {
           "date": "2025-11-25",
           "close": 46.7
@@ -7631,6 +7705,10 @@
         {
           "date": "2026-11-23",
           "close": 54.8
+        },
+        {
+          "date": "2026-11-24",
+          "close": 55.2
         }
       ]
     },
@@ -7644,7 +7722,7 @@
       "sectorEn": "Insurance",
       "isFinancial": true,
       "sbitopOfficialWeight": 10.6,
-      "sbitopWeight": 10.69,
+      "sbitopWeight": 10.64,
       "includedInPeerComparison": true,
       "sharesIssuedM": 22.735148,
       "sharesEffectiveM": 22.735148,
@@ -7787,9 +7865,9 @@
         "ebitTtmIsEstimate": false
       },
       "current": {
-        "asOfDate": "2026-11-23",
+        "asOfDate": "2026-11-24",
         "price": 68.6,
-        "change1YPct": 22.94,
+        "change1YPct": 24.73,
         "marketCapM": 1559.63,
         "issuedMarketCapM": 1559.63,
         "effectiveMarketCapM": 1559.63,
@@ -8372,7 +8450,85 @@
             }
           ]
         },
-        "evEbitda": null,
+        "evEbitda": {
+          "sampleSizeN": 0,
+          "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+          "excludedOutliers": [
+            "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
+          ],
+          "current": null,
+          "avg10y": null,
+          "median10y": null,
+          "min10y": null,
+          "minYear": "ni podatka",
+          "max10y": null,
+          "maxYear": "ni podatka",
+          "std10y": null,
+          "upper1Sigma": null,
+          "lower1Sigma": null,
+          "zScore": null,
+          "percentile": null,
+          "rangePositionPct": 50.0,
+          "diffVsAvgPct": null,
+          "diffVsMedianPct": null,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2024",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2025",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2026",
+              "value": null,
+              "rawUnfiltered": null
+            }
+          ]
+        },
         "ps": {
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
@@ -9139,10 +9295,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-24",
-          "close": 55.8
-        },
         {
           "date": "2025-11-25",
           "close": 55.0
@@ -10138,6 +10290,10 @@
         {
           "date": "2026-11-23",
           "close": 68.6
+        },
+        {
+          "date": "2026-11-24",
+          "close": 68.6
         }
       ]
     },
@@ -10151,7 +10307,7 @@
       "sectorEn": "Ports & Logistics",
       "isFinancial": false,
       "sbitopOfficialWeight": 7.82,
-      "sbitopWeight": 7.88,
+      "sbitopWeight": 7.84,
       "includedInPeerComparison": true,
       "sharesIssuedM": 14.0,
       "sharesEffectiveM": 14.0,
@@ -10276,10 +10432,10 @@
         "grossDebtM": 79.04,
         "rawNetDebtM": -18.76,
         "netDebtM": -10.61,
-        "financialInvestmentsGrossM": 106.93,
-        "financialInvestmentsNetM": 85.54,
-        "financialInvestmentsM": 85.54,
-        "financialInvestmentsLabel": "433.786 delnic KRKG × 246.50 € × 80 % (po 20 % odbitku)",
+        "financialInvestmentsGrossM": 108.66,
+        "financialInvestmentsNetM": 86.93,
+        "financialInvestmentsM": 86.93,
+        "financialInvestmentsLabel": "433.786 delnic KRKG × 250.50 € × 80 % (po 20 % odbitku)",
         "plannedExpansionCapexM": 785.0,
         "sharesM": 14.0
       },
@@ -10296,7 +10452,7 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-23",
+        "asOfDate": "2026-11-24",
         "price": 109.0,
         "change1YPct": 63.91,
         "marketCapM": 1526.0,
@@ -10306,7 +10462,7 @@
         "rawNetDebtM": -18.76,
         "operatingCashBufferM": 8.15,
         "netDebtM": -10.61,
-        "financialInvestmentsNetM": 85.54,
+        "financialInvestmentsNetM": 86.93,
         "revenueFy25M": 380.3,
         "netIncomeFy25M": 81.52,
         "fcfFy25M": -11.0,
@@ -11588,10 +11744,6 @@
       },
       "priceHistory1Y": [
         {
-          "date": "2025-11-24",
-          "close": 66.5
-        },
-        {
           "date": "2025-11-25",
           "close": 66.5
         },
@@ -12586,6 +12738,10 @@
         {
           "date": "2026-11-23",
           "close": 109.0
+        },
+        {
+          "date": "2026-11-24",
+          "close": 109.0
         }
       ]
     },
@@ -12599,7 +12755,7 @@
       "sectorEn": "Reinsurance & Insurance",
       "isFinancial": true,
       "sbitopOfficialWeight": 7.48,
-      "sbitopWeight": 7.54,
+      "sbitopWeight": 7.5,
       "includedInPeerComparison": true,
       "sharesIssuedM": 17.219662,
       "sharesEffectiveM": 15.497696,
@@ -12742,13 +12898,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-23",
-        "price": 77.4,
-        "change1YPct": 16.39,
-        "marketCapM": 1199.52,
-        "issuedMarketCapM": 1332.8,
-        "effectiveMarketCapM": 1199.52,
-        "enterpriseValueM": 1199.52,
+        "asOfDate": "2026-11-24",
+        "price": 77.0,
+        "change1YPct": 14.07,
+        "marketCapM": 1193.32,
+        "issuedMarketCapM": 1325.91,
+        "effectiveMarketCapM": 1193.32,
+        "enterpriseValueM": 1193.32,
         "rawNetDebtM": 0.0,
         "operatingCashBufferM": 0.0,
         "netDebtM": 0.0,
@@ -12774,13 +12930,13 @@
         "bvps": 50.46,
         "dps": 2.75,
         "payoutRatioPct": 34.5,
-        "pe": 9.71,
+        "pe": 9.66,
         "peFy25": 9.04,
         "pb": 1.53,
         "evEbitda": null,
-        "ps": 1.26,
-        "pFcf": 11.64,
-        "divYieldPct": 3.55,
+        "ps": 1.25,
+        "pFcf": 11.58,
+        "divYieldPct": 3.57,
         "roePct": 15.8,
         "roaPct": 3.89,
         "roicPct": 15.28,
@@ -12794,7 +12950,7 @@
         "netIncomeCagrPct": 14.53,
         "equityCagrPct": 10.44,
         "dpsCagrPct": 13.14,
-        "priceCagrPct": 19.33,
+        "priceCagrPct": 19.27,
         "priceCagrStartYear": 2016
       },
       "history": [
@@ -13174,7 +13330,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 9.71,
+          "current": 9.66,
           "avg10y": 6.61,
           "median10y": 6.47,
           "min10y": 5.08,
@@ -13184,11 +13340,11 @@
           "std10y": 1.25,
           "upper1Sigma": 7.86,
           "lower1Sigma": 5.37,
-          "zScore": 2.49,
+          "zScore": 2.45,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 46.9,
-          "diffVsMedianPct": 50.0,
+          "diffVsAvgPct": 46.1,
+          "diffVsMedianPct": 49.2,
           "series": [
             {
               "year": "2016",
@@ -13242,8 +13398,8 @@
             },
             {
               "year": "2026",
-              "value": 9.71,
-              "rawUnfiltered": 9.71
+              "value": 9.66,
+              "rawUnfiltered": 9.66
             }
           ]
         },
@@ -13324,12 +13480,90 @@
             }
           ]
         },
-        "evEbitda": null,
+        "evEbitda": {
+          "sampleSizeN": 0,
+          "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+          "excludedOutliers": [
+            "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
+          ],
+          "current": null,
+          "avg10y": null,
+          "median10y": null,
+          "min10y": null,
+          "minYear": "ni podatka",
+          "max10y": null,
+          "maxYear": "ni podatka",
+          "std10y": null,
+          "upper1Sigma": null,
+          "lower1Sigma": null,
+          "zScore": null,
+          "percentile": null,
+          "rangePositionPct": 50.0,
+          "diffVsAvgPct": null,
+          "diffVsMedianPct": null,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2024",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2025",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2026",
+              "value": null,
+              "rawUnfiltered": null
+            }
+          ]
+        },
         "ps": {
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 1.26,
+          "current": 1.25,
           "avg10y": 0.59,
           "median10y": 0.52,
           "min10y": 0.42,
@@ -13339,11 +13573,11 @@
           "std10y": 0.23,
           "upper1Sigma": 0.82,
           "lower1Sigma": 0.37,
-          "zScore": 2.96,
+          "zScore": 2.92,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 113.2,
-          "diffVsMedianPct": 142.3,
+          "diffVsAvgPct": 111.5,
+          "diffVsMedianPct": 140.4,
           "series": [
             {
               "year": "2016",
@@ -13397,7 +13631,7 @@
             },
             {
               "year": "2026",
-              "value": 1.26,
+              "value": 1.25,
               "rawUnfiltered": null
             }
           ]
@@ -13406,7 +13640,7 @@
           "sampleSizeN": 8,
           "sampleNote": "N=8 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 11.64,
+          "current": 11.58,
           "avg10y": 6.49,
           "median10y": 5.87,
           "min10y": 4.2,
@@ -13416,11 +13650,11 @@
           "std10y": 2.35,
           "upper1Sigma": 8.84,
           "lower1Sigma": 4.14,
-          "zScore": 2.19,
+          "zScore": 2.16,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 79.3,
-          "diffVsMedianPct": 98.3,
+          "diffVsAvgPct": 78.4,
+          "diffVsMedianPct": 97.3,
           "series": [
             {
               "year": "2016",
@@ -13474,7 +13708,7 @@
             },
             {
               "year": "2026",
-              "value": 11.64,
+              "value": 11.58,
               "rawUnfiltered": null
             }
           ]
@@ -13483,7 +13717,7 @@
           "sampleSizeN": 9,
           "sampleNote": "N=9 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 3.55,
+          "current": 3.57,
           "avg10y": 4.98,
           "median10y": 5.23,
           "min10y": 3.05,
@@ -13493,11 +13727,11 @@
           "std10y": 1.2,
           "upper1Sigma": 6.18,
           "lower1Sigma": 3.79,
-          "zScore": -1.2,
+          "zScore": -1.18,
           "percentile": 22.0,
-          "rangePositionPct": 13.7,
-          "diffVsAvgPct": -28.7,
-          "diffVsMedianPct": -32.1,
+          "rangePositionPct": 14.2,
+          "diffVsAvgPct": -28.3,
+          "diffVsMedianPct": -31.7,
           "series": [
             {
               "year": "2016",
@@ -13551,7 +13785,7 @@
             },
             {
               "year": "2026",
-              "value": 3.55,
+              "value": 3.57,
               "rawUnfiltered": null
             }
           ]
@@ -13800,31 +14034,31 @@
           "ebitdaMarginPct": 13.02
         },
         "premiumVsPeerMedianPct": {
-          "pe": -10.4,
-          "forwardPe": -13.2,
+          "pe": -10.9,
+          "forwardPe": -13.7,
           "pb": -12.6,
           "evEbitda": null,
-          "ps": 48.2,
-          "divYieldPct": -15.7,
+          "ps": 47.1,
+          "divYieldPct": -15.2,
           "roePct": -11.5,
           "ebitdaMarginPct": null
         },
         "premiumVsPeerAvgPct": {
-          "pe": -7.8,
-          "forwardPe": -8.7,
+          "pe": -8.3,
+          "forwardPe": -9.2,
           "pb": -16.4,
           "evEbitda": null,
-          "ps": 44.8,
-          "divYieldPct": -19.1,
+          "ps": 43.7,
+          "divYieldPct": -18.7,
           "roePct": -7.7,
           "ebitdaMarginPct": null
         },
         "impliedPrices": {
           "byPeerMedianPe": 86.41,
-          "byPeerMedianPb": 88.53,
-          "blendedPeerFairValue": 87.47,
-          "blendedUpsidePct": 13.0,
-          "blendedMosPct": 11.5
+          "byPeerMedianPb": 88.07,
+          "blendedPeerFairValue": 87.24,
+          "blendedUpsidePct": 13.3,
+          "blendedMosPct": 11.7
         }
       },
       "ivHistory": [
@@ -13854,7 +14088,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 77.4,
+          "sharePrice": 77.0,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -14071,10 +14305,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-24",
-          "close": 66.5
-        },
         {
           "date": "2025-11-25",
           "close": 67.5
@@ -15070,6 +15300,10 @@
         {
           "date": "2026-11-23",
           "close": 77.4
+        },
+        {
+          "date": "2026-11-24",
+          "close": 77.0
         }
       ]
     },
@@ -15083,7 +15317,7 @@
       "sectorEn": "Telecommunications",
       "isFinancial": false,
       "sbitopOfficialWeight": 5.2,
-      "sbitopWeight": 5.24,
+      "sbitopWeight": 5.21,
       "includedInPeerComparison": true,
       "sharesIssuedM": 6.535478,
       "sharesEffectiveM": 6.505478,
@@ -15224,9 +15458,9 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-23",
+        "asOfDate": "2026-11-24",
         "price": 141.0,
-        "change1YPct": 63.95,
+        "change1YPct": 67.86,
         "marketCapM": 917.27,
         "issuedMarketCapM": 921.5,
         "effectiveMarketCapM": 917.27,
@@ -16523,10 +16757,6 @@
       },
       "priceHistory1Y": [
         {
-          "date": "2025-11-24",
-          "close": 86.0
-        },
-        {
           "date": "2025-11-25",
           "close": 84.0
         },
@@ -17521,6 +17751,10 @@
         {
           "date": "2026-11-23",
           "close": 141.0
+        },
+        {
+          "date": "2026-11-24",
+          "close": 141.0
         }
       ]
     },
@@ -17534,7 +17768,7 @@
       "sectorEn": "Healthcare Distribution",
       "isFinancial": false,
       "sbitopOfficialWeight": 2.15,
-      "sbitopWeight": 2.17,
+      "sbitopWeight": 2.16,
       "includedInPeerComparison": true,
       "sharesIssuedM": 8.3568,
       "sharesEffectiveM": 8.218,
@@ -17675,9 +17909,9 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-23",
+        "asOfDate": "2026-11-24",
         "price": 59.0,
-        "change1YPct": 20.41,
+        "change1YPct": 19.92,
         "marketCapM": 484.86,
         "issuedMarketCapM": 493.05,
         "effectiveMarketCapM": 484.86,
@@ -18901,10 +19135,6 @@
       },
       "priceHistory1Y": [
         {
-          "date": "2025-11-24",
-          "close": 49.0
-        },
-        {
           "date": "2025-11-25",
           "close": 49.2
         },
@@ -19899,6 +20129,10 @@
         {
           "date": "2026-11-23",
           "close": 59.0
+        },
+        {
+          "date": "2026-11-24",
+          "close": 59.0
         }
       ]
     },
@@ -19912,7 +20146,7 @@
       "sectorEn": "Specialty Chemicals (TiO2)",
       "isFinancial": false,
       "sbitopOfficialWeight": 1.48,
-      "sbitopWeight": 1.49,
+      "sbitopWeight": 1.48,
       "includedInPeerComparison": true,
       "sharesIssuedM": 8.07977,
       "sharesEffectiveM": 7.779896,
@@ -20053,13 +20287,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-23",
-        "price": 27.0,
-        "change1YPct": -15.36,
-        "marketCapM": 210.06,
-        "issuedMarketCapM": 218.15,
-        "effectiveMarketCapM": 210.06,
-        "enterpriseValueM": 194.91,
+        "asOfDate": "2026-11-24",
+        "price": 27.1,
+        "change1YPct": -13.97,
+        "marketCapM": 210.84,
+        "issuedMarketCapM": 218.96,
+        "effectiveMarketCapM": 210.84,
+        "enterpriseValueM": 195.69,
         "rawNetDebtM": -19.06,
         "operatingCashBufferM": 3.91,
         "netDebtM": -15.15,
@@ -20085,13 +20319,13 @@
         "bvps": 28.21,
         "dps": 1.8,
         "payoutRatioPct": 81.4,
-        "pe": 12.22,
+        "pe": 12.26,
         "peFy25": 12.6,
         "pb": 0.96,
-        "evEbitda": 6.2,
-        "ps": 1.07,
-        "pFcf": 20.04,
-        "divYieldPct": 6.67,
+        "evEbitda": 6.23,
+        "ps": 1.08,
+        "pFcf": 20.12,
+        "divYieldPct": 6.64,
         "roePct": 7.82,
         "roaPct": 6.84,
         "roicPct": 8.41,
@@ -20105,7 +20339,7 @@
         "netIncomeCagrPct": 5.96,
         "equityCagrPct": 4.27,
         "dpsCagrPct": 7.18,
-        "priceCagrPct": 5.24,
+        "priceCagrPct": 5.28,
         "priceCagrStartYear": 2016
       },
       "history": [
@@ -20485,7 +20719,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 12.22,
+          "current": 12.26,
           "avg10y": 8.22,
           "median10y": 7.04,
           "min10y": 4.12,
@@ -20495,11 +20729,11 @@
           "std10y": 3.41,
           "upper1Sigma": 11.63,
           "lower1Sigma": 4.81,
-          "zScore": 1.17,
+          "zScore": 1.18,
           "percentile": 70.0,
-          "rangePositionPct": 91.6,
-          "diffVsAvgPct": 48.6,
-          "diffVsMedianPct": 73.5,
+          "rangePositionPct": 92.1,
+          "diffVsAvgPct": 49.1,
+          "diffVsMedianPct": 74.0,
           "series": [
             {
               "year": "2016",
@@ -20553,8 +20787,8 @@
             },
             {
               "year": "2026",
-              "value": 12.22,
-              "rawUnfiltered": 12.22
+              "value": 12.26,
+              "rawUnfiltered": 12.26
             }
           ]
         },
@@ -20639,7 +20873,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 6.2,
+          "current": 6.23,
           "avg10y": 3.7,
           "median10y": 3.12,
           "min10y": 2.05,
@@ -20649,11 +20883,11 @@
           "std10y": 1.51,
           "upper1Sigma": 5.21,
           "lower1Sigma": 2.19,
-          "zScore": 1.66,
+          "zScore": 1.67,
           "percentile": 90.0,
-          "rangePositionPct": 98.6,
-          "diffVsAvgPct": 67.5,
-          "diffVsMedianPct": 99.0,
+          "rangePositionPct": 99.3,
+          "diffVsAvgPct": 68.3,
+          "diffVsMedianPct": 100.0,
           "series": [
             {
               "year": "2016",
@@ -20707,7 +20941,7 @@
             },
             {
               "year": "2026",
-              "value": 6.2,
+              "value": 6.23,
               "rawUnfiltered": null
             }
           ]
@@ -20716,7 +20950,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 1.07,
+          "current": 1.08,
           "avg10y": 0.92,
           "median10y": 0.88,
           "min10y": 0.74,
@@ -20726,11 +20960,11 @@
           "std10y": 0.15,
           "upper1Sigma": 1.07,
           "lower1Sigma": 0.77,
-          "zScore": 0.98,
-          "percentile": 80.0,
-          "rangePositionPct": 67.3,
-          "diffVsAvgPct": 16.4,
-          "diffVsMedianPct": 22.3,
+          "zScore": 1.05,
+          "percentile": 85.0,
+          "rangePositionPct": 69.4,
+          "diffVsAvgPct": 17.5,
+          "diffVsMedianPct": 23.4,
           "series": [
             {
               "year": "2016",
@@ -20784,7 +21018,7 @@
             },
             {
               "year": "2026",
-              "value": 1.07,
+              "value": 1.08,
               "rawUnfiltered": null
             }
           ]
@@ -20793,7 +21027,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 20.04,
+          "current": 20.12,
           "avg10y": 13.36,
           "median10y": 7.42,
           "min10y": 5.13,
@@ -20803,11 +21037,11 @@
           "std10y": 12.72,
           "upper1Sigma": 26.09,
           "lower1Sigma": 0.64,
-          "zScore": 0.52,
-          "percentile": 80.0,
-          "rangePositionPct": 36.1,
-          "diffVsAvgPct": 50.0,
-          "diffVsMedianPct": 170.1,
+          "zScore": 0.53,
+          "percentile": 90.0,
+          "rangePositionPct": 36.3,
+          "diffVsAvgPct": 50.6,
+          "diffVsMedianPct": 171.2,
           "series": [
             {
               "year": "2016",
@@ -20861,7 +21095,7 @@
             },
             {
               "year": "2026",
-              "value": 20.04,
+              "value": 20.12,
               "rawUnfiltered": null
             }
           ]
@@ -20870,7 +21104,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 6.67,
+          "current": 6.64,
           "avg10y": 10.45,
           "median10y": 10.5,
           "min10y": 5.56,
@@ -20880,11 +21114,11 @@
           "std10y": 3.54,
           "upper1Sigma": 13.98,
           "lower1Sigma": 6.91,
-          "zScore": -1.07,
+          "zScore": -1.08,
           "percentile": 20.0,
-          "rangePositionPct": 11.6,
-          "diffVsAvgPct": -36.1,
-          "diffVsMedianPct": -36.4,
+          "rangePositionPct": 11.3,
+          "diffVsAvgPct": -36.4,
+          "diffVsMedianPct": -36.7,
           "series": [
             {
               "year": "2016",
@@ -20938,7 +21172,7 @@
             },
             {
               "year": "2026",
-              "value": 6.67,
+              "value": 6.64,
               "rawUnfiltered": null
             }
           ]
@@ -21187,32 +21421,32 @@
           "ebitdaMarginPct": 9.09
         },
         "premiumVsPeerMedianPct": {
-          "pe": -79.8,
-          "forwardPe": 2.1,
+          "pe": -79.7,
+          "forwardPe": 2.4,
           "pb": -11.9,
-          "evEbitda": -39.1,
-          "ps": 143.2,
-          "divYieldPct": 33.1,
+          "evEbitda": -38.8,
+          "ps": 145.5,
+          "divYieldPct": 32.5,
           "roePct": 184.4,
           "ebitdaMarginPct": 76.8
         },
         "premiumVsPeerAvgPct": {
-          "pe": -80.0,
-          "forwardPe": -36.8,
+          "pe": -79.9,
+          "forwardPe": -36.6,
           "pb": -56.4,
-          "evEbitda": -42.1,
-          "ps": 161.0,
-          "divYieldPct": 4.7,
+          "evEbitda": -41.8,
+          "ps": 163.4,
+          "divYieldPct": 4.2,
           "roePct": 144.4,
           "ebitdaMarginPct": 85.4
         },
         "impliedPrices": {
-          "byPeerMedianPe": 133.56,
-          "byPeerMedianPb": 30.66,
-          "byPeerMedianEvEbitda": 44.33,
-          "blendedPeerFairValue": 69.52,
-          "blendedUpsidePct": 157.5,
-          "blendedMosPct": 61.2
+          "byPeerMedianPe": 133.62,
+          "byPeerMedianPb": 30.77,
+          "byPeerMedianEvEbitda": 44.28,
+          "blendedPeerFairValue": 69.56,
+          "blendedUpsidePct": 156.7,
+          "blendedMosPct": 61.0
         }
       },
       "ivHistory": [
@@ -21242,7 +21476,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 27.0,
+          "sharePrice": 27.1,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -21378,10 +21612,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-24",
-          "close": 31.9
-        },
         {
           "date": "2025-11-25",
           "close": 31.5
@@ -22377,6 +22607,2188 @@
         {
           "date": "2026-11-23",
           "close": 27.0
+        },
+        {
+          "date": "2026-11-24",
+          "close": 27.1
+        }
+      ]
+    },
+    {
+      "ticker": "VZZR",
+      "slug": "vzzr",
+      "isin": "SI0031118167",
+      "name": "Vzajemna zdravstvena zavarovalnica, d. d.",
+      "shortName": "Vzajemna",
+      "sector": "Zdravstvena, nezgodna in asistenčna zavarovanja",
+      "sectorEn": "Health & Supplemental Insurance",
+      "isFinancial": true,
+      "sbitopOfficialWeight": 0.49,
+      "sbitopWeight": 0.5,
+      "includedInPeerComparison": true,
+      "sharesIssuedM": 73.50175,
+      "sharesEffectiveM": 73.50175,
+      "treasurySharesM": 0.0,
+      "fScore": 5,
+      "biiScore": 360,
+      "biiPillars": {
+        "predictability": 55,
+        "moat": 68,
+        "management": 62,
+        "financial": 78,
+        "roic": 45,
+        "price": 52
+      },
+      "revenueLabel": "Zavarovalni prihodki (MSRP 17)",
+      "fcfLabel": "Presežni donos kapitala (Residual Income: ROE proti ke)",
+      "valuationModelType": "Model presežnega donosa (Residual Income / Knjigovodski kapital B₀)",
+      "eps2022Note": "Pred uvrstitvijo na Ljubljansko borzo (4. 3. 2026) je Vzajemna poslovala kot družba za vzajemno zavarovanje (d.v.z.). Po ukinitvi dopolnilnega zdravstvenega zavarovanja (1. 1. 2024) je družba v fazi prestrukturiranja na komercialna zdravstvena in nezgodna zavarovanja (čisti izid FY25 = -1,17 M€, P/E = ni podatka, P/B = 1,29x).",
+      "dividendCalendar": {
+        "exDivDate": "Brez dividende v 2026",
+        "payDate": "ni podatka",
+        "alreadyPaidIn2026": true,
+        "nextExDivDate": "ni podatka (prestrukturiranje)",
+        "dps2026": 0.0,
+        "dps5yGrowthEstPct": 0.0,
+        "payoutRatioPct": 0.0
+      },
+      "dcfParams": {
+        "normalizedRoePct": 7.5,
+        "terminalRoeFadeToKePlusPct": 0.0,
+        "growthStage1Pct": 4.5,
+        "growthStage2Pct": 3.5,
+        "waccPct": 9.8,
+        "terminalGrowthPct": 2.0,
+        "exitMultiple": 10.0,
+        "mosPct": 20.0,
+        "capmNote": "CAPM ke = Rf 3,2 % + β 1,10 × ERP 6,0 % = 9,8 % (faza prestrukturiranja po ukinitvi dopolnilnega zavarovanja)"
+      },
+      "interim2026": {
+        "period": "Letno poročilo 2025 & Uvrstitev v SBI TOP (april 2026)",
+        "revenueM": 33.84,
+        "ebitdaM": -1.17,
+        "netIncomeM": -1.17,
+        "yoyRevenuePct": 11.7,
+        "yoyNetIncomePct": 27.3,
+        "highlights": "Uvrstitev na LJSE 4. 3. 2026 in vključitev v indeks SBI TOP 7. 4. 2026. V letu 2025 so se zavarovalni prihodki iz komercialnih zavarovanj povečali za +11,7 % na 33,84 mio €, čista izguba se je znižala na -1,17 mio €, knjigovodski kapital pa znaša 77,09 mio € (BVPS 1,05 €)."
+      },
+      "latestResults": {
+        "reportTitle": "Revidirano letno poročilo 2025 & Kotacija na LJSE (2026)",
+        "publishedDate": "23. april 2026 (SEOnet)",
+        "sentiment": "amber",
+        "sentimentLabel": "Uvrstitev v SBI TOP · Kapital 77,1 M€ (BVPS 1,05 €)",
+        "h1_2026": {
+          "revenueM": 16.92,
+          "revenue2025M": 15.15,
+          "revYoYPct": 11.7,
+          "ebitdaM": -0.58,
+          "ebitda2025M": -0.8,
+          "ebitdaYoYPct": 27.3,
+          "netIncomeM": -0.58,
+          "netIncome2025M": -0.81,
+          "niYoYPct": 27.3
+        },
+        "q3_9m_2026": {
+          "period": "FY 2025 / TTM (SEOnet)",
+          "revenueM": 33.84,
+          "revYoYPct": 11.7,
+          "ebitdaM": -1.17,
+          "netIncomeM": -1.17,
+          "niYoYPct": 27.3,
+          "keyMetricLabel": "Knjigovodski kapital / BVPS",
+          "keyMetricValue": "77,09 M€ · BVPS 1,05 €"
+        },
+        "bullets": [
+          "Po statusnem preoblikovanju iz družbe za vzajemno zavarovanje (d.v.z.) v delniško družbo (d.d.) s 73.501.750 delnicami je Vzajemna (VZZR) 4. marca 2026 začela kotirati na Ljubljanski borzi, 7. aprila 2026 pa je bila vključena v indeks SBI TOP.",
+          "Po ukinitvi dopolnilnega zdravstvenega zavarovanja (1. 1. 2024) družba gradi portfelj komercialnih zdravstvenih, nezgodnih in asistenčnih zavarovanj (Varuh zdravja): v FY 2025 so zavarovalni prihodki zrasli za +11,7 % na 33,84 mio €, čista izguba pa se je zmanjšala z -1,62 mio € na -1,17 mio €.",
+          "Knjigovodski kapital znaša 77,09 mio € (1,05 € na delnico brez dolga). Ker je tekoči čisti izid negativen (-1,17 mio €), je kazalnik P/E označen kot »ni podatka«, vrednotenje pa temelji na knjigovodskem kapitalu (P/B 1,29x) in modelu presežnega donosa."
+        ],
+        "guidance": "Postopna rast premij dodatnih zdravstvenih in nezgodnih zavarovanj (Varuh zdravja) ter doseganje pozitivnega čistega poslovnega izida po zaključku prestrukturiranja.",
+        "reportUrl": "https://seonet.ljse.si/file.aspx?AttachmentID=55958"
+      },
+      "thesis": {
+        "summary": "Specializirana slovenska zdravstvena zavarovalnica, uvrščena na LJSE marca 2026 in v indeks SBI TOP aprila 2026 po statusnem preoblikovanju. Razpolaga s 77,09 mio € knjigovodskega kapitala (BVPS = 1,05 €) na 73,50 mio delnic.",
+        "moat": "Prepoznavna blagovna znamka Varuh zdravja, široka baza več kot 400.000 zavarovancev in razvejano omrežje pogodbenih zdravstvenih izvajalcev.",
+        "catalysts": [
+          "Rast povpraševanja po zasebnih specialističnih zdravstvenih storitvah zaradi čakalnih vrst v javnem zdravstvu",
+          "Konsolidacija razpršenega lastništva (84,77 % fizične osebe, 15,23 % ZZZS)",
+          "Prehod v pozitivno dobičkonosnost z rastjo komercialnih premij"
+        ],
+        "risks": [
+          "Trenutno poslovanje z negativnim čistim izidom (-1,17 M€ v FY 2025) po izgubi dopolnilnega zdravstvenega zavarovanja",
+          "Velik previs delnic upravičencev, ki še niso prevzeli delnic pri KDD",
+          "Močna konkurenca Zavarovalnice Triglav in Save Re na trgu dodatnih zdravstvenih zavarovanj"
+        ]
+      },
+      "dcfDefaults": {
+        "isFinancialModel": true,
+        "normalizedRule": "Presežni donos kapitala (Residual Income: ROE proti ke, g = ROE × (1 − Payout))",
+        "fcfNormalizedRule": "Presežni donos kapitala (Residual Income: ROE proti ke, g = ROE × (1 − Payout))",
+        "baseCashFlowM": -1.17,
+        "fcfNormalizedM": -1.17,
+        "fcf5yAvgM": -14.84,
+        "fcf3yAvgM": -27.59,
+        "fcfFy25M": -5.46,
+        "fcfPeak2025M": -5.46,
+        "normalizedRoePct": 7.5,
+        "terminalRoeFadeToKePlusPct": 0.0,
+        "bookValueM": 77.09,
+        "payoutRatioPct": 0.0,
+        "baseRevenueM": 33.84,
+        "growthStage1Pct": 4.5,
+        "growthStage2Pct": 3.5,
+        "waccPct": 9.8,
+        "terminalGrowthPct": 2.0,
+        "exitMultiple": 10.0,
+        "mosPct": 20.0,
+        "capmNote": "CAPM ke = Rf 3,2 % + β 1,10 × ERP 6,0 % = 9,8 % (faza prestrukturiranja po ukinitvi dopolnilnega zavarovanja)",
+        "grossCashM": 0.0,
+        "operatingCashBufferRule": "min(Bruto denar, 2,0 % TTM prihodkov)",
+        "operatingCashBufferM": 0.0,
+        "grossDebtM": 0.0,
+        "rawNetDebtM": 0.0,
+        "netDebtM": 0.0,
+        "financialInvestmentsGrossM": 0.0,
+        "financialInvestmentsNetM": 0.0,
+        "financialInvestmentsM": 0.0,
+        "financialInvestmentsLabel": null,
+        "plannedExpansionCapexM": 0.0,
+        "sharesM": 73.50175
+      },
+      "interimComparison9M": {
+        "rev26M": 25.38,
+        "rev25M": 25.38,
+        "ebitda26M": 0.0,
+        "ebitda25M": 0.0,
+        "ni26M": -0.88,
+        "ni25M": -0.88,
+        "equity26M": 77.09,
+        "assets26M": 105.65,
+        "bsIsEstimate": false,
+        "ebitTtmIsEstimate": false
+      },
+      "current": {
+        "asOfDate": "2026-11-24",
+        "price": 1.35,
+        "change1YPct": -83.1,
+        "marketCapM": 99.37,
+        "issuedMarketCapM": 99.37,
+        "effectiveMarketCapM": 99.37,
+        "enterpriseValueM": 99.37,
+        "rawNetDebtM": 0.0,
+        "operatingCashBufferM": 0.0,
+        "netDebtM": 0.0,
+        "financialInvestmentsNetM": 0.0,
+        "revenueFy25M": 33.84,
+        "netIncomeFy25M": -1.17,
+        "fcfFy25M": -5.46,
+        "revenueM": 33.84,
+        "ebitdaM": null,
+        "ebitM": -1.17,
+        "ebitIsEstimate": false,
+        "netIncomeM": -1.17,
+        "fcfM": -9.48,
+        "fcfActualFy25M": -5.46,
+        "fcf5yAvgM": -14.84,
+        "fcf3yAvgM": -27.59,
+        "equityM": 77.09,
+        "assetsM": 105.65,
+        "bsIsEstimate": false,
+        "epsFy25": -0.02,
+        "bvpsFy25": 1.05,
+        "eps": -0.02,
+        "bvps": 1.05,
+        "dps": 0.0,
+        "payoutRatioPct": 0.0,
+        "pe": null,
+        "peFy25": null,
+        "pb": 1.29,
+        "evEbitda": null,
+        "ps": 2.94,
+        "pFcf": null,
+        "divYieldPct": 0.0,
+        "roePct": -1.52,
+        "roaPct": -1.11,
+        "roicPct": -1.24,
+        "roicIsEstimate": true,
+        "ebitdaMarginPct": null,
+        "netMarginPct": -3.46
+      },
+      "cagrs10y": {
+        "revenueCagrPct": null,
+        "ebitdaCagrPct": null,
+        "netIncomeCagrPct": null,
+        "equityCagrPct": null,
+        "dpsCagrPct": null,
+        "priceCagrPct": null,
+        "priceCagrStartYear": 2026
+      },
+      "history": [
+        {
+          "year": 2016,
+          "revenueM": null,
+          "ebitdaM": null,
+          "ebitM": null,
+          "netIncomeM": null,
+          "operatingCashFlowM": null,
+          "capexM": null,
+          "fcfM": null,
+          "assetsM": null,
+          "equityM": null,
+          "cashM": null,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": null,
+          "closePrice": null,
+          "eps": null,
+          "dps": 0.0,
+          "bvps": null,
+          "fcfPerShare": null,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": null,
+          "roaPct": null,
+          "roicPct": null,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": null,
+          "netMarginPct": null,
+          "reportUrl": "https://seonet.ljse.si"
+        },
+        {
+          "year": 2017,
+          "revenueM": null,
+          "ebitdaM": null,
+          "ebitM": null,
+          "netIncomeM": null,
+          "operatingCashFlowM": null,
+          "capexM": null,
+          "fcfM": null,
+          "assetsM": null,
+          "equityM": null,
+          "cashM": null,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": null,
+          "closePrice": null,
+          "eps": null,
+          "dps": 0.0,
+          "bvps": null,
+          "fcfPerShare": null,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": null,
+          "roaPct": null,
+          "roicPct": null,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": null,
+          "netMarginPct": null,
+          "reportUrl": "https://seonet.ljse.si"
+        },
+        {
+          "year": 2018,
+          "revenueM": null,
+          "ebitdaM": null,
+          "ebitM": null,
+          "netIncomeM": null,
+          "operatingCashFlowM": null,
+          "capexM": null,
+          "fcfM": null,
+          "assetsM": null,
+          "equityM": null,
+          "cashM": null,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": null,
+          "closePrice": null,
+          "eps": null,
+          "dps": 0.0,
+          "bvps": null,
+          "fcfPerShare": null,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": null,
+          "roaPct": null,
+          "roicPct": null,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": null,
+          "netMarginPct": null,
+          "reportUrl": "https://seonet.ljse.si"
+        },
+        {
+          "year": 2019,
+          "revenueM": null,
+          "ebitdaM": null,
+          "ebitM": null,
+          "netIncomeM": null,
+          "operatingCashFlowM": null,
+          "capexM": null,
+          "fcfM": null,
+          "assetsM": null,
+          "equityM": null,
+          "cashM": null,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": null,
+          "closePrice": null,
+          "eps": null,
+          "dps": 0.0,
+          "bvps": null,
+          "fcfPerShare": null,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": null,
+          "roaPct": null,
+          "roicPct": null,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": null,
+          "netMarginPct": null,
+          "reportUrl": "https://seonet.ljse.si"
+        },
+        {
+          "year": 2020,
+          "revenueM": null,
+          "ebitdaM": null,
+          "ebitM": null,
+          "netIncomeM": null,
+          "operatingCashFlowM": null,
+          "capexM": null,
+          "fcfM": null,
+          "assetsM": null,
+          "equityM": null,
+          "cashM": null,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": null,
+          "closePrice": null,
+          "eps": null,
+          "dps": 0.0,
+          "bvps": null,
+          "fcfPerShare": null,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": null,
+          "roaPct": null,
+          "roicPct": null,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": null,
+          "netMarginPct": null,
+          "reportUrl": "https://seonet.ljse.si"
+        },
+        {
+          "year": 2021,
+          "revenueM": null,
+          "ebitdaM": null,
+          "ebitM": 8.4,
+          "netIncomeM": 7.42,
+          "operatingCashFlowM": 19.22,
+          "capexM": 1.15,
+          "fcfM": 18.07,
+          "assetsM": 248.57,
+          "equityM": 117.14,
+          "cashM": 2.37,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": 402,
+          "closePrice": null,
+          "eps": 0.1,
+          "dps": 0.0,
+          "bvps": 1.59,
+          "fcfPerShare": 0.25,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": 6.33,
+          "roaPct": 2.98,
+          "roicPct": 5.88,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": null,
+          "netMarginPct": null,
+          "reportUrl": "https://www.vzajemna.si/storage/uploads/1d10bdf8-03ed-40ae-b625-7173570b728a/Revidirano-letno-poro%C4%8Dilo-Skupine-Vzajemna-in-Vzajemne-zdravstvene-zavarovalnice-d.v.z.-za-leto-2022.pdf#page=79"
+        },
+        {
+          "year": 2022,
+          "revenueM": null,
+          "ebitdaM": null,
+          "ebitM": 5.1,
+          "netIncomeM": 4.46,
+          "operatingCashFlowM": -7.55,
+          "capexM": 1.93,
+          "fcfM": -9.48,
+          "assetsM": 225.25,
+          "equityM": 104.64,
+          "cashM": 1.19,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": 449,
+          "closePrice": null,
+          "eps": 0.06,
+          "dps": 0.0,
+          "bvps": 1.42,
+          "fcfPerShare": -0.13,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": 4.26,
+          "roaPct": 1.98,
+          "roicPct": 4.0,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": null,
+          "netMarginPct": null,
+          "reportUrl": "https://www.vzajemna.si/storage/uploads/1d10bdf8-03ed-40ae-b625-7173570b728a/Revidirano-letno-poro%C4%8Dilo-Skupine-Vzajemna-in-Vzajemne-zdravstvene-zavarovalnice-d.v.z.-za-leto-2022.pdf#page=79"
+        },
+        {
+          "year": 2023,
+          "revenueM": 337.64,
+          "ebitdaM": null,
+          "ebitM": -19.16,
+          "netIncomeM": -19.16,
+          "operatingCashFlowM": -53.74,
+          "capexM": 1.99,
+          "fcfM": -55.73,
+          "assetsM": 155.13,
+          "equityM": 61.7,
+          "cashM": 1.19,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": null,
+          "closePrice": null,
+          "eps": -0.26,
+          "dps": 0.0,
+          "bvps": 0.84,
+          "fcfPerShare": -0.76,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": -31.06,
+          "roaPct": -12.35,
+          "roicPct": -25.46,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": -5.67,
+          "netMarginPct": -5.68,
+          "reportUrl": "https://www.vzajemna.si/storage/uploads/d325439e-e5ce-400e-8bf2-43881779572d/VZAJEMNA_FINAN%C4%8CNO-PORO%C4%8CILO-2024.pdf#page=89"
+        },
+        {
+          "year": 2024,
+          "revenueM": 30.3,
+          "ebitdaM": null,
+          "ebitM": -1.62,
+          "netIncomeM": -1.62,
+          "operatingCashFlowM": -19.2,
+          "capexM": 2.38,
+          "fcfM": -21.58,
+          "assetsM": 123.86,
+          "equityM": 75.34,
+          "cashM": 1.19,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": null,
+          "closePrice": null,
+          "eps": -0.02,
+          "dps": 0.0,
+          "bvps": 1.03,
+          "fcfPerShare": -0.29,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": -2.14,
+          "roaPct": -1.3,
+          "roicPct": -1.76,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": -5.35,
+          "netMarginPct": -5.33,
+          "reportUrl": "https://www.vzajemna.si/storage/uploads/57b649f1-7665-47e4-9ba9-3da61469b5a1/48510000JYXA7227FO19-2025-12-31-1-sl.xbri"
+        },
+        {
+          "year": 2025,
+          "revenueM": 33.84,
+          "ebitdaM": null,
+          "ebitM": -1.17,
+          "netIncomeM": -1.17,
+          "operatingCashFlowM": -2.96,
+          "capexM": 2.5,
+          "fcfM": -5.46,
+          "assetsM": 105.65,
+          "equityM": 77.09,
+          "cashM": 2.25,
+          "totalDebtM": 0.0,
+          "debtIsEstimate": false,
+          "netDebtM": 0.0,
+          "employees": 386,
+          "closePrice": null,
+          "eps": -0.02,
+          "dps": 0.0,
+          "bvps": 1.05,
+          "fcfPerShare": -0.07,
+          "pe": null,
+          "peRawUnfiltered": null,
+          "pb": null,
+          "evEbitda": null,
+          "ps": null,
+          "pFcf": null,
+          "divYieldPct": null,
+          "roePct": -1.52,
+          "roaPct": -1.11,
+          "roicPct": -1.24,
+          "roicIsEstimate": true,
+          "ebitdaMarginPct": null,
+          "ebitMarginPct": -3.46,
+          "netMarginPct": -3.47,
+          "reportUrl": "https://www.vzajemna.si/storage/uploads/57b649f1-7665-47e4-9ba9-3da61469b5a1/48510000JYXA7227FO19-2025-12-31-1-sl.xbri"
+        }
+      ],
+      "historicalValuation": {
+        "pe": {
+          "sampleSizeN": 0,
+          "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+          "excludedOutliers": [
+            "2016: ni podatka",
+            "2017: ni podatka",
+            "2018: ni podatka",
+            "2019: ni podatka",
+            "2020: ni podatka",
+            "2021: ni podatka",
+            "2022: ni podatka",
+            "2023: neg. izid",
+            "2024: neg. izid",
+            "2025: neg. izid"
+          ],
+          "current": null,
+          "avg10y": null,
+          "median10y": null,
+          "min10y": null,
+          "minYear": "ni podatka",
+          "max10y": null,
+          "maxYear": "ni podatka",
+          "std10y": null,
+          "upper1Sigma": null,
+          "lower1Sigma": null,
+          "zScore": null,
+          "percentile": null,
+          "rangePositionPct": 50.0,
+          "diffVsAvgPct": null,
+          "diffVsMedianPct": null,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": null,
+              "rawUnfiltered": -1.0
+            },
+            {
+              "year": "2024",
+              "value": null,
+              "rawUnfiltered": -1.0
+            },
+            {
+              "year": "2025",
+              "value": null,
+              "rawUnfiltered": -1.0
+            },
+            {
+              "year": "2026",
+              "value": null,
+              "rawUnfiltered": -1.0
+            }
+          ]
+        },
+        "pb": {
+          "sampleSizeN": 0,
+          "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+          "excludedOutliers": [
+            "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
+          ],
+          "current": 1.29,
+          "avg10y": null,
+          "median10y": null,
+          "min10y": null,
+          "minYear": "ni podatka",
+          "max10y": null,
+          "maxYear": "ni podatka",
+          "std10y": null,
+          "upper1Sigma": null,
+          "lower1Sigma": null,
+          "zScore": null,
+          "percentile": null,
+          "rangePositionPct": 50.0,
+          "diffVsAvgPct": null,
+          "diffVsMedianPct": null,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2024",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2025",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2026",
+              "value": 1.29,
+              "rawUnfiltered": null
+            }
+          ]
+        },
+        "evEbitda": {
+          "sampleSizeN": 0,
+          "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+          "excludedOutliers": [
+            "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
+          ],
+          "current": null,
+          "avg10y": null,
+          "median10y": null,
+          "min10y": null,
+          "minYear": "ni podatka",
+          "max10y": null,
+          "maxYear": "ni podatka",
+          "std10y": null,
+          "upper1Sigma": null,
+          "lower1Sigma": null,
+          "zScore": null,
+          "percentile": null,
+          "rangePositionPct": 50.0,
+          "diffVsAvgPct": null,
+          "diffVsMedianPct": null,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2024",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2025",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2026",
+              "value": null,
+              "rawUnfiltered": null
+            }
+          ]
+        },
+        "ps": {
+          "sampleSizeN": 0,
+          "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+          "excludedOutliers": [
+            "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
+          ],
+          "current": 2.94,
+          "avg10y": null,
+          "median10y": null,
+          "min10y": null,
+          "minYear": "ni podatka",
+          "max10y": null,
+          "maxYear": "ni podatka",
+          "std10y": null,
+          "upper1Sigma": null,
+          "lower1Sigma": null,
+          "zScore": null,
+          "percentile": null,
+          "rangePositionPct": 50.0,
+          "diffVsAvgPct": null,
+          "diffVsMedianPct": null,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2024",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2025",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2026",
+              "value": 2.94,
+              "rawUnfiltered": null
+            }
+          ]
+        },
+        "pFcf": {
+          "sampleSizeN": 0,
+          "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+          "excludedOutliers": [
+            "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
+          ],
+          "current": null,
+          "avg10y": null,
+          "median10y": null,
+          "min10y": null,
+          "minYear": "ni podatka",
+          "max10y": null,
+          "maxYear": "ni podatka",
+          "std10y": null,
+          "upper1Sigma": null,
+          "lower1Sigma": null,
+          "zScore": null,
+          "percentile": null,
+          "rangePositionPct": 50.0,
+          "diffVsAvgPct": null,
+          "diffVsMedianPct": null,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2024",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2025",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2026",
+              "value": null,
+              "rawUnfiltered": null
+            }
+          ]
+        },
+        "divYieldPct": {
+          "sampleSizeN": 0,
+          "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+          "excludedOutliers": [
+            "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
+          ],
+          "current": 0.0,
+          "avg10y": null,
+          "median10y": null,
+          "min10y": null,
+          "minYear": "ni podatka",
+          "max10y": null,
+          "maxYear": "ni podatka",
+          "std10y": null,
+          "upper1Sigma": null,
+          "lower1Sigma": null,
+          "zScore": null,
+          "percentile": null,
+          "rangePositionPct": 50.0,
+          "diffVsAvgPct": null,
+          "diffVsMedianPct": null,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2024",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2025",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2026",
+              "value": 0.0,
+              "rawUnfiltered": null
+            }
+          ]
+        },
+        "roePct": {
+          "sampleSizeN": 2,
+          "sampleNote": "N=2 letnih točk (vzorec ≤10 let)",
+          "excludedOutliers": [],
+          "current": -1.52,
+          "avg10y": 5.29,
+          "median10y": 5.29,
+          "min10y": 4.26,
+          "minYear": "2022",
+          "max10y": 6.33,
+          "maxYear": "2021",
+          "std10y": 1.46,
+          "upper1Sigma": 6.76,
+          "lower1Sigma": 3.83,
+          "zScore": -4.66,
+          "percentile": 0.0,
+          "rangePositionPct": 0.0,
+          "diffVsAvgPct": -128.7,
+          "diffVsMedianPct": -128.7,
+          "series": [
+            {
+              "year": "2016",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2017",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2018",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2019",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2020",
+              "value": null,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2021",
+              "value": 6.33,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2022",
+              "value": 4.26,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2023",
+              "value": -31.06,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2024",
+              "value": -2.14,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2025",
+              "value": -1.52,
+              "rawUnfiltered": null
+            },
+            {
+              "year": "2026",
+              "value": -1.52,
+              "rawUnfiltered": null
+            }
+          ]
+        }
+      },
+      "peerComparison": {
+        "included": true,
+        "peerCount": 8,
+        "peerValidN": {
+          "pe": 8,
+          "forwardPe": 8,
+          "pb": 8,
+          "evEbitda": 0,
+          "ps": 8,
+          "divYieldPct": 8,
+          "roePct": 7,
+          "ebitdaMarginPct": 8
+        },
+        "asOfDate": "2026-11-20",
+        "sourceNote": "Yahoo Finance API (yfinance) — statični posnetek v data/raw/peers_yfinance.json, zajeto dne 22. 11. 2026 (brez samodejnega osveževanja v brskalniku)",
+        "peers": [
+          {
+            "ticker": "PZU.WA",
+            "name": "PZU Group S.A.",
+            "country": "Poljska (GPW)",
+            "asOf": "2026-11-24",
+            "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
+            "marketCapEurBn": 13.55,
+            "pe": 10.15,
+            "forwardPe": 11.09,
+            "pb": 1.69,
+            "evEbitda": null,
+            "ps": 0.97,
+            "divYieldPct": 6.51,
+            "roePct": 17.3,
+            "ebitdaMarginPct": 38.95
+          },
+          {
+            "ticker": "VIG.VI",
+            "name": "Vienna Insurance Group AG",
+            "country": "Avstrija (WBAG)",
+            "asOf": "2026-11-24",
+            "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
+            "marketCapEurBn": 9.65,
+            "pe": 6.99,
+            "forwardPe": 9.5,
+            "pb": 1.35,
+            "evEbitda": null,
+            "ps": 0.67,
+            "divYieldPct": 2.35,
+            "roePct": 12.9,
+            "ebitdaMarginPct": 13.02
+          },
+          {
+            "ticker": "UQA.VI",
+            "name": "UNIQA Insurance Group AG",
+            "country": "Avstrija (WBAG)",
+            "asOf": "2026-11-24",
+            "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
+            "marketCapEurBn": 5.94,
+            "pe": 13.25,
+            "forwardPe": 11.76,
+            "pb": 1.81,
+            "evEbitda": null,
+            "ps": 0.74,
+            "divYieldPct": 3.9,
+            "roePct": 14.2,
+            "ebitdaMarginPct": 6.63
+          },
+          {
+            "ticker": "G.MI",
+            "name": "Assicurazioni Generali S.p.A.",
+            "country": "Italija (Borsa Italiana)",
+            "asOf": "2026-11-24",
+            "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
+            "marketCapEurBn": 65.21,
+            "pe": 14.44,
+            "forwardPe": 12.59,
+            "pb": 2.05,
+            "evEbitda": null,
+            "ps": 1.1,
+            "divYieldPct": 3.78,
+            "roePct": 15.1,
+            "ebitdaMarginPct": 13.62
+          },
+          {
+            "ticker": "ALV.DE",
+            "name": "Allianz SE",
+            "country": "Nemčija (XETRA)",
+            "asOf": "2026-11-24",
+            "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
+            "marketCapEurBn": 170.92,
+            "pe": 14.97,
+            "forwardPe": 13.58,
+            "pb": 2.82,
+            "evEbitda": null,
+            "ps": 1.43,
+            "divYieldPct": 3.78,
+            "roePct": 19.4,
+            "ebitdaMarginPct": 16.7
+          },
+          {
+            "ticker": "UNI.MI",
+            "name": "Unipol Gruppo S.p.A.",
+            "country": "Italija (Borsa Italiana)",
+            "asOf": "2026-11-24",
+            "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
+            "marketCapEurBn": 18.48,
+            "pe": 10.8,
+            "forwardPe": 11.89,
+            "pb": 1.79,
+            "evEbitda": null,
+            "ps": 1.58,
+            "divYieldPct": 4.44,
+            "roePct": null,
+            "ebitdaMarginPct": 28.7
+          },
+          {
+            "ticker": "MAP.MC",
+            "name": "Mapfre S.A.",
+            "country": "Španija (BME)",
+            "asOf": "2026-11-24",
+            "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
+            "marketCapEurBn": 12.66,
+            "pe": 10.85,
+            "forwardPe": 9.7,
+            "pb": 1.34,
+            "evEbitda": null,
+            "ps": 0.41,
+            "divYieldPct": 4.42,
+            "roePct": 18.4,
+            "ebitdaMarginPct": 12.4
+          },
+          {
+            "ticker": "NN.AS",
+            "name": "NN Group N.V.",
+            "country": "Nizozemska (Euronext)",
+            "asOf": "2026-11-24",
+            "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
+            "marketCapEurBn": 20.14,
+            "pe": 11.5,
+            "forwardPe": 8.74,
+            "pb": 0.97,
+            "evEbitda": null,
+            "ps": 1.44,
+            "divYieldPct": 5.26,
+            "roePct": 8.8,
+            "ebitdaMarginPct": 35.84
+          }
+        ],
+        "peerAverage": {
+          "pe": 11.62,
+          "forwardPe": 11.11,
+          "pb": 1.73,
+          "evEbitda": null,
+          "ps": 1.04,
+          "divYieldPct": 4.3,
+          "roePct": 15.16,
+          "ebitdaMarginPct": 20.73
+        },
+        "peerMedian": {
+          "pe": 11.18,
+          "forwardPe": 11.43,
+          "pb": 1.74,
+          "evEbitda": null,
+          "ps": 1.04,
+          "divYieldPct": 4.16,
+          "roePct": 15.1,
+          "ebitdaMarginPct": 15.16
+        },
+        "premiumVsPeerMedianPct": {
+          "pe": null,
+          "forwardPe": null,
+          "pb": -25.9,
+          "evEbitda": null,
+          "ps": 182.7,
+          "divYieldPct": -100.0,
+          "roePct": -110.1,
+          "ebitdaMarginPct": null
+        },
+        "premiumVsPeerAvgPct": {
+          "pe": null,
+          "forwardPe": null,
+          "pb": -25.4,
+          "evEbitda": null,
+          "ps": 182.7,
+          "divYieldPct": -100.0,
+          "roePct": -110.0,
+          "ebitdaMarginPct": null
+        },
+        "impliedPrices": {
+          "byPeerMedianPb": 1.82,
+          "blendedPeerFairValue": 1.82,
+          "blendedUpsidePct": 34.8,
+          "blendedMosPct": 25.8
+        }
+      },
+      "ivHistory": [
+        {
+          "period": "FY 2022",
+          "sharePrice": null,
+          "intrinsicValueScale": 1.05,
+          "isIllustrative": true
+        },
+        {
+          "period": "FY 2023",
+          "sharePrice": null,
+          "intrinsicValueScale": 0.8,
+          "isIllustrative": true
+        },
+        {
+          "period": "FY 2024",
+          "sharePrice": null,
+          "intrinsicValueScale": 0.977,
+          "isIllustrative": true
+        },
+        {
+          "period": "FY 2025",
+          "sharePrice": null,
+          "intrinsicValueScale": 1.0,
+          "isIllustrative": true
+        },
+        {
+          "period": "9M 2026 TTM",
+          "sharePrice": 1.35,
+          "intrinsicValueScale": 1.0,
+          "isIllustrative": false
+        }
+      ],
+      "breakdowns": [
+        {
+          "axis": "product_group",
+          "year": 2025,
+          "totalM": 33.85,
+          "url": "https://www.vzajemna.si/storage/uploads/57b649f1-7665-47e4-9ba9-3da61469b5a1/48510000JYXA7227FO19-2025-12-31-1-sl.xbri",
+          "items": [
+            {
+              "label": "Zdravstvena zavarovanja",
+              "valueM": 14.46,
+              "sharePct": 42.7
+            },
+            {
+              "label": "Nezgodna zavarovanja",
+              "valueM": 10.05,
+              "sharePct": 29.7
+            },
+            {
+              "label": "Zavarovanja za tujino",
+              "valueM": 4.03,
+              "sharePct": 11.9
+            },
+            {
+              "label": "Zavarovanja težjih bolezni",
+              "valueM": 3.82,
+              "sharePct": 11.3
+            }
+          ]
+        },
+        {
+          "axis": "product_group",
+          "year": 2025,
+          "totalM": 14.46,
+          "url": "https://www.vzajemna.si/storage/uploads/57b649f1-7665-47e4-9ba9-3da61469b5a1/48510000JYXA7227FO19-2025-12-31-1-sl.xbri",
+          "items": [
+            {
+              "label": "Zdravstvena polica in Hrvaška",
+              "valueM": 10.59,
+              "sharePct": 73.3
+            },
+            {
+              "label": "Kolektivna zdravstvena polica",
+              "valueM": 2.83,
+              "sharePct": 19.6
+            },
+            {
+              "label": "Specialisti Senior",
+              "valueM": 1.04,
+              "sharePct": 7.2
+            }
+          ]
+        }
+      ],
+      "ownership": {
+        "asOf": "2025-10-01",
+        "sourceLabel": "Vzajemna · uradno revidirano letno poročilo",
+        "sourceUrl": "https://www.vzajemna.si/storage/uploads/75f5b9fb-9cb4-4ae6-aaf8-5f50179deddb/Letno-poro%C4%8Dilo-Skupine-Vzajemna-in-zavarovalnice-Vzajemna-d.-d.-za-2025.pdf",
+        "owners": [
+          {
+            "name": "Fizične osebe",
+            "sharePct": 84.77
+          },
+          {
+            "name": "Zavod za zdravstveno zavarovanje Slovenije (ZZZS)",
+            "sharePct": 15.23
+          }
+        ]
+      },
+      "priceHistory1Y": [
+        {
+          "date": "2026-03-04",
+          "close": 8.0
+        },
+        {
+          "date": "2026-03-05",
+          "close": 6.0
+        },
+        {
+          "date": "2026-03-06",
+          "close": 2.31
+        },
+        {
+          "date": "2026-03-09",
+          "close": 2.2
+        },
+        {
+          "date": "2026-03-10",
+          "close": 2.61
+        },
+        {
+          "date": "2026-03-11",
+          "close": 3.8
+        },
+        {
+          "date": "2026-03-12",
+          "close": 2.83
+        },
+        {
+          "date": "2026-03-13",
+          "close": 2.7
+        },
+        {
+          "date": "2026-03-16",
+          "close": 2.75
+        },
+        {
+          "date": "2026-03-17",
+          "close": 2.55
+        },
+        {
+          "date": "2026-03-18",
+          "close": 2.4015
+        },
+        {
+          "date": "2026-03-19",
+          "close": 2.201
+        },
+        {
+          "date": "2026-03-20",
+          "close": 2.12
+        },
+        {
+          "date": "2026-03-23",
+          "close": 2.09
+        },
+        {
+          "date": "2026-03-24",
+          "close": 1.8
+        },
+        {
+          "date": "2026-03-25",
+          "close": 1.765
+        },
+        {
+          "date": "2026-03-26",
+          "close": 1.805
+        },
+        {
+          "date": "2026-03-27",
+          "close": 1.85
+        },
+        {
+          "date": "2026-03-30",
+          "close": 1.805
+        },
+        {
+          "date": "2026-03-31",
+          "close": 1.8
+        },
+        {
+          "date": "2026-04-01",
+          "close": 1.8
+        },
+        {
+          "date": "2026-04-02",
+          "close": 1.96
+        },
+        {
+          "date": "2026-04-07",
+          "close": 1.98
+        },
+        {
+          "date": "2026-04-08",
+          "close": 1.99
+        },
+        {
+          "date": "2026-04-09",
+          "close": 2.01
+        },
+        {
+          "date": "2026-04-10",
+          "close": 2.12
+        },
+        {
+          "date": "2026-04-13",
+          "close": 2.03
+        },
+        {
+          "date": "2026-04-14",
+          "close": 2.1
+        },
+        {
+          "date": "2026-04-15",
+          "close": 2.05
+        },
+        {
+          "date": "2026-04-16",
+          "close": 2.02
+        },
+        {
+          "date": "2026-04-17",
+          "close": 2.03
+        },
+        {
+          "date": "2026-04-20",
+          "close": 2.03
+        },
+        {
+          "date": "2026-04-21",
+          "close": 2.02
+        },
+        {
+          "date": "2026-04-22",
+          "close": 2.01
+        },
+        {
+          "date": "2026-04-23",
+          "close": 2.0
+        },
+        {
+          "date": "2026-04-24",
+          "close": 1.91
+        },
+        {
+          "date": "2026-04-28",
+          "close": 1.8
+        },
+        {
+          "date": "2026-04-29",
+          "close": 1.75
+        },
+        {
+          "date": "2026-04-30",
+          "close": 1.75
+        },
+        {
+          "date": "2026-05-04",
+          "close": 1.67
+        },
+        {
+          "date": "2026-05-05",
+          "close": 1.65
+        },
+        {
+          "date": "2026-05-06",
+          "close": 1.64
+        },
+        {
+          "date": "2026-05-07",
+          "close": 1.61
+        },
+        {
+          "date": "2026-05-08",
+          "close": 1.6
+        },
+        {
+          "date": "2026-05-11",
+          "close": 1.45
+        },
+        {
+          "date": "2026-05-12",
+          "close": 1.36
+        },
+        {
+          "date": "2026-05-13",
+          "close": 1.318
+        },
+        {
+          "date": "2026-05-14",
+          "close": 1.304
+        },
+        {
+          "date": "2026-05-15",
+          "close": 1.3
+        },
+        {
+          "date": "2026-05-18",
+          "close": 1.36
+        },
+        {
+          "date": "2026-05-19",
+          "close": 1.32
+        },
+        {
+          "date": "2026-05-20",
+          "close": 1.31
+        },
+        {
+          "date": "2026-05-21",
+          "close": 1.3
+        },
+        {
+          "date": "2026-05-22",
+          "close": 1.25
+        },
+        {
+          "date": "2026-05-25",
+          "close": 1.27
+        },
+        {
+          "date": "2026-05-26",
+          "close": 1.22
+        },
+        {
+          "date": "2026-05-27",
+          "close": 1.2
+        },
+        {
+          "date": "2026-05-28",
+          "close": 1.19
+        },
+        {
+          "date": "2026-05-29",
+          "close": 1.2
+        },
+        {
+          "date": "2026-06-01",
+          "close": 1.25
+        },
+        {
+          "date": "2026-06-02",
+          "close": 1.186
+        },
+        {
+          "date": "2026-06-03",
+          "close": 1.192
+        },
+        {
+          "date": "2026-06-04",
+          "close": 1.186
+        },
+        {
+          "date": "2026-06-05",
+          "close": 1.192
+        },
+        {
+          "date": "2026-06-08",
+          "close": 1.182
+        },
+        {
+          "date": "2026-06-09",
+          "close": 1.21
+        },
+        {
+          "date": "2026-06-10",
+          "close": 1.182
+        },
+        {
+          "date": "2026-06-11",
+          "close": 1.21
+        },
+        {
+          "date": "2026-06-12",
+          "close": 1.25
+        },
+        {
+          "date": "2026-06-15",
+          "close": 1.202
+        },
+        {
+          "date": "2026-06-16",
+          "close": 1.2
+        },
+        {
+          "date": "2026-06-17",
+          "close": 1.212
+        },
+        {
+          "date": "2026-06-18",
+          "close": 1.2
+        },
+        {
+          "date": "2026-06-19",
+          "close": 1.29
+        },
+        {
+          "date": "2026-06-22",
+          "close": 1.23
+        },
+        {
+          "date": "2026-06-23",
+          "close": 1.3
+        },
+        {
+          "date": "2026-06-24",
+          "close": 1.312
+        },
+        {
+          "date": "2026-06-26",
+          "close": 1.32
+        },
+        {
+          "date": "2026-06-29",
+          "close": 1.32
+        },
+        {
+          "date": "2026-06-30",
+          "close": 1.27
+        },
+        {
+          "date": "2026-07-01",
+          "close": 1.27
+        },
+        {
+          "date": "2026-07-02",
+          "close": 1.34
+        },
+        {
+          "date": "2026-07-03",
+          "close": 1.368
+        },
+        {
+          "date": "2026-07-06",
+          "close": 1.302
+        },
+        {
+          "date": "2026-07-07",
+          "close": 1.35
+        },
+        {
+          "date": "2026-07-08",
+          "close": 1.378
+        },
+        {
+          "date": "2026-07-09",
+          "close": 1.322
+        },
+        {
+          "date": "2026-07-10",
+          "close": 1.314
+        },
+        {
+          "date": "2026-07-13",
+          "close": 1.312
+        },
+        {
+          "date": "2026-07-14",
+          "close": 1.314
+        },
+        {
+          "date": "2026-07-15",
+          "close": 1.32
+        },
+        {
+          "date": "2026-07-16",
+          "close": 1.312
+        },
+        {
+          "date": "2026-07-17",
+          "close": 1.31
+        },
+        {
+          "date": "2026-07-20",
+          "close": 1.252
+        },
+        {
+          "date": "2026-07-21",
+          "close": 1.27
+        },
+        {
+          "date": "2026-07-22",
+          "close": 1.262
+        },
+        {
+          "date": "2026-07-23",
+          "close": 1.262
+        },
+        {
+          "date": "2026-07-24",
+          "close": 1.3
+        },
+        {
+          "date": "2026-07-27",
+          "close": 1.272
+        },
+        {
+          "date": "2026-07-28",
+          "close": 1.28
+        },
+        {
+          "date": "2026-07-29",
+          "close": 1.29
+        },
+        {
+          "date": "2026-07-30",
+          "close": 1.28
+        },
+        {
+          "date": "2026-07-31",
+          "close": 1.34
+        },
+        {
+          "date": "2026-08-03",
+          "close": 1.302
+        },
+        {
+          "date": "2026-08-04",
+          "close": 1.31
+        },
+        {
+          "date": "2026-08-05",
+          "close": 1.3
+        },
+        {
+          "date": "2026-08-06",
+          "close": 1.302
+        },
+        {
+          "date": "2026-08-07",
+          "close": 1.36
+        },
+        {
+          "date": "2026-08-10",
+          "close": 1.35
+        },
+        {
+          "date": "2026-08-11",
+          "close": 1.376
+        },
+        {
+          "date": "2026-08-12",
+          "close": 1.38
+        },
+        {
+          "date": "2026-08-13",
+          "close": 1.318
+        },
+        {
+          "date": "2026-08-14",
+          "close": 1.376
+        },
+        {
+          "date": "2026-08-17",
+          "close": 1.316
+        },
+        {
+          "date": "2026-08-18",
+          "close": 1.34
+        },
+        {
+          "date": "2026-08-19",
+          "close": 1.35
+        },
+        {
+          "date": "2026-08-20",
+          "close": 1.33
+        },
+        {
+          "date": "2026-08-21",
+          "close": 1.4
+        },
+        {
+          "date": "2026-08-24",
+          "close": 1.36
+        },
+        {
+          "date": "2026-08-25",
+          "close": 1.344
+        },
+        {
+          "date": "2026-08-26",
+          "close": 1.344
+        },
+        {
+          "date": "2026-08-27",
+          "close": 1.334
+        },
+        {
+          "date": "2026-08-28",
+          "close": 1.39
+        },
+        {
+          "date": "2026-08-31",
+          "close": 1.332
+        },
+        {
+          "date": "2026-09-01",
+          "close": 1.346
+        },
+        {
+          "date": "2026-09-02",
+          "close": 1.354
+        },
+        {
+          "date": "2026-09-03",
+          "close": 1.4
+        },
+        {
+          "date": "2026-09-04",
+          "close": 1.448
+        },
+        {
+          "date": "2026-09-07",
+          "close": 1.47
+        },
+        {
+          "date": "2026-09-08",
+          "close": 1.566
+        },
+        {
+          "date": "2026-09-09",
+          "close": 2.07
+        },
+        {
+          "date": "2026-09-10",
+          "close": 2.15
+        },
+        {
+          "date": "2026-09-11",
+          "close": 2.1
+        },
+        {
+          "date": "2026-09-14",
+          "close": 1.83
+        },
+        {
+          "date": "2026-09-15",
+          "close": 1.9
+        },
+        {
+          "date": "2026-09-16",
+          "close": 1.79
+        },
+        {
+          "date": "2026-09-17",
+          "close": 1.83
+        },
+        {
+          "date": "2026-09-18",
+          "close": 1.95
+        },
+        {
+          "date": "2026-09-21",
+          "close": 1.82
+        },
+        {
+          "date": "2026-09-22",
+          "close": 1.832
+        },
+        {
+          "date": "2026-09-23",
+          "close": 1.86
+        },
+        {
+          "date": "2026-09-24",
+          "close": 1.86
+        },
+        {
+          "date": "2026-09-25",
+          "close": 1.87
+        },
+        {
+          "date": "2026-09-28",
+          "close": 1.71
+        },
+        {
+          "date": "2026-09-29",
+          "close": 1.72
+        },
+        {
+          "date": "2026-09-30",
+          "close": 1.72
+        },
+        {
+          "date": "2026-10-01",
+          "close": 1.71
+        },
+        {
+          "date": "2026-10-02",
+          "close": 1.7
+        },
+        {
+          "date": "2026-10-05",
+          "close": 1.62
+        },
+        {
+          "date": "2026-10-06",
+          "close": 1.62
+        },
+        {
+          "date": "2026-10-07",
+          "close": 1.54
+        },
+        {
+          "date": "2026-10-08",
+          "close": 1.55
+        },
+        {
+          "date": "2026-10-09",
+          "close": 1.55
+        },
+        {
+          "date": "2026-10-12",
+          "close": 1.55
+        },
+        {
+          "date": "2026-10-13",
+          "close": 1.502
+        },
+        {
+          "date": "2026-10-14",
+          "close": 1.48
+        },
+        {
+          "date": "2026-10-15",
+          "close": 1.61
+        },
+        {
+          "date": "2026-10-16",
+          "close": 1.46
+        },
+        {
+          "date": "2026-10-19",
+          "close": 1.55
+        },
+        {
+          "date": "2026-10-20",
+          "close": 1.5
+        },
+        {
+          "date": "2026-10-21",
+          "close": 1.44
+        },
+        {
+          "date": "2026-10-22",
+          "close": 1.412
+        },
+        {
+          "date": "2026-10-23",
+          "close": 1.406
+        },
+        {
+          "date": "2026-10-26",
+          "close": 1.4
+        },
+        {
+          "date": "2026-10-27",
+          "close": 1.4
+        },
+        {
+          "date": "2026-10-28",
+          "close": 1.4
+        },
+        {
+          "date": "2026-10-29",
+          "close": 1.374
+        },
+        {
+          "date": "2026-10-30",
+          "close": 1.364
+        },
+        {
+          "date": "2026-11-02",
+          "close": 1.37
+        },
+        {
+          "date": "2026-11-03",
+          "close": 1.39
+        },
+        {
+          "date": "2026-11-04",
+          "close": 1.528
+        },
+        {
+          "date": "2026-11-05",
+          "close": 1.44
+        },
+        {
+          "date": "2026-11-06",
+          "close": 1.38
+        },
+        {
+          "date": "2026-11-09",
+          "close": 1.382
+        },
+        {
+          "date": "2026-11-10",
+          "close": 1.4
+        },
+        {
+          "date": "2026-11-11",
+          "close": 1.4
+        },
+        {
+          "date": "2026-11-12",
+          "close": 1.39
+        },
+        {
+          "date": "2026-11-13",
+          "close": 1.48
+        },
+        {
+          "date": "2026-11-16",
+          "close": 1.37
+        },
+        {
+          "date": "2026-11-17",
+          "close": 1.47
+        },
+        {
+          "date": "2026-11-18",
+          "close": 1.362
+        },
+        {
+          "date": "2026-11-19",
+          "close": 1.356
+        },
+        {
+          "date": "2026-11-20",
+          "close": 1.358
+        },
+        {
+          "date": "2026-11-23",
+          "close": 1.352
+        },
+        {
+          "date": "2026-11-24",
+          "close": 1.352
         }
       ]
     }

@@ -26,7 +26,7 @@
         <div class="brand-logo" aria-hidden="true">SBI</div>
         <div>
           <div class="brand-title">SBI TOP Institucionalni Vrednotenjski Terminal</div>
-          <div class="brand-subtitle">Ljubljanska borza (LJSE) · Pravi TTM (FY25 + 9M26 − 9M25) · Normaliziran DCF & Residual Income · Podatki na dan: 20. 11. 2026</div>
+          <div class="brand-subtitle">Ljubljanska borza (LJSE) · Pravi TTM (FY25 + 9M26 − 9M25) · Normaliziran DCF & Residual Income · Podatki na dan: <span class="js-as-of-date">24. 11. 2026</span></div>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
         <button class="nav-tab" data-view="sec-latest-results">2. Zadnji rezultati (9M 26)</button>
         <button class="nav-tab" data-view="sec-financials">3. 10L Finance & TTM</button>
         <button class="nav-tab" data-view="sec-simulator">4. Simulator IV & Obratni DCF</button>
-        <button class="nav-tab" data-view="sec-peers">5. Tuji vrstniki (68)</button>
+        <button class="nav-tab" data-view="sec-peers">5. Tuji vrstniki (76)</button>
         <button class="nav-tab" data-view="sec-historical-val">6. Zgodovinski večkratniki</button>
         <button class="nav-tab" data-view="sec-portfolio">7. Moj Portfelj & Dividende</button>
       </nav>
@@ -84,7 +84,7 @@
       </div>
 
       <div style="border-top:1px solid var(--border-subtle);padding-top:10px;font-size:11px;color:var(--text-muted);display:flex;flex-direction:column;gap:4px;">
-        <div><strong class="text-primary">Podatki na dan:</strong> <span class="mono" id="sidebarAsOfDate">20. 11. 2026</span></div>
+        <div><strong class="text-primary">Podatki na dan:</strong> <span class="mono js-as-of-date" id="sidebarAsOfDate">24. 11. 2026</span></div>
         <div><strong class="text-primary">Zadnja preverba:</strong> <span class="mono" id="sidebarLastChecked">22. 11. 2026</span></div>
         <div><strong class="text-primary">TTM baza:</strong> <span class="mono">FY25 + 9M26 − 9M25</span></div>
         <div><strong class="text-primary">Delnice:</strong> <span class="mono">Brez lastnih (MSRP 33)</span></div>
@@ -95,7 +95,7 @@
     <!-- Main Workspace -->
     <main class="main-container">
       <!-- Quick 9-Company Pill Selector Bar -->
-      <div class="company-pill-bar" id="companyPillBar" role="navigation" aria-label="Hitra izbira 9 družb v SBI TOP"></div>
+      <div class="company-pill-bar" id="companyPillBar" role="navigation" aria-label="Hitra izbira 10 družb v SBI TOP"></div>
 
       <!-- ================================================================= -->
       <!-- MODULE 1: SBI TOP INDEX OVERVIEW & MASTER SCREENER MATRIX         -->
@@ -103,12 +103,12 @@
       <section class="module-section" id="sec-index">
         <div class="section-header">
           <div class="section-title-group">
-            <span class="section-kicker">MODUL 01 · TRŽNI PREGLED LJUBLJANSKE BORZE (PODATKI NA DAN: 20. 11. 2026)</span>
+            <span class="section-kicker">MODUL 01 · TRŽNI PREGLED LJUBLJANSKE BORZE (PODATKI NA DAN: <span class="js-as-of-date">24. 11. 2026</span>)</span>
             <h2 class="section-title">Pregled indeksa SBI TOP in glavna vrednotenjska matrika (Pravi TTM)</h2>
-            <p class="section-desc">Agregirani kazalniki indeksa SBI TOP (agregatni P/E = Skupna tržna kap. / Skupni TTM čisti dobiček, harmonični P/E), rebasirane uteži (100,00 %) in presečna matrika 9 članic.</p>
+            <p class="section-desc">Agregirani kazalniki indeksa SBI TOP (agregatni P/E = Skupna tržna kap. / Skupni TTM čisti dobiček, harmonični P/E), rebasirane uteži (100,00 %) in presečna matrika 10 članic (vključno z Vzajemno VZZR).</p>
           </div>
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            <span class="badge badge-blue" id="marketTimestampBadge">Podatki na dan: 20. 11. 2026 · Zadnja preverba: 22. 11. 2026</span>
+            <span class="badge badge-blue" id="marketTimestampBadge">Podatki na dan: <span class="js-as-of-date">24. 11. 2026</span> · Zadnja preverba: 22. 11. 2026</span>
             <button class="btn-action btn-collapse" data-target="sec-index" aria-label="Zloži ali razširi modul 1">Zloži / Razširi</button>
           </div>
         </div>
@@ -153,7 +153,7 @@
                 <div class="card-title">Glavna vrednotenjska matrika družb v SBI TOP (Kliknite na vrstico za podrobno analizo družbe)</div>
                 <div class="card-subtitle">Normaliziran DCF (5-letna mediana FCF 2021–2025) za nefinančne družbe in Residual Income (ROE proti ke z bledenjem) za banko in zavarovalnici · MoS = (IV − Tečaj) / IV</div>
               </div>
-              <span class="badge badge-neutral">Podatki na dan: 20. 11. 2026 · Vzorec Z-Score ≤10 letnih točk</span>
+              <span class="badge badge-neutral">Podatki na dan: <span class="js-as-of-date">24. 11. 2026</span> · Vzorec Z-Score ≤10 letnih točk</span>
             </div>
             <div class="table-wrapper">
               <table class="data-table" id="masterScreenerTable">
@@ -191,7 +191,7 @@
       <section class="module-section" id="sec-latest-results">
         <div class="section-header">
           <div class="section-title-group">
-            <span class="section-kicker">MODUL 02 · ZADNJI OBJAVLJENI REZULTATI POSLOVANJA (H1 & 9M / Q3 2026 · PODATKI NA DAN: 20. 11. 2026)</span>
+            <span class="section-kicker">MODUL 02 · ZADNJI OBJAVLJENI REZULTATI POSLOVANJA (H1 & 9M / Q3 2026 · PODATKI NA DAN: <span class="js-as-of-date">24. 11. 2026</span>)</span>
             <h2 class="section-title">Povzetek zadnjih objavljenih rezultatov poslovanja, pravih TTM številk in napovedi vodstev</h2>
             <p class="section-desc">Enotna primerjava H1 2026 in 9M 2026 prihodkov ter čistega dobička (ločeno prikazana rast prihodkov in rast dobička) ter prehod iz FY 2025 na pravi TTM dobiček.</p>
           </div>
@@ -319,7 +319,7 @@
                 <div class="card-title" id="finTableTitle">Popolna 10-letna finančna tabela (2016–2025 + Pravi 2026 TTM) in 10-letni CAGR</div>
                 <div class="card-subtitle">Stolpec 2026 TTM = FY 2025 + 9M 2026 − 9M 2025 · Oznaka <abbr class="est-tag" title="Analitična ocena na podlagi predhodnega obdobja ali deleža dolgoročnih obveznosti">ocena</abbr> označuje postavke, kjer polni četrtletni ali bilancni razčlenitvi nista objavljeni</div>
               </div>
-              <span class="badge badge-emerald" id="finProformaBadge">Vir: Revidirana letna poročila (SEOnet / zbirka Delničar.si) + tečajnica LJSE (20. 11. 2026)</span>
+              <span class="badge badge-emerald" id="finProformaBadge">Vir: Revidirana letna poročila (SEOnet / zbirka Delničar.si) + tečajnica LJSE (<span class="js-as-of-date">24. 11. 2026</span>)</span>
             </div>
             <div class="table-wrapper">
               <table class="data-table" id="historicalFinancialsTable">
@@ -360,7 +360,7 @@
               <div class="card-header">
                 <div>
                   <div class="card-title">Parametri projekcije in izbira metodologije</div>
-                  <div class="card-subtitle">Normaliziran FCF = 5-letna mediana FCF (2021–2025) · Projekcija sidrana na 20. 11. 2026 (Leto 1 NTM – Leto 10)</div>
+                  <div class="card-subtitle">Normaliziran FCF = 5-letna mediana FCF (2021–2025) · Projekcija sidrana na <span class="js-as-of-date">24. 11. 2026</span> (Leto 1 NTM – Leto 10)</div>
                 </div>
               </div>
 
@@ -531,7 +531,7 @@
                   <div class="card-header">
                     <div>
                       <div class="card-title" id="simChartProjTitle">Projekcija denarnih tokov / presežnega donosa in sedanje vrednosti (Leto 1 NTM – Leto 10)</div>
-                      <div class="card-subtitle">Sidrano na datum 20. 11. 2026: Leto 1 (NTM) do Leto 10 vs. Diskontirana sedanja vrednost (PV v mio €)</div>
+                      <div class="card-subtitle">Sidrano na datum <span class="js-as-of-date">24. 11. 2026</span>: Leto 1 (NTM) do Leto 10 vs. Diskontirana sedanja vrednost (PV v mio €)</div>
                     </div>
                   </div>
                   <div class="chart-box-sm">
@@ -554,7 +554,7 @@
               <div class="card">
                 <div class="card-header">
                   <div>
-                    <div class="card-title">10-letna tabela projiciranih tokov in sedanje vrednosti (Leto 1 NTM – Leto 10, sidrano na 20. 11. 2026)</div>
+                    <div class="card-title">10-letna tabela projiciranih tokov in sedanje vrednosti (Leto 1 NTM – Leto 10, sidrano na <span class="js-as-of-date">24. 11. 2026</span>)</div>
                     <div class="card-subtitle">Letni tok, diskontni faktor, sedanja vrednost (PV) in prehod EV → Lastniški kapital → Poštena vrednost delnice</div>
                   </div>
                 </div>
@@ -587,7 +587,7 @@
       <section class="module-section" id="sec-peers">
         <div class="section-header">
           <div class="section-title-group">
-            <span class="section-kicker">MODUL 05 · MEDNARODNA PRIMERJALNA ANALIZA (68 TUJIH VRSTNIKOV, N=6–8 NA DRUŽBO · ZAJETO: 22. 11. 2026)</span>
+            <span class="section-kicker">MODUL 05 · MEDNARODNA PRIMERJALNA ANALIZA (76 TUJIH VRSTNIKOV, N=6–8 NA DRUŽBO · ZAJETO: 22. 11. 2026)</span>
             <h2 class="section-title" id="peerSectionTitle">Primerjava kazalnikov vrednotenj s primerljivimi podjetji iz tujine</h2>
             <p class="section-desc">Vsaka družba v SBI TOP je primerjana s 6–8 mednarodnimi borznimi tekmeci iz iste panoge. Vir: Yahoo Finance (yfinance API) — statični zajem dne 22. 11. 2026 (se ne osvežuje samodejno v brskalniku).</p>
           </div>
@@ -605,10 +605,10 @@
           <div class="card">
             <div class="card-header">
               <div>
-                <div class="card-title">Presečna primerjava vseh 9 družb v SBI TOP glede na mediano tujih primerljivih podjetij (N=6–8)</div>
+                <div class="card-title">Presečna primerjava vseh 10 družb v SBI TOP glede na mediano tujih primerljivih podjetij (N=6–8)</div>
                 <div class="card-subtitle">Negativen odstotek (−) pomeni diskont (slovensko podjetje je cenejše od tujih vrstnikov); pozitiven (+) pomeni premijo · Statični zajem Yahoo Finance dne 22. 11. 2026</div>
               </div>
-              <span class="badge badge-blue">68 mednarodnih primerljivih družb (6–8 na podjetje)</span>
+              <span class="badge badge-blue">76 mednarodnih primerljivih družb (6–8 na podjetje)</span>
             </div>
             <div class="table-wrapper">
               <table class="data-table" id="crossPeerSummaryTable">
@@ -718,7 +718,7 @@
           <div class="card">
             <div class="card-header">
               <div>
-                <div class="card-title">Presečna matrika vseh 9 družb v SBI TOP: Pravi TTM večkratniki vs. Lastna 10-letna zgodovina (vzorec ≤10 letnih točk)</div>
+                <div class="card-title">Presečna matrika vseh 10 družb v SBI TOP: Pravi TTM večkratniki vs. Lastna 10-letna zgodovina (vzorec ≤10 letnih točk)</div>
                 <div class="card-subtitle">Pri vsaki družbi je izpisan dejanski N veljavnih letnih opazovanj (npr. NLBR N=8, ZVTG N=8, TLSG N=8, PETG N=9) in izločena leta</div>
               </div>
             </div>
@@ -757,7 +757,7 @@
           <div class="section-title-group">
             <span class="section-kicker">MODUL 07 · SIMULATOR LASTNEGA PORTFELJA, DIVIDENDNI KOLEDAR & 5-LETNI HORIZONT PRIHODNJIH DIVIDEND</span>
             <h2 class="section-title">Moj SBI TOP portfelj: Tehtani MoS, koncentracija glede na indeks in 5-letna projekcija prihodnjih dividend</h2>
-            <p class="section-desc">5-letni horizont kumulativnih dividend šteje izključno prihodnje še neizplačane dividende po 20. 11. 2026 (dividende z ex-datumi junij–avgust 2026 so že izplačane; v letu 2026 ostaja le še 2. tranša NLB 6,92 € z ex-datumom 14. 12. 2026).</p>
+            <p class="section-desc">5-letni horizont kumulativnih dividend šteje izključno prihodnje še neizplačane dividende po <span class="js-as-of-date">24. 11. 2026</span> (dividende z ex-datumi junij–avgust 2026 so že izplačane; v letu 2026 ostaja le še 2. tranša NLB 6,92 € z ex-datumom 14. 12. 2026).</p>
           </div>
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
             <div class="company-select-wrapper" style="padding:3px 8px;">
@@ -770,7 +770,7 @@
               </select>
             </div>
             <button class="btn-action" id="btnLoadIndexPortfolio">Naloži indeksni portfelj (100.000 €)</button>
-            <button class="btn-action" id="btnLoadEqualPortfolio">Enakomerno (9 × 10.000 €)</button>
+            <button class="btn-action" id="btnLoadEqualPortfolio">Enakomerno (10 × 10.000 €)</button>
             <button class="btn-action btn-collapse" data-target="sec-portfolio" aria-label="Zloži ali razširi modul 7">Zloži / Razširi</button>
           </div>
         </div>
@@ -784,7 +784,7 @@
             <div class="card">
               <div class="card-header">
                 <div>
-                  <div class="card-title">Sestava lastnega portfelja in prihodnji dividendni koledar (od 20. 11. 2026 naprej)</div>
+                  <div class="card-title">Sestava lastnega portfelja in prihodnji dividendni koledar (od <span class="js-as-of-date">24. 11. 2026</span> naprej)</div>
                   <div class="card-subtitle">Vnos delnic ohrani fokus v polju in se samodejno shrani v brskalnik (localStorage) ter URL</div>
                 </div>
               </div>
@@ -815,7 +815,7 @@
                 <div class="card-header">
                   <div>
                     <div class="card-title">5-letna projekcija prihodnjega dividendnega toka portfelja (Leto 1 NTM – Leto 5) in Yield on Cost (%)</div>
-                    <div class="card-subtitle">Upošteva le še neizplačane dividende po 20. 11. 2026 (vključno z 2. tranšo NLB dec. 2026) in izbrano davčno stopnjo</div>
+                    <div class="card-subtitle">Upošteva le še neizplačane dividende po <span class="js-as-of-date">24. 11. 2026</span> (vključno z 2. tranšo NLB dec. 2026) in izbrano davčno stopnjo</div>
                   </div>
                 </div>
                 <div class="chart-box-sm">
@@ -844,7 +844,7 @@
 
   <footer class="footer">
     <div>
-      <strong>SBI TOP Institucionalni Analitični &amp; Vrednotenjski Terminal</strong> · Podatki na dan: <strong>20. 11. 2026</strong> · Zadnja preverba: <strong id="footerLastChecked">22. 11. 2026</strong> · Viri: Ljubljanska borza (LJSE uradna tečajnica), revidirana letna poročila izdajateljev 2016–2025 (SEOnet / zbirka Delničar.si) in medletna poročila 9M 2026 (Pravi TTM = FY25 + 9M26 − 9M25), Yahoo Finance (yfinance API statični zajem 68 tujih vrstnikov in ^GDAXI dne 22. 11. 2026).
+      <strong>SBI TOP Institucionalni Analitični &amp; Vrednotenjski Terminal</strong> · Podatki na dan: <strong><span class="js-as-of-date">24. 11. 2026</span></strong> · Zadnja preverba: <strong id="footerLastChecked">22. 11. 2026</strong> · Viri: Ljubljanska borza (LJSE uradna tečajnica), revidirana letna poročila izdajateljev 2016–2025 (SEOnet / zbirka Delničar.si) in medletna poročila 9M 2026 (Pravi TTM = FY25 + 9M26 − 9M25), Yahoo Finance (yfinance API statični zajem 76 tujih vrstnikov in ^GDAXI dne 22. 11. 2026).
     </div>
     <div>
       Opozorilo: Rezultati so informativni in analitični ter ne predstavljajo naložbenega svetovanja ali priporočila. Manjkajoči podatki so označeni kot »ni podatka«, analitične ocene pa z oznako »ocena«.

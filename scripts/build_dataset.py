@@ -34,6 +34,7 @@ HISTORICAL_DPS = {
     "TLSG": {"2016": 5.00, "2017": 5.00, "2018": 14.30, "2019": 4.50, "2020": 3.50, "2021": 4.00, "2022": 4.50, "2023": 0.00, "2024": 6.20, "2025": 4.00, "2026": 4.60},
     "CICG": {"2016": 0.90, "2017": 1.83, "2018": 2.51, "2019": 2.83, "2020": 1.68, "2021": 2.00, "2022": 3.12, "2023": 2.77, "2024": 3.20, "2025": 1.80, "2026": 1.80},
     "SALR": {"2016": 0.35, "2017": 0.40, "2018": 0.48, "2019": 0.55, "2020": 0.65, "2021": 0.90, "2022": 1.10, "2023": 1.05, "2024": 1.10, "2025": 1.15, "2026": 1.20},
+    "VZZR": {"2016": 0.00, "2017": 0.00, "2018": 0.00, "2019": 0.00, "2020": 0.00, "2021": 0.00, "2022": 0.00, "2023": 0.00, "2024": 0.00, "2025": 0.00, "2026": 0.00},
 }
 
 EBITDA_OVERRIDES_M = {
@@ -64,6 +65,9 @@ EBIT_OVERRIDES_M = {
     "POSR": {
         "2016": 40.7, "2017": 40.3, "2018": 54.6, "2019": 63.8, "2020": 68.1,
         "2021": 94.6, "2022": 59.8, "2023": 79.8, "2024": 108.6, "2025": 138.4
+    },
+    "VZZR": {
+        "2021": 8.40, "2022": 5.10, "2023": -19.16, "2024": -1.62, "2025": -1.17
     }
 }
 
@@ -78,6 +82,7 @@ INTERIM_9M_COMPARISON_M = {
     "TLSG": {"rev26M": 566.7, "rev25M": 544.4, "ebitda26M": 201.4, "ebitda25M": 188.6, "ni26M": 55.4, "ni25M": 47.7, "equity26M": 734.0, "assets26M": 1495.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
     "SALR": {"rev26M": 554.0, "rev25M": 509.2, "ebitda26M": 22.8, "ebitda25M": 20.1, "ni26M": 14.1, "ni25M": 12.8, "equity26M": 97.4, "assets26M": 312.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
     "CICG": {"rev26M": 156.2, "rev25M": 159.5, "ebitda26M": 27.1, "ebitda25M": 31.8, "ni26M": 13.8, "ni25M": 16.1, "equity26M": 219.5, "assets26M": 251.0, "bsIsEstimate": True, "ebitTtmIsEstimate": True},
+    "VZZR": {"rev26M": 25.38, "rev25M": 25.38, "ebitda26M": 0.0, "ebitda25M": 0.0, "ni26M": -0.88, "ni25M": -0.88, "equity26M": 77.09, "assets26M": 105.65, "bsIsEstimate": False, "ebitTtmIsEstimate": False},
 }
 
 COMPANY_META = {
@@ -91,7 +96,7 @@ COMPANY_META = {
         "sectorEn": "Pharmaceuticals",
         "isFinancial": False,
         "sbitopOfficialWeight": 29.85,
-        "sbitopWeight": 30.10,
+        "sbitopWeight": 29.95,
         "includedInPeerComparison": True,
         "sharesIssuedM": 32.793448,
         "sharesEffectiveM": 30.556137,
@@ -153,7 +158,7 @@ COMPANY_META = {
         "sectorEn": "Banking",
         "isFinancial": True,
         "sbitopOfficialWeight": 20.42,
-        "sbitopWeight": 20.59,
+        "sbitopWeight": 20.49,
         "includedInPeerComparison": True,
         "sharesIssuedM": 20.000000,
         "sharesEffectiveM": 20.000000,
@@ -217,7 +222,7 @@ COMPANY_META = {
         "sectorEn": "Energy & Mobility",
         "isFinancial": False,
         "sbitopOfficialWeight": 14.18,
-        "sbitopWeight": 14.30,
+        "sbitopWeight": 14.23,
         "includedInPeerComparison": True,
         "sharesIssuedM": 41.726020,
         "sharesEffectiveM": 41.124900,
@@ -279,7 +284,7 @@ COMPANY_META = {
         "sectorEn": "Insurance",
         "isFinancial": True,
         "sbitopOfficialWeight": 10.60,
-        "sbitopWeight": 10.69,
+        "sbitopWeight": 10.64,
         "includedInPeerComparison": True,
         "sharesIssuedM": 22.735148,
         "sharesEffectiveM": 22.735148,
@@ -343,7 +348,7 @@ COMPANY_META = {
         "sectorEn": "Ports & Logistics",
         "isFinancial": False,
         "sbitopOfficialWeight": 7.82,
-        "sbitopWeight": 7.88,
+        "sbitopWeight": 7.84,
         "includedInPeerComparison": True,
         "sharesIssuedM": 14.000000,
         "sharesEffectiveM": 14.000000,
@@ -409,7 +414,7 @@ COMPANY_META = {
         "sectorEn": "Reinsurance & Insurance",
         "isFinancial": True,
         "sbitopOfficialWeight": 7.48,
-        "sbitopWeight": 7.54,
+        "sbitopWeight": 7.50,
         "includedInPeerComparison": True,
         "sharesIssuedM": 17.219662,
         "sharesEffectiveM": 15.497696,
@@ -473,7 +478,7 @@ COMPANY_META = {
         "sectorEn": "Telecommunications",
         "isFinancial": False,
         "sbitopOfficialWeight": 5.20,
-        "sbitopWeight": 5.24,
+        "sbitopWeight": 5.21,
         "includedInPeerComparison": True,
         "sharesIssuedM": 6.535478,
         "sharesEffectiveM": 6.505478,
@@ -535,7 +540,7 @@ COMPANY_META = {
         "sectorEn": "Healthcare Distribution",
         "isFinancial": False,
         "sbitopOfficialWeight": 2.15,
-        "sbitopWeight": 2.17,
+        "sbitopWeight": 2.16,
         "includedInPeerComparison": True,
         "sharesIssuedM": 8.356800,
         "sharesEffectiveM": 8.218000,
@@ -597,7 +602,7 @@ COMPANY_META = {
         "sectorEn": "Specialty Chemicals (TiO2)",
         "isFinancial": False,
         "sbitopOfficialWeight": 1.48,
-        "sbitopWeight": 1.49,
+        "sbitopWeight": 1.48,
         "includedInPeerComparison": True,
         "sharesIssuedM": 8.079770,
         "sharesEffectiveM": 7.779896,
@@ -648,6 +653,71 @@ COMPANY_META = {
             "catalysts": ["Protidampinške carine EU na uvoz kitajskega TiO2", "Okrevanje evropskega gradbenega sektorja in povpraševanja po premazih/barvah", "Visoka dividendna donosnost (6,59 %) in odkupi lastnih delnic"],
             "risks": ["Izrazita cikličnost cen pigmenta TiO2 in surovin (titana žlindra, energija)", "Okoljske zahteve in stroški sanacije starih bremen", "Globalni presežek proizvodnih zmogljivosti TiO2 na Kitajskem"]
         }
+    },
+    "VZZR": {
+        "ticker": "VZZR",
+        "slug": "vzzr",
+        "isin": "SI0031118167",
+        "name": "Vzajemna zdravstvena zavarovalnica, d. d.",
+        "shortName": "Vzajemna",
+        "sector": "Zdravstvena, nezgodna in asistenčna zavarovanja",
+        "sectorEn": "Health & Supplemental Insurance",
+        "isFinancial": True,
+        "sbitopOfficialWeight": 0.49,
+        "sbitopWeight": 0.50,
+        "includedInPeerComparison": True,
+        "sharesIssuedM": 73.501750,
+        "sharesEffectiveM": 73.501750,
+        "treasurySharesM": 0.0,
+        "fScore": 5,
+        "biiScore": 360,
+        "biiPillars": {"predictability": 55, "moat": 68, "management": 62, "financial": 78, "roic": 45, "price": 52},
+        "revenueLabel": "Zavarovalni prihodki (MSRP 17)",
+        "fcfLabel": "Presežni donos kapitala (Residual Income: ROE proti ke)",
+        "valuationModelType": "Model presežnega donosa (Residual Income / Knjigovodski kapital B₀)",
+        "eps2022Note": "Pred uvrstitvijo na Ljubljansko borzo (4. 3. 2026) je Vzajemna poslovala kot družba za vzajemno zavarovanje (d.v.z.). Po ukinitvi dopolnilnega zdravstvenega zavarovanja (1. 1. 2024) je družba v fazi prestrukturiranja na komercialna zdravstvena in nezgodna zavarovanja (čisti izid FY25 = -1,17 M€, P/E = ni podatka, P/B = 1,29x).",
+        "dividendCalendar": {"exDivDate": "Brez dividende v 2026", "payDate": "ni podatka", "alreadyPaidIn2026": True, "nextExDivDate": "ni podatka (prestrukturiranje)", "dps2026": 0.00, "dps5yGrowthEstPct": 0.0},
+        "dcfParams": {
+            "normalizedRoePct": 7.5,
+            "terminalRoeFadeToKePlusPct": 0.0,
+            "growthStage1Pct": 4.5,
+            "growthStage2Pct": 3.5,
+            "waccPct": 9.8,
+            "terminalGrowthPct": 2.0,
+            "exitMultiple": 10.0,
+            "mosPct": 20.0,
+            "capmNote": "CAPM ke = Rf 3,2 % + β 1,10 × ERP 6,0 % = 9,8 % (faza prestrukturiranja po ukinitvi dopolnilnega zavarovanja)"
+        },
+        "interim2026": {
+            "period": "Letno poročilo 2025 & Uvrstitev v SBI TOP (april 2026)",
+            "revenueM": 33.84,
+            "ebitdaM": -1.17,
+            "netIncomeM": -1.17,
+            "yoyRevenuePct": 11.7,
+            "yoyNetIncomePct": 27.3,
+            "highlights": "Uvrstitev na LJSE 4. 3. 2026 in vključitev v indeks SBI TOP 7. 4. 2026. V letu 2025 so se zavarovalni prihodki iz komercialnih zavarovanj povečali za +11,7 % na 33,84 mio €, čista izguba se je znižala na -1,17 mio €, knjigovodski kapital pa znaša 77,09 mio € (BVPS 1,05 €)."
+        },
+        "latestResults": {
+            "reportTitle": "Revidirano letno poročilo 2025 & Kotacija na LJSE (2026)",
+            "publishedDate": "23. april 2026 (SEOnet)",
+            "sentiment": "amber",
+            "sentimentLabel": "Uvrstitev v SBI TOP · Kapital 77,1 M€ (BVPS 1,05 €)",
+            "h1_2026": {"revenueM": 16.92, "revenue2025M": 15.15, "revYoYPct": 11.7, "ebitdaM": -0.58, "ebitda2025M": -0.80, "ebitdaYoYPct": 27.3, "netIncomeM": -0.58, "netIncome2025M": -0.81, "niYoYPct": 27.3},
+            "q3_9m_2026": {"period": "FY 2025 / TTM (SEOnet)", "revenueM": 33.84, "revYoYPct": 11.7, "ebitdaM": -1.17, "netIncomeM": -1.17, "niYoYPct": 27.3, "keyMetricLabel": "Knjigovodski kapital / BVPS", "keyMetricValue": "77,09 M€ · BVPS 1,05 €"},
+            "bullets": [
+                "Po statusnem preoblikovanju iz družbe za vzajemno zavarovanje (d.v.z.) v delniško družbo (d.d.) s 73.501.750 delnicami je Vzajemna (VZZR) 4. marca 2026 začela kotirati na Ljubljanski borzi, 7. aprila 2026 pa je bila vključena v indeks SBI TOP.",
+                "Po ukinitvi dopolnilnega zdravstvenega zavarovanja (1. 1. 2024) družba gradi portfelj komercialnih zdravstvenih, nezgodnih in asistenčnih zavarovanj (Varuh zdravja): v FY 2025 so zavarovalni prihodki zrasli za +11,7 % na 33,84 mio €, čista izguba pa se je zmanjšala z -1,62 mio € na -1,17 mio €.",
+                "Knjigovodski kapital znaša 77,09 mio € (1,05 € na delnico brez dolga). Ker je tekoči čisti izid negativen (-1,17 mio €), je kazalnik P/E označen kot »ni podatka«, vrednotenje pa temelji na knjigovodskem kapitalu (P/B 1,29x) in modelu presežnega donosa."
+            ],
+            "guidance": "Postopna rast premij dodatnih zdravstvenih in nezgodnih zavarovanj (Varuh zdravja) ter doseganje pozitivnega čistega poslovnega izida po zaključku prestrukturiranja.",
+            "reportUrl": "https://seonet.ljse.si/file.aspx?AttachmentID=55958"
+        },
+        "thesis": {
+            "summary": "Specializirana slovenska zdravstvena zavarovalnica, uvrščena na LJSE marca 2026 in v indeks SBI TOP aprila 2026 po statusnem preoblikovanju. Razpolaga s 77,09 mio € knjigovodskega kapitala (BVPS = 1,05 €) na 73,50 mio delnic.",
+            "moat": "Prepoznavna blagovna znamka Varuh zdravja, široka baza več kot 400.000 zavarovancev in razvejano omrežje pogodbenih zdravstvenih izvajalcev.",
+            "catalysts": ["Rast povpraševanja po zasebnih specialističnih zdravstvenih storitvah zaradi čakalnih vrst v javnem zdravstvu", "Konsolidacija razpršenega lastništva (84,77 % fizične osebe, 15,23 % ZZZS)", "Prehod v pozitivno dobičkonosnost z rastjo komercialnih premij"],
+            "risks": ["Trenutno poslovanje z negativnim čistim izidom (-1,17 M€ v FY 2025) po izgubi dopolnilnega zdravstvenega zavarovanja", "Velik previs delnic upravičencev, ki še niso prevzeli delnic pri KDD", "Močna konkurenca Zavarovalnice Triglav in Save Re na trgu dodatnih zdravstvenih zavarovanj"]
+        }
     }
 }
 
@@ -683,7 +753,34 @@ def compute_stats(series_dict, raw_unfiltered_dict=None):
                     excluded_notes.append(f"{y}: {rv:.1f}x (izločen osamelec >38x)")
 
     if not hist_vals:
-        return None
+        return {
+            "sampleSizeN": 0,
+            "sampleNote": "N=0 (uvrstitev na borzo 4. 3. 2026)",
+            "excludedOutliers": excluded_notes or ["2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"],
+            "current": safe_round(curr_val, 2),
+            "avg10y": None,
+            "median10y": None,
+            "min10y": None,
+            "minYear": "ni podatka",
+            "max10y": None,
+            "maxYear": "ni podatka",
+            "std10y": None,
+            "upper1Sigma": None,
+            "lower1Sigma": None,
+            "zScore": None,
+            "percentile": None,
+            "rangePositionPct": 50.0,
+            "diffVsAvgPct": None,
+            "diffVsMedianPct": None,
+            "series": [
+                {
+                    "year": y,
+                    "value": safe_round(series_dict.get(y), 2),
+                    "rawUnfiltered": safe_round(raw_unfiltered_dict.get(y), 2) if (raw_unfiltered_dict and raw_unfiltered_dict.get(y) is not None) else None
+                }
+                for y in hist_years + ["2026"]
+            ]
+        }
 
     n_obs = len(hist_vals)
     avg_10y = statistics.mean(hist_vals)
@@ -803,7 +900,7 @@ def main():
     peers_raw_map = json.load(open(RAW_PEERS_PATH, encoding="utf-8"))
 
     companies_out = []
-    tickers_order = ["KRKG", "NLBR", "PETG", "ZVTG", "LKPG", "POSR", "TLSG", "SALR", "CICG"]
+    tickers_order = ["KRKG", "NLBR", "PETG", "ZVTG", "LKPG", "POSR", "TLSG", "SALR", "CICG", "VZZR"]
 
     # First get KRKG current share price so LKPG's 433,786 Krka share stake is valued dynamically
     krkg_daily = raw_companies["KRKG"]["daily_points"]
@@ -1008,7 +1105,7 @@ def main():
         dps_2026 = HISTORICAL_DPS[ticker]["2026"]
 
         # Single-formula payoutRatioPct = (dps2026 / eps_ttm) * 100 (Item A9)
-        payout_ratio_pct = round((dps_2026 / eps_ttm) * 100.0, 1)
+        payout_ratio_pct = round((dps_2026 / eps_ttm) * 100.0, 1) if (eps_ttm and eps_ttm > 0) else 0.0
 
         # Unified Operating Cash Buffer Formula (Item B12):
         # operatingCashBuffer = min(grossCash, 2.0% of TTM revenue) for all non-financial companies
@@ -1030,7 +1127,7 @@ def main():
         mcap_issued_m = round(latest_price * shares_issued_m, 2)
         ev_curr_m = round(mcap_eff_m + net_debt_valuation_m, 2)
 
-        curr_pe = round(latest_price / eps_ttm, 2)
+        curr_pe = round(latest_price / eps_ttm, 2) if (eps_ttm and eps_ttm > 0) else None
         curr_pb = round(latest_price / bvps_ttm, 2)
         curr_ev_ebitda = round(ev_curr_m / ebitda_ttm_m, 2) if (ebitda_ttm_m and ebitda_ttm_m > 0 and not meta["isFinancial"]) else None
         curr_ps = round(mcap_eff_m / rev_ttm_m, 2)
@@ -1042,7 +1139,7 @@ def main():
         curr_net_margin = round((ni_ttm_m / rev_ttm_m) * 100.0, 2)
 
         mult_series["pe"]["2026"] = curr_pe
-        raw_pe_unfiltered["2026"] = curr_pe
+        raw_pe_unfiltered["2026"] = curr_pe if curr_pe is not None else -1.0
         mult_series["pb"]["2026"] = curr_pb
         mult_series["evEbitda"]["2026"] = curr_ev_ebitda
         mult_series["ps"]["2026"] = curr_ps
@@ -1145,7 +1242,12 @@ def main():
         for h in history_10y[-4:]:
             yr_label = f"FY {h['year']}"
             px_h = h["closePrice"]
-            ratio = (h["equityM"] / equity_ttm_m) * 0.55 + ((h["netIncomeM"] if h["netIncomeM"] > 0 else ni_ttm_m * 0.6) / ni_ttm_m) * 0.45
+            eq_h = h.get("equityM") or equity_ttm_m
+            ni_h = h.get("netIncomeM")
+            if ni_ttm_m > 0 and ni_h is not None:
+                ratio = (eq_h / equity_ttm_m) * 0.55 + ((ni_h if ni_h > 0 else ni_ttm_m * 0.6) / ni_ttm_m) * 0.45
+            else:
+                ratio = eq_h / equity_ttm_m if equity_ttm_m else 0.90
             iv_history.append({
                 "period": yr_label,
                 "sharePrice": px_h,
@@ -1165,17 +1267,23 @@ def main():
                 return safe_round(((v_end / v_start) ** (1.0 / n) - 1.0) * 100.0, 2)
             return None
 
-        first_px_entry = next((h for h in history_10y if h["closePrice"] is not None), history_10y[0])
-        px_periods = 2026 - first_px_entry["year"]
+        first_px_entry = next((h for h in history_10y if h["closePrice"] is not None), None)
+        if first_px_entry:
+            px_periods = max(1.0, float(2026 - first_px_entry["year"]))
+            px_cagr = calc_cagr(first_px_entry["closePrice"], latest_price, px_periods)
+            px_start_yr = first_px_entry["year"]
+        else:
+            px_cagr = None
+            px_start_yr = 2026
 
         cagrs_10y = {
             "revenueCagrPct": calc_cagr(y2016["revenueM"], rev_ttm_m, 9.75),
             "ebitdaCagrPct": calc_cagr(y2016["ebitdaM"], ebitda_ttm_m, 9.75),
             "netIncomeCagrPct": calc_cagr(y2016["netIncomeM"], ni_ttm_m, 9.75),
             "equityCagrPct": calc_cagr(y2016["equityM"], equity_ttm_m, 9.75),
-            "dpsCagrPct": calc_cagr(y2016["dps"] or 0.5, dps_2026, 10.0),
-            "priceCagrPct": calc_cagr(first_px_entry["closePrice"], latest_price, float(px_periods)),
-            "priceCagrStartYear": first_px_entry["year"]
+            "dpsCagrPct": calc_cagr(y2016["dps"] or 0.5, dps_2026, 10.0) if dps_2026 > 0 else None,
+            "priceCagrPct": px_cagr,
+            "priceCagrStartYear": px_start_yr
         }
 
         clean_breakdowns = []
@@ -1266,8 +1374,10 @@ def main():
 
     aggregate_pe = total_mcap_m / total_ni_ttm_m
     aggregate_pb = total_mcap_m / total_eq_ttm_m
-    harmonic_weighted_pe = total_weights / sum(c["sbitopWeight"] / c["current"]["pe"] for c in companies_out)
-    arithmetic_weighted_pe = sum(c["current"]["pe"] * c["sbitopWeight"] for c in companies_out) / total_weights
+    pos_pe_comps = [c for c in companies_out if c["current"].get("pe") and c["current"]["pe"] > 0]
+    pos_pe_weights = sum(c["sbitopWeight"] for c in pos_pe_comps)
+    harmonic_weighted_pe = pos_pe_weights / sum(c["sbitopWeight"] / c["current"]["pe"] for c in pos_pe_comps)
+    arithmetic_weighted_pe = sum(c["current"]["pe"] * c["sbitopWeight"] for c in pos_pe_comps) / pos_pe_weights
 
     now_utc = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     latest_market_date_iso = max((c["current"]["asOfDate"] for c in companies_out if c["current"].get("asOfDate")), default="2026-11-20")

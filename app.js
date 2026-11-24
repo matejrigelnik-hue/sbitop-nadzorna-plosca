@@ -498,6 +498,7 @@
     if (elChk) elChk.textContent = lastChk;
     if (elBadge) elBadge.textContent = `Podatki na dan: ${asOf} · Zadnja preverba: ${lastChk}`;
     if (elFootChk) elFootChk.textContent = lastChk;
+    document.querySelectorAll(".js-as-of-date").forEach((el) => { el.textContent = asOf; });
 
     const tapeEl = document.getElementById("tickerTape");
     let tapeHtml = `
@@ -685,7 +686,7 @@
         labels: DATA.companies.map((c) => c.ticker),
         datasets: [
           {
-            label: "Pravi TTM P/E (20. 11. 2026)",
+            label: `Pravi TTM P/E (${DATA.asOfDate || "24. 11. 2026"})`,
             data: DATA.companies.map((c) => c.current.pe),
             backgroundColor: "#38bdf8",
             borderRadius: 4
@@ -755,15 +756,15 @@
             <td><strong>${fmtNum(valRes.fairValuePerShare, 2)} €</strong></td>
             <td><span class="badge ${mosClass}">${fmtSignedPct(valRes.impliedMosPct, 1)}</span></td>
             <td class="${valRes.upsidePct >= 0 ? "text-emerald" : "text-rose"}">${fmtSignedPct(valRes.upsidePct, 1)}</td>
-            <td><strong>${fmtNum(cur.pe, 2)}x</strong> <span class="text-muted" style="font-size:10.5px;">(FY25: ${fmtNum(cur.peFy25, 1)}x)</span></td>
-            <td>${fmtNum(hvPe ? hvPe.avg10y : null, 2)}x</td>
+            <td><strong>${cur.pe !== null ? fmtNum(cur.pe, 2) + "x" : "ni podatka"}</strong> <span class="text-muted" style="font-size:10.5px;">(FY25: ${cur.peFy25 !== null ? fmtNum(cur.peFy25, 1) + "x" : "ni pod."})</span></td>
+            <td>${hvPe && hvPe.avg10y !== null ? fmtNum(hvPe.avg10y, 2) + "x" : "ni podatka"}</td>
             <td>${fmtNum(pc.peerMedian.pe, 2)}x</td>
             <td>${peerDiffBadge}</td>
             <td>${fmtNum(cur.pb, 2)}x${estTag(cur.bsIsEstimate, "Kapital Q3 2026 je analitična ocena")}</td>
             <td>${cur.evEbitda !== null ? fmtNum(cur.evEbitda, 2) + "x" : "ni podatka (Fin.)"}</td>
             <td class="text-emerald"><strong>${fmtNum(cur.divYieldPct, 2)} %</strong></td>
             <td>${fmtNum(cur.roePct, 1)} %</td>
-            <td class="${zClass}">${zVal > 0 ? "+" : ""}${fmtNum(zVal, 2)}σ <span class="text-muted" style="font-size:10.5px;">(${fmtNum(pctVal, 0)}.p · N=${nVal})</span></td>
+            <td class="${zClass}">${hvPe && hvPe.zScore !== null ? (zVal > 0 ? "+" : "") + fmtNum(zVal, 2) + "σ" : "ni podatka"} <span class="text-muted" style="font-size:10.5px;">(N=${nVal})</span></td>
           </tr>
         `;
       })
@@ -976,7 +977,7 @@
       <div style="display:flex;flex-direction:column;justify-content:space-between;gap:12px;background:rgba(9,14,23,0.75);padding:15px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);">
         <div style="display:flex;justify-content:space-between;align-items:center;">
           <div>
-            <div style="font-size:10.5px;text-transform:uppercase;color:var(--text-muted);font-weight:700;">Kakovostni profil družbe (Podatki na dan: 20. 11. 2026)</div>
+            <div style="font-size:10.5px;text-transform:uppercase;color:var(--text-muted);font-weight:700;">Kakovostni profil družbe (Podatki na dan: ${escHtml(DATA.asOfDate || "24. 11. 2026")})</div>
             <div style="font-size:13.5px;font-weight:700;color:var(--text-primary);">6 stebrov temeljnih kazalnikov</div>
           </div>
           <span class="badge badge-emerald">BII: ${comp.biiScore} / 600</span>
@@ -1915,7 +1916,7 @@
     document.getElementById("simProjectionTable").innerHTML = `
       <thead>
         <tr>
-          <th>Postavka projekcije (Sidrano: 20. 11. 2026)</th>
+          <th>Postavka projekcije (Sidrano: ${escHtml(DATA.asOfDate || "24. 11. 2026")})</th>
           <th>Izhodišče</th>
           ${res.years.map((y) => `<th>${escHtml(y.periodLabel)}</th>`).join("")}
           <th>Terminalna vr.</th>

@@ -2,14 +2,8 @@ name: Samodejna dnevna osvežitev tečajev in validacija SBI TOP (LJSE & Yahoo F
 
 on:
   schedule:
-    # 1. Opoldanska osvežitev med trgovanjem na LJSE (12:15 CET / 13:15 CEST)
-    - cron: '15 11 * * 1-5'
-    # 2. Osvežitev takoj po zaključni avkciji na LJSE (15:45 CET / 16:45 CEST)
-    - cron: '45 14 * * 1-5'
-    # 3. Končni obračun tečajnice — poletni čas (17:30 CEST = 15:30 UTC)
-    - cron: '30 15 * * 1-5'
-    # 4. Končni obračun tečajnice — zimski čas (17:30 CET = 16:30 UTC)
-    - cron: '30 16 * * 1-5'
+    # Samodejna osvežitev vsako uro med in po trgovanju na LJSE (09:15–18:15 CET / 10:15–19:15 CEST, ponedeljek–petek)
+    - cron: '15 8-17 * * 1-5'
   workflow_dispatch:
   push:
     paths:
@@ -33,7 +27,7 @@ jobs:
       - name: Namestitev knjižnice yfinance za tuje vrstnike in DAX 40
         run: pip install yfinance
 
-      - name: Zajem dnevnih zaključnih tečajev neposredno z LJSE (ljse.si) in 68 tujih vrstnikov
+      - name: Zajem dnevnih zaključnih tečajev neposredno z LJSE (ljse.si) za vseh 10 družb in 76 tujih vrstnikov
         run: python3 scripts/fetch_daily_market_data.py
 
       - name: Preračun vseh kazalnikov vrednotenj (P/E, P/B, EV/EBITDA, MoS, IV) in arhiviranje IV

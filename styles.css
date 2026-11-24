@@ -385,7 +385,7 @@ body {
 /* Company Quick Selector Bar */
 .company-pill-bar {
   display: grid;
-  grid-template-columns: repeat(9, minmax(115px, 1fr));
+  grid-template-columns: repeat(10, minmax(105px, 1fr));
   gap: 8px;
   overflow-x: auto;
   margin-bottom: 6px;

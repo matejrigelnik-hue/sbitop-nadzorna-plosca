@@ -32,6 +32,7 @@ COMPANIES_CONFIG = {
     "TLSG": {"isin": "SI0031104290", "slug": "tlsg"},
     "SALR": {"isin": "SI0031110453", "slug": "salr"},
     "CICG": {"isin": "SI0031103805", "slug": "cicg"},
+    "VZZR": {"isin": "SI0031118167", "slug": "vzzr"},
 }
 
 
