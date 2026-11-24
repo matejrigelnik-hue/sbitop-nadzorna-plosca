@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-24T02:31:07Z",
+  "generatedAt": "2026-11-24T02:59:50Z",
   "lastCheckedAt": "24. 11. 2026",
-  "lastCheckedAtIso": "2026-11-24T02:31:07Z",
+  "lastCheckedAtIso": "2026-11-24T02:59:50Z",
   "asOfDate": "23. 11. 2026",
   "marketDate": "2026-11-23",
   "exchange": "Ljubljanska borza (LJSE)",
@@ -1287,8 +1287,8 @@
             "country": "Švica (SIX)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 39.12,
-            "pe": 70.94,
+            "marketCapEurBn": 39.13,
+            "pe": 69.17,
             "forwardPe": 21.57,
             "pb": 4.87,
             "evEbitda": 25.55,
@@ -1303,7 +1303,7 @@
             "country": "Izrael / ZDA (NYSE)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 42.73,
+            "marketCapEurBn": 42.74,
             "pe": 92.98,
             "forwardPe": 12.77,
             "pb": 5.85,
@@ -1379,7 +1379,7 @@
           }
         ],
         "peerAverage": {
-          "pe": 34.03,
+          "pe": 33.81,
           "forwardPe": 14.03,
           "pb": 4.32,
           "evEbitda": 18.49,
@@ -1409,7 +1409,7 @@
           "ebitdaMarginPct": 8.5
         },
         "premiumVsPeerAvgPct": {
-          "pe": -48.8,
+          "pe": -48.5,
           "forwardPe": 24.1,
           "pb": -29.9,
           "evEbitda": -34.9,
@@ -3685,7 +3685,7 @@
             "marketCapEurBn": 27.51,
             "pe": 8.68,
             "forwardPe": 11.53,
-            "pb": 1.8,
+            "pb": 1.72,
             "evEbitda": null,
             "ps": 3.4,
             "divYieldPct": 2.94,
@@ -3715,9 +3715,9 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 8.5,
-            "pe": 9.74,
+            "pe": 9.77,
             "forwardPe": 9.93,
-            "pb": 2.02,
+            "pb": 1.93,
             "evEbitda": null,
             "ps": 3.79,
             "divYieldPct": 3.04,
@@ -3731,8 +3731,8 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 115.07,
-            "pe": 9.99,
-            "forwardPe": 8.68,
+            "pe": 10.21,
+            "forwardPe": 8.69,
             "pb": 1.55,
             "evEbitda": null,
             "ps": 4.49,
@@ -3779,7 +3779,7 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 186.78,
-            "pe": 5.3,
+            "pe": 5.26,
             "forwardPe": 11.98,
             "pb": 1.53,
             "evEbitda": null,
@@ -3790,9 +3790,9 @@
           }
         ],
         "peerAverage": {
-          "pe": 9.95,
+          "pe": 9.98,
           "forwardPe": 10.64,
-          "pb": 1.76,
+          "pb": 1.74,
           "evEbitda": null,
           "ps": 3.86,
           "divYieldPct": 5.05,
@@ -3800,9 +3800,9 @@
           "ebitdaMarginPct": null
         },
         "peerMedian": {
-          "pe": 9.98,
+          "pe": 10.09,
           "forwardPe": 10.55,
-          "pb": 1.77,
+          "pb": 1.73,
           "evEbitda": null,
           "ps": 3.99,
           "divYieldPct": 4.33,
@@ -3810,9 +3810,9 @@
           "ebitdaMarginPct": null
         },
         "premiumVsPeerMedianPct": {
-          "pe": -19.0,
+          "pe": -19.9,
           "forwardPe": -23.4,
-          "pb": -38.4,
+          "pb": -37.0,
           "evEbitda": null,
           "ps": -21.6,
           "divYieldPct": 50.8,
@@ -3820,9 +3820,9 @@
           "ebitdaMarginPct": null
         },
         "premiumVsPeerAvgPct": {
-          "pe": -18.8,
+          "pe": -19.0,
           "forwardPe": -24.1,
-          "pb": -38.1,
+          "pb": -37.4,
           "evEbitda": null,
           "ps": -18.9,
           "divYieldPct": 29.3,
@@ -3830,11 +3830,11 @@
           "ebitdaMarginPct": null
         },
         "impliedPrices": {
-          "byPeerMedianPe": 261.85,
-          "byPeerMedianPb": 344.26,
-          "blendedPeerFairValue": 303.06,
-          "blendedUpsidePct": 43.0,
-          "blendedMosPct": 30.0
+          "byPeerMedianPe": 264.74,
+          "byPeerMedianPb": 336.48,
+          "blendedPeerFairValue": 300.61,
+          "blendedUpsidePct": 41.8,
+          "blendedMosPct": 29.5
         }
       },
       "ivHistory": [
@@ -6133,7 +6133,7 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 9.95,
-            "pe": 8.65,
+            "pe": 8.89,
             "forwardPe": 8.14,
             "pb": 0.67,
             "evEbitda": 2.61,
@@ -6148,7 +6148,7 @@
             "country": "Poljska (GPW)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 32.83,
+            "marketCapEurBn": 32.84,
             "pe": 5.96,
             "forwardPe": 11.13,
             "pb": 0.99,
@@ -6164,8 +6164,8 @@
             "country": "Avstrija (WBAG)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 22.25,
-            "pe": 10.68,
+            "marketCapEurBn": 22.26,
+            "pe": 10.36,
             "forwardPe": 7.48,
             "pb": 1.38,
             "evEbitda": 4.5,
@@ -6256,7 +6256,7 @@
           }
         ],
         "peerAverage": {
-          "pe": 9.19,
+          "pe": 9.18,
           "forwardPe": 8.64,
           "pb": 1.5,
           "evEbitda": 4.26,
@@ -6266,7 +6266,7 @@
           "ebitdaMarginPct": 17.14
         },
         "peerMedian": {
-          "pe": 7.3,
+          "pe": 7.43,
           "forwardPe": 7.72,
           "pb": 1.31,
           "evEbitda": 3.77,
@@ -6276,7 +6276,7 @@
           "ebitdaMarginPct": 17.08
         },
         "premiumVsPeerMedianPct": {
-          "pe": 113.3,
+          "pe": 109.6,
           "forwardPe": 101.7,
           "pb": 61.8,
           "evEbitda": 139.8,
@@ -6286,7 +6286,7 @@
           "ebitdaMarginPct": -74.6
         },
         "premiumVsPeerAvgPct": {
-          "pe": 69.4,
+          "pe": 69.6,
           "forwardPe": 80.2,
           "pb": 41.3,
           "evEbitda": 112.2,
@@ -6296,12 +6296,12 @@
           "ebitdaMarginPct": -74.7
         },
         "impliedPrices": {
-          "byPeerMedianPe": 25.69,
+          "byPeerMedianPe": 26.15,
           "byPeerMedianPb": 33.86,
           "byPeerMedianEvEbitda": 22.85,
-          "blendedPeerFairValue": 27.47,
-          "blendedUpsidePct": -49.9,
-          "blendedMosPct": -99.5
+          "blendedPeerFairValue": 27.62,
+          "blendedUpsidePct": -49.6,
+          "blendedMosPct": -98.4
         }
       },
       "ivHistory": [
@@ -8739,7 +8739,7 @@
             "marketCapEurBn": 5.94,
             "pe": 13.25,
             "forwardPe": 11.76,
-            "pb": 1.94,
+            "pb": 1.81,
             "evEbitda": null,
             "ps": 0.74,
             "divYieldPct": 3.9,
@@ -8753,8 +8753,8 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 65.21,
-            "pe": 14.73,
-            "forwardPe": 12.62,
+            "pe": 14.44,
+            "forwardPe": 12.59,
             "pb": 2.05,
             "evEbitda": null,
             "ps": 1.1,
@@ -8785,7 +8785,7 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 18.48,
-            "pe": 10.9,
+            "pe": 10.8,
             "forwardPe": 11.89,
             "pb": 1.79,
             "evEbitda": null,
@@ -8828,9 +8828,9 @@
           }
         ],
         "peerAverage": {
-          "pe": 11.67,
+          "pe": 11.62,
           "forwardPe": 11.11,
-          "pb": 1.74,
+          "pb": 1.73,
           "evEbitda": null,
           "ps": 1.04,
           "divYieldPct": 4.3,
@@ -8838,7 +8838,7 @@
           "ebitdaMarginPct": 20.73
         },
         "peerMedian": {
-          "pe": 11.2,
+          "pe": 11.18,
           "forwardPe": 11.43,
           "pb": 1.74,
           "evEbitda": null,
@@ -8848,7 +8848,7 @@
           "ebitdaMarginPct": 15.16
         },
         "premiumVsPeerMedianPct": {
-          "pe": 1.4,
+          "pe": 1.6,
           "forwardPe": -0.6,
           "pb": -18.4,
           "evEbitda": null,
@@ -8858,9 +8858,9 @@
           "ebitdaMarginPct": null
         },
         "premiumVsPeerAvgPct": {
-          "pe": -2.7,
+          "pe": -2.2,
           "forwardPe": 2.3,
-          "pb": -18.4,
+          "pb": -17.9,
           "evEbitda": null,
           "ps": -8.7,
           "divYieldPct": 1.6,
@@ -8868,10 +8868,10 @@
           "ebitdaMarginPct": null
         },
         "impliedPrices": {
-          "byPeerMedianPe": 67.63,
+          "byPeerMedianPe": 67.51,
           "byPeerMedianPb": 84.06,
-          "blendedPeerFairValue": 75.84,
-          "blendedUpsidePct": 10.6,
+          "blendedPeerFairValue": 75.78,
+          "blendedUpsidePct": 10.5,
           "blendedMosPct": 9.5
         }
       },
@@ -11287,7 +11287,7 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 1.06,
-            "pe": 14.01,
+            "pe": 14.2,
             "forwardPe": 21.33,
             "pb": 2.44,
             "evEbitda": 8.88,
@@ -11334,12 +11334,12 @@
             "country": "Hongkong (HKEX)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 3.07,
-            "pe": 9.08,
-            "forwardPe": 8.29,
+            "marketCapEurBn": 3.09,
+            "pe": 9.13,
+            "forwardPe": 8.33,
             "pb": 0.49,
             "evEbitda": 54.51,
-            "ps": 14.4,
+            "ps": 14.48,
             "divYieldPct": 4.29,
             "roePct": 5.8,
             "ebitdaMarginPct": 30.56
@@ -11350,12 +11350,12 @@
             "country": "Hongkong (HKEX)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 8.5,
-            "pe": 10.84,
-            "forwardPe": 8.98,
+            "marketCapEurBn": 8.56,
+            "pe": 10.9,
+            "forwardPe": 9.03,
             "pb": 0.63,
             "evEbitda": 14.95,
-            "ps": 5.13,
+            "ps": 5.16,
             "divYieldPct": 4.21,
             "roePct": 6.2,
             "ebitdaMarginPct": 52.76
@@ -11366,31 +11366,31 @@
             "country": "Kitajska (SSE)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 139.21,
-            "pe": 9.06,
-            "forwardPe": 8.91,
-            "pb": 0.93,
+            "marketCapEurBn": 138.52,
+            "pe": 9.02,
+            "forwardPe": 8.86,
+            "pb": 0.92,
             "evEbitda": 11.75,
-            "ps": 3.27,
+            "ps": 3.26,
             "divYieldPct": 3.28,
             "roePct": 10.6,
             "ebitdaMarginPct": 34.42
           }
         ],
         "peerAverage": {
-          "pe": 11.01,
-          "forwardPe": 13.18,
+          "pe": 11.07,
+          "forwardPe": 13.19,
           "pb": 1.41,
           "evEbitda": 18.12,
-          "ps": 5.25,
+          "ps": 5.27,
           "divYieldPct": 4.4,
           "roePct": 9.27,
           "ebitdaMarginPct": 37.26
         },
         "peerMedian": {
-          "pe": 10.84,
-          "forwardPe": 8.98,
-          "pb": 1.41,
+          "pe": 10.9,
+          "forwardPe": 9.03,
+          "pb": 1.4,
           "evEbitda": 11.9,
           "ps": 3.91,
           "divYieldPct": 4.29,
@@ -11398,9 +11398,9 @@
           "ebitdaMarginPct": 38.3
         },
         "premiumVsPeerMedianPct": {
-          "pe": 58.6,
-          "forwardPe": 91.4,
-          "pb": 56.0,
+          "pe": 57.7,
+          "forwardPe": 90.4,
+          "pb": 57.1,
           "evEbitda": -6.6,
           "ps": -4.1,
           "divYieldPct": -50.8,
@@ -11408,20 +11408,20 @@
           "ebitdaMarginPct": -12.6
         },
         "premiumVsPeerAvgPct": {
-          "pe": 56.1,
-          "forwardPe": 30.4,
+          "pe": 55.3,
+          "forwardPe": 30.3,
           "pb": 56.0,
           "evEbitda": -38.7,
-          "ps": -28.6,
+          "ps": -28.8,
           "divYieldPct": -52.0,
           "roePct": 37.8,
           "ebitdaMarginPct": -10.1
         },
         "impliedPrices": {
-          "byPeerMedianPe": 68.74,
-          "byPeerMedianPb": 69.86,
+          "byPeerMedianPe": 69.12,
+          "byPeerMedianPb": 69.36,
           "byPeerMedianEvEbitda": 116.75,
-          "blendedPeerFairValue": 85.12,
+          "blendedPeerFairValue": 85.08,
           "blendedUpsidePct": -21.9,
           "blendedMosPct": -28.1
         }
@@ -13673,7 +13673,7 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 73.27,
-            "pe": 10.91,
+            "pe": 10.83,
             "forwardPe": 11.29,
             "pb": 2.2,
             "evEbitda": null,
@@ -13704,8 +13704,8 @@
             "country": "Švica (SIX)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 48.44,
-            "pe": 11.57,
+            "marketCapEurBn": 48.45,
+            "pe": 11.51,
             "forwardPe": 11.8,
             "pb": 2.2,
             "evEbitda": null,
@@ -13739,7 +13739,7 @@
             "marketCapEurBn": 5.94,
             "pe": 13.25,
             "forwardPe": 11.76,
-            "pb": 1.94,
+            "pb": 1.81,
             "evEbitda": null,
             "ps": 0.74,
             "divYieldPct": 3.9,
@@ -13780,9 +13780,9 @@
           }
         ],
         "peerAverage": {
-          "pe": 10.55,
+          "pe": 10.53,
           "forwardPe": 10.64,
-          "pb": 1.85,
+          "pb": 1.83,
           "evEbitda": null,
           "ps": 0.87,
           "divYieldPct": 4.39,
@@ -13790,9 +13790,9 @@
           "ebitdaMarginPct": 15.79
         },
         "peerMedian": {
-          "pe": 10.88,
+          "pe": 10.84,
           "forwardPe": 11.19,
-          "pb": 1.81,
+          "pb": 1.75,
           "evEbitda": null,
           "ps": 0.85,
           "divYieldPct": 4.21,
@@ -13800,9 +13800,9 @@
           "ebitdaMarginPct": 13.02
         },
         "premiumVsPeerMedianPct": {
-          "pe": -10.8,
+          "pe": -10.4,
           "forwardPe": -13.2,
-          "pb": -15.5,
+          "pb": -12.6,
           "evEbitda": null,
           "ps": 48.2,
           "divYieldPct": -15.7,
@@ -13810,9 +13810,9 @@
           "ebitdaMarginPct": null
         },
         "premiumVsPeerAvgPct": {
-          "pe": -8.0,
+          "pe": -7.8,
           "forwardPe": -8.7,
-          "pb": -17.3,
+          "pb": -16.4,
           "evEbitda": null,
           "ps": 44.8,
           "divYieldPct": -19.1,
@@ -13820,11 +13820,11 @@
           "ebitdaMarginPct": null
         },
         "impliedPrices": {
-          "byPeerMedianPe": 86.73,
-          "byPeerMedianPb": 91.56,
-          "blendedPeerFairValue": 89.15,
-          "blendedUpsidePct": 15.2,
-          "blendedMosPct": 13.2
+          "byPeerMedianPe": 86.41,
+          "byPeerMedianPb": 88.53,
+          "blendedPeerFairValue": 87.47,
+          "blendedUpsidePct": 13.0,
+          "blendedMosPct": 11.5
         }
       },
       "ivHistory": [
@@ -16283,7 +16283,7 @@
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 39.45,
             "pe": 3.67,
-            "forwardPe": 13.38,
+            "forwardPe": 13.44,
             "pb": 1.24,
             "evEbitda": 7.28,
             "ps": 0.95,
@@ -16298,7 +16298,7 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 1.93,
-            "pe": 5.2,
+            "pe": 5.07,
             "forwardPe": 6.38,
             "pb": 0.48,
             "evEbitda": 5.49,
@@ -16330,7 +16330,7 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 195.54,
-            "pe": 37.39,
+            "pe": 36.84,
             "forwardPe": 25.5,
             "pb": 3.49,
             "evEbitda": 10.3,
@@ -16341,7 +16341,7 @@
           }
         ],
         "peerAverage": {
-          "pe": 15.74,
+          "pe": 15.66,
           "forwardPe": 14.24,
           "pb": 2.32,
           "evEbitda": 7.68,
@@ -16352,7 +16352,7 @@
         },
         "peerMedian": {
           "pe": 14.72,
-          "forwardPe": 13.06,
+          "forwardPe": 13.09,
           "pb": 1.79,
           "evEbitda": 7.94,
           "ps": 1.29,
@@ -16362,7 +16362,7 @@
         },
         "premiumVsPeerMedianPct": {
           "pe": -8.7,
-          "forwardPe": 2.9,
+          "forwardPe": 2.7,
           "pb": -30.2,
           "evEbitda": -41.9,
           "ps": -7.0,
@@ -16371,7 +16371,7 @@
           "ebitdaMarginPct": 15.5
         },
         "premiumVsPeerAvgPct": {
-          "pe": -14.6,
+          "pe": -14.2,
           "forwardPe": -5.6,
           "pb": -46.1,
           "evEbitda": -40.0,
@@ -18666,9 +18666,9 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 0.74,
-            "pe": 17.31,
+            "pe": 16.77,
             "forwardPe": 13.27,
-            "pb": 2.82,
+            "pb": 2.93,
             "evEbitda": 10.52,
             "ps": 0.23,
             "divYieldPct": 2.47,
@@ -18713,9 +18713,9 @@
             "country": "Hongkong (HKEX)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 4.7,
-            "pe": 6.86,
-            "forwardPe": 5.71,
+            "marketCapEurBn": 4.69,
+            "pe": 6.85,
+            "forwardPe": 5.7,
             "pb": 0.43,
             "evEbitda": 6.24,
             "ps": 0.14,
@@ -18729,7 +18729,7 @@
             "country": "Hongkong (HKEX)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 6.11,
+            "marketCapEurBn": 6.12,
             "pe": 6.65,
             "forwardPe": 5.74,
             "pb": 0.51,
@@ -18757,9 +18757,9 @@
           }
         ],
         "peerAverage": {
-          "pe": 16.06,
+          "pe": 15.95,
           "forwardPe": 19.14,
-          "pb": 3.34,
+          "pb": 3.36,
           "evEbitda": 18.88,
           "ps": 1.41,
           "divYieldPct": 3.31,
@@ -18767,9 +18767,9 @@
           "ebitdaMarginPct": 9.57
         },
         "peerMedian": {
-          "pe": 17.31,
+          "pe": 16.77,
           "forwardPe": 16.71,
-          "pb": 2.85,
+          "pb": 2.91,
           "evEbitda": 13.33,
           "ps": 0.32,
           "divYieldPct": 2.79,
@@ -18777,9 +18777,9 @@
           "ebitdaMarginPct": 3.58
         },
         "premiumVsPeerMedianPct": {
-          "pe": 53.6,
+          "pe": 58.5,
           "forwardPe": 59.1,
-          "pb": 74.7,
+          "pb": 71.1,
           "evEbitda": 26.2,
           "ps": 103.1,
           "divYieldPct": -27.2,
@@ -18787,9 +18787,9 @@
           "ebitdaMarginPct": 14.5
         },
         "premiumVsPeerAvgPct": {
-          "pe": 65.5,
+          "pe": 66.6,
           "forwardPe": 38.9,
-          "pb": 49.1,
+          "pb": 48.2,
           "evEbitda": -10.9,
           "ps": -53.9,
           "divYieldPct": -38.7,
@@ -18797,12 +18797,12 @@
           "ebitdaMarginPct": -57.2
         },
         "impliedPrices": {
-          "byPeerMedianPe": 38.42,
-          "byPeerMedianPb": 33.77,
+          "byPeerMedianPe": 37.22,
+          "byPeerMedianPb": 34.48,
           "byPeerMedianEvEbitda": 46.76,
-          "blendedPeerFairValue": 39.65,
-          "blendedUpsidePct": -32.8,
-          "blendedMosPct": -48.8
+          "blendedPeerFairValue": 39.49,
+          "blendedUpsidePct": -33.1,
+          "blendedMosPct": -49.4
         }
       },
       "ivHistory": [
@@ -21075,7 +21075,7 @@
             "country": "ZDA (NYSE)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 1.52,
+            "marketCapEurBn": 1.53,
             "pe": null,
             "forwardPe": 6.42,
             "pb": 10.74,
@@ -21124,7 +21124,7 @@
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 4.18,
-            "pe": 99.27,
+            "pe": 101.11,
             "forwardPe": 11.09,
             "pb": 0.67,
             "evEbitda": 6.12,
@@ -21155,19 +21155,19 @@
             "country": "Nemčija (XETRA)",
             "asOf": "2026-11-24",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 44.19,
+            "marketCapEurBn": 43.02,
             "pe": 22.21,
             "forwardPe": 15.81,
             "pb": 1.17,
             "evEbitda": 9.99,
-            "ps": 0.69,
+            "ps": 0.68,
             "divYieldPct": 4.56,
             "roePct": 6.1,
             "ebitdaMarginPct": 9.84
           }
         ],
         "peerAverage": {
-          "pe": 60.6,
+          "pe": 61.06,
           "forwardPe": 19.34,
           "pb": 2.2,
           "evEbitda": 10.7,
@@ -21197,7 +21197,7 @@
           "ebitdaMarginPct": 76.8
         },
         "premiumVsPeerAvgPct": {
-          "pe": -79.8,
+          "pe": -80.0,
           "forwardPe": -36.8,
           "pb": -56.4,
           "evEbitda": -42.1,
