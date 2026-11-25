@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-24T23:53:08Z",
-  "lastCheckedAt": "24. 11. 2026",
-  "lastCheckedAtIso": "2026-11-24T23:53:08Z",
-  "asOfDate": "24. 11. 2026",
-  "marketDate": "2026-11-24",
+  "generatedAt": "2026-11-25T18:38:34Z",
+  "lastCheckedAt": "25. 11. 2026",
+  "lastCheckedAtIso": "2026-11-25T18:38:34Z",
+  "asOfDate": "25. 11. 2026",
+  "marketDate": "2026-11-25",
   "exchange": "Ljubljanska borza (LJSE)",
   "dataSources": {
     "financialStatements": "Revidirana letna (2016–2025) in medletna (H1 & 9M 2026) poročila izdajateljev (SEOnet / spletne strani družb, strukturirani izkazi v data/raw/companies_raw.json prek Delničar.si)",
@@ -14,24 +14,24 @@
   "indexSummary": {
     "name": "SBI TOP",
     "totalReturnName": "SBI TOP TR (Izračun: cenovni indeks + reinvestirane dividende)",
-    "value": 2939.07,
-    "totalReturnValue": 6015.26,
+    "value": 2927.75,
+    "totalReturnValue": 5992.92,
     "daxValue": 24802.78,
-    "change1YPct": 21.68,
-    "cagr10YPricePct": 15.14,
-    "cagr10YTotalReturnPct": 20.76,
+    "change1YPct": 21.36,
+    "cagr10YPricePct": 15.1,
+    "cagr10YTotalReturnPct": 20.71,
     "cagr10YDaxPct": 8.01,
     "totalWeightPct": 100.0,
-    "totalMarketCapEurBn": 20.15,
-    "totalIssuedMarketCapEurBn": 20.9,
+    "totalMarketCapEurBn": 20.08,
+    "totalIssuedMarketCapEurBn": 20.83,
     "totalNetIncomeTtmEurBn": 1.55,
     "totalAnnualDividendsEurBn": 0.85,
-    "aggregatePe": 12.97,
-    "harmonicWeightedPe": 12.59,
-    "arithmeticWeightedPe": 14.0,
-    "weightedPe": 12.97,
-    "weightedPb": 1.81,
-    "weightedDivYieldPct": 4.28,
+    "aggregatePe": 12.92,
+    "harmonicWeightedPe": 12.53,
+    "arithmeticWeightedPe": 13.98,
+    "weightedPe": 12.92,
+    "weightedPb": 1.8,
+    "weightedDivYieldPct": 4.31,
     "weightedRoePct": 13.96,
     "annualHistory": [
       {
@@ -106,8 +106,8 @@
       },
       {
         "year": 2026,
-        "sbitop": 2939.07,
-        "sbitopTr": 6015.26,
+        "sbitop": 2927.75,
+        "sbitopTr": 5992.92,
         "dax": 24802.78,
         "divYieldPct": 4.31
       }
@@ -265,9 +265,9 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-24",
+        "asOfDate": "2026-11-25",
         "price": 250.5,
-        "change1YPct": 22.2,
+        "change1YPct": 22.79,
         "marketCapM": 7654.31,
         "issuedMarketCapM": 8214.76,
         "effectiveMarketCapM": 7654.31,
@@ -1253,14 +1253,14 @@
             "ticker": "HIK.L",
             "name": "Hikma Pharmaceuticals Plc",
             "country": "Velika Britanija (LSE)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 0.04,
-            "pe": 12.73,
-            "forwardPe": 9.07,
-            "pb": 1.92,
+            "pe": 12.4,
+            "forwardPe": 8.89,
+            "pb": 1.87,
             "evEbitda": 6.02,
-            "ps": 1.01,
+            "ps": 0.98,
             "divYieldPct": 3.82,
             "roePct": 15.4,
             "ebitdaMarginPct": 25.71
@@ -1269,7 +1269,7 @@
             "ticker": "REC.MI",
             "name": "Recordati S.p.A.",
             "country": "Italija (Borsa Italiana)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 10.98,
             "pe": 21.02,
@@ -1285,14 +1285,14 @@
             "ticker": "SDZ.SW",
             "name": "Sandoz Group AG",
             "country": "Švica (SIX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 38.3,
-            "pe": 69.32,
-            "forwardPe": 21.08,
+            "marketCapEurBn": 38.41,
+            "pe": 69.2,
+            "forwardPe": 21.09,
             "pb": 4.75,
             "evEbitda": 25.02,
-            "ps": 3.01,
+            "ps": 3.0,
             "divYieldPct": 0.99,
             "roePct": 7.2,
             "ebitdaMarginPct": 13.42
@@ -1301,14 +1301,14 @@
             "ticker": "TEVA",
             "name": "Teva Pharmaceutical Ind.",
             "country": "Izrael / ZDA (NYSE)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 42.67,
-            "pe": 93.26,
-            "forwardPe": 12.81,
-            "pb": 5.86,
+            "marketCapEurBn": 42.77,
+            "pe": 93.66,
+            "forwardPe": 12.86,
+            "pb": 5.89,
             "evEbitda": 13.55,
-            "ps": 2.72,
+            "ps": 2.73,
             "divYieldPct": 0.0,
             "roePct": 6.7,
             "ebitdaMarginPct": 25.57
@@ -1317,14 +1317,14 @@
             "ticker": "ORNBV.HE",
             "name": "Orion Oyj",
             "country": "Finska (Nasdaq Helsinki)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 14.4,
-            "pe": 21.92,
-            "forwardPe": 20.32,
-            "pb": 10.3,
+            "marketCapEurBn": 14.19,
+            "pe": 21.6,
+            "forwardPe": 20.02,
+            "pb": 10.15,
             "evEbitda": 16.26,
-            "ps": 6.62,
+            "ps": 6.52,
             "divYieldPct": 1.79,
             "roePct": 54.5,
             "ebitdaMarginPct": 40.63
@@ -1333,14 +1333,14 @@
             "ticker": "CLN.WA",
             "name": "Celon Pharma S.A.",
             "country": "Poljska (GPW)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 0.18,
-            "pe": 8.2,
-            "forwardPe": 9.38,
-            "pb": 1.62,
+            "pe": 8.07,
+            "forwardPe": 9.22,
+            "pb": 1.6,
             "evEbitda": 52.05,
-            "ps": 3.28,
+            "ps": 3.23,
             "divYieldPct": 0.0,
             "roePct": 22.5,
             "ebitdaMarginPct": 7.18
@@ -1349,11 +1349,11 @@
             "ticker": "FAE.MC",
             "name": "Faes Farma S.A.",
             "country": "Španija (BME)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 1.52,
-            "pe": 18.13,
-            "forwardPe": 14.14,
+            "marketCapEurBn": 1.53,
+            "pe": 18.15,
+            "forwardPe": 14.16,
             "pb": 1.97,
             "evEbitda": 14.78,
             "ps": 2.07,
@@ -1365,66 +1365,66 @@
             "ticker": "IPN.PA",
             "name": "Ipsen S.A.",
             "country": "Francija (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 13.77,
-            "pe": 27.04,
-            "forwardPe": 11.56,
-            "pb": 2.92,
+            "marketCapEurBn": 13.69,
+            "pe": 27.27,
+            "forwardPe": 11.49,
+            "pb": 2.91,
             "evEbitda": 8.55,
-            "ps": 3.21,
+            "ps": 3.19,
             "divYieldPct": 0.99,
             "roePct": 11.4,
             "ebitdaMarginPct": 34.8
           }
         ],
         "peerAverage": {
-          "pe": 33.95,
-          "forwardPe": 14.04,
-          "pb": 4.25,
+          "pe": 33.92,
+          "forwardPe": 13.96,
+          "pb": 4.22,
           "evEbitda": 18.48,
-          "ps": 3.24,
+          "ps": 3.21,
           "divYieldPct": 2.15,
           "roePct": 20.33,
           "ebitdaMarginPct": 25.45
         },
         "peerMedian": {
-          "pe": 21.47,
-          "forwardPe": 13.37,
+          "pe": 21.31,
+          "forwardPe": 13.39,
           "pb": 3.79,
           "evEbitda": 14.16,
-          "ps": 3.11,
+          "ps": 3.09,
           "divYieldPct": 2.22,
           "roePct": 15.4,
           "ebitdaMarginPct": 25.64
         },
         "premiumVsPeerMedianPct": {
-          "pe": -17.6,
-          "forwardPe": 32.3,
+          "pe": -17.0,
+          "forwardPe": 32.1,
           "pb": -18.7,
           "evEbitda": -13.6,
-          "ps": 13.5,
+          "ps": 14.2,
           "divYieldPct": 63.5,
           "roePct": 13.1,
           "ebitdaMarginPct": 8.5
         },
         "premiumVsPeerAvgPct": {
-          "pe": -47.9,
-          "forwardPe": 26.0,
-          "pb": -27.5,
+          "pe": -47.8,
+          "forwardPe": 26.7,
+          "pb": -27.0,
           "evEbitda": -33.8,
-          "ps": 9.0,
+          "ps": 10.0,
           "divYieldPct": 68.8,
           "roePct": -14.3,
           "ebitdaMarginPct": 9.3
         },
         "impliedPrices": {
-          "byPeerMedianPe": 304.03,
+          "byPeerMedianPe": 301.76,
           "byPeerMedianPb": 308.25,
           "byPeerMedianEvEbitda": 290.03,
-          "blendedPeerFairValue": 300.77,
-          "blendedUpsidePct": 20.1,
-          "blendedMosPct": 16.7
+          "blendedPeerFairValue": 300.01,
+          "blendedUpsidePct": 19.8,
+          "blendedMosPct": 16.5
         }
       },
       "ivHistory": [
@@ -1593,10 +1593,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-25",
-          "close": 205.0
-        },
         {
           "date": "2025-11-26",
           "close": 204.0
@@ -2592,6 +2588,10 @@
         {
           "date": "2026-11-24",
           "close": 250.5
+        },
+        {
+          "date": "2026-11-25",
+          "close": 250.5
         }
       ]
     },
@@ -2749,13 +2749,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-24",
-        "price": 211.0,
-        "change1YPct": 20.57,
-        "marketCapM": 4220.0,
-        "issuedMarketCapM": 4220.0,
-        "effectiveMarketCapM": 4220.0,
-        "enterpriseValueM": 4220.0,
+        "asOfDate": "2026-11-25",
+        "price": 208.0,
+        "change1YPct": 19.2,
+        "marketCapM": 4160.0,
+        "issuedMarketCapM": 4160.0,
+        "effectiveMarketCapM": 4160.0,
+        "enterpriseValueM": 4160.0,
         "rawNetDebtM": 0.0,
         "operatingCashBufferM": 0.0,
         "netDebtM": 0.0,
@@ -2781,13 +2781,13 @@
         "bvps": 194.1,
         "dps": 13.84,
         "payoutRatioPct": 52.7,
-        "pe": 8.04,
+        "pe": 7.93,
         "peFy25": 7.04,
-        "pb": 1.09,
+        "pb": 1.07,
         "evEbitda": null,
-        "ps": 3.12,
-        "pFcf": 11.68,
-        "divYieldPct": 6.56,
+        "ps": 3.07,
+        "pFcf": 11.51,
+        "divYieldPct": 6.65,
         "roePct": 13.52,
         "roaPct": 1.62,
         "roicPct": 13.06,
@@ -2801,7 +2801,7 @@
         "netIncomeCagrPct": 16.78,
         "equityCagrPct": 10.05,
         "dpsCagrPct": 20.25,
-        "priceCagrPct": 16.54,
+        "priceCagrPct": 16.33,
         "priceCagrStartYear": 2018
       },
       "history": [
@@ -3184,7 +3184,7 @@
             "2016: ni podatka",
             "2017: ni podatka"
           ],
-          "current": 8.04,
+          "current": 7.93,
           "avg10y": 4.89,
           "median10y": 5.33,
           "min10y": 2.73,
@@ -3194,11 +3194,11 @@
           "std10y": 1.66,
           "upper1Sigma": 6.55,
           "lower1Sigma": 3.23,
-          "zScore": 1.9,
+          "zScore": 1.84,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 64.5,
-          "diffVsMedianPct": 50.7,
+          "diffVsAvgPct": 62.2,
+          "diffVsMedianPct": 48.6,
           "series": [
             {
               "year": "2016",
@@ -3252,8 +3252,8 @@
             },
             {
               "year": "2026",
-              "value": 8.04,
-              "rawUnfiltered": 8.04
+              "value": 7.93,
+              "rawUnfiltered": 7.93
             }
           ]
         },
@@ -3261,7 +3261,7 @@
           "sampleSizeN": 8,
           "sampleNote": "N=8 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 1.09,
+          "current": 1.07,
           "avg10y": 0.68,
           "median10y": 0.7,
           "min10y": 0.43,
@@ -3271,11 +3271,11 @@
           "std10y": 0.16,
           "upper1Sigma": 0.84,
           "lower1Sigma": 0.51,
-          "zScore": 2.54,
+          "zScore": 2.42,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 61.2,
-          "diffVsMedianPct": 54.6,
+          "diffVsAvgPct": 58.2,
+          "diffVsMedianPct": 51.8,
           "series": [
             {
               "year": "2016",
@@ -3329,7 +3329,7 @@
             },
             {
               "year": "2026",
-              "value": 1.09,
+              "value": 1.07,
               "rawUnfiltered": null
             }
           ]
@@ -3417,7 +3417,7 @@
           "sampleSizeN": 8,
           "sampleNote": "N=8 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 3.12,
+          "current": 3.07,
           "avg10y": 2.18,
           "median10y": 2.2,
           "min10y": 1.53,
@@ -3427,11 +3427,11 @@
           "std10y": 0.48,
           "upper1Sigma": 2.66,
           "lower1Sigma": 1.7,
-          "zScore": 1.95,
+          "zScore": 1.85,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 42.9,
-          "diffVsMedianPct": 41.8,
+          "diffVsAvgPct": 40.6,
+          "diffVsMedianPct": 39.5,
           "series": [
             {
               "year": "2016",
@@ -3485,7 +3485,7 @@
             },
             {
               "year": "2026",
-              "value": 3.12,
+              "value": 3.07,
               "rawUnfiltered": null
             }
           ]
@@ -3494,7 +3494,7 @@
           "sampleSizeN": 6,
           "sampleNote": "N=6 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 11.68,
+          "current": 11.51,
           "avg10y": 2.82,
           "median10y": 1.52,
           "min10y": 0.78,
@@ -3504,11 +3504,11 @@
           "std10y": 3.59,
           "upper1Sigma": 6.41,
           "lower1Sigma": 0.0,
-          "zScore": 2.47,
+          "zScore": 2.42,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 314.4,
-          "diffVsMedianPct": 668.4,
+          "diffVsAvgPct": 308.4,
+          "diffVsMedianPct": 657.2,
           "series": [
             {
               "year": "2016",
@@ -3562,7 +3562,7 @@
             },
             {
               "year": "2026",
-              "value": 11.68,
+              "value": 11.51,
               "rawUnfiltered": null
             }
           ]
@@ -3571,7 +3571,7 @@
           "sampleSizeN": 7,
           "sampleNote": "N=7 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 6.56,
+          "current": 6.65,
           "avg10y": 8.46,
           "median10y": 8.01,
           "min10y": 6.05,
@@ -3581,11 +3581,11 @@
           "std10y": 2.25,
           "upper1Sigma": 10.71,
           "lower1Sigma": 6.21,
-          "zScore": -0.84,
+          "zScore": -0.8,
           "percentile": 29.0,
-          "rangePositionPct": 9.4,
-          "diffVsAvgPct": -22.4,
-          "diffVsMedianPct": -18.1,
+          "rangePositionPct": 11.0,
+          "diffVsAvgPct": -21.4,
+          "diffVsMedianPct": -17.0,
           "series": [
             {
               "year": "2016",
@@ -3639,7 +3639,7 @@
             },
             {
               "year": "2026",
-              "value": 6.56,
+              "value": 6.65,
               "rawUnfiltered": null
             }
           ]
@@ -3742,14 +3742,14 @@
             "ticker": "EBS.VI",
             "name": "Erste Group Bank AG",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 42.37,
-            "pe": 11.51,
-            "forwardPe": 9.57,
-            "pb": 1.69,
+            "marketCapEurBn": 40.54,
+            "pe": 11.01,
+            "forwardPe": 9.15,
+            "pb": 1.62,
             "evEbitda": null,
-            "ps": 2.98,
+            "ps": 2.85,
             "divYieldPct": 0.69,
             "roePct": 14.0,
             "ebitdaMarginPct": null
@@ -3758,14 +3758,14 @@
             "ticker": "OTP.BD",
             "name": "OTP Bank Nyrt.",
             "country": "Madžarska (BÉT)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 26.23,
-            "pe": 8.3,
-            "forwardPe": 11.02,
-            "pb": 1.65,
+            "marketCapEurBn": 25.11,
+            "pe": 8.01,
+            "forwardPe": 10.64,
+            "pb": 1.66,
             "evEbitda": null,
-            "ps": 3.25,
+            "ps": 3.13,
             "divYieldPct": 2.94,
             "roePct": 20.0,
             "ebitdaMarginPct": null
@@ -3774,14 +3774,14 @@
             "ticker": "RBI.VI",
             "name": "Raiffeisen Bank Int. AG",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 19.06,
-            "pe": 9.72,
-            "forwardPe": 8.73,
-            "pb": 0.94,
+            "marketCapEurBn": 17.87,
+            "pe": 9.11,
+            "forwardPe": 8.18,
+            "pb": 0.88,
             "evEbitda": null,
-            "ps": 2.14,
+            "ps": 2.0,
             "divYieldPct": 2.78,
             "roePct": 10.2,
             "ebitdaMarginPct": null
@@ -3790,14 +3790,14 @@
             "ticker": "TLV.RO",
             "name": "Banca Transilvania S.A.",
             "country": "Romunija (BVB)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 8.6,
-            "pe": 9.88,
-            "forwardPe": 10.04,
-            "pb": 1.96,
+            "marketCapEurBn": 8.52,
+            "pe": 9.76,
+            "forwardPe": 9.95,
+            "pb": 2.03,
             "evEbitda": null,
-            "ps": 3.83,
+            "ps": 3.79,
             "divYieldPct": 3.04,
             "roePct": 23.3,
             "ebitdaMarginPct": null
@@ -3806,14 +3806,14 @@
             "ticker": "UCG.MI",
             "name": "UniCredit S.p.A.",
             "country": "Italija (Borsa Italiana)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 113.46,
-            "pe": 10.07,
-            "forwardPe": 8.57,
-            "pb": 1.53,
+            "marketCapEurBn": 109.69,
+            "pe": 9.52,
+            "forwardPe": 8.28,
+            "pb": 1.48,
             "evEbitda": null,
-            "ps": 4.43,
+            "ps": 4.28,
             "divYieldPct": 7.67,
             "roePct": 16.1,
             "ebitdaMarginPct": null
@@ -3822,14 +3822,14 @@
             "ticker": "PKO.WA",
             "name": "PKO Bank Polski S.A.",
             "country": "Poljska (GPW)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 31.41,
-            "pe": 12.79,
-            "forwardPe": 12.92,
-            "pb": 2.45,
+            "marketCapEurBn": 30.24,
+            "pe": 12.34,
+            "forwardPe": 12.47,
+            "pb": 2.37,
             "evEbitda": null,
-            "ps": 4.76,
+            "ps": 4.59,
             "divYieldPct": 5.61,
             "roePct": 19.9,
             "ebitdaMarginPct": null
@@ -3838,14 +3838,14 @@
             "ticker": "PEO.WA",
             "name": "Bank Pekao S.A.",
             "country": "Poljska (GPW)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 14.88,
-            "pe": 10.89,
-            "forwardPe": 10.88,
-            "pb": 1.97,
+            "marketCapEurBn": 14.39,
+            "pe": 10.56,
+            "forwardPe": 10.55,
+            "pb": 1.91,
             "evEbitda": null,
-            "ps": 4.08,
+            "ps": 3.96,
             "divYieldPct": 8.0,
             "roePct": 18.2,
             "ebitdaMarginPct": null
@@ -3854,65 +3854,65 @@
             "ticker": "KOMB.PR",
             "name": "Komerční banka, a.s.",
             "country": "Češka (PSE)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 190.74,
-            "pe": 5.37,
-            "forwardPe": 12.24,
-            "pb": 1.56,
+            "marketCapEurBn": 186.87,
+            "pe": 5.31,
+            "forwardPe": 11.99,
+            "pb": 1.53,
             "evEbitda": null,
-            "ps": 5.06,
+            "ps": 4.96,
             "divYieldPct": 9.7,
             "roePct": 14.3,
             "ebitdaMarginPct": null
           }
         ],
         "peerAverage": {
-          "pe": 9.82,
-          "forwardPe": 10.5,
-          "pb": 1.72,
+          "pe": 9.45,
+          "forwardPe": 10.15,
+          "pb": 1.69,
           "evEbitda": null,
-          "ps": 3.82,
+          "ps": 3.69,
           "divYieldPct": 5.05,
           "roePct": 17.0,
           "ebitdaMarginPct": null
         },
         "peerMedian": {
-          "pe": 9.98,
-          "forwardPe": 10.46,
-          "pb": 1.67,
+          "pe": 9.64,
+          "forwardPe": 10.25,
+          "pb": 1.64,
           "evEbitda": null,
-          "ps": 3.96,
+          "ps": 3.88,
           "divYieldPct": 4.33,
           "roePct": 17.15,
           "ebitdaMarginPct": null
         },
         "premiumVsPeerMedianPct": {
-          "pe": -19.4,
-          "forwardPe": -23.1,
-          "pb": -34.7,
+          "pe": -17.7,
+          "forwardPe": -22.6,
+          "pb": -34.8,
           "evEbitda": null,
-          "ps": -21.2,
-          "divYieldPct": 51.5,
+          "ps": -20.9,
+          "divYieldPct": 53.6,
           "roePct": -21.2,
           "ebitdaMarginPct": null
         },
         "premiumVsPeerAvgPct": {
-          "pe": -18.1,
-          "forwardPe": -23.4,
-          "pb": -36.6,
+          "pe": -16.1,
+          "forwardPe": -21.9,
+          "pb": -36.7,
           "evEbitda": null,
-          "ps": -18.3,
-          "divYieldPct": 29.9,
+          "ps": -16.8,
+          "divYieldPct": 31.7,
           "roePct": -20.5,
           "ebitdaMarginPct": null
         },
         "impliedPrices": {
-          "byPeerMedianPe": 261.91,
-          "byPeerMedianPb": 323.28,
-          "blendedPeerFairValue": 292.6,
-          "blendedUpsidePct": 38.7,
-          "blendedMosPct": 27.9
+          "byPeerMedianPe": 252.85,
+          "byPeerMedianPb": 318.8,
+          "blendedPeerFairValue": 285.82,
+          "blendedUpsidePct": 37.4,
+          "blendedMosPct": 27.2
         }
       },
       "ivHistory": [
@@ -3942,7 +3942,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 211.0,
+          "sharePrice": 208.0,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -4065,10 +4065,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-25",
-          "close": 175.0
-        },
         {
           "date": "2025-11-26",
           "close": 174.5
@@ -5064,6 +5060,10 @@
         {
           "date": "2026-11-24",
           "close": 211.0
+        },
+        {
+          "date": "2026-11-25",
+          "close": 208.0
         }
       ]
     },
@@ -5218,13 +5218,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-24",
-        "price": 55.2,
-        "change1YPct": 18.2,
-        "marketCapM": 2270.09,
-        "issuedMarketCapM": 2303.28,
-        "effectiveMarketCapM": 2270.09,
-        "enterpriseValueM": 2739.22,
+        "asOfDate": "2026-11-25",
+        "price": 55.6,
+        "change1YPct": 19.57,
+        "marketCapM": 2286.54,
+        "issuedMarketCapM": 2319.97,
+        "effectiveMarketCapM": 2286.54,
+        "enterpriseValueM": 2755.67,
         "rawNetDebtM": 412.04,
         "operatingCashBufferM": 57.09,
         "netDebtM": 469.13,
@@ -5250,13 +5250,13 @@
         "bvps": 25.82,
         "dps": 2.5,
         "payoutRatioPct": 71.0,
-        "pe": 15.68,
+        "pe": 15.8,
         "peFy25": 12.2,
-        "pb": 2.14,
-        "evEbitda": 9.1,
+        "pb": 2.15,
+        "evEbitda": 9.15,
         "ps": 0.33,
-        "pFcf": 21.53,
-        "divYieldPct": 4.53,
+        "pFcf": 21.69,
+        "divYieldPct": 4.5,
         "roePct": 13.62,
         "roaPct": 5.09,
         "roicPct": 12.63,
@@ -5270,7 +5270,7 @@
         "netIncomeCagrPct": 7.32,
         "equityCagrPct": 6.11,
         "dpsCagrPct": 14.78,
-        "priceCagrPct": 13.01,
+        "priceCagrPct": 13.09,
         "priceCagrStartYear": 2016
       },
       "history": [
@@ -5652,7 +5652,7 @@
           "excludedOutliers": [
             "2022: neg. izid"
           ],
-          "current": 15.68,
+          "current": 15.8,
           "avg10y": 8.67,
           "median10y": 8.87,
           "min10y": 6.95,
@@ -5662,11 +5662,11 @@
           "std10y": 1.61,
           "upper1Sigma": 10.28,
           "lower1Sigma": 7.06,
-          "zScore": 4.36,
+          "zScore": 4.43,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 80.9,
-          "diffVsMedianPct": 76.8,
+          "diffVsAvgPct": 82.3,
+          "diffVsMedianPct": 78.1,
           "series": [
             {
               "year": "2016",
@@ -5720,8 +5720,8 @@
             },
             {
               "year": "2026",
-              "value": 15.68,
-              "rawUnfiltered": 15.68
+              "value": 15.8,
+              "rawUnfiltered": 15.8
             }
           ]
         },
@@ -5729,7 +5729,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 2.14,
+          "current": 2.15,
           "avg10y": 1.13,
           "median10y": 1.03,
           "min10y": 0.81,
@@ -5739,11 +5739,11 @@
           "std10y": 0.35,
           "upper1Sigma": 1.48,
           "lower1Sigma": 0.77,
-          "zScore": 2.88,
+          "zScore": 2.91,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 90.1,
-          "diffVsMedianPct": 107.8,
+          "diffVsAvgPct": 90.9,
+          "diffVsMedianPct": 108.7,
           "series": [
             {
               "year": "2016",
@@ -5797,7 +5797,7 @@
             },
             {
               "year": "2026",
-              "value": 2.14,
+              "value": 2.15,
               "rawUnfiltered": null
             }
           ]
@@ -5806,7 +5806,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 9.1,
+          "current": 9.15,
           "avg10y": 5.92,
           "median10y": 5.26,
           "min10y": 3.82,
@@ -5816,11 +5816,11 @@
           "std10y": 2.35,
           "upper1Sigma": 8.26,
           "lower1Sigma": 3.57,
-          "zScore": 1.36,
+          "zScore": 1.38,
           "percentile": 90.0,
-          "rangePositionPct": 65.8,
-          "diffVsAvgPct": 53.8,
-          "diffVsMedianPct": 73.0,
+          "rangePositionPct": 66.4,
+          "diffVsAvgPct": 54.6,
+          "diffVsMedianPct": 74.0,
           "series": [
             {
               "year": "2016",
@@ -5874,7 +5874,7 @@
             },
             {
               "year": "2026",
-              "value": 9.1,
+              "value": 9.15,
               "rawUnfiltered": null
             }
           ]
@@ -5960,7 +5960,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 21.53,
+          "current": 21.69,
           "avg10y": 14.95,
           "median10y": 12.54,
           "min10y": 6.54,
@@ -5970,11 +5970,11 @@
           "std10y": 9.16,
           "upper1Sigma": 24.11,
           "lower1Sigma": 5.79,
-          "zScore": 0.72,
+          "zScore": 0.74,
           "percentile": 90.0,
-          "rangePositionPct": 46.7,
-          "diffVsAvgPct": 44.0,
-          "diffVsMedianPct": 71.6,
+          "rangePositionPct": 47.2,
+          "diffVsAvgPct": 45.1,
+          "diffVsMedianPct": 72.9,
           "series": [
             {
               "year": "2016",
@@ -6028,7 +6028,7 @@
             },
             {
               "year": "2026",
-              "value": 21.53,
+              "value": 21.69,
               "rawUnfiltered": null
             }
           ]
@@ -6037,7 +6037,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 4.53,
+          "current": 4.5,
           "avg10y": 5.27,
           "median10y": 4.98,
           "min10y": 3.88,
@@ -6047,11 +6047,11 @@
           "std10y": 1.29,
           "upper1Sigma": 6.55,
           "lower1Sigma": 3.98,
-          "zScore": -0.57,
+          "zScore": -0.6,
           "percentile": 40.0,
-          "rangePositionPct": 18.0,
-          "diffVsAvgPct": -14.0,
-          "diffVsMedianPct": -9.0,
+          "rangePositionPct": 17.1,
+          "diffVsAvgPct": -14.6,
+          "diffVsMedianPct": -9.6,
           "series": [
             {
               "year": "2016",
@@ -6105,7 +6105,7 @@
             },
             {
               "year": "2026",
-              "value": 4.53,
+              "value": 4.5,
               "rawUnfiltered": null
             }
           ]
@@ -6208,12 +6208,12 @@
             "ticker": "MOL.BD",
             "name": "MOL Hungarian Oil & Gas",
             "country": "Madžarska (BÉT)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 9.8,
-            "pe": 8.78,
-            "forwardPe": 8.04,
-            "pb": 0.66,
+            "marketCapEurBn": 9.55,
+            "pe": 8.39,
+            "forwardPe": 7.9,
+            "pb": 0.65,
             "evEbitda": 2.58,
             "ps": 0.36,
             "divYieldPct": 4.19,
@@ -6224,14 +6224,14 @@
             "ticker": "PKN.WA",
             "name": "ORLEN S.A.",
             "country": "Poljska (GPW)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 31.5,
-            "pe": 5.74,
-            "forwardPe": 10.71,
-            "pb": 0.95,
+            "marketCapEurBn": 30.34,
+            "pe": 5.54,
+            "forwardPe": 10.34,
+            "pb": 0.92,
             "evEbitda": 2.64,
-            "ps": 0.46,
+            "ps": 0.45,
             "divYieldPct": 6.6,
             "roePct": 10.9,
             "ebitdaMarginPct": 18.8
@@ -6240,14 +6240,14 @@
             "ticker": "OMV.VI",
             "name": "OMV AG",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 22.21,
-            "pe": 10.33,
-            "forwardPe": 7.47,
-            "pb": 1.37,
+            "marketCapEurBn": 21.73,
+            "pe": 10.43,
+            "forwardPe": 7.31,
+            "pb": 1.34,
             "evEbitda": 4.49,
-            "ps": 0.79,
+            "ps": 0.77,
             "divYieldPct": 4.57,
             "roePct": 11.4,
             "ebitdaMarginPct": 23.8
@@ -6256,14 +6256,14 @@
             "ticker": "SNP.RO",
             "name": "OMV Petrom S.A.",
             "country": "Romunija (BVB)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 15.18,
-            "pe": 21.68,
-            "forwardPe": 16.26,
-            "pb": 2.1,
+            "marketCapEurBn": 15.07,
+            "pe": 21.52,
+            "forwardPe": 16.14,
+            "pb": 2.08,
             "evEbitda": 8.87,
-            "ps": 1.91,
+            "ps": 1.89,
             "divYieldPct": 3.56,
             "roePct": 9.4,
             "ebitdaMarginPct": 20.04
@@ -6272,14 +6272,14 @@
             "ticker": "ELPE.AT",
             "name": "HELLENiQ ENERGY Holdings",
             "country": "Grčija (ATHEX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 5.13,
-            "pe": 3.08,
-            "forwardPe": 6.03,
-            "pb": 1.23,
+            "marketCapEurBn": 4.94,
+            "pe": 2.97,
+            "forwardPe": 5.81,
+            "pb": 1.18,
             "evEbitda": 2.75,
-            "ps": 0.34,
+            "ps": 0.32,
             "divYieldPct": 4.73,
             "roePct": 48.4,
             "ebitdaMarginPct": 16.67
@@ -6288,30 +6288,30 @@
             "ticker": "MOH.AT",
             "name": "Motor Oil (Hellas) S.A.",
             "country": "Grčija (ATHEX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 6.16,
-            "pe": 5.26,
-            "forwardPe": 5.92,
-            "pb": 1.59,
-            "evEbitda": 4.87,
-            "ps": 0.45,
+            "marketCapEurBn": 6.08,
+            "pe": 5.19,
+            "forwardPe": 6.15,
+            "pb": 1.3,
+            "evEbitda": 3.22,
+            "ps": 0.41,
             "divYieldPct": 3.0,
-            "roePct": 34.6,
+            "roePct": 40.0,
             "ebitdaMarginPct": 10.49
           },
           {
             "ticker": "REP.MC",
             "name": "Repsol S.A.",
             "country": "Španija (BME)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 29.63,
-            "pe": 4.97,
-            "forwardPe": 5.87,
-            "pb": 1.21,
+            "marketCapEurBn": 28.96,
+            "pe": 4.86,
+            "forwardPe": 5.74,
+            "pb": 1.18,
             "evEbitda": 3.43,
-            "ps": 0.48,
+            "ps": 0.47,
             "divYieldPct": 3.69,
             "roePct": 21.1,
             "ebitdaMarginPct": 17.48
@@ -6320,66 +6320,66 @@
             "ticker": "GALP.LS",
             "name": "Galp Energia SGPS",
             "country": "Portugalska (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 13.19,
-            "pe": 12.94,
-            "forwardPe": 7.99,
-            "pb": 2.82,
+            "marketCapEurBn": 12.87,
+            "pe": 12.62,
+            "forwardPe": 7.64,
+            "pb": 2.75,
             "evEbitda": 4.15,
-            "ps": 0.55,
+            "ps": 0.53,
             "divYieldPct": 3.74,
             "roePct": 24.6,
             "ebitdaMarginPct": 16.51
           }
         ],
         "peerAverage": {
-          "pe": 9.1,
-          "forwardPe": 8.54,
-          "pb": 1.49,
-          "evEbitda": 4.22,
-          "ps": 0.67,
+          "pe": 8.94,
+          "forwardPe": 8.38,
+          "pb": 1.43,
+          "evEbitda": 4.02,
+          "ps": 0.65,
           "divYieldPct": 4.26,
-          "roePct": 21.66,
+          "roePct": 22.34,
           "ebitdaMarginPct": 17.14
         },
         "peerMedian": {
-          "pe": 7.26,
-          "forwardPe": 7.73,
-          "pb": 1.3,
-          "evEbitda": 3.79,
-          "ps": 0.47,
+          "pe": 6.96,
+          "forwardPe": 7.47,
+          "pb": 1.24,
+          "evEbitda": 3.33,
+          "ps": 0.46,
           "divYieldPct": 3.97,
           "roePct": 17.0,
           "ebitdaMarginPct": 17.08
         },
         "premiumVsPeerMedianPct": {
-          "pe": 116.0,
-          "forwardPe": 102.8,
-          "pb": 64.6,
-          "evEbitda": 140.1,
-          "ps": -29.8,
-          "divYieldPct": 14.1,
+          "pe": 127.0,
+          "forwardPe": 111.5,
+          "pb": 73.4,
+          "evEbitda": 174.8,
+          "ps": -28.3,
+          "divYieldPct": 13.4,
           "roePct": -19.9,
           "ebitdaMarginPct": -74.6
         },
         "premiumVsPeerAvgPct": {
-          "pe": 72.3,
-          "forwardPe": 83.6,
-          "pb": 43.6,
-          "evEbitda": 115.6,
-          "ps": -50.7,
-          "divYieldPct": 6.3,
-          "roePct": -37.1,
+          "pe": 76.7,
+          "forwardPe": 88.5,
+          "pb": 50.3,
+          "evEbitda": 127.6,
+          "ps": -49.2,
+          "divYieldPct": 5.6,
+          "roePct": -39.0,
           "ebitdaMarginPct": -74.7
         },
         "impliedPrices": {
-          "byPeerMedianPe": 25.56,
-          "byPeerMedianPb": 33.53,
-          "byPeerMedianEvEbitda": 22.99,
-          "blendedPeerFairValue": 27.36,
-          "blendedUpsidePct": -50.4,
-          "blendedMosPct": -101.8
+          "byPeerMedianPe": 24.49,
+          "byPeerMedianPb": 32.07,
+          "byPeerMedianEvEbitda": 20.23,
+          "blendedPeerFairValue": 25.6,
+          "blendedUpsidePct": -54.0,
+          "blendedMosPct": -117.2
         }
       },
       "ivHistory": [
@@ -6409,7 +6409,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 55.2,
+          "sharePrice": 55.6,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -6710,10 +6710,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-25",
-          "close": 46.7
-        },
         {
           "date": "2025-11-26",
           "close": 46.5
@@ -7709,6 +7705,10 @@
         {
           "date": "2026-11-24",
           "close": 55.2
+        },
+        {
+          "date": "2026-11-25",
+          "close": 55.6
         }
       ]
     },
@@ -7865,13 +7865,13 @@
         "ebitTtmIsEstimate": false
       },
       "current": {
-        "asOfDate": "2026-11-24",
-        "price": 68.6,
-        "change1YPct": 24.73,
-        "marketCapM": 1559.63,
-        "issuedMarketCapM": 1559.63,
-        "effectiveMarketCapM": 1559.63,
-        "enterpriseValueM": 1559.63,
+        "asOfDate": "2026-11-25",
+        "price": 68.0,
+        "change1YPct": 24.09,
+        "marketCapM": 1545.99,
+        "issuedMarketCapM": 1545.99,
+        "effectiveMarketCapM": 1545.99,
+        "enterpriseValueM": 1545.99,
         "rawNetDebtM": 0.0,
         "operatingCashBufferM": 0.0,
         "netDebtM": 0.0,
@@ -7897,13 +7897,13 @@
         "bvps": 48.41,
         "dps": 3.0,
         "payoutRatioPct": 49.7,
-        "pe": 11.36,
+        "pe": 11.26,
         "peFy25": 9.85,
-        "pb": 1.42,
+        "pb": 1.4,
         "evEbitda": null,
-        "ps": 0.95,
-        "pFcf": 13.24,
-        "divYieldPct": 4.37,
+        "ps": 0.94,
+        "pFcf": 13.12,
+        "divYieldPct": 4.41,
         "roePct": 12.47,
         "roaPct": 2.4,
         "roicPct": 13.24,
@@ -7917,7 +7917,7 @@
         "netIncomeCagrPct": 5.38,
         "equityCagrPct": 4.09,
         "dpsCagrPct": 1.84,
-        "priceCagrPct": 11.45,
+        "priceCagrPct": 11.35,
         "priceCagrStartYear": 2016
       },
       "history": [
@@ -8300,7 +8300,7 @@
             "2022: neg. izid",
             "2023: 48.2x (izločen osamelec >38x)"
           ],
-          "current": 11.36,
+          "current": 11.26,
           "avg10y": 8.36,
           "median10y": 8.77,
           "min10y": 6.41,
@@ -8310,11 +8310,11 @@
           "std10y": 1.26,
           "upper1Sigma": 9.62,
           "lower1Sigma": 7.1,
-          "zScore": 2.38,
+          "zScore": 2.3,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 35.9,
-          "diffVsMedianPct": 29.6,
+          "diffVsAvgPct": 34.7,
+          "diffVsMedianPct": 28.5,
           "series": [
             {
               "year": "2016",
@@ -8368,8 +8368,8 @@
             },
             {
               "year": "2026",
-              "value": 11.36,
-              "rawUnfiltered": 11.36
+              "value": 11.26,
+              "rawUnfiltered": 11.26
             }
           ]
         },
@@ -8377,7 +8377,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 1.42,
+          "current": 1.4,
           "avg10y": 0.91,
           "median10y": 0.9,
           "min10y": 0.71,
@@ -8387,11 +8387,11 @@
           "std10y": 0.14,
           "upper1Sigma": 1.05,
           "lower1Sigma": 0.77,
-          "zScore": 3.63,
+          "zScore": 3.49,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 56.4,
-          "diffVsMedianPct": 58.7,
+          "diffVsAvgPct": 54.2,
+          "diffVsMedianPct": 56.4,
           "series": [
             {
               "year": "2016",
@@ -8445,7 +8445,7 @@
             },
             {
               "year": "2026",
-              "value": 1.42,
+              "value": 1.4,
               "rawUnfiltered": null
             }
           ]
@@ -8533,7 +8533,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 0.95,
+          "current": 0.94,
           "avg10y": 0.66,
           "median10y": 0.65,
           "min10y": 0.55,
@@ -8543,11 +8543,11 @@
           "std10y": 0.08,
           "upper1Sigma": 0.74,
           "lower1Sigma": 0.57,
-          "zScore": 3.62,
+          "zScore": 3.5,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 45.0,
-          "diffVsMedianPct": 47.3,
+          "diffVsAvgPct": 43.5,
+          "diffVsMedianPct": 45.7,
           "series": [
             {
               "year": "2016",
@@ -8601,7 +8601,7 @@
             },
             {
               "year": "2026",
-              "value": 0.95,
+              "value": 0.94,
               "rawUnfiltered": null
             }
           ]
@@ -8610,7 +8610,7 @@
           "sampleSizeN": 9,
           "sampleNote": "N=9 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 13.24,
+          "current": 13.12,
           "avg10y": 13.68,
           "median10y": 10.52,
           "min10y": 5.0,
@@ -8620,11 +8620,11 @@
           "std10y": 8.31,
           "upper1Sigma": 21.98,
           "lower1Sigma": 5.37,
-          "zScore": -0.05,
+          "zScore": -0.07,
           "percentile": 56.0,
-          "rangePositionPct": 33.2,
-          "diffVsAvgPct": -3.2,
-          "diffVsMedianPct": 25.9,
+          "rangePositionPct": 32.7,
+          "diffVsAvgPct": -4.1,
+          "diffVsMedianPct": 24.7,
           "series": [
             {
               "year": "2016",
@@ -8678,7 +8678,7 @@
             },
             {
               "year": "2026",
-              "value": 13.24,
+              "value": 13.12,
               "rawUnfiltered": null
             }
           ]
@@ -8687,7 +8687,7 @@
           "sampleSizeN": 9,
           "sampleNote": "N=9 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 4.37,
+          "current": 4.41,
           "avg10y": 7.42,
           "median10y": 7.51,
           "min10y": 4.32,
@@ -8697,11 +8697,11 @@
           "std10y": 2.48,
           "upper1Sigma": 9.9,
           "lower1Sigma": 4.94,
-          "zScore": -1.23,
+          "zScore": -1.21,
           "percentile": 11.0,
-          "rangePositionPct": 0.8,
-          "diffVsAvgPct": -41.1,
-          "diffVsMedianPct": -41.8,
+          "rangePositionPct": 1.4,
+          "diffVsAvgPct": -40.6,
+          "diffVsMedianPct": -41.3,
           "series": [
             {
               "year": "2016",
@@ -8755,7 +8755,7 @@
             },
             {
               "year": "2026",
-              "value": 4.37,
+              "value": 4.41,
               "rawUnfiltered": null
             }
           ]
@@ -8858,14 +8858,14 @@
             "ticker": "PZU.WA",
             "name": "PZU Group S.A.",
             "country": "Poljska (GPW)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 13.47,
-            "pe": 10.12,
-            "forwardPe": 11.06,
-            "pb": 1.69,
+            "marketCapEurBn": 13.15,
+            "pe": 9.91,
+            "forwardPe": 10.82,
+            "pb": 1.65,
             "evEbitda": null,
-            "ps": 0.96,
+            "ps": 0.94,
             "divYieldPct": 6.51,
             "roePct": 17.3,
             "ebitdaMarginPct": 38.95
@@ -8874,14 +8874,14 @@
             "ticker": "VIG.VI",
             "name": "Vienna Insurance Group AG",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 9.54,
-            "pe": 6.83,
-            "forwardPe": 9.21,
-            "pb": 1.32,
+            "marketCapEurBn": 9.31,
+            "pe": 6.74,
+            "forwardPe": 9.1,
+            "pb": 1.3,
             "evEbitda": null,
-            "ps": 0.66,
+            "ps": 0.65,
             "divYieldPct": 2.35,
             "roePct": 12.9,
             "ebitdaMarginPct": 13.02
@@ -8890,14 +8890,14 @@
             "ticker": "UQA.VI",
             "name": "UNIQA Insurance Group AG",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 5.92,
-            "pe": 13.22,
-            "forwardPe": 11.74,
-            "pb": 1.81,
+            "marketCapEurBn": 5.67,
+            "pe": 12.64,
+            "forwardPe": 11.23,
+            "pb": 1.85,
             "evEbitda": null,
-            "ps": 0.73,
+            "ps": 0.7,
             "divYieldPct": 3.9,
             "roePct": 14.2,
             "ebitdaMarginPct": 6.63
@@ -8906,14 +8906,14 @@
             "ticker": "G.MI",
             "name": "Assicurazioni Generali S.p.A.",
             "country": "Italija (Borsa Italiana)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 65.01,
-            "pe": 14.4,
-            "forwardPe": 12.56,
-            "pb": 2.04,
+            "marketCapEurBn": 64.32,
+            "pe": 14.53,
+            "forwardPe": 12.45,
+            "pb": 2.02,
             "evEbitda": null,
-            "ps": 1.1,
+            "ps": 1.08,
             "divYieldPct": 3.78,
             "roePct": 15.1,
             "ebitdaMarginPct": 13.62
@@ -8922,12 +8922,12 @@
             "ticker": "ALV.DE",
             "name": "Allianz SE",
             "country": "Nemčija (XETRA)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 170.28,
-            "pe": 14.92,
-            "forwardPe": 13.53,
-            "pb": 2.81,
+            "marketCapEurBn": 169.61,
+            "pe": 14.86,
+            "forwardPe": 13.48,
+            "pb": 2.8,
             "evEbitda": null,
             "ps": 1.42,
             "divYieldPct": 3.78,
@@ -8938,14 +8938,14 @@
             "ticker": "UNI.MI",
             "name": "Unipol Gruppo S.p.A.",
             "country": "Italija (Borsa Italiana)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 18.25,
-            "pe": 10.67,
-            "forwardPe": 11.74,
-            "pb": 1.77,
+            "marketCapEurBn": 17.74,
+            "pe": 10.46,
+            "forwardPe": 11.41,
+            "pb": 1.72,
             "evEbitda": null,
-            "ps": 1.56,
+            "ps": 1.52,
             "divYieldPct": 4.44,
             "roePct": null,
             "ebitdaMarginPct": 28.7
@@ -8954,14 +8954,14 @@
             "ticker": "MAP.MC",
             "name": "Mapfre S.A.",
             "country": "Španija (BME)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 12.36,
-            "pe": 10.59,
-            "forwardPe": 9.53,
-            "pb": 1.31,
+            "marketCapEurBn": 12.22,
+            "pe": 10.47,
+            "forwardPe": 9.42,
+            "pb": 1.29,
             "evEbitda": null,
-            "ps": 0.4,
+            "ps": 0.39,
             "divYieldPct": 4.42,
             "roePct": 18.4,
             "ebitdaMarginPct": 12.4
@@ -8970,65 +8970,65 @@
             "ticker": "NN.AS",
             "name": "NN Group N.V.",
             "country": "Nizozemska (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 20.07,
-            "pe": 11.47,
-            "forwardPe": 8.71,
-            "pb": 0.97,
+            "marketCapEurBn": 19.86,
+            "pe": 11.34,
+            "forwardPe": 8.61,
+            "pb": 0.96,
             "evEbitda": null,
-            "ps": 1.43,
+            "ps": 1.42,
             "divYieldPct": 5.26,
             "roePct": 8.8,
             "ebitdaMarginPct": 35.84
           }
         ],
         "peerAverage": {
-          "pe": 11.53,
-          "forwardPe": 11.01,
-          "pb": 1.72,
+          "pe": 11.37,
+          "forwardPe": 10.81,
+          "pb": 1.7,
           "evEbitda": null,
-          "ps": 1.03,
+          "ps": 1.01,
           "divYieldPct": 4.3,
           "roePct": 15.16,
           "ebitdaMarginPct": 20.73
         },
         "peerMedian": {
-          "pe": 11.07,
-          "forwardPe": 11.4,
-          "pb": 1.73,
+          "pe": 10.91,
+          "forwardPe": 11.03,
+          "pb": 1.69,
           "evEbitda": null,
-          "ps": 1.03,
+          "ps": 1.01,
           "divYieldPct": 4.16,
           "roePct": 15.1,
           "ebitdaMarginPct": 15.16
         },
         "premiumVsPeerMedianPct": {
-          "pe": 2.6,
-          "forwardPe": -0.4,
-          "pb": -17.9,
+          "pe": 3.2,
+          "forwardPe": 2.1,
+          "pb": -17.2,
           "evEbitda": null,
-          "ps": -7.8,
-          "divYieldPct": 5.0,
+          "ps": -6.9,
+          "divYieldPct": 6.0,
           "roePct": -17.4,
           "ebitdaMarginPct": null
         },
         "premiumVsPeerAvgPct": {
-          "pe": -1.5,
-          "forwardPe": 3.2,
-          "pb": -17.4,
+          "pe": -1.0,
+          "forwardPe": 4.2,
+          "pb": -17.6,
           "evEbitda": null,
-          "ps": -7.8,
-          "divYieldPct": 1.6,
+          "ps": -6.9,
+          "divYieldPct": 2.6,
           "roePct": -17.7,
           "ebitdaMarginPct": null
         },
         "impliedPrices": {
-          "byPeerMedianPe": 66.85,
-          "byPeerMedianPb": 83.58,
-          "blendedPeerFairValue": 75.22,
-          "blendedUpsidePct": 9.7,
-          "blendedMosPct": 8.8
+          "byPeerMedianPe": 65.89,
+          "byPeerMedianPb": 82.09,
+          "blendedPeerFairValue": 73.99,
+          "blendedUpsidePct": 8.8,
+          "blendedMosPct": 8.1
         }
       },
       "ivHistory": [
@@ -9058,7 +9058,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 68.6,
+          "sharePrice": 68.0,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -9295,10 +9295,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-25",
-          "close": 55.0
-        },
         {
           "date": "2025-11-26",
           "close": 54.8
@@ -10294,6 +10290,10 @@
         {
           "date": "2026-11-24",
           "close": 68.6
+        },
+        {
+          "date": "2026-11-25",
+          "close": 68.0
         }
       ]
     },
@@ -10452,13 +10452,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-24",
-        "price": 109.0,
-        "change1YPct": 63.91,
-        "marketCapM": 1526.0,
-        "issuedMarketCapM": 1526.0,
-        "effectiveMarketCapM": 1526.0,
-        "enterpriseValueM": 1515.39,
+        "asOfDate": "2026-11-25",
+        "price": 109.5,
+        "change1YPct": 63.43,
+        "marketCapM": 1533.0,
+        "issuedMarketCapM": 1533.0,
+        "effectiveMarketCapM": 1533.0,
+        "enterpriseValueM": 1522.39,
         "rawNetDebtM": -18.76,
         "operatingCashBufferM": 8.15,
         "netDebtM": -10.61,
@@ -10484,13 +10484,13 @@
         "bvps": 49.61,
         "dps": 2.3,
         "payoutRatioPct": 36.3,
-        "pe": 17.19,
+        "pe": 17.27,
         "peFy25": 12.37,
-        "pb": 2.2,
-        "evEbitda": 11.11,
-        "ps": 3.75,
-        "pFcf": 52.73,
-        "divYieldPct": 2.11,
+        "pb": 2.21,
+        "evEbitda": 11.16,
+        "ps": 3.76,
+        "pFcf": 52.97,
+        "divYieldPct": 2.1,
         "roePct": 12.77,
         "roaPct": 9.19,
         "roicPct": 11.98,
@@ -10504,7 +10504,7 @@
         "netIncomeCagrPct": 7.36,
         "equityCagrPct": 7.86,
         "dpsCagrPct": 7.37,
-        "priceCagrPct": 15.86,
+        "priceCagrPct": 15.92,
         "priceCagrStartYear": 2016
       },
       "history": [
@@ -10884,7 +10884,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 17.19,
+          "current": 17.27,
           "avg10y": 8.71,
           "median10y": 8.02,
           "min10y": 4.68,
@@ -10894,11 +10894,11 @@
           "std10y": 2.48,
           "upper1Sigma": 11.19,
           "lower1Sigma": 6.23,
-          "zScore": 3.42,
+          "zScore": 3.45,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 97.4,
-          "diffVsMedianPct": 114.3,
+          "diffVsAvgPct": 98.3,
+          "diffVsMedianPct": 115.3,
           "series": [
             {
               "year": "2016",
@@ -10952,8 +10952,8 @@
             },
             {
               "year": "2026",
-              "value": 17.19,
-              "rawUnfiltered": 17.19
+              "value": 17.27,
+              "rawUnfiltered": 17.27
             }
           ]
         },
@@ -10961,7 +10961,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 2.2,
+          "current": 2.21,
           "avg10y": 0.92,
           "median10y": 0.88,
           "min10y": 0.58,
@@ -10971,11 +10971,11 @@
           "std10y": 0.28,
           "upper1Sigma": 1.21,
           "lower1Sigma": 0.64,
-          "zScore": 4.5,
+          "zScore": 4.54,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 138.1,
-          "diffVsMedianPct": 151.4,
+          "diffVsAvgPct": 139.2,
+          "diffVsMedianPct": 152.6,
           "series": [
             {
               "year": "2016",
@@ -11029,7 +11029,7 @@
             },
             {
               "year": "2026",
-              "value": 2.2,
+              "value": 2.21,
               "rawUnfiltered": null
             }
           ]
@@ -11038,7 +11038,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 11.11,
+          "current": 11.16,
           "avg10y": 5.13,
           "median10y": 5.1,
           "min10y": 2.73,
@@ -11048,11 +11048,11 @@
           "std10y": 1.56,
           "upper1Sigma": 6.69,
           "lower1Sigma": 3.57,
-          "zScore": 3.84,
+          "zScore": 3.87,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 116.6,
-          "diffVsMedianPct": 118.1,
+          "diffVsAvgPct": 117.6,
+          "diffVsMedianPct": 119.0,
           "series": [
             {
               "year": "2016",
@@ -11106,7 +11106,7 @@
             },
             {
               "year": "2026",
-              "value": 11.11,
+              "value": 11.16,
               "rawUnfiltered": null
             }
           ]
@@ -11115,7 +11115,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 3.75,
+          "current": 3.76,
           "avg10y": 1.64,
           "median10y": 1.56,
           "min10y": 1.11,
@@ -11125,11 +11125,11 @@
           "std10y": 0.44,
           "upper1Sigma": 2.08,
           "lower1Sigma": 1.2,
-          "zScore": 4.79,
+          "zScore": 4.82,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 128.8,
-          "diffVsMedianPct": 141.2,
+          "diffVsAvgPct": 129.4,
+          "diffVsMedianPct": 141.8,
           "series": [
             {
               "year": "2016",
@@ -11183,7 +11183,7 @@
             },
             {
               "year": "2026",
-              "value": 3.75,
+              "value": 3.76,
               "rawUnfiltered": null
             }
           ]
@@ -11192,7 +11192,7 @@
           "sampleSizeN": 8,
           "sampleNote": "N=8 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 52.73,
+          "current": 52.97,
           "avg10y": 20.74,
           "median10y": 15.5,
           "min10y": 4.25,
@@ -11202,11 +11202,11 @@
           "std10y": 17.06,
           "upper1Sigma": 37.8,
           "lower1Sigma": 3.68,
-          "zScore": 1.88,
+          "zScore": 1.89,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 154.2,
-          "diffVsMedianPct": 240.3,
+          "diffVsAvgPct": 155.4,
+          "diffVsMedianPct": 241.9,
           "series": [
             {
               "year": "2016",
@@ -11260,7 +11260,7 @@
             },
             {
               "year": "2026",
-              "value": 52.73,
+              "value": 52.97,
               "rawUnfiltered": null
             }
           ]
@@ -11269,7 +11269,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 2.11,
+          "current": 2.1,
           "avg10y": 5.04,
           "median10y": 4.68,
           "min10y": 2.92,
@@ -11279,11 +11279,11 @@
           "std10y": 1.25,
           "upper1Sigma": 6.29,
           "lower1Sigma": 3.8,
-          "zScore": -2.35,
+          "zScore": -2.36,
           "percentile": 0.0,
           "rangePositionPct": 0.0,
-          "diffVsAvgPct": -58.2,
-          "diffVsMedianPct": -54.9,
+          "diffVsAvgPct": -58.4,
+          "diffVsMedianPct": -55.1,
           "series": [
             {
               "year": "2016",
@@ -11337,7 +11337,7 @@
             },
             {
               "year": "2026",
-              "value": 2.11,
+              "value": 2.1,
               "rawUnfiltered": null
             }
           ]
@@ -11440,14 +11440,14 @@
             "ticker": "PPA.AT",
             "name": "Piraeus Port Authority S.A.",
             "country": "Grčija (ATHEX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 1.04,
-            "pe": 13.96,
-            "forwardPe": 20.98,
-            "pb": 2.4,
+            "pe": 13.7,
+            "forwardPe": 20.85,
+            "pb": 2.38,
             "evEbitda": 8.73,
-            "ps": 4.35,
+            "ps": 4.32,
             "divYieldPct": 4.53,
             "roePct": 16.8,
             "ebitdaMarginPct": 48.67
@@ -11456,14 +11456,14 @@
             "ticker": "OLTH.AT",
             "name": "Thessaloniki Port Authority",
             "country": "Grčija (ATHEX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 0.38,
-            "pe": 11.96,
+            "pe": 12.15,
             "forwardPe": null,
-            "pb": 1.86,
+            "pb": 1.89,
             "evEbitda": 6.48,
-            "ps": 3.35,
+            "ps": 3.41,
             "divYieldPct": 5.71,
             "roePct": 15.8,
             "ebitdaMarginPct": 42.17
@@ -11472,14 +11472,14 @@
             "ticker": "HHFA.DE",
             "name": "Hamburger Hafen und Logistik",
             "country": "Nemčija (XETRA)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 1.61,
+            "marketCapEurBn": 1.62,
             "pe": null,
-            "forwardPe": 18.29,
-            "pb": 2.07,
+            "forwardPe": 18.46,
+            "pb": 2.09,
             "evEbitda": 12.03,
-            "ps": 0.9,
+            "ps": 0.91,
             "divYieldPct": 0.0,
             "roePct": 0.4,
             "ebitdaMarginPct": 14.95
@@ -11488,14 +11488,14 @@
             "ticker": "1199.HK",
             "name": "COSCO Shipping Ports Ltd.",
             "country": "Hongkong (HKEX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 3.06,
-            "pe": 9.1,
-            "forwardPe": 8.3,
+            "marketCapEurBn": 3.04,
+            "pe": 9.06,
+            "forwardPe": 8.27,
             "pb": 0.49,
-            "evEbitda": 53.57,
-            "ps": 14.42,
+            "evEbitda": 53.39,
+            "ps": 14.37,
             "divYieldPct": 4.29,
             "roePct": 5.8,
             "ebitdaMarginPct": 30.56
@@ -11504,10 +11504,10 @@
             "ticker": "0144.HK",
             "name": "China Merchants Port Holdings",
             "country": "Hongkong (HKEX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 8.39,
-            "pe": 10.73,
+            "marketCapEurBn": 8.38,
+            "pe": 10.74,
             "forwardPe": 8.89,
             "pb": 0.62,
             "evEbitda": 14.83,
@@ -11520,66 +11520,66 @@
             "ticker": "600018.SS",
             "name": "Shanghai Int. Port Group",
             "country": "Kitajska (SSE)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 138.52,
-            "pe": 9.02,
-            "forwardPe": 8.86,
-            "pb": 0.92,
-            "evEbitda": 11.74,
-            "ps": 3.26,
+            "marketCapEurBn": 137.12,
+            "pe": 8.92,
+            "forwardPe": 8.77,
+            "pb": 0.91,
+            "evEbitda": 11.64,
+            "ps": 3.23,
             "divYieldPct": 3.28,
             "roePct": 10.6,
             "ebitdaMarginPct": 34.42
           }
         ],
         "peerAverage": {
-          "pe": 10.95,
-          "forwardPe": 13.06,
-          "pb": 1.39,
-          "evEbitda": 17.9,
-          "ps": 5.23,
+          "pe": 10.91,
+          "forwardPe": 13.05,
+          "pb": 1.4,
+          "evEbitda": 17.85,
+          "ps": 5.22,
           "divYieldPct": 4.4,
           "roePct": 9.27,
           "ebitdaMarginPct": 37.26
         },
         "peerMedian": {
-          "pe": 10.73,
+          "pe": 10.74,
           "forwardPe": 8.89,
-          "pb": 1.39,
-          "evEbitda": 11.88,
-          "ps": 3.85,
+          "pb": 1.4,
+          "evEbitda": 11.84,
+          "ps": 3.87,
           "divYieldPct": 4.29,
           "roePct": 8.4,
           "ebitdaMarginPct": 38.3
         },
         "premiumVsPeerMedianPct": {
-          "pe": 60.2,
-          "forwardPe": 93.4,
-          "pb": 58.3,
-          "evEbitda": -6.5,
-          "ps": -2.6,
-          "divYieldPct": -50.8,
+          "pe": 60.8,
+          "forwardPe": 94.3,
+          "pb": 57.9,
+          "evEbitda": -5.7,
+          "ps": -2.8,
+          "divYieldPct": -51.0,
           "roePct": 52.0,
           "ebitdaMarginPct": -12.6
         },
         "premiumVsPeerAvgPct": {
-          "pe": 57.0,
-          "forwardPe": 31.6,
-          "pb": 58.3,
-          "evEbitda": -37.9,
-          "ps": -28.3,
-          "divYieldPct": -52.0,
+          "pe": 58.3,
+          "forwardPe": 32.3,
+          "pb": 57.9,
+          "evEbitda": -37.5,
+          "ps": -28.0,
+          "divYieldPct": -52.3,
           "roePct": 37.8,
           "ebitdaMarginPct": -10.1
         },
         "impliedPrices": {
-          "byPeerMedianPe": 68.04,
-          "byPeerMedianPb": 68.87,
-          "byPeerMedianEvEbitda": 116.55,
-          "blendedPeerFairValue": 84.49,
-          "blendedUpsidePct": -22.5,
-          "blendedMosPct": -29.0
+          "byPeerMedianPe": 68.1,
+          "byPeerMedianPb": 69.37,
+          "byPeerMedianEvEbitda": 116.17,
+          "blendedPeerFairValue": 84.55,
+          "blendedUpsidePct": -22.8,
+          "blendedMosPct": -29.5
         }
       },
       "ivHistory": [
@@ -11609,7 +11609,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 109.0,
+          "sharePrice": 109.5,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -11743,10 +11743,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-25",
-          "close": 66.5
-        },
         {
           "date": "2025-11-26",
           "close": 67.0
@@ -12742,6 +12738,10 @@
         {
           "date": "2026-11-24",
           "close": 109.0
+        },
+        {
+          "date": "2026-11-25",
+          "close": 109.5
         }
       ]
     },
@@ -12898,9 +12898,9 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-24",
+        "asOfDate": "2026-11-25",
         "price": 77.0,
-        "change1YPct": 14.07,
+        "change1YPct": 13.24,
         "marketCapM": 1193.32,
         "issuedMarketCapM": 1325.91,
         "effectiveMarketCapM": 1193.32,
@@ -13888,14 +13888,14 @@
             "ticker": "HNR1.DE",
             "name": "Hannover Rück SE",
             "country": "Nemčija (XETRA)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 35.91,
-            "pe": 12.93,
-            "forwardPe": 12.39,
-            "pb": 2.63,
+            "marketCapEurBn": 35.6,
+            "pe": 12.82,
+            "forwardPe": 12.28,
+            "pb": 2.6,
             "evEbitda": null,
-            "ps": 1.58,
+            "ps": 1.56,
             "divYieldPct": 4.25,
             "roePct": 21.4,
             "ebitdaMarginPct": 14.94
@@ -13904,14 +13904,14 @@
             "ticker": "MUV2.DE",
             "name": "Munich Re (Münchener Rück)",
             "country": "Nemčija (XETRA)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 73.83,
-            "pe": 10.91,
-            "forwardPe": 11.37,
+            "marketCapEurBn": 73.6,
+            "pe": 10.96,
+            "forwardPe": 11.34,
             "pb": 2.21,
             "evEbitda": null,
-            "ps": 1.17,
+            "ps": 1.16,
             "divYieldPct": 4.14,
             "roePct": 20.1,
             "ebitdaMarginPct": null
@@ -13920,12 +13920,12 @@
             "ticker": "SCR.PA",
             "name": "SCOR SE",
             "country": "Francija (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 6.37,
-            "pe": 7.89,
-            "forwardPe": 7.77,
-            "pb": 1.48,
+            "marketCapEurBn": 6.35,
+            "pe": 7.86,
+            "forwardPe": 7.74,
+            "pb": 1.47,
             "evEbitda": null,
             "ps": 0.41,
             "divYieldPct": 5.42,
@@ -13936,14 +13936,14 @@
             "ticker": "SREN.SW",
             "name": "Swiss Re AG",
             "country": "Švica (SIX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 49.12,
-            "pe": 11.71,
-            "forwardPe": 11.9,
-            "pb": 2.22,
+            "marketCapEurBn": 49.7,
+            "pe": 11.8,
+            "forwardPe": 11.98,
+            "pb": 2.24,
             "evEbitda": null,
-            "ps": 1.08,
+            "ps": 1.09,
             "divYieldPct": 4.17,
             "roePct": 19.8,
             "ebitdaMarginPct": 15.95
@@ -13952,14 +13952,14 @@
             "ticker": "VIG.VI",
             "name": "Vienna Insurance Group AG",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 9.54,
-            "pe": 6.83,
-            "forwardPe": 9.21,
-            "pb": 1.32,
+            "marketCapEurBn": 9.31,
+            "pe": 6.74,
+            "forwardPe": 9.1,
+            "pb": 1.3,
             "evEbitda": null,
-            "ps": 0.66,
+            "ps": 0.65,
             "divYieldPct": 2.35,
             "roePct": 12.9,
             "ebitdaMarginPct": 13.02
@@ -13968,14 +13968,14 @@
             "ticker": "UQA.VI",
             "name": "UNIQA Insurance Group AG",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 5.92,
-            "pe": 13.22,
-            "forwardPe": 11.74,
-            "pb": 1.81,
+            "marketCapEurBn": 5.67,
+            "pe": 12.64,
+            "forwardPe": 11.23,
+            "pb": 1.85,
             "evEbitda": null,
-            "ps": 0.73,
+            "ps": 0.7,
             "divYieldPct": 3.9,
             "roePct": 14.2,
             "ebitdaMarginPct": 6.63
@@ -13984,14 +13984,14 @@
             "ticker": "PZU.WA",
             "name": "PZU Group S.A.",
             "country": "Poljska (GPW)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 13.47,
-            "pe": 10.12,
-            "forwardPe": 11.06,
-            "pb": 1.69,
+            "marketCapEurBn": 13.15,
+            "pe": 9.91,
+            "forwardPe": 10.82,
+            "pb": 1.65,
             "evEbitda": null,
-            "ps": 0.96,
+            "ps": 0.94,
             "divYieldPct": 6.51,
             "roePct": 17.3,
             "ebitdaMarginPct": 38.95
@@ -14000,65 +14000,65 @@
             "ticker": "MAP.MC",
             "name": "Mapfre S.A. (Mapfre Re)",
             "country": "Španija (BME)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 12.36,
-            "pe": 10.59,
-            "forwardPe": 9.53,
-            "pb": 1.31,
+            "marketCapEurBn": 12.22,
+            "pe": 10.47,
+            "forwardPe": 9.42,
+            "pb": 1.29,
             "evEbitda": null,
-            "ps": 0.4,
+            "ps": 0.39,
             "divYieldPct": 4.42,
             "roePct": 18.4,
             "ebitdaMarginPct": 12.4
           }
         ],
         "peerAverage": {
-          "pe": 10.53,
-          "forwardPe": 10.62,
+          "pe": 10.4,
+          "forwardPe": 10.49,
           "pb": 1.83,
           "evEbitda": null,
-          "ps": 0.87,
+          "ps": 0.86,
           "divYieldPct": 4.39,
           "roePct": 17.11,
           "ebitdaMarginPct": 15.79
         },
         "peerMedian": {
-          "pe": 10.75,
-          "forwardPe": 11.21,
+          "pe": 10.71,
+          "forwardPe": 11.03,
           "pb": 1.75,
           "evEbitda": null,
-          "ps": 0.84,
+          "ps": 0.82,
           "divYieldPct": 4.21,
           "roePct": 17.85,
           "ebitdaMarginPct": 13.02
         },
         "premiumVsPeerMedianPct": {
-          "pe": -10.1,
-          "forwardPe": -13.8,
+          "pe": -9.8,
+          "forwardPe": -12.4,
           "pb": -12.6,
           "evEbitda": null,
-          "ps": 48.8,
+          "ps": 52.4,
           "divYieldPct": -15.2,
           "roePct": -11.5,
           "ebitdaMarginPct": null
         },
         "premiumVsPeerAvgPct": {
-          "pe": -8.3,
-          "forwardPe": -9.0,
+          "pe": -7.1,
+          "forwardPe": -7.9,
           "pb": -16.4,
           "evEbitda": null,
-          "ps": 43.7,
+          "ps": 45.3,
           "divYieldPct": -18.7,
           "roePct": -7.7,
           "ebitdaMarginPct": null
         },
         "impliedPrices": {
-          "byPeerMedianPe": 85.69,
+          "byPeerMedianPe": 85.37,
           "byPeerMedianPb": 88.07,
-          "blendedPeerFairValue": 86.88,
-          "blendedUpsidePct": 12.8,
-          "blendedMosPct": 11.4
+          "blendedPeerFairValue": 86.72,
+          "blendedUpsidePct": 12.6,
+          "blendedMosPct": 11.2
         }
       },
       "ivHistory": [
@@ -14305,10 +14305,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-25",
-          "close": 67.5
-        },
         {
           "date": "2025-11-26",
           "close": 68.0
@@ -15304,6 +15300,10 @@
         {
           "date": "2026-11-24",
           "close": 77.0
+        },
+        {
+          "date": "2026-11-25",
+          "close": 77.0
         }
       ]
     },
@@ -15458,9 +15458,9 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-24",
+        "asOfDate": "2026-11-25",
         "price": 141.0,
-        "change1YPct": 67.86,
+        "change1YPct": 63.95,
         "marketCapM": 917.27,
         "issuedMarketCapM": 921.5,
         "effectiveMarketCapM": 917.27,
@@ -16449,14 +16449,14 @@
             "ticker": "TKA.VI",
             "name": "Telekom Austria AG (A1)",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 5.68,
-            "pe": 8.71,
-            "forwardPe": 7.93,
-            "pb": 1.03,
+            "marketCapEurBn": 5.58,
+            "pe": 8.48,
+            "forwardPe": 7.73,
+            "pb": 1.0,
             "evEbitda": 4.31,
-            "ps": 1.01,
+            "ps": 0.99,
             "divYieldPct": 4.86,
             "roePct": 12.3,
             "ebitdaMarginPct": 29.68
@@ -16465,14 +16465,14 @@
             "ticker": "OPL.WA",
             "name": "Orange Polska S.A.",
             "country": "Poljska (GPW)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 4.9,
-            "pe": 22.51,
-            "forwardPe": 22.21,
-            "pb": 1.59,
+            "marketCapEurBn": 4.92,
+            "pe": 22.64,
+            "forwardPe": 22.33,
+            "pb": 1.6,
             "evEbitda": 8.68,
-            "ps": 1.59,
+            "ps": 1.6,
             "divYieldPct": 3.7,
             "roePct": 7.1,
             "ebitdaMarginPct": 24.33
@@ -16481,9 +16481,9 @@
             "ticker": "DTE.DE",
             "name": "Deutsche Telekom AG",
             "country": "Nemčija (XETRA)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 128.27,
+            "marketCapEurBn": 128.32,
             "pe": 14.42,
             "forwardPe": 10.48,
             "pb": 2.06,
@@ -16497,14 +16497,14 @@
             "ticker": "KPN.AS",
             "name": "Koninklijke KPN N.V.",
             "country": "Nizozemska (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 16.38,
-            "pe": 19.74,
-            "forwardPe": 16.17,
-            "pb": 5.07,
+            "marketCapEurBn": 16.37,
+            "pe": 19.72,
+            "forwardPe": 16.16,
+            "pb": 5.06,
             "evEbitda": 9.67,
-            "ps": 2.79,
+            "ps": 2.78,
             "divYieldPct": 4.35,
             "roePct": 27.3,
             "ebitdaMarginPct": 40.98
@@ -16513,12 +16513,12 @@
             "ticker": "ORA.PA",
             "name": "Orange S.A.",
             "country": "Francija (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 40.53,
+            "marketCapEurBn": 40.47,
             "pe": 3.76,
-            "forwardPe": 13.8,
-            "pb": 1.28,
+            "forwardPe": 13.72,
+            "pb": 1.27,
             "evEbitda": 7.37,
             "ps": 0.98,
             "divYieldPct": 4.96,
@@ -16529,10 +16529,10 @@
             "ticker": "PROX.BR",
             "name": "Proximus PLC",
             "country": "Belgija (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 2.0,
-            "pe": 5.25,
+            "pe": 5.39,
             "forwardPe": 6.61,
             "pb": 0.5,
             "evEbitda": 5.55,
@@ -16545,14 +16545,14 @@
             "ticker": "ELISA.HE",
             "name": "Elisa Oyj",
             "country": "Finska (Nasdaq Helsinki)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 5.14,
-            "pe": 15.63,
-            "forwardPe": 13.03,
-            "pb": 3.87,
+            "marketCapEurBn": 5.06,
+            "pe": 15.37,
+            "forwardPe": 12.81,
+            "pb": 3.8,
             "evEbitda": 9.41,
-            "ps": 2.29,
+            "ps": 2.25,
             "divYieldPct": 7.43,
             "roePct": 26.1,
             "ebitdaMarginPct": 31.52
@@ -16561,66 +16561,66 @@
             "ticker": "TELIA.ST",
             "name": "Telia Company AB",
             "country": "Švedska (Nasdaq Stockholm)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 198.57,
-            "pe": 37.41,
-            "forwardPe": 25.9,
-            "pb": 3.55,
+            "marketCapEurBn": 197.23,
+            "pe": 37.71,
+            "forwardPe": 25.72,
+            "pb": 3.52,
             "evEbitda": 10.41,
-            "ps": 2.38,
+            "ps": 2.37,
             "divYieldPct": 4.21,
             "roePct": 10.4,
             "ebitdaMarginPct": 32.57
           }
         ],
         "peerAverage": {
-          "pe": 15.93,
-          "forwardPe": 14.52,
-          "pb": 2.37,
+          "pe": 15.94,
+          "forwardPe": 14.45,
+          "pb": 2.35,
           "evEbitda": 7.76,
-          "ps": 1.55,
+          "ps": 1.54,
           "divYieldPct": 5.38,
           "roePct": 15.1,
           "ebitdaMarginPct": 30.64
         },
         "peerMedian": {
-          "pe": 15.03,
-          "forwardPe": 13.41,
+          "pe": 14.89,
+          "forwardPe": 13.27,
           "pb": 1.83,
           "evEbitda": 8.03,
-          "ps": 1.32,
+          "ps": 1.33,
           "divYieldPct": 4.61,
           "roePct": 13.25,
           "ebitdaMarginPct": 30.6
         },
         "premiumVsPeerMedianPct": {
-          "pe": -10.6,
-          "forwardPe": 0.2,
+          "pe": -9.7,
+          "forwardPe": 1.3,
           "pb": -31.7,
           "evEbitda": -42.6,
-          "ps": -9.1,
+          "ps": -9.8,
           "divYieldPct": -29.3,
           "roePct": -29.8,
           "ebitdaMarginPct": 15.5
         },
         "premiumVsPeerAvgPct": {
-          "pe": -15.6,
-          "forwardPe": -7.4,
-          "pb": -47.3,
+          "pe": -15.7,
+          "forwardPe": -7.0,
+          "pb": -46.8,
           "evEbitda": -40.6,
-          "ps": -22.6,
+          "ps": -22.1,
           "divYieldPct": -39.4,
           "roePct": -38.4,
           "ebitdaMarginPct": 15.3
         },
         "impliedPrices": {
-          "byPeerMedianPe": 157.68,
+          "byPeerMedianPe": 156.21,
           "byPeerMedianPb": 206.42,
           "byPeerMedianEvEbitda": 245.6,
-          "blendedPeerFairValue": 203.23,
-          "blendedUpsidePct": 44.1,
-          "blendedMosPct": 30.6
+          "blendedPeerFairValue": 202.74,
+          "blendedUpsidePct": 43.8,
+          "blendedMosPct": 30.5
         }
       },
       "ivHistory": [
@@ -16756,10 +16756,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-25",
-          "close": 84.0
-        },
         {
           "date": "2025-11-26",
           "close": 86.0
@@ -17755,6 +17751,10 @@
         {
           "date": "2026-11-24",
           "close": 141.0
+        },
+        {
+          "date": "2026-11-25",
+          "close": 141.0
         }
       ]
     },
@@ -17909,13 +17909,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-24",
-        "price": 61.0,
-        "change1YPct": 23.98,
-        "marketCapM": 501.3,
-        "issuedMarketCapM": 509.76,
-        "effectiveMarketCapM": 501.3,
-        "enterpriseValueM": 527.21,
+        "asOfDate": "2026-11-25",
+        "price": 59.5,
+        "change1YPct": 19.96,
+        "marketCapM": 488.97,
+        "issuedMarketCapM": 497.23,
+        "effectiveMarketCapM": 488.97,
+        "enterpriseValueM": 514.88,
         "rawNetDebtM": 11.81,
         "operatingCashBufferM": 14.1,
         "netDebtM": 25.91,
@@ -17941,13 +17941,13 @@
         "bvps": 11.85,
         "dps": 1.2,
         "payoutRatioPct": 54.1,
-        "pe": 27.48,
+        "pe": 26.8,
         "peFy25": 23.79,
-        "pb": 5.15,
-        "evEbitda": 17.36,
-        "ps": 0.68,
-        "pFcf": 39.82,
-        "divYieldPct": 1.97,
+        "pb": 5.02,
+        "evEbitda": 16.95,
+        "ps": 0.66,
+        "pFcf": 38.84,
+        "divYieldPct": 2.02,
         "roePct": 18.75,
         "roaPct": 5.85,
         "roicPct": 15.51,
@@ -17961,7 +17961,7 @@
         "netIncomeCagrPct": 18.92,
         "equityCagrPct": 7.33,
         "dpsCagrPct": 13.11,
-        "priceCagrPct": 27.53,
+        "priceCagrPct": 27.21,
         "priceCagrStartYear": 2016
       },
       "history": [
@@ -18341,7 +18341,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 27.48,
+          "current": 26.8,
           "avg10y": 14.49,
           "median10y": 13.36,
           "min10y": 9.38,
@@ -18351,11 +18351,11 @@
           "std10y": 4.21,
           "upper1Sigma": 18.7,
           "lower1Sigma": 10.28,
-          "zScore": 3.08,
+          "zScore": 2.92,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 89.6,
-          "diffVsMedianPct": 105.8,
+          "diffVsAvgPct": 85.0,
+          "diffVsMedianPct": 100.7,
           "series": [
             {
               "year": "2016",
@@ -18409,8 +18409,8 @@
             },
             {
               "year": "2026",
-              "value": 27.48,
-              "rawUnfiltered": 27.48
+              "value": 26.8,
+              "rawUnfiltered": 26.8
             }
           ]
         },
@@ -18418,7 +18418,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 5.15,
+          "current": 5.02,
           "avg10y": 1.97,
           "median10y": 1.78,
           "min10y": 0.9,
@@ -18428,11 +18428,11 @@
           "std10y": 1.03,
           "upper1Sigma": 2.99,
           "lower1Sigma": 0.94,
-          "zScore": 3.1,
+          "zScore": 2.98,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 161.6,
-          "diffVsMedianPct": 189.3,
+          "diffVsAvgPct": 155.0,
+          "diffVsMedianPct": 182.0,
           "series": [
             {
               "year": "2016",
@@ -18486,7 +18486,7 @@
             },
             {
               "year": "2026",
-              "value": 5.15,
+              "value": 5.02,
               "rawUnfiltered": null
             }
           ]
@@ -18495,7 +18495,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 17.36,
+          "current": 16.95,
           "avg10y": 7.81,
           "median10y": 6.95,
           "min10y": 5.4,
@@ -18505,11 +18505,11 @@
           "std10y": 2.87,
           "upper1Sigma": 10.68,
           "lower1Sigma": 4.94,
-          "zScore": 3.33,
+          "zScore": 3.19,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 122.3,
-          "diffVsMedianPct": 149.8,
+          "diffVsAvgPct": 117.1,
+          "diffVsMedianPct": 143.9,
           "series": [
             {
               "year": "2016",
@@ -18563,7 +18563,7 @@
             },
             {
               "year": "2026",
-              "value": 17.36,
+              "value": 16.95,
               "rawUnfiltered": null
             }
           ]
@@ -18572,7 +18572,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 0.68,
+          "current": 0.66,
           "avg10y": 0.3,
           "median10y": 0.28,
           "min10y": 0.2,
@@ -18582,11 +18582,11 @@
           "std10y": 0.11,
           "upper1Sigma": 0.41,
           "lower1Sigma": 0.19,
-          "zScore": 3.43,
+          "zScore": 3.25,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 126.7,
-          "diffVsMedianPct": 147.3,
+          "diffVsAvgPct": 120.0,
+          "diffVsMedianPct": 140.0,
           "series": [
             {
               "year": "2016",
@@ -18640,7 +18640,7 @@
             },
             {
               "year": "2026",
-              "value": 0.68,
+              "value": 0.66,
               "rawUnfiltered": null
             }
           ]
@@ -18649,7 +18649,7 @@
           "sampleSizeN": 9,
           "sampleNote": "N=9 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 39.82,
+          "current": 38.84,
           "avg10y": 16.72,
           "median10y": 14.98,
           "min10y": 5.87,
@@ -18659,11 +18659,11 @@
           "std10y": 9.82,
           "upper1Sigma": 26.53,
           "lower1Sigma": 6.9,
-          "zScore": 2.35,
+          "zScore": 2.25,
           "percentile": 100.0,
           "rangePositionPct": 100.0,
-          "diffVsAvgPct": 138.2,
-          "diffVsMedianPct": 165.8,
+          "diffVsAvgPct": 132.3,
+          "diffVsMedianPct": 159.3,
           "series": [
             {
               "year": "2016",
@@ -18717,7 +18717,7 @@
             },
             {
               "year": "2026",
-              "value": 39.82,
+              "value": 38.84,
               "rawUnfiltered": null
             }
           ]
@@ -18726,7 +18726,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 1.97,
+          "current": 2.02,
           "avg10y": 5.3,
           "median10y": 5.9,
           "min10y": 2.35,
@@ -18736,11 +18736,11 @@
           "std10y": 1.33,
           "upper1Sigma": 6.62,
           "lower1Sigma": 3.97,
-          "zScore": -2.51,
+          "zScore": -2.47,
           "percentile": 0.0,
           "rangePositionPct": 0.0,
-          "diffVsAvgPct": -62.8,
-          "diffVsMedianPct": -66.6,
+          "diffVsAvgPct": -61.9,
+          "diffVsMedianPct": -65.8,
           "series": [
             {
               "year": "2016",
@@ -18794,7 +18794,7 @@
             },
             {
               "year": "2026",
-              "value": 1.97,
+              "value": 2.02,
               "rawUnfiltered": null
             }
           ]
@@ -18897,12 +18897,12 @@
             "ticker": "NEU.WA",
             "name": "NEUCA S.A. (Pharma Dist.)",
             "country": "Poljska (GPW)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
             "marketCapEurBn": 0.74,
-            "pe": 16.87,
+            "pe": 17.4,
             "forwardPe": 13.35,
-            "pb": 2.95,
+            "pb": 2.83,
             "evEbitda": 10.56,
             "ps": 0.23,
             "divYieldPct": 2.47,
@@ -18913,12 +18913,12 @@
             "ticker": "GALE.SW",
             "name": "Galenica AG (Pharma Dist.)",
             "country": "Švica (SIX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 4.86,
-            "pe": 27.65,
-            "forwardPe": 21.01,
-            "pb": 3.16,
+            "marketCapEurBn": 4.87,
+            "pe": 27.62,
+            "forwardPe": 20.98,
+            "pb": 3.15,
             "evEbitda": 21.61,
             "ps": 1.04,
             "divYieldPct": 2.79,
@@ -18929,14 +18929,14 @@
             "ticker": "RDC.DE",
             "name": "Redcare Pharmacy N.V.",
             "country": "Nemčija (XETRA)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 1.23,
+            "marketCapEurBn": 1.19,
             "pe": null,
-            "forwardPe": 45.13,
-            "pb": 2.66,
+            "forwardPe": 44.01,
+            "pb": 2.6,
             "evEbitda": 47.97,
-            "ps": 0.37,
+            "ps": 0.36,
             "divYieldPct": 0.0,
             "roePct": -7.1,
             "ebitdaMarginPct": 0.91
@@ -18945,14 +18945,14 @@
             "ticker": "2607.HK",
             "name": "Shanghai Pharmaceuticals",
             "country": "Hongkong (HKEX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 4.59,
-            "pe": 6.74,
-            "forwardPe": 5.61,
+            "marketCapEurBn": 4.55,
+            "pe": 6.68,
+            "forwardPe": 5.56,
             "pb": 0.42,
-            "evEbitda": 6.16,
-            "ps": 0.14,
+            "evEbitda": 6.13,
+            "ps": 0.13,
             "divYieldPct": 4.8,
             "roePct": 7.4,
             "ebitdaMarginPct": 3.86
@@ -18961,13 +18961,13 @@
             "ticker": "1099.HK",
             "name": "Sinopharm Group Co.",
             "country": "Hongkong (HKEX)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 6.0,
-            "pe": 6.59,
-            "forwardPe": 5.66,
-            "pb": 0.5,
-            "evEbitda": 7.38,
+            "marketCapEurBn": 6.07,
+            "pe": 6.62,
+            "forwardPe": 5.73,
+            "pb": 0.51,
+            "evEbitda": 7.42,
             "ps": 0.09,
             "divYieldPct": 4.7,
             "roePct": 8.0,
@@ -18977,66 +18977,66 @@
             "ticker": "ORNBV.HE",
             "name": "Orion Pharma Healthcare",
             "country": "Finska (Nasdaq Helsinki)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 14.4,
-            "pe": 21.92,
-            "forwardPe": 20.32,
-            "pb": 10.3,
+            "marketCapEurBn": 14.19,
+            "pe": 21.6,
+            "forwardPe": 20.02,
+            "pb": 10.15,
             "evEbitda": 16.26,
-            "ps": 6.62,
+            "ps": 6.52,
             "divYieldPct": 1.79,
             "roePct": 54.5,
             "ebitdaMarginPct": 40.63
           }
         ],
         "peerAverage": {
-          "pe": 15.95,
-          "forwardPe": 18.51,
-          "pb": 3.33,
+          "pe": 15.98,
+          "forwardPe": 18.27,
+          "pb": 3.28,
           "evEbitda": 18.32,
-          "ps": 1.42,
+          "ps": 1.4,
           "divYieldPct": 3.31,
           "roePct": 19.32,
           "ebitdaMarginPct": 9.57
         },
         "peerMedian": {
-          "pe": 16.87,
-          "forwardPe": 16.84,
-          "pb": 2.81,
+          "pe": 17.4,
+          "forwardPe": 16.68,
+          "pb": 2.71,
           "evEbitda": 13.41,
-          "ps": 0.3,
+          "ps": 0.29,
           "divYieldPct": 2.79,
           "roePct": 11.4,
           "ebitdaMarginPct": 3.58
         },
         "premiumVsPeerMedianPct": {
-          "pe": 62.9,
-          "forwardPe": 63.2,
-          "pb": 83.3,
-          "evEbitda": 29.5,
-          "ps": 126.7,
-          "divYieldPct": -29.4,
+          "pe": 54.0,
+          "forwardPe": 60.7,
+          "pb": 85.2,
+          "evEbitda": 26.4,
+          "ps": 127.6,
+          "divYieldPct": -27.6,
           "roePct": 64.5,
           "ebitdaMarginPct": 14.5
         },
         "premiumVsPeerAvgPct": {
-          "pe": 72.3,
-          "forwardPe": 48.5,
-          "pb": 54.7,
-          "evEbitda": -5.2,
-          "ps": -52.1,
-          "divYieldPct": -40.5,
+          "pe": 67.7,
+          "forwardPe": 46.7,
+          "pb": 53.0,
+          "evEbitda": -7.5,
+          "ps": -52.9,
+          "divYieldPct": -39.0,
           "roePct": -3.0,
           "ebitdaMarginPct": -57.2
         },
         "impliedPrices": {
-          "byPeerMedianPe": 37.45,
-          "byPeerMedianPb": 33.28,
-          "byPeerMedianEvEbitda": 47.12,
-          "blendedPeerFairValue": 39.28,
-          "blendedUpsidePct": -35.6,
-          "blendedMosPct": -55.3
+          "byPeerMedianPe": 38.63,
+          "byPeerMedianPb": 32.12,
+          "byPeerMedianEvEbitda": 47.07,
+          "blendedPeerFairValue": 39.27,
+          "blendedUpsidePct": -34.0,
+          "blendedMosPct": -51.5
         }
       },
       "ivHistory": [
@@ -19066,7 +19066,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 61.0,
+          "sharePrice": 59.5,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -19134,10 +19134,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-25",
-          "close": 49.2
-        },
         {
           "date": "2025-11-26",
           "close": 49.6
@@ -20133,6 +20129,10 @@
         {
           "date": "2026-11-24",
           "close": 61.0
+        },
+        {
+          "date": "2026-11-25",
+          "close": 59.5
         }
       ]
     },
@@ -20287,13 +20287,13 @@
         "ebitTtmIsEstimate": true
       },
       "current": {
-        "asOfDate": "2026-11-24",
-        "price": 27.1,
-        "change1YPct": -13.97,
-        "marketCapM": 210.84,
-        "issuedMarketCapM": 218.96,
-        "effectiveMarketCapM": 210.84,
-        "enterpriseValueM": 195.69,
+        "asOfDate": "2026-11-25",
+        "price": 26.6,
+        "change1YPct": -16.09,
+        "marketCapM": 206.95,
+        "issuedMarketCapM": 214.92,
+        "effectiveMarketCapM": 206.95,
+        "enterpriseValueM": 191.8,
         "rawNetDebtM": -19.06,
         "operatingCashBufferM": 3.91,
         "netDebtM": -15.15,
@@ -20319,13 +20319,13 @@
         "bvps": 28.21,
         "dps": 1.8,
         "payoutRatioPct": 81.4,
-        "pe": 12.26,
+        "pe": 12.04,
         "peFy25": 12.6,
-        "pb": 0.96,
-        "evEbitda": 6.23,
-        "ps": 1.08,
-        "pFcf": 20.12,
-        "divYieldPct": 6.64,
+        "pb": 0.94,
+        "evEbitda": 6.1,
+        "ps": 1.06,
+        "pFcf": 19.75,
+        "divYieldPct": 6.77,
         "roePct": 7.82,
         "roaPct": 6.84,
         "roicPct": 8.41,
@@ -20339,7 +20339,7 @@
         "netIncomeCagrPct": 5.96,
         "equityCagrPct": 4.27,
         "dpsCagrPct": 7.18,
-        "priceCagrPct": 5.28,
+        "priceCagrPct": 5.08,
         "priceCagrStartYear": 2016
       },
       "history": [
@@ -20719,7 +20719,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 12.26,
+          "current": 12.04,
           "avg10y": 8.22,
           "median10y": 7.04,
           "min10y": 4.12,
@@ -20729,11 +20729,11 @@
           "std10y": 3.41,
           "upper1Sigma": 11.63,
           "lower1Sigma": 4.81,
-          "zScore": 1.18,
+          "zScore": 1.12,
           "percentile": 70.0,
-          "rangePositionPct": 92.1,
-          "diffVsAvgPct": 49.1,
-          "diffVsMedianPct": 74.0,
+          "rangePositionPct": 89.6,
+          "diffVsAvgPct": 46.4,
+          "diffVsMedianPct": 70.9,
           "series": [
             {
               "year": "2016",
@@ -20787,8 +20787,8 @@
             },
             {
               "year": "2026",
-              "value": 12.26,
-              "rawUnfiltered": 12.26
+              "value": 12.04,
+              "rawUnfiltered": 12.04
             }
           ]
         },
@@ -20796,7 +20796,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 0.96,
+          "current": 0.94,
           "avg10y": 0.91,
           "median10y": 0.86,
           "min10y": 0.72,
@@ -20806,11 +20806,11 @@
           "std10y": 0.13,
           "upper1Sigma": 1.05,
           "lower1Sigma": 0.78,
-          "zScore": 0.36,
+          "zScore": 0.21,
           "percentile": 60.0,
-          "rangePositionPct": 58.5,
-          "diffVsAvgPct": 5.3,
-          "diffVsMedianPct": 11.6,
+          "rangePositionPct": 53.7,
+          "diffVsAvgPct": 3.1,
+          "diffVsMedianPct": 9.3,
           "series": [
             {
               "year": "2016",
@@ -20864,7 +20864,7 @@
             },
             {
               "year": "2026",
-              "value": 0.96,
+              "value": 0.94,
               "rawUnfiltered": null
             }
           ]
@@ -20873,7 +20873,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 6.23,
+          "current": 6.1,
           "avg10y": 3.7,
           "median10y": 3.12,
           "min10y": 2.05,
@@ -20883,11 +20883,11 @@
           "std10y": 1.51,
           "upper1Sigma": 5.21,
           "lower1Sigma": 2.19,
-          "zScore": 1.67,
+          "zScore": 1.59,
           "percentile": 90.0,
-          "rangePositionPct": 99.3,
-          "diffVsAvgPct": 68.3,
-          "diffVsMedianPct": 100.0,
+          "rangePositionPct": 96.2,
+          "diffVsAvgPct": 64.8,
+          "diffVsMedianPct": 95.8,
           "series": [
             {
               "year": "2016",
@@ -20941,7 +20941,7 @@
             },
             {
               "year": "2026",
-              "value": 6.23,
+              "value": 6.1,
               "rawUnfiltered": null
             }
           ]
@@ -20950,7 +20950,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 1.08,
+          "current": 1.06,
           "avg10y": 0.92,
           "median10y": 0.88,
           "min10y": 0.74,
@@ -20960,11 +20960,11 @@
           "std10y": 0.15,
           "upper1Sigma": 1.07,
           "lower1Sigma": 0.77,
-          "zScore": 1.05,
-          "percentile": 85.0,
-          "rangePositionPct": 69.4,
-          "diffVsAvgPct": 17.5,
-          "diffVsMedianPct": 23.4,
+          "zScore": 0.92,
+          "percentile": 80.0,
+          "rangePositionPct": 65.3,
+          "diffVsAvgPct": 15.3,
+          "diffVsMedianPct": 21.1,
           "series": [
             {
               "year": "2016",
@@ -21018,7 +21018,7 @@
             },
             {
               "year": "2026",
-              "value": 1.08,
+              "value": 1.06,
               "rawUnfiltered": null
             }
           ]
@@ -21027,7 +21027,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 20.12,
+          "current": 19.75,
           "avg10y": 13.36,
           "median10y": 7.42,
           "min10y": 5.13,
@@ -21037,11 +21037,11 @@
           "std10y": 12.72,
           "upper1Sigma": 26.09,
           "lower1Sigma": 0.64,
-          "zScore": 0.53,
-          "percentile": 90.0,
-          "rangePositionPct": 36.3,
-          "diffVsAvgPct": 50.6,
-          "diffVsMedianPct": 171.2,
+          "zScore": 0.5,
+          "percentile": 80.0,
+          "rangePositionPct": 35.4,
+          "diffVsAvgPct": 47.8,
+          "diffVsMedianPct": 166.2,
           "series": [
             {
               "year": "2016",
@@ -21095,7 +21095,7 @@
             },
             {
               "year": "2026",
-              "value": 20.12,
+              "value": 19.75,
               "rawUnfiltered": null
             }
           ]
@@ -21104,7 +21104,7 @@
           "sampleSizeN": 10,
           "sampleNote": "N=10 letnih točk (vzorec ≤10 let)",
           "excludedOutliers": [],
-          "current": 6.64,
+          "current": 6.77,
           "avg10y": 10.45,
           "median10y": 10.5,
           "min10y": 5.56,
@@ -21114,11 +21114,11 @@
           "std10y": 3.54,
           "upper1Sigma": 13.98,
           "lower1Sigma": 6.91,
-          "zScore": -1.08,
+          "zScore": -1.04,
           "percentile": 20.0,
-          "rangePositionPct": 11.3,
-          "diffVsAvgPct": -36.4,
-          "diffVsMedianPct": -36.7,
+          "rangePositionPct": 12.7,
+          "diffVsAvgPct": -35.2,
+          "diffVsMedianPct": -35.5,
           "series": [
             {
               "year": "2016",
@@ -21172,7 +21172,7 @@
             },
             {
               "year": "2026",
-              "value": 6.64,
+              "value": 6.77,
               "rawUnfiltered": null
             }
           ]
@@ -21275,14 +21275,14 @@
             "ticker": "KRO",
             "name": "Kronos Worldwide, Inc. (TiO2)",
             "country": "ZDA (NYSE)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 0.79,
+            "marketCapEurBn": 0.78,
             "pe": null,
-            "forwardPe": 12.3,
-            "pb": 1.11,
-            "evEbitda": 12.38,
-            "ps": 0.43,
+            "forwardPe": 12.11,
+            "pb": 1.09,
+            "evEbitda": 12.58,
+            "ps": 0.42,
             "divYieldPct": 2.81,
             "roePct": -4.7,
             "ebitdaMarginPct": 5.47
@@ -21291,14 +21291,14 @@
             "ticker": "TROX",
             "name": "Tronox Holdings plc (TiO2)",
             "country": "ZDA / UK (NYSE)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 0.28,
+            "marketCapEurBn": 0.3,
             "pe": null,
             "forwardPe": null,
-            "pb": 0.27,
-            "evEbitda": 17.8,
-            "ps": 0.09,
+            "pb": 0.29,
+            "evEbitda": 18.0,
+            "ps": 0.1,
             "divYieldPct": 13.79,
             "roePct": -40.0,
             "ebitdaMarginPct": 6.37
@@ -21307,12 +21307,12 @@
             "ticker": "CC",
             "name": "The Chemours Company (TiO2)",
             "country": "ZDA (NYSE)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 1.52,
+            "marketCapEurBn": 1.56,
             "pe": null,
-            "forwardPe": 6.43,
-            "pb": 10.76,
+            "forwardPe": 6.59,
+            "pb": 11.03,
             "evEbitda": 10.37,
             "ps": 0.29,
             "divYieldPct": 3.22,
@@ -21323,14 +21323,14 @@
             "ticker": "HUN",
             "name": "Huntsman Corporation (Pigments)",
             "country": "ZDA (NYSE)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 1.4,
+            "marketCapEurBn": 1.47,
             "pe": null,
-            "forwardPe": 69.33,
-            "pb": 0.57,
-            "evEbitda": 12.06,
-            "ps": 0.25,
+            "forwardPe": 72.74,
+            "pb": 0.6,
+            "evEbitda": 12.18,
+            "ps": 0.26,
             "divYieldPct": 4.19,
             "roePct": -3.6,
             "ebitdaMarginPct": 5.15
@@ -21339,12 +21339,12 @@
             "ticker": "SOLB.BR",
             "name": "Solvay S.A.",
             "country": "Belgija (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 2.41,
-            "pe": 69.88,
-            "forwardPe": 10.26,
-            "pb": 1.99,
+            "marketCapEurBn": 2.38,
+            "pe": 69.09,
+            "forwardPe": 10.15,
+            "pb": 1.96,
             "evEbitda": 9.05,
             "ps": 0.53,
             "divYieldPct": 10.27,
@@ -21355,14 +21355,14 @@
             "ticker": "AKE.PA",
             "name": "Arkema S.A. (Coatings)",
             "country": "Francija (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 4.15,
-            "pe": 98.55,
-            "forwardPe": 11.01,
-            "pb": 0.67,
+            "marketCapEurBn": 4.08,
+            "pe": 97.0,
+            "forwardPe": 10.83,
+            "pb": 0.66,
             "evEbitda": 6.09,
-            "ps": 0.46,
+            "ps": 0.45,
             "divYieldPct": 6.64,
             "roePct": 1.2,
             "ebitdaMarginPct": 12.71
@@ -21371,11 +21371,11 @@
             "ticker": "EVK.DE",
             "name": "Evonik Industries AG",
             "country": "Nemčija (XETRA)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 8.6,
-            "pe": 49.86,
-            "forwardPe": 12.0,
+            "marketCapEurBn": 8.63,
+            "pe": 50.03,
+            "forwardPe": 12.04,
             "pb": 1.11,
             "evEbitda": 7.77,
             "ps": 0.59,
@@ -21387,66 +21387,66 @@
             "ticker": "BAS.DE",
             "name": "BASF SE",
             "country": "Nemčija (XETRA)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 42.31,
-            "pe": 21.84,
-            "forwardPe": 15.55,
+            "marketCapEurBn": 43.51,
+            "pe": 21.87,
+            "forwardPe": 15.27,
             "pb": 1.15,
-            "evEbitda": 9.86,
-            "ps": 0.67,
+            "evEbitda": 9.88,
+            "ps": 0.68,
             "divYieldPct": 4.56,
             "roePct": 6.1,
             "ebitdaMarginPct": 9.84
           }
         ],
         "peerAverage": {
-          "pe": 60.03,
-          "forwardPe": 19.55,
-          "pb": 2.2,
-          "evEbitda": 10.67,
+          "pe": 59.5,
+          "forwardPe": 19.96,
+          "pb": 2.24,
+          "evEbitda": 10.74,
           "ps": 0.41,
           "divYieldPct": 6.37,
           "roePct": 3.2,
           "ebitdaMarginPct": 8.67
         },
         "peerMedian": {
-          "pe": 59.87,
-          "forwardPe": 12.0,
-          "pb": 1.11,
-          "evEbitda": 10.11,
-          "ps": 0.45,
+          "pe": 59.56,
+          "forwardPe": 12.04,
+          "pb": 1.1,
+          "evEbitda": 10.12,
+          "ps": 0.43,
           "divYieldPct": 5.01,
           "roePct": 2.75,
           "ebitdaMarginPct": 9.09
         },
         "premiumVsPeerMedianPct": {
-          "pe": -79.5,
-          "forwardPe": 2.2,
-          "pb": -13.5,
-          "evEbitda": -38.4,
-          "ps": 140.0,
-          "divYieldPct": 32.5,
+          "pe": -79.8,
+          "forwardPe": 0.0,
+          "pb": -14.5,
+          "evEbitda": -39.7,
+          "ps": 146.5,
+          "divYieldPct": 35.1,
           "roePct": 184.4,
           "ebitdaMarginPct": 76.8
         },
         "premiumVsPeerAvgPct": {
-          "pe": -79.6,
-          "forwardPe": -37.3,
-          "pb": -56.4,
-          "evEbitda": -41.6,
-          "ps": 163.4,
-          "divYieldPct": 4.2,
+          "pe": -79.8,
+          "forwardPe": -39.7,
+          "pb": -58.0,
+          "evEbitda": -43.2,
+          "ps": 158.5,
+          "divYieldPct": 6.3,
           "roePct": 144.4,
           "ebitdaMarginPct": 85.4
         },
         "impliedPrices": {
-          "byPeerMedianPe": 132.34,
-          "byPeerMedianPb": 31.33,
-          "byPeerMedianEvEbitda": 43.98,
-          "blendedPeerFairValue": 69.22,
-          "blendedUpsidePct": 155.4,
-          "blendedMosPct": 60.8
+          "byPeerMedianPe": 131.59,
+          "byPeerMedianPb": 31.13,
+          "byPeerMedianEvEbitda": 44.13,
+          "blendedPeerFairValue": 68.95,
+          "blendedUpsidePct": 159.2,
+          "blendedMosPct": 61.4
         }
       },
       "ivHistory": [
@@ -21476,7 +21476,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 27.1,
+          "sharePrice": 26.6,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -21612,10 +21612,6 @@
         ]
       },
       "priceHistory1Y": [
-        {
-          "date": "2025-11-25",
-          "close": 31.5
-        },
         {
           "date": "2025-11-26",
           "close": 31.7
@@ -22611,6 +22607,10 @@
         {
           "date": "2026-11-24",
           "close": 27.1
+        },
+        {
+          "date": "2026-11-25",
+          "close": 26.6
         }
       ]
     },
@@ -22768,13 +22768,13 @@
         "ebitTtmIsEstimate": false
       },
       "current": {
-        "asOfDate": "2026-11-24",
-        "price": 1.35,
-        "change1YPct": -83.1,
-        "marketCapM": 99.37,
-        "issuedMarketCapM": 99.37,
-        "effectiveMarketCapM": 99.37,
-        "enterpriseValueM": 99.37,
+        "asOfDate": "2026-11-25",
+        "price": 1.33,
+        "change1YPct": -83.38,
+        "marketCapM": 97.76,
+        "issuedMarketCapM": 97.76,
+        "effectiveMarketCapM": 97.76,
+        "enterpriseValueM": 97.76,
         "rawNetDebtM": 0.0,
         "operatingCashBufferM": 0.0,
         "netDebtM": 0.0,
@@ -22802,9 +22802,9 @@
         "payoutRatioPct": 0.0,
         "pe": null,
         "peFy25": null,
-        "pb": 1.29,
+        "pb": 1.27,
         "evEbitda": null,
-        "ps": 2.94,
+        "ps": 2.89,
         "pFcf": null,
         "divYieldPct": 0.0,
         "roePct": -1.52,
@@ -23290,7 +23290,7 @@
           "excludedOutliers": [
             "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
           ],
-          "current": 1.29,
+          "current": 1.27,
           "avg10y": null,
           "median10y": null,
           "min10y": null,
@@ -23358,7 +23358,7 @@
             },
             {
               "year": "2026",
-              "value": 1.29,
+              "value": 1.27,
               "rawUnfiltered": null
             }
           ]
@@ -23448,7 +23448,7 @@
           "excludedOutliers": [
             "2016–2025: ni podatka (pred uvrstitvijo na LJSE 4. 3. 2026)"
           ],
-          "current": 2.94,
+          "current": 2.89,
           "avg10y": null,
           "median10y": null,
           "min10y": null,
@@ -23516,7 +23516,7 @@
             },
             {
               "year": "2026",
-              "value": 2.94,
+              "value": 2.89,
               "rawUnfiltered": null
             }
           ]
@@ -23777,14 +23777,14 @@
             "ticker": "PZU.WA",
             "name": "PZU Group S.A.",
             "country": "Poljska (GPW)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 13.47,
-            "pe": 10.12,
-            "forwardPe": 11.06,
-            "pb": 1.69,
+            "marketCapEurBn": 13.15,
+            "pe": 9.91,
+            "forwardPe": 10.82,
+            "pb": 1.65,
             "evEbitda": 3.66,
-            "ps": 0.96,
+            "ps": 0.94,
             "divYieldPct": 6.51,
             "roePct": 17.3,
             "ebitdaMarginPct": 38.95
@@ -23793,14 +23793,14 @@
             "ticker": "VIG.VI",
             "name": "Vienna Insurance Group AG",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 9.54,
-            "pe": 6.83,
-            "forwardPe": 9.21,
-            "pb": 1.32,
+            "marketCapEurBn": 9.31,
+            "pe": 6.74,
+            "forwardPe": 9.1,
+            "pb": 1.3,
             "evEbitda": null,
-            "ps": 0.66,
+            "ps": 0.65,
             "divYieldPct": 2.35,
             "roePct": 12.9,
             "ebitdaMarginPct": 13.02
@@ -23809,14 +23809,14 @@
             "ticker": "UQA.VI",
             "name": "UNIQA Insurance Group AG",
             "country": "Avstrija (WBAG)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 5.92,
-            "pe": 13.22,
-            "forwardPe": 11.74,
-            "pb": 1.81,
+            "marketCapEurBn": 5.67,
+            "pe": 12.64,
+            "forwardPe": 11.23,
+            "pb": 1.85,
             "evEbitda": 13.41,
-            "ps": 0.73,
+            "ps": 0.7,
             "divYieldPct": 3.9,
             "roePct": 14.2,
             "ebitdaMarginPct": 6.63
@@ -23825,14 +23825,14 @@
             "ticker": "G.MI",
             "name": "Assicurazioni Generali S.p.A.",
             "country": "Italija (Borsa Italiana)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 65.01,
-            "pe": 14.4,
-            "forwardPe": 12.56,
-            "pb": 2.04,
+            "marketCapEurBn": 64.32,
+            "pe": 14.53,
+            "forwardPe": 12.45,
+            "pb": 2.02,
             "evEbitda": 12.64,
-            "ps": 1.1,
+            "ps": 1.08,
             "divYieldPct": 3.78,
             "roePct": 15.1,
             "ebitdaMarginPct": 13.62
@@ -23841,13 +23841,13 @@
             "ticker": "ALV.DE",
             "name": "Allianz SE",
             "country": "Nemčija (XETRA)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 170.28,
-            "pe": 14.92,
-            "forwardPe": 13.53,
-            "pb": 2.81,
-            "evEbitda": 7.4,
+            "marketCapEurBn": 169.61,
+            "pe": 14.86,
+            "forwardPe": 13.48,
+            "pb": 2.8,
+            "evEbitda": 7.42,
             "ps": 1.42,
             "divYieldPct": 3.78,
             "roePct": 19.4,
@@ -23857,14 +23857,14 @@
             "ticker": "UNI.MI",
             "name": "Unipol Gruppo S.p.A.",
             "country": "Italija (Borsa Italiana)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 18.25,
-            "pe": 10.67,
-            "forwardPe": 11.74,
-            "pb": 1.77,
+            "marketCapEurBn": 17.74,
+            "pe": 10.46,
+            "forwardPe": 11.41,
+            "pb": 1.72,
             "evEbitda": 6.18,
-            "ps": 1.56,
+            "ps": 1.52,
             "divYieldPct": 4.44,
             "roePct": null,
             "ebitdaMarginPct": 28.7
@@ -23873,14 +23873,14 @@
             "ticker": "MAP.MC",
             "name": "Mapfre S.A.",
             "country": "Španija (BME)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 12.36,
-            "pe": 10.59,
-            "forwardPe": 9.53,
-            "pb": 1.31,
+            "marketCapEurBn": 12.22,
+            "pe": 10.47,
+            "forwardPe": 9.42,
+            "pb": 1.29,
             "evEbitda": 3.7,
-            "ps": 0.4,
+            "ps": 0.39,
             "divYieldPct": 4.42,
             "roePct": 18.4,
             "ebitdaMarginPct": 12.4
@@ -23889,35 +23889,35 @@
             "ticker": "NN.AS",
             "name": "NN Group N.V.",
             "country": "Nizozemska (Euronext)",
-            "asOf": "2026-11-24",
+            "asOf": "2026-11-25",
             "source": "yfinance (Yahoo Finance API · zajeto 22. 11. 2026)",
-            "marketCapEurBn": 20.07,
-            "pe": 11.47,
-            "forwardPe": 8.71,
-            "pb": 0.97,
+            "marketCapEurBn": 19.86,
+            "pe": 11.34,
+            "forwardPe": 8.61,
+            "pb": 0.96,
             "evEbitda": null,
-            "ps": 1.43,
+            "ps": 1.42,
             "divYieldPct": 5.26,
             "roePct": 8.8,
             "ebitdaMarginPct": 35.84
           }
         ],
         "peerAverage": {
-          "pe": 11.53,
-          "forwardPe": 11.01,
-          "pb": 1.72,
+          "pe": 11.37,
+          "forwardPe": 10.81,
+          "pb": 1.7,
           "evEbitda": 7.83,
-          "ps": 1.03,
+          "ps": 1.01,
           "divYieldPct": 4.3,
           "roePct": 15.16,
           "ebitdaMarginPct": 20.73
         },
         "peerMedian": {
-          "pe": 11.07,
-          "forwardPe": 11.4,
-          "pb": 1.73,
-          "evEbitda": 6.79,
-          "ps": 1.03,
+          "pe": 10.91,
+          "forwardPe": 11.03,
+          "pb": 1.69,
+          "evEbitda": 6.8,
+          "ps": 1.01,
           "divYieldPct": 4.16,
           "roePct": 15.1,
           "ebitdaMarginPct": 15.16
@@ -23925,9 +23925,9 @@
         "premiumVsPeerMedianPct": {
           "pe": null,
           "forwardPe": null,
-          "pb": -25.4,
+          "pb": -24.9,
           "evEbitda": null,
-          "ps": 185.4,
+          "ps": 186.1,
           "divYieldPct": -100.0,
           "roePct": -110.1,
           "ebitdaMarginPct": null
@@ -23935,18 +23935,18 @@
         "premiumVsPeerAvgPct": {
           "pe": null,
           "forwardPe": null,
-          "pb": -25.0,
+          "pb": -25.3,
           "evEbitda": null,
-          "ps": 185.4,
+          "ps": 186.1,
           "divYieldPct": -100.0,
           "roePct": -110.0,
           "ebitdaMarginPct": null
         },
         "impliedPrices": {
-          "byPeerMedianPb": 1.81,
-          "blendedPeerFairValue": 1.81,
-          "blendedUpsidePct": 34.1,
-          "blendedMosPct": 25.4
+          "byPeerMedianPb": 1.77,
+          "blendedPeerFairValue": 1.77,
+          "blendedUpsidePct": 33.1,
+          "blendedMosPct": 24.9
         }
       },
       "ivHistory": [
@@ -23976,7 +23976,7 @@
         },
         {
           "period": "9M 2026 TTM",
-          "sharePrice": 1.35,
+          "sharePrice": 1.33,
           "intrinsicValueScale": 1.0,
           "isIllustrative": false
         }
@@ -24789,6 +24789,10 @@
         {
           "date": "2026-11-24",
           "close": 1.352
+        },
+        {
+          "date": "2026-11-25",
+          "close": 1.33
         }
       ]
     }
